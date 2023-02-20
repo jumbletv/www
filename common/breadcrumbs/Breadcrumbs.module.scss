@@ -1,0 +1,20 @@
+@import "../../styles/colors.scss";
+@import "../../styles/breakpoints";
+@import "../../styles/text";
+@import "../../styles/flexes";
+
+.breadcrumbsContainer {
+  background-color: $darkPink;
+  padding: 1.6rem 2rem;
+  @include flexRowStartCenter;
+  gap: 1rem;
+  & a {
+    @include extraSmallText;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: $black;
+  }
+  & :hover {
+    text-decoration: underline;
+  }
+}

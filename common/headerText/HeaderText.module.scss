@@ -1,0 +1,24 @@
+@import "../../styles/colors.scss";
+@import "../../styles/breakpoints";
+
+.textContainer {
+  background-color: $black;
+  border-bottom: 0.1rem solid $white;
+  padding: 0.7rem 1rem;
+  h1 {
+    font-size: 2rem;
+    font-family: $workSans;
+    color: $white;
+    text-align: center;
+    font-weight: 300;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+}
+@include tablet {
+  .textContainer {
+    h1 {
+      font-size: 1.8rem;
+    }
+  }
+}

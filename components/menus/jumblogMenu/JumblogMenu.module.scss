@@ -1,0 +1,31 @@
+@import "../../../styles/colors.scss";
+@import "../../../styles/breakpoints";
+@import "../../../styles/flexes";
+@import "../../../styles/text";
+
+.jumblogMenuContainer {
+  @include flexRowStartCenter;
+  padding: 0.1rem 0 0 0;
+  @include noteBook {
+    @include flexColumnStartStart;
+    width: 100%;
+    height: 0;
+  }
+}
+
+.jumblogMenuWrapper {
+  @include flexRowCenterCenter;
+}
+
+.dropdownContainer {
+  display: none;
+  @include noteBook {
+    @include flexRowBetweenCenter;
+    padding: 0 2rem;
+    & h1 {
+      @include smallText;
+      color: $white;
+      text-transform: uppercase;
+    }
+  }
+}

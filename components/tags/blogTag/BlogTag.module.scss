@@ -1,0 +1,9 @@
+@import "../../../styles/colors.scss";
+@import "../../../styles/breakpoints";
+@import "../../../styles/flexes";
+
+.blogTagContainer {
+  @include flexRowStartCenter;
+  gap: 1rem;
+  flex-wrap: wrap;
+}

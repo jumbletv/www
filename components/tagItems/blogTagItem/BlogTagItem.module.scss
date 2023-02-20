@@ -1,0 +1,20 @@
+@import "../../../styles/colors.scss";
+@import "../../../styles/breakpoints";
+@import "../../../styles/flexes";
+
+.blogTagItemContainer {
+  border-radius: 2rem;
+  padding: 0.7rem 1.5rem;
+  background-color: $black;
+  h3 {
+    font-weight: 800;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    color: $white;
+    border-radius: 2rem;
+    padding: 0;
+    margin: 0;
+    font-family: $timesRoman;
+    opacity: 1;
+  }
+}

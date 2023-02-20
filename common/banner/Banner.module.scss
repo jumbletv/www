@@ -1,0 +1,22 @@
+@import "../../styles/colors.scss";
+@import "../../styles/flexes";
+
+.bannerContainer {
+  background-color: $black;
+  height: 4rem;
+  padding: 1rem;
+  gap: 1.6rem;
+  overflow: hidden;
+  @include flexRowBetweenCenter;
+  h1 {
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: $white;
+    margin: 0;
+    padding: 0;
+    font-family: $timesRoman;
+    width: 200px;
+    text-align: center;
+  }
+}

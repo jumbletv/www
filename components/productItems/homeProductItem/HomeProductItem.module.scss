@@ -1,0 +1,68 @@
+@import "../../../styles/colors.scss";
+@import "../../../styles/breakpoints";
+
+.homeProductItemContainer {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 65vh;
+  img {
+    width: 30rem;
+    height: 30rem;
+    object-fit: scale-down;
+  }
+}
+.homeProductItemDetail {
+  border-top: 0.1rem solid $black;
+  padding: 1.6rem 3.2rem;
+  h1 {
+    text-transform: uppercase;
+    margin: 0;
+    font-family: $timesRoman;
+    font-size: 2.7rem;
+  }
+  h2 {
+    text-transform: uppercase;
+    margin: 0;
+    font-family: $timesRoman;
+    font-size: 1.8rem;
+  }
+}
+
+@include desktop {
+  .homeProductItemContainer {
+    height: 50vh;
+    width: 100%;
+  }
+}
+
+@include noteBook {
+  .homeProductItemContainer {
+    height: 40vh;
+    img {
+      width: 20rem;
+      height: 20rem;
+    }
+  }
+}
+
+@include tablet {
+  .homeProductItemContainer {
+    height: 40rem;
+    width: 100%;
+    img {
+      width: 28.7rem;
+      height: 20.7rem;
+    }
+  }
+  .homeProductItemDetail {
+    h1 {
+      font-size: 1.8rem;
+    }
+    h2 {
+      font-size: 1.4rem;
+      margin-top: 0.5rem;
+    }
+  }
+}

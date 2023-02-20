@@ -1,15 +1,8 @@
 import Head from "next/head";
 import Navbar from "layout/navbar/Navbar";
-import Header from "layout/header/Header";
-import HeaderText from "common/headerText/HeaderText";
-import Banner from "common/banner/Banner";
-import HomeProducts from "components/products/homeProducts/HomeProducts";
-import TextList from "common/textList/TextList";
 import HomeBlogs from "components/blogs/homeBlogs/HomeBlogs";
 import { homeBlogData } from "data/blogData";
 import Footer from "layout/footer/Footer";
-import { supportData } from "data/supportData";
-import { faqData } from "data/faqData";
 import { Fragment } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
@@ -17,33 +10,53 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import Bars from "common/bars/Bars";
 import { homeNavBarData } from "data/barData";
+import Breadcrumbs from "common/breadcrumbs/Breadcrumbs";
+import { useState } from "react";
 
 function Home({ poplulateHomeBlogData }) {
   const router = useRouter();
-  const { locale } = router;
   const { i18n } = useTranslation();
+  const { locale, asPath, query } = router;
+  const { tag } = query;
+
+  const [blogsByTag, setBlogsByTag] = useState([]);
 
   useEffect(() => {
-    i18n.changeLanguage(locale);
+    // if (locale) {
+    //   i18n.changeLanguage(locale);
+    // }
+    getBlogsByTag();
   }, [locale]);
+
+  const getBlogsByTag = () => {
+    const blogs = [];
+    poplulateHomeBlogData?.forEach((blog) => {
+      blog.tags.forEach((singleTag) => {
+        if (singleTag.tag === tag) {
+          blogs.push(blog);
+        }
+      });
+      setBlogsByTag(blogs);
+    });
+  };
+
+  console.log(blogsByTag);
+
+  const breadcrumbsLinks = [
+    { id: 1, title: "Home", link: "/" },
+    { id: 2, title: "The Jumblog", link: "/the-jumblog" },
+    { id: 3, title: "Article with tag eco", link: "/the-jumblog/news" },
+  ];
 
   return (
     <Fragment>
       <Head>
-        <title>JUMBLE | The livestream shopping</title>
+        <title>JUMBLE | Tag </title>
       </Head>
       <Navbar />
       <Bars barData={homeNavBarData} />
-      <Header headerText="Have fun, live SHOPPING" />
-      <HeaderText />
-      <Banner bannerText="Upcoming Sales" />
-      <HomeProducts />
-      <Banner bannerText="The Jumblog" />
+      <Breadcrumbs links={breadcrumbsLinks} />
       <HomeBlogs homeBlogData={poplulateHomeBlogData} />
-      <Banner bannerText="Support" />
-      <TextList data={supportData} />
-      <Banner bannerText="FAQS" />
-      <TextList data={faqData} />
       <Footer />
     </Fragment>
   );
@@ -58,4 +71,13 @@ export async function getStaticProps({ locale }) {
     revalidate: 60,
   };
 }
+export async function getStaticPaths() {
+  const blogPaths = homeBlogData.map((blog) => blog.link);
+
+  return {
+    paths: [],
+    fallback: true,
+  };
+}
+
 export default Home;

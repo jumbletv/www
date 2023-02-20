@@ -1,0 +1,47 @@
+@import "../../styles/colors.scss";
+@import "../../styles/breakpoints";
+@import "../../styles/flexes";
+@import "../../styles/text";
+
+.blogDetailWrapper {
+  @include flexRowCenterCenter;
+  background-color: $white;
+}
+.blogDetailContainer {
+  @include flexColumnStartStart;
+  gap: 2rem;
+  width: 960px;
+  font-size: 2rem;
+}
+.socialMediaEmbedBox {
+  display: flex;
+  justify-content: center;
+}
+.blogImg {
+  width: 100%;
+  height: 640px;
+  margin-top: 8rem;
+}
+.blogDateContainer {
+  @include flexRowBetweenCenter;
+  width: 100%;
+  & h1 {
+    @include mediumText;
+    color: $black;
+    text-transform: uppercase;
+  }
+}
+.mainHeading {
+  @include largeHeading;
+  color: $black;
+  line-height: 6rem;
+  margin-top: 0;
+  margin-bottom: 3rem;
+}
+.blogText {
+  @include largeText;
+  font-weight: 300;
+  line-height: 30px;
+  letter-spacing: -0.3px;
+  color: $black;
+}

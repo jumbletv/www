@@ -1,0 +1,74 @@
+@import "../styles/colors.scss";
+
+/* Flexes */
+.flexRowBetweenCenter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.flexRowStartCenter {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.flexRowCenterCenter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.flexRowStartStart {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.flexColumnCenterCenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.flexColumnBetweenStart {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* Colors */
+
+.yellowBg {
+  background-color: $yellow;
+}
+.lightPinkBg {
+  background-color: $lightPink;
+}
+.darkPinkBg {
+  background-color: $darkPink;
+}
+.greenBg {
+  background-color: $green;
+}
+.darkBlueBg {
+  background-color: $darkBlue;
+}
+.lightBlueBg {
+  background-color: $lightBlue;
+}
+
+.blackBg {
+  background-color: $black;
+}
+.black {
+  color: $black;
+}
+
+.whiteBg {
+  background-color: $white;
+}
+.white {
+  color: $white;
+}

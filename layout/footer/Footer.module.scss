@@ -1,0 +1,72 @@
+@import "../../styles/colors.scss";
+@import "../../styles/breakpoints";
+
+.footerLinksContainer {
+  padding: 2rem 4rem;
+  background-color: $green;
+  gap: 2rem;
+  border-bottom: 0.2rem solid $black;
+}
+.footerLink {
+  font-size: 1.4rem;
+  font-weight: 800;
+  font-family: $timesRoman;
+  text-transform: uppercase;
+  color: $black;
+}
+.footerLink:hover {
+  text-decoration: underline;
+}
+
+.footerSocialContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-bottom: 0.1rem solid $black;
+}
+.footerSocialLink {
+  background-color: $yellow;
+  text-align: center;
+  padding: 2rem;
+  border-right: 0.1rem solid $black;
+}
+
+.footerSocialLink svg {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+.footerSocialLink:hover {
+  cursor: pointer;
+  background-color: $black;
+}
+.footerSocialLink:hover svg path {
+  fill: $white;
+  transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.copyright {
+  padding: 2rem;
+  background-color: $black;
+}
+.copyright h1 {
+  margin: 0;
+  color: $white;
+  font-family: $timesRoman;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+@include tablet {
+  .footerLinksContainer {
+    flex-wrap: wrap;
+  }
+  .footerLink {
+    font-size: 1.2rem;
+  }
+}
+
+@include mobile {
+  .footerLinksContainer {
+    flex-direction: column;
+  }
+}

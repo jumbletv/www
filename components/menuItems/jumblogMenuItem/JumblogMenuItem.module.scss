@@ -1,0 +1,18 @@
+@import "../../../styles/colors.scss";
+@import "../../../styles/breakpoints";
+@import "../../../styles/flexes";
+@import "../../../styles/text";
+
+.jumblogMenuItemContainer {
+  @include smallText;
+  text-transform: uppercase;
+  font-weight: 800;
+  padding: 0.9rem 1.6rem;
+  &:hover {
+    color: $black;
+    background-color: $white;
+  }
+  @include noteBook {
+    width: 100%;
+  }
+}

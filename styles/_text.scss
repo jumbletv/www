@@ -1,0 +1,26 @@
+// Texts
+
+@mixin extraSmallText {
+  font-size: 1.2rem;
+  font-family: $timesRoman;
+}
+@mixin smallText {
+  font-size: 1.4rem;
+  font-family: $timesRoman;
+}
+@mixin mediumText {
+  font-size: 1.8rem;
+  font-family: $timesRoman;
+}
+@mixin largeText {
+  font-size: 2rem;
+  font-family: $workSans;
+}
+@mixin mediumHeading {
+  font-size: 3.2rem;
+  font-family: $timesRoman;
+}
+@mixin largeHeading {
+  font-size: 7rem;
+  font-family: $timesRoman;
+}

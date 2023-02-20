@@ -1,22 +1,19 @@
 import Head from "next/head";
 import Navbar from "layout/navbar/Navbar";
 import Header from "layout/header/Header";
-import HeaderText from "common/headerText/HeaderText";
-import Banner from "common/banner/Banner";
-import HomeProducts from "components/products/homeProducts/HomeProducts";
-import TextList from "common/textList/TextList";
 import HomeBlogs from "components/blogs/homeBlogs/HomeBlogs";
 import { homeBlogData } from "data/blogData";
 import Footer from "layout/footer/Footer";
-import { supportData } from "data/supportData";
-import { faqData } from "data/faqData";
 import { Fragment } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import Breadcrumbs from "common/breadcrumbs/Breadcrumbs";
+import { jumblogNavBarData } from "data/barData";
 import Bars from "common/bars/Bars";
-import { homeNavBarData } from "data/barData";
+import LogoBanner from "common/logoBanner/LogoBanner";
+import JumblogMenu from "components/menus/jumblogMenu/JumblogMenu";
 
 function Home({ poplulateHomeBlogData }) {
   const router = useRouter();
@@ -27,23 +24,24 @@ function Home({ poplulateHomeBlogData }) {
     i18n.changeLanguage(locale);
   }, [locale]);
 
+  const breadcrumbsLinks = [
+    { id: 1, title: "Home", link: "/" },
+    { id: 2, title: "The Jumblog", link: "/the-jumblog" },
+    { id: 3, title: "All", link: "/the-jumblog" },
+  ];
+
   return (
     <Fragment>
       <Head>
-        <title>JUMBLE | The livestream shopping</title>
+        <title>JUMBLE | The Jumblog</title>
       </Head>
       <Navbar />
-      <Bars barData={homeNavBarData} />
-      <Header headerText="Have fun, live SHOPPING" />
-      <HeaderText />
-      <Banner bannerText="Upcoming Sales" />
-      <HomeProducts />
-      <Banner bannerText="The Jumblog" />
+      <Bars barData={jumblogNavBarData} />
+      <Breadcrumbs links={breadcrumbsLinks} />
+      <Header headerText="THE JUMBLOG" />
+      <LogoBanner />
+      <JumblogMenu activeMenu={1} />
       <HomeBlogs homeBlogData={poplulateHomeBlogData} />
-      <Banner bannerText="Support" />
-      <TextList data={supportData} />
-      <Banner bannerText="FAQS" />
-      <TextList data={faqData} />
       <Footer />
     </Fragment>
   );

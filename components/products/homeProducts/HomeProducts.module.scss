@@ -1,0 +1,18 @@
+@import "../../../styles/colors.scss";
+@import "../../../styles/breakpoints";
+
+.homeProductsContainer {
+  display: grid;
+  grid-auto-columns: 1rf;
+  grid-column-gap: 0.1rem;
+  grid-row-gap: 0;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  background-color: $black;
+}
+
+@include tablet {
+  .homeProductsContainer {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

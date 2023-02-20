@@ -1,0 +1,44 @@
+@import "../../styles/colors.scss";
+@import "../../styles/breakpoints";
+
+.supportContainer {
+  position: relative;
+}
+.supportItem {
+  padding: 0.6rem;
+  border-bottom: 0.2rem solid $black;
+  h1 {
+    font-family: $timesRoman;
+    font-size: 1.8rem;
+    color: $black;
+    font-weight: 700;
+    width: 40rem;
+  }
+  img {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+@include desktop {
+  .supportItem {
+    h1 {
+      width: 40%;
+    }
+  }
+}
+
+@include tablet {
+  .supportItem {
+    h1 {
+      width: 40rem;
+    }
+  }
+}
+
+@include mobile {
+  .supportItem {
+    h1 {
+      width: 25rem;
+    }
+  }
+}

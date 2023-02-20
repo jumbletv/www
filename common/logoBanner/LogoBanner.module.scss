@@ -1,0 +1,23 @@
+@import "../../styles/colors.scss";
+@import "../../styles/flexes";
+@import "../../styles/breakpoints";
+
+.logoBannerContainer {
+  @include flexRowStartStart;
+  overflow: hidden;
+}
+.logoWrapper {
+  @include flexRowStartCenter;
+}
+
+.logoBox {
+  width: 6rem;
+  height: 6rem;
+  border-right: 1px solid $white;
+  border-bottom: 1px solid $white;
+  @include flexColumnCenterCenter;
+  & img {
+    width: 3.6rem;
+    height: 3.6rem;
+  }
+}

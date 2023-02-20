@@ -1,0 +1,55 @@
+@import "../../styles/colors.scss";
+@import "../../styles/breakpoints";
+
+.logoBox {
+  width: 10rem;
+  height: 10rem;
+  border-left: 1px solid $white;
+  &:nth-child(1) {
+    width: 10rem;
+    height: 10rem;
+    border-right: 1px solid $white;
+    border-left: none;
+  }
+}
+.headerContainer {
+  background-color: $black;
+  height: 10rem;
+  border-bottom: 0.1rem solid $white;
+  h1 {
+    font-size: 5.58vw;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: $white;
+    font-family: $timesRoman;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+  }
+}
+
+@include desktop {
+  .headerContainer {
+    h1 {
+      font-size: 10rem;
+    }
+  }
+}
+
+@include noteBook {
+  .logoBox {
+    display: none;
+  }
+  .headerContainer {
+    justify-content: center;
+  }
+}
+
+@include tablet {
+  .headerContainer {
+    h1 {
+      font-size: 3rem;
+      margin: 0 1rem;
+    }
+  }
+}
