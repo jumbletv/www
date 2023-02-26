@@ -9,13 +9,81 @@ import Blog8 from "../assets/blogs/blog-8.webp";
 import Blog9 from "../assets/blogs/blog-9.webp";
 import Blog10 from "../assets/blogs/blog-10.webp";
 
+const completeBlog = [
+  {
+    id: 1,
+    para: "blog_1_para_1",
+    embed: [
+      {
+        id: 1,
+        url: "https://www.instagram.com/p/Cj2OgQ0riVP",
+        type: "instagram",
+      },
+    ],
+    matchTexts: [
+      {
+        id: 1,
+        matchText: "blog_1_para_1_matchText_1",
+        linkText: "blog_1_para_1_linkText_1",
+        linkTo: "/the-jumblog",
+      },
+    ],
+    list: {
+      listHeading: "For instance:",
+      lists: [
+        {
+          id: 1,
+          listItem: "Your content should resonate with the audience",
+        },
+        { id: 2, listItem: "You should use the right livestream software" },
+        {
+          id: 3,
+          listItem:
+            "Your content and host should be fun enough to captivate the audience",
+        },
+        {
+          id: 4,
+          listItem:
+            "Troubleshoot any technical issues before getting into the action",
+        },
+        { id: 5, listItem: "And, more" },
+      ],
+    },
+  },
+  {
+    id: 2,
+    para: "blog_1_para_2",
+    heading: "La bouche rouge",
+    matchTexts: [
+      {
+        id: 1,
+        matchText: "blog_1_para_2_matchText_1",
+        linkText: "blog_1_para_2_linkText_1",
+        linkTo: "/the-jumblog/lipstick",
+      },
+    ],
+    embed: [
+      {
+        id: 1,
+        url: "https://www.tiktok.com/embed/v2/7158537663904009477?lang=en",
+        type: "tiktok",
+      },
+    ],
+    influencer: {
+      name: "marimariamakeup",
+      url: "https://www.tiktok.com/@marimariamakeup?lang=fr",
+      followers: "3.4 M followers",
+    },
+  },
+];
+
 export const homeBlogData = [
   {
     id: 1,
     blogImg: Blog1,
     date: "NOVEMBER 9, 2022",
     type: "news",
-    by: "auther1",
+    by: "/by/izabella-makukha",
     title: "blog_1_title",
     link: "/the-jumblog/why-sustainable-beautiful-is-here-to-stay",
     detail: "blog_1_detail",
@@ -25,43 +93,14 @@ export const homeBlogData = [
       { id: 3, tag: "green", url: "/tag/green" },
       { id: 4, tag: "beauty industry", url: "/tag/beauty-industry" },
     ],
-    completeBlog: [
-      {
-        id: 1,
-        para: "blog_1_para_1",
-        heading: null,
-        embedUrl: "https://www.instagram.com/p/Cj2OgQ0riVP",
-        matchTexts: [
-          {
-            id: 1,
-            matchText: "blog_1_para_1_matchText_1",
-            linkText: "blog_1_para_1_linkText_1",
-            linkTo: "/the-jumblog",
-          },
-        ],
-      },
-      {
-        id: 2,
-        para: "blog_1_para_2",
-        heading: "La bouche rouge",
-        embedUrl: "https://www.instagram.com/p/CksXGn_sMm0",
-        matchTexts: [
-          {
-            id: 1,
-            matchText: "blog_1_para_2_matchText_1",
-            linkText: "blog_1_para_2_linkText_1",
-            linkTo: "/the-jumblog/lipstick",
-          },
-        ],
-      },
-    ],
+    completeBlog,
   },
   {
     id: 2,
     blogImg: Blog2,
     date: "NOVEMBER 2, 2022",
     type: "news",
-    by: "auther2",
+    by: "/by/natalya-shayk",
     title: "CHOOSING THE RIGHT EYESHADOW FOR YOUR EYE COLOUR",
     link: "/the-jumblog/choosing-the-right-eyeshadow-for-your-eye-colour",
     detail:
@@ -71,13 +110,14 @@ export const homeBlogData = [
       { id: 2, tag: "genz", url: "/tag/gen-z" },
       { id: 3, tag: "colore", url: "/tag/colore" },
     ],
+    completeBlog,
   },
   {
     id: 3,
     blogImg: Blog3,
     date: "OCTOBER 25, 2022",
     type: "news",
-    by: "auther3",
+    by: "/by/izabella-makukha",
     title: "TOP 10 MOST POPULAR MAKEUP INFLUENCERS ON TIKTOK",
     link: "/the-jumblog/top-10-most-popular-makeup-influencer-on-tiktok",
     detail:
@@ -88,13 +128,14 @@ export const homeBlogData = [
       { id: 3, tag: "social", url: "/tag/social" },
       { id: 4, tag: "trends", url: "/tag/trends" },
     ],
+    completeBlog,
   },
   {
     id: 4,
     blogImg: Blog4,
     date: "OCTOBER 11, 2022",
     type: "news",
-    by: "auther4",
+    by: "/by/natalya-shayk",
     title: "BEST VIRAL TIKTOK BEAUTY PRODUCTS",
     link: "/the-jumblog/best-viral-tiktok-beauty-products",
     detail:
@@ -105,13 +146,14 @@ export const homeBlogData = [
       { id: 3, tag: "beauty", url: "/tag/beauty" },
       { id: 4, tag: "makeup", url: "/tag/make-up" },
     ],
+    completeBlog,
   },
   {
     id: 5,
     blogImg: Blog5,
     date: "SEPTEMBER 6, 2022",
     type: "news",
-    by: "auther5",
+    by: "/by/izabella-makukha",
     title: "10 BEAUTY INFLUENCERS TO FOLLOW ON INSTAGRAM",
     link: "/the-jumblog/10-beauty-influencer-to-follow-on-instagram",
     detail:
@@ -121,13 +163,14 @@ export const homeBlogData = [
       { id: 2, tag: "beauty", url: "/tag/beauty" },
       { id: 3, tag: "beauty care", url: "/tag/beauty-care" },
     ],
+    completeBlog,
   },
   {
     id: 6,
     blogImg: Blog6,
     date: "AUGUST 30, 2022",
     type: "news",
-    by: "auther6",
+    by: "/by/izabella-makukha",
     title: "WHAT ARE THE TIKTOK MAKEUP HACKS?",
     link: "/the-jumblog/what-are-the-tiktok-makeup-hacks",
     detail:
@@ -138,13 +181,14 @@ export const homeBlogData = [
       { id: 3, tag: "beauty", url: "/tag/beauty" },
       { id: 4, tag: "makeup", url: "/tag/make-up" },
     ],
+    completeBlog,
   },
   {
     id: 7,
     blogImg: Blog7,
     date: "AUGUST 16, 2022",
     type: "news",
-    by: "auther7",
+    by: "/by/natalya-shayk",
     title: "MEET OUR NEW GO-TO TIKTOK MAKEUP TUTORIAL",
     link: "/the-jumblog/meet-our-new-go-to-tiktok-makeup-toturial",
     detail:
@@ -155,13 +199,14 @@ export const homeBlogData = [
       { id: 3, tag: "trends", url: "/tag/trends" },
       { id: 4, tag: "social", url: "/tag/social" },
     ],
+    completeBlog,
   },
   {
     id: 8,
     blogImg: Blog8,
     date: "AUGUST 2, 2022",
     type: "news",
-    by: "auther8",
+    by: "/by/izabella-makukha",
     title: "THE HOTTEST TIKTOK TRENDS FOR SUMMER 2022",
     link: "/the-jumblog/the-hottest-tiktok-trends-for-summer-2022",
     detail:
@@ -172,13 +217,14 @@ export const homeBlogData = [
       { id: 3, tag: "outfits", url: "/tag/outfits" },
       { id: 4, tag: "apparel", url: "/tag/apparel" },
     ],
+    completeBlog,
   },
   {
     id: 9,
     blogImg: Blog9,
     date: "JULY 19, 2022",
     type: "news",
-    by: "auther9",
+    by: "/by/anna-shvalyuk",
     title: "THE TIKTOK FASHION TRENDS EVERY INFLUENCER IS WEARING RIGHT NOW",
     link: "/the-jumblog/the-tiktok-fashion-trends-every-influencer-is-wearing-right-now",
     detail:
@@ -191,13 +237,14 @@ export const homeBlogData = [
       { id: 5, tag: "style", url: "/tag/style" },
       { id: 6, tag: "TikTok", url: "/tag/tiktok" },
     ],
+    completeBlog,
   },
   {
     id: 10,
     blogImg: Blog10,
     date: "JULY 5, 2022",
     type: "news",
-    by: "auther10",
+    by: "/by/izabella-makukha",
     title: "TIKTOK FASHION TRENDS EVERYONE'S OBSESSED WITH",
     link: "/the-jumblog/tiktok-fashion-trends-everyone-obsessed-with",
     detail:
@@ -209,5 +256,6 @@ export const homeBlogData = [
       { id: 4, tag: "style", url: "/tag/style" },
       { id: 5, tag: "apps", url: "/tag/apps" },
     ],
+    completeBlog,
   },
 ];

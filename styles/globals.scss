@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&display=swap");
 
 $darkBlue: #48c9ff;
 $lightBlue: #72ffe4;
@@ -11,6 +12,7 @@ $black: #000000;
 $white: #ffffff;
 $workSans: "Work Sans", sans-serif;
 $timesRoman: "Times New Roman", Times, serif;
+$interSans: "Inter', sans-serif";
 
 html,
 body {
@@ -34,6 +36,8 @@ a {
   box-sizing: border-box;
 }
 
+// React Pagination
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
@@ -41,5 +45,57 @@ a {
   body {
     color: white;
     background: black;
+  }
+}
+
+// Carousel
+.slick-prev {
+  left: 1rem !important;
+  width: 13rem !important;
+  height: 13rem !important;
+  z-index: 1;
+}
+.slick-next {
+  right: 0 !important;
+  width: 13rem !important;
+  height: 13rem !important;
+}
+
+.slick-dots {
+  background-color: $yellow !important;
+  border: 1px solid $black !important;
+  height: calc(100% - 800px) !important;
+}
+ul.slick-dots li {
+  width: 3rem !important;
+}
+ul.slick-dots li button:before {
+  font-size: 3rem !important;
+  line-height: 20rem;
+}
+
+@media (min-width: 1500px) {
+  .slick-dots {
+    height: 20rem !important;
+  }
+}
+@media (max-width: 1024px) {
+  .slick-prev {
+    width: 5rem !important;
+    height: 5rem !important;
+  }
+  .slick-next {
+    right: 1rem !important;
+    width: 5rem !important;
+    height: 5rem !important;
+  }
+}
+@media (max-width: 768px) {
+  .slick-dots {
+    height: 5rem !important;
+  }
+  ul.slick-dots li button:before {
+    font-size: 2rem !important;
+    line-height: 5rem !important;
   }
 }

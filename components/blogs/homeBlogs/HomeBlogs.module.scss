@@ -1,3 +1,17 @@
+@import "styles/colors.scss";
+@import "styles/breakpoints";
+@import "styles/flexes";
+@import "styles/text";
+
 .homeBlogContainer {
   position: relative;
+}
+
+.noArticleContainer {
+  @include flexColumnCenterCenter;
+  height: 35rem;
+  background-color: $white;
+  & h1 {
+    @include textGroupMd;
+  }
 }

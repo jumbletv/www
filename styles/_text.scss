@@ -1,3 +1,7 @@
+@import "/styles/breakpoints";
+@import "/styles/colors";
+@import "/styles/flexes";
+
 // Texts
 
 @mixin extraSmallText {
@@ -23,4 +27,53 @@
 @mixin largeHeading {
   font-size: 7rem;
   font-family: $timesRoman;
+}
+
+@mixin textGroupExtraLg {
+  text-transform: uppercase;
+  color: $black;
+  font-family: $timesRoman;
+  font-size: 6rem;
+  line-height: 5rem;
+  font-weight: 800;
+  @include desktop {
+    font-size: 10rem;
+    line-height: 10rem;
+  }
+  @include noteBook {
+    font-size: 3rem;
+    line-height: 3rem;
+  }
+  @include mobile {
+    font-size: 2.5rem;
+  }
+}
+@mixin textGroupLg {
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 4rem;
+  font-family: $timesRoman;
+  @include desktop {
+    font-size: 5rem;
+    line-height: 7rem;
+  }
+  @include noteBook {
+    font-size: 2rem;
+    line-height: 3rem;
+  }
+}
+@mixin textGroupMd {
+  font-family: $timesRoman;
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 3rem;
+  @include desktop {
+    font-weight: 300;
+    font-size: 3rem;
+    line-height: 5rem;
+  }
+  @include noteBook {
+    font-size: 1.6rem;
+    line-height: 2.9rem;
+  }
 }

@@ -1,13 +1,14 @@
+import Link from "next/link";
 import React from "react";
 import styles from "./BlogTagItem.module.scss";
 
-function BlogTagItem({ tag }) {
+function BlogTagItem({ tag, url }) {
   const { blogTagItemContainer } = styles;
 
   return (
-    <div className={blogTagItemContainer}>
+    <Link href={url} className={blogTagItemContainer}>
       <h3>{tag}</h3>
-    </div>
+    </Link>
   );
 }
 

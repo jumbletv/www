@@ -5,34 +5,34 @@ import { homeBlogData } from "data/blogData";
 import Footer from "layout/footer/Footer";
 import { Fragment } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useTranslation } from "next-i18next";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import Bars from "common/bars/Bars";
 import { homeNavBarData } from "data/barData";
 import Breadcrumbs from "common/breadcrumbs/Breadcrumbs";
 import { useState } from "react";
+import Header from "layout/header/Header";
+import LogoBanner from "common/logoBanner/LogoBanner";
+import { splitWord, splitAndCapitalize } from "helper/splitWord";
 
-function Home({ poplulateHomeBlogData }) {
+function Tag({ poplulateHomeBlogData }) {
   const router = useRouter();
-  const { i18n } = useTranslation();
-  const { locale, asPath, query } = router;
-  const { tag } = query;
+  const {
+    locale,
+    query: { tag },
+  } = router;
 
   const [blogsByTag, setBlogsByTag] = useState([]);
 
   useEffect(() => {
-    // if (locale) {
-    //   i18n.changeLanguage(locale);
-    // }
     getBlogsByTag();
-  }, [locale]);
+  }, [locale, tag]);
 
   const getBlogsByTag = () => {
     const blogs = [];
     poplulateHomeBlogData?.forEach((blog) => {
       blog.tags.forEach((singleTag) => {
-        if (singleTag.tag === tag) {
+        if (singleTag.tag === splitWord(tag)) {
           blogs.push(blog);
         }
       });
@@ -40,23 +40,29 @@ function Home({ poplulateHomeBlogData }) {
     });
   };
 
-  console.log(blogsByTag);
-
   const breadcrumbsLinks = [
     { id: 1, title: "Home", link: "/" },
-    { id: 2, title: "The Jumblog", link: "/the-jumblog" },
-    { id: 3, title: "Article with tag eco", link: "/the-jumblog/news" },
+    { id: 2, title: "The Jumblog", link: "/the-jumblog/page/1" },
+    {
+      id: 3,
+      title: `Article with tag ${splitWord(tag)}`,
+      link: `/type/${tag}`,
+    },
   ];
+
+  const titleText = `JUMBLE | Tag ${splitAndCapitalize(tag)}`;
 
   return (
     <Fragment>
       <Head>
-        <title>JUMBLE | Tag </title>
+        <title>{titleText}</title>
       </Head>
       <Navbar />
       <Bars barData={homeNavBarData} />
       <Breadcrumbs links={breadcrumbsLinks} />
-      <HomeBlogs homeBlogData={poplulateHomeBlogData} />
+      <Header headerText="THE JUMBLOG" />
+      <LogoBanner />
+      <HomeBlogs homeBlogData={blogsByTag} />
       <Footer />
     </Fragment>
   );
@@ -72,12 +78,15 @@ export async function getStaticProps({ locale }) {
   };
 }
 export async function getStaticPaths() {
-  const blogPaths = homeBlogData.map((blog) => blog.link);
+  let tagPaths = [];
+  homeBlogData.forEach((blog) =>
+    blog.tags.forEach((tag) => tagPaths.push(tag.url))
+  );
 
   return {
-    paths: [],
+    paths: tagPaths,
     fallback: true,
   };
 }
 
-export default Home;
+export default Tag;

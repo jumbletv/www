@@ -1,0 +1,27 @@
+@import "styles/colors.scss";
+@import "styles/breakpoints";
+@import "styles/flexes";
+@import "styles/text";
+
+.influencerTextContainer {
+  @include flexRowStartCenter;
+  gap: 0.5rem;
+  & a {
+    @include textGroupLg;
+    color: $strongBlue;
+    font-family: $interSans;
+    text-decoration: underline;
+  }
+  & h1 {
+    @include textGroupLg;
+    color: $black;
+    font-family: $interSans;
+  }
+  @include noteBook {
+    margin: 2rem;
+  }
+  @include mobile {
+    flex-direction: column;
+    gap: 0;
+  }
+}

@@ -9,7 +9,7 @@ function CircleBtn() {
   return (
     <div className={viewAllWrapper}>
       <Link
-        href="/"
+        href="/the-jumblog/page/1"
         className={`${viewAllContainer} ${flexColumnCenterCenter}`}
       >
         <div className={`${insideCircle} ${flexColumnCenterCenter}`}>

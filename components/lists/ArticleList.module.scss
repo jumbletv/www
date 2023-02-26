@@ -1,0 +1,15 @@
+@import "styles/flexes";
+@import "styles/text";
+@import "styles/breakpoints";
+
+.articleListContainer {
+  & h1 {
+    @include largeText;
+    font-family: $interSans;
+    font-weight: 700;
+    margin: 4rem 0;
+    @include noteBook {
+      margin: 4rem 2rem;
+    }
+  }
+}

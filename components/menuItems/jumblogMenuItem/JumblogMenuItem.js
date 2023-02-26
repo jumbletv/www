@@ -5,8 +5,19 @@ import Link from "next/link";
 function JumblogMenuItem({ title, link, menuItemBg, menuItemColor }) {
   const { jumblogMenuItemContainer } = styles;
 
+  const handleMenuItem = () => {
+    if (window.innerWidth < 1024) {
+      const navId = document.getElementById("jumblog-menu");
+      if (navId) {
+        navId.style.height = "0";
+        navId.style.zIndex = "-1";
+      }
+    }
+  };
+
   return (
     <Link
+      onClick={handleMenuItem}
       href={link}
       className={`${jumblogMenuItemContainer} ${menuItemBg} ${menuItemColor}`}
     >

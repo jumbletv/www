@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import styles from "./Navbar.module.scss";
-import commonStyles from "../../styles/Common.module.scss";
-import logo from "../../assets/logos/jumble-logo.svg";
+import commonStyles from "styles/Common.module.scss";
+import logo from "assets/logos/jumble-logo.svg";
 import Image from "next/image";
-import FacebookIcon from "../../components/social/FacebookIcon";
-import InstagramIcon from "../../components/social/InstagramIcon";
-import WhatsappIcon from "../../components/social/WhatsappIcon";
-import LeftArrow from "../../assets/icons/left-arrow.svg";
-import RightArrow from "../../assets/icons/right-arrow.svg";
-import MenuIcon from "../../assets/icons/menu-icon.svg";
+import FacebookIcon from "components/social/FacebookIcon";
+import InstagramIcon from "components/social/InstagramIcon";
+import WhatsappIcon from "components/social/WhatsappIcon";
+import LeftArrow from "assets/icons/left-arrow.svg";
+import RightArrow from "assets/icons/right-arrow.svg";
+import MenuIcon from "assets/icons/menu-icon.svg";
 import Link from "next/link";
+import { useTranslation } from "next-i18next";
 
 function Navbar() {
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -38,6 +39,9 @@ function Navbar() {
   } = styles;
   const { flexRowBetweenCenter, flexRowStartCenter, flexColumnCenterCenter } =
     commonStyles;
+
+  const { t } = useTranslation("common");
+
   return (
     <div className={`${navContainer} ${flexRowBetweenCenter}`}>
       <Link href="/">
@@ -45,33 +49,40 @@ function Navbar() {
       </Link>
       <div className={`${menuListContainer} ${flexRowStartCenter}`}>
         <div className={` ${flexRowStartCenter}`}>
-          <div className={`${menuItem} ${flexRowBetweenCenter}`}>
+          <Link href="/live" className={`${menuItem} ${flexRowBetweenCenter}`}>
             <Image src={RightArrow} alt="arrow-left" className={arrows} />
-            <p>Live</p>
+            <p> {t("live")} </p>
             <Image src={LeftArrow} alt="arrow-left" className={arrows} />
-          </div>
-          <div className={`${menuItem} ${flexRowBetweenCenter}`}>
+          </Link>
+          <Link
+            href="/the-jumblog/page/1"
+            className={`${menuItem} ${flexRowBetweenCenter}`}
+          >
             <Image src={RightArrow} alt="arrow-left" className={arrows} />
-            <Link href="/the-jumblog">
-              <p>The Jumblog</p>
-            </Link>
+            <p> {t("the_jumblog")} </p>
             <Image src={LeftArrow} alt="arrow-left" className={arrows} />
-          </div>
-          <div className={`${menuItem} ${flexRowBetweenCenter}`}>
+          </Link>
+          <Link
+            href="/brands"
+            className={`${menuItem} ${flexRowBetweenCenter}`}
+          >
             <Image src={RightArrow} alt="arrow-left" className={arrows} />
-            <p>Brands</p>
+            <p>{t("brands")}</p>
             <Image src={LeftArrow} alt="arrow-left" className={arrows} />
-          </div>
-          <div className={`${menuItem} ${flexRowBetweenCenter}`}>
+          </Link>
+          <Link href="faqs" className={`${menuItem} ${flexRowBetweenCenter}`}>
             <Image src={RightArrow} alt="arrow-left" className={arrows} />
-            <p>FAQ</p>
+            <p>{t("faq")}</p>
             <Image src={LeftArrow} alt="arrow-left" className={arrows} />
-          </div>
-          <div className={`${menuItem} ${flexRowBetweenCenter}`}>
+          </Link>
+          <Link
+            href="/contact"
+            className={`${menuItem} ${flexRowBetweenCenter}`}
+          >
             <Image src={RightArrow} alt="arrow-left" className={arrows} />
-            <p>Get in Touch</p>
+            <p>{t("get_in_touch")}</p>
             <Image src={LeftArrow} alt="arrow-left" className={arrows} />
-          </div>
+          </Link>
         </div>
         <div className={`${flexRowStartCenter}`}>
           <div className={`${socialBox} ${flexColumnCenterCenter}`}>
@@ -89,11 +100,20 @@ function Navbar() {
           >
             <Image src={MenuIcon} alt="menu-icon" className={menuIcon} />
           </div>
+
           <div className={sideNav} id="mobile-nav">
-            <div className={mobileMenuItem}>Upcoming Sales</div>
-            <div className={mobileMenuItem}>The Jumblog</div>
-            <div className={mobileMenuItem}>FAQ</div>
-            <div className={mobileMenuItem}>Get in Touch</div>
+            <Link href="/sales/page/1" className={mobileMenuItem}>
+              {t("upcoming_sales")}
+            </Link>
+            <Link href="/the-jumblog/page/1" className={mobileMenuItem}>
+              {t("the_jumblog")}
+            </Link>
+            <Link href="/faqs" className={mobileMenuItem}>
+              {t("faq")}
+            </Link>
+            <Link href="/get-in-touch" className={mobileMenuItem}>
+              {t("get_in_touch")}
+            </Link>
           </div>
         </div>
       </div>

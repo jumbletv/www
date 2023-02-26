@@ -6,8 +6,8 @@ function BlogTag({ tags }) {
   const { blogTagContainer } = styles;
   return (
     <div className={blogTagContainer}>
-      {tags?.map(({ id, tag }) => (
-        <BlogTagItem key={id} tag={tag} />
+      {tags?.map(({ id, tag, url }) => (
+        <BlogTagItem key={id} tag={tag} url={url} />
       ))}
     </div>
   );

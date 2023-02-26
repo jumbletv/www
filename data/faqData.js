@@ -5,17 +5,17 @@ const { lightBlueBg, greenBg } = commonStyles;
 export const faqData = [
   {
     id: 1,
-    text: "What do I need to shoot a livestream?",
+    text: "faq_1",
     bg: lightBlueBg,
   },
   {
     id: 2,
-    text: "Do I need an external display for livestream?",
+    text: "faq_2",
     bg: lightBlueBg,
   },
   {
     id: 3,
-    text: "Can viewer watch my videos after the broadcast ?",
+    text: "faq_3",
     bg: greenBg,
   },
 ];

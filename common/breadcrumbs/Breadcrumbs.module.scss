@@ -7,12 +7,16 @@
   background-color: $darkPink;
   padding: 1.6rem 2rem;
   @include flexRowStartCenter;
+  flex-wrap: wrap;
   gap: 1rem;
   & a {
     @include extraSmallText;
     text-transform: uppercase;
     font-weight: 800;
     color: $black;
+    & span {
+      background-color: $black;
+    }
   }
   & :hover {
     text-decoration: underline;

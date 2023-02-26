@@ -17,8 +17,9 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import Bars from "common/bars/Bars";
 import { homeNavBarData } from "data/barData";
+import { productsData } from "data/products";
 
-function Home({ poplulateHomeBlogData }) {
+function Home({ poplulateHomeBlogData, populateProductsData }) {
   const router = useRouter();
   const { locale } = router;
   const { i18n } = useTranslation();
@@ -30,16 +31,19 @@ function Home({ poplulateHomeBlogData }) {
   return (
     <Fragment>
       <Head>
-        <title>JUMBLE | The livestream shopping</title>
+        <title>JUMBLE | The Livestream Shopping</title>
       </Head>
       <Navbar />
       <Bars barData={homeNavBarData} />
-      <Header headerText="Have fun, live SHOPPING" />
+      <Header headerText="have_fun" locale={locale} shrink={true} />
       <HeaderText />
       <Banner bannerText="Upcoming Sales" />
-      <HomeProducts />
+      <HomeProducts productsData={populateProductsData.slice(0, 3)} />
       <Banner bannerText="The Jumblog" />
-      <HomeBlogs homeBlogData={poplulateHomeBlogData} />
+      <HomeBlogs
+        homeBlogData={poplulateHomeBlogData.slice(0, 10)}
+        showBtn={true}
+      />
       <Banner bannerText="Support" />
       <TextList data={supportData} />
       <Banner bannerText="FAQS" />
@@ -52,8 +56,9 @@ function Home({ poplulateHomeBlogData }) {
 export async function getStaticProps({ locale }) {
   return {
     props: {
+      populateProductsData: productsData,
       poplulateHomeBlogData: homeBlogData,
-      ...(await serverSideTranslations(locale, ["common", "blogs"])),
+      ...(await serverSideTranslations(locale, ["common", "blogs", "faq"])),
     },
     revalidate: 60,
   };

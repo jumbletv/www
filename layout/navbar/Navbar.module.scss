@@ -26,6 +26,7 @@
   font-family: $timesRoman;
   font-weight: 600;
   gap: 0.5rem;
+  text-align: center;
   p {
     padding: 0;
     margin: 0;
@@ -70,6 +71,7 @@
 }
 .sideNav {
   height: 0;
+  z-index: 2;
   width: 100%;
   position: fixed;
   top: 4rem;
@@ -78,6 +80,9 @@
   overflow-x: hidden;
   overflow-y: hidden;
   transition: height 0.4s ease-in-out;
+  & a {
+    display: block;
+  }
 }
 
 @include noteBook {
@@ -110,7 +115,8 @@
     display: none;
   }
   .logoImg {
-    margin-left: 1rem;
+    margin-left: 0.5rem;
+    width: 6.5rem;
   }
 }
 
@@ -159,5 +165,8 @@
     &:nth-child(4) {
       background-color: $darkPink;
     }
+  }
+  .logoImg {
+    width: 7rem;
   }
 }

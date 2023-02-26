@@ -1,0 +1,49 @@
+@import "styles/flexes";
+@import "styles/text";
+@import "styles/breakpoints";
+@import "styles/reuseables";
+
+.autherCardItemContainer {
+  display: grid;
+  grid-template-columns: 200px 480px;
+  border: 1px solid $black;
+  background-color: $white;
+  @include tablet {
+    grid-template-columns: 150px 300px;
+  }
+  @include mobile {
+    grid-template-columns: 100%;
+    margin: 1rem;
+  }
+}
+
+.autherDetailContainer {
+  padding: 3.2rem;
+  @include tablet {
+    padding: 1rem;
+  }
+  & h1 {
+    font-size: 1.2rem;
+    font-family: $timesRoman;
+    text-transform: uppercase;
+    margin-bottom: 0;
+  }
+  & p {
+    font-size: 1.6rem;
+    font-family: $interSans;
+    font-weight: 300;
+    line-height: 2.24rem;
+    letter-spacing: -0.03px;
+    margin: 0;
+  }
+}
+.autherImgContainer {
+  border-right: 1px solid $black;
+  @include articleImg;
+  top: 0;
+  bottom: 0;
+  @include mobile {
+    border-bottom: 1px solid $black;
+    border-right: 0;
+  }
+}

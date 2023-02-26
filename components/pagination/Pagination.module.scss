@@ -1,0 +1,29 @@
+@import "styles/colors.scss";
+@import "styles/breakpoints";
+@import "styles/flexes";
+@import "styles/text";
+
+.paginationContainer {
+  & ul {
+    @include flexRowCenterCenter;
+    color: $white;
+    font-weight: 600;
+    font-size: 1.6rem;
+    list-style: none;
+    cursor: pointer;
+    gap: 1rem;
+    flex-wrap: wrap;
+    & li {
+      & a {
+        padding: 0.5rem;
+      }
+      &:hover {
+        color: $green;
+      }
+    }
+  }
+}
+
+.activePage {
+  color: $green;
+}

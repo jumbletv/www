@@ -3,15 +3,17 @@ import styles from "./HomeProductItem.module.scss";
 import commonStyles from "../../../styles/Common.module.scss";
 import Image from "next/image";
 import Link from "next/link";
+
 function HomeProductItem({
   productBg,
   productImg,
   productBgColor,
   productTitle,
   productDate,
+  productLink,
 }) {
   return (
-    <Link href="/">
+    <Link href={productLink}>
       <div
         style={{
           backgroundImage: `url(${productBg.src})`,

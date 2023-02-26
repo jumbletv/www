@@ -1,10 +1,16 @@
 @import "../../../styles/colors.scss";
 @import "../../../styles/breakpoints";
+@import "../../../styles/text";
+@import "../../../styles/reuseables";
 
 .blogItemTagWrapper {
   margin-top: 4rem;
+  margin-bottom: 2rem;
 }
-
+.dateContainer {
+  @include flexRowBetweenCenter;
+  margin-bottom: 2rem;
+}
 .homeBlogItemContainer {
   display: grid;
   grid-template-columns: calc(100% - 47rem) 47rem;
@@ -23,66 +29,39 @@
     font-size: 1.8rem;
   }
   h2 {
-    font-weight: 700;
-    text-transform: uppercase;
-    color: $black;
-    font-family: $timesRoman;
-    font-size: 6rem;
+    @include textGroupExtraLg;
     margin-top: 0.2rem;
-    line-height: 5rem;
-    font-weight: 800;
     margin-bottom: 0.25rem;
   }
   p {
-    font-weight: 300;
-    font-family: $timesRoman;
-    font-size: 2rem;
-    margin-top: 1.2rem;
-    opacity: 0.8;
-    line-height: 2.5rem;
+    @include textGroupMd;
+    margin-top: 1.6rem;
   }
 }
 .homeBlogImgContainer {
-  position: relative;
-  img {
-    position: absolute;
-    top: auto;
-    left: 0;
-    right: 0;
-    bottom: auto;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+  @include articleImg;
 }
 
-@include desktop {
-  .homeBlogDetail {
-    h2 {
-      font-size: 10rem;
-      line-height: 10rem;
-    }
-    p {
-      font-weight: 300;
-      font-size: 3rem;
-      line-height: 5rem;
-    }
+.homeBlogItemHeaderContainer {
+  & h2 {
+    color: $white;
   }
+  & p {
+    color: $white;
+  }
+}
+.homeBlogItemHeaderDetail {
+  padding: 8rem 3.2rem;
+  background-color: $black;
 }
 
 @include noteBook {
   .homeBlogItemContainer {
     grid-template-columns: calc(100% - 30rem) 30rem;
-    border-bottom: 0.1em solid $black;
+    border-bottom: 0.1rem solid $black;
   }
   .homeBlogDetail {
     padding: 1rem 2rem;
-    h2 {
-      font-size: 2rem;
-    }
-    p {
-      font-size: 1.6rem;
-    }
   }
 }
 

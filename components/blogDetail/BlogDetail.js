@@ -1,82 +1,100 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import styles from "./BlogDetail.module.scss";
-import InstaEmbed from "common/instaEmbed/InstaEmbed";
 import Image from "next/image";
 import BlogTag from "components/tags/blogTag/BlogTag";
+import { EmbedURL } from "components/embedUrl/EmbedURL";
+import { InfluencerText } from "common/influencerText/InfluencerText";
+import { ArticleList } from "components/lists/ArticleList";
+import { AutherCard } from "components/cards/autherCardItem/AutherCard";
 
-function BlogDetail({ blog }) {
+function BlogDetail({ blog, auther }) {
   const { t } = useTranslation("blogs");
 
   const {
     blogDetailWrapper,
     blogDetailContainer,
-    socialMediaEmbedBox,
-    blogImg,
+    blogImgContainer,
     blogDateContainer,
     mainHeading,
     blogText,
+    articleDetailBlogWrapper,
+    paraLink,
+    paraHeading,
+    autherCardWrapper,
   } = styles;
+
+  const { completeBlog, blogImg, date, type, tags, title } = blog;
 
   const renderText = () => {
     const segmenter = new Intl.Segmenter([], {
       granularity: "word",
     });
-    if (blog.completeBlog) {
-      return blog.completeBlog.map((paragraph) => {
-        const paraT = t(`${paragraph.para}`);
+    if (completeBlog) {
+      return completeBlog.map(
+        ({ para, matchTexts, heading, embed, influencer, list }, index) => {
+          const paraT = t(`${para}`);
 
-        const parts = Array.from(segmenter.segment(paraT)).map(
-          (part) => part.segment
-        );
+          const parts = Array.from(segmenter.segment(paraT)).map(
+            (part) => part.segment
+          );
 
-        const partsText = parts.map((part, index) => {
-          return paragraph.matchTexts.map((text, index) => {
-            const matchTextT = t(`${text.matchText}`);
-            const linkTextT = t(`${text.linkText}`);
-            if (part === matchTextT) {
-              return (
-                <Link href={text.linkTo} key={index} style={{ color: "blue" }}>
-                  {linkTextT}
-                </Link>
-              );
-            } else {
-              if (index === paragraph.matchTexts.length - 1) {
-                return part;
+          const partsText = parts.map((part) => {
+            return matchTexts.map(({ matchText, linkText, linkTo }, index) => {
+              const matchTextT = t(`${matchText}`);
+              const linkTextT = t(`${linkText}`);
+              if (part === matchTextT) {
+                return (
+                  <Link href={linkTo} key={index} className={paraLink}>
+                    {linkTextT}
+                  </Link>
+                );
+              } else {
+                if (index === matchTexts.length - 1) {
+                  return part;
+                }
               }
-            }
+            });
           });
-        });
-        return (
-          <div key={Math.random()}>
-            {paragraph.heading && <h1> {paragraph.heading} </h1>}
-            <p className={blogText}>{partsText}</p>
-            {paragraph.embedUrl && (
-              <div className={socialMediaEmbedBox}>
-                <InstaEmbed url={paragraph.embedUrl} />
-              </div>
-            )}
-          </div>
-        );
-      });
+          return (
+            <div key={index}>
+              {heading && <h1 className={paraHeading}> {heading} </h1>}
+              <p className={blogText}>{partsText}</p>
+              {list && <ArticleList list={list} />}
+              {influencer && <InfluencerText influencer={influencer} />}
+              <EmbedURL embed={embed} />
+            </div>
+          );
+        }
+      );
     }
   };
 
-  const blogTitleT = t(`${blog?.title}`);
+  const blogTitleT = t(`${title}`);
 
   return (
-    blog.completeBlog && (
+    completeBlog && (
       <div className={blogDetailWrapper}>
         <div className={blogDetailContainer}>
-          <Image src={blog.blogImg} alt="blog-img" className={blogImg} />
+          <Image
+            src={blogImg}
+            alt="blog-img"
+            className={blogImgContainer}
+            priority={true}
+          />
           <div className={blogDateContainer}>
-            <h1>{blog?.date}</h1>
-            <h1>{blog?.type}</h1>
+            <h1>{date}</h1>
+            <h1>{type}</h1>
           </div>
           <h1 className={mainHeading}> {blogTitleT} </h1>
-          <BlogTag tags={blog?.tags} />
+          <div className={articleDetailBlogWrapper}>
+            <BlogTag tags={tags} />
+          </div>
           {renderText()}
+          <div className={autherCardWrapper}>
+            <AutherCard auther={auther} />
+          </div>
         </div>
       </div>
     )
