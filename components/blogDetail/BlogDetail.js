@@ -4,7 +4,7 @@ import Link from "next/link";
 import styles from "./BlogDetail.module.scss";
 import Image from "next/image";
 import BlogTag from "components/tags/blogTag/BlogTag";
-import { EmbedURL } from "components/embedUrl/EmbedURL";
+import { EmbedElement } from "components/embedElement/EmbedElement";
 import { InfluencerText } from "common/influencerText/InfluencerText";
 import { ArticleList } from "components/lists/ArticleList";
 import { AutherCard } from "components/cards/autherCardItem/AutherCard";
@@ -33,7 +33,7 @@ function BlogDetail({ blog, auther }) {
     });
     if (completeBlog) {
       return completeBlog.map(
-        ({ para, matchTexts, heading, embed, influencer, list }, index) => {
+        ({ id, para, matchTexts, heading, embed, influencer, list }) => {
           const paraT = t(`${para}`);
 
           const parts = Array.from(segmenter.segment(paraT)).map(
@@ -41,29 +41,31 @@ function BlogDetail({ blog, auther }) {
           );
 
           const partsText = parts.map((part) => {
-            return matchTexts.map(({ matchText, linkText, linkTo }, index) => {
-              const matchTextT = t(`${matchText}`);
-              const linkTextT = t(`${linkText}`);
-              if (part === matchTextT) {
-                return (
-                  <Link href={linkTo} key={index} className={paraLink}>
-                    {linkTextT}
-                  </Link>
-                );
-              } else {
-                if (index === matchTexts.length - 1) {
-                  return part;
+            return matchTexts.map(
+              ({ id, matchText, linkText, linkTo }, index) => {
+                const matchTextT = t(`${matchText}`);
+                const linkTextT = t(`${linkText}`);
+                if (part === matchTextT) {
+                  return (
+                    <Link href={linkTo} key={id} className={paraLink}>
+                      {linkTextT}
+                    </Link>
+                  );
+                } else {
+                  if (index === matchTexts.length - 1) {
+                    return part;
+                  }
                 }
               }
-            });
+            );
           });
           return (
-            <div key={index}>
-              {heading && <h1 className={paraHeading}> {heading} </h1>}
+            <div key={id}>
+              {heading && <h2 className={paraHeading}> {heading} </h2>}
               <p className={blogText}>{partsText}</p>
               {list && <ArticleList list={list} />}
               {influencer && <InfluencerText influencer={influencer} />}
-              <EmbedURL embed={embed} />
+              <EmbedElement embed={embed} />
             </div>
           );
         }
@@ -84,8 +86,8 @@ function BlogDetail({ blog, auther }) {
             priority={true}
           />
           <div className={blogDateContainer}>
-            <h1>{date}</h1>
-            <h1>{type}</h1>
+            <h2>{date}</h2>
+            <h2>{type}</h2>
           </div>
           <h1 className={mainHeading}> {blogTitleT} </h1>
           <div className={articleDetailBlogWrapper}>

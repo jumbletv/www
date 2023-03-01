@@ -1,15 +1,15 @@
 import { AutherCardItem } from "components/cardItems/autherCard/AutherCardItem";
 import React from "react";
-import styles from "./AutherCard.module.scss";
 
 export function AutherCard({ auther }) {
-  return auther?.map(({ id, title, detail, headerImg, by }) => (
+  const { id, title, detail, headerImg, autherLink } = auther;
+  return (
     <AutherCardItem
       key={id}
-      by={by}
+      autherLink={autherLink}
       title={title}
       detail={detail}
       headerImg={headerImg}
     />
-  ));
+  );
 }

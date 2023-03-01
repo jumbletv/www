@@ -8,10 +8,10 @@ export function InfluencerText({ influencer }) {
   return (
     influencer && (
       <div className={influencerTextContainer}>
-        <a href={url} target="_blank">
+        <a href={url} target="_blank" rel="noopener noreferrer">
           {name}
         </a>
-        <h1>- {followers}</h1>
+        <h2>- {followers}</h2>
       </div>
     )
   );

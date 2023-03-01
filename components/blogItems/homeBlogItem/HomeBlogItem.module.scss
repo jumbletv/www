@@ -1,7 +1,8 @@
-@import "../../../styles/colors.scss";
-@import "../../../styles/breakpoints";
-@import "../../../styles/text";
-@import "../../../styles/reuseables";
+@import "styles/colors.scss";
+@import "styles/breakpoints";
+@import "styles/text";
+@import "styles/reuseables";
+@import "styles/flexes";
 
 .blogItemTagWrapper {
   margin-top: 4rem;
@@ -18,7 +19,7 @@
   border-bottom: 0.2rem solid $black;
 }
 .homeBlogDetail {
-  background-color: $green;
+  @include flexColumnBetweenStart;
   padding: 2rem 4rem;
   border-right: 0.1rem solid $black;
   h1 {
@@ -36,6 +37,7 @@
   p {
     @include textGroupMd;
     margin-top: 1.6rem;
+    color: $black;
   }
 }
 .homeBlogImgContainer {
@@ -91,4 +93,11 @@
   .blogItemTagWrapper {
     margin-top: 3rem;
   }
+}
+
+.greenBg {
+  background-color: $green;
+}
+.blueBg {
+  background-color: $lightBlue;
 }

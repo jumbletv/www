@@ -37,17 +37,17 @@ function Home({ poplulateHomeBlogData, populateProductsData }) {
       <Bars barData={homeNavBarData} />
       <Header headerText="have_fun" locale={locale} shrink={true} />
       <HeaderText />
-      <Banner bannerText="Upcoming Sales" />
+      <Banner bannerText="upcoming_sales" />
       <HomeProducts productsData={populateProductsData.slice(0, 3)} />
-      <Banner bannerText="The Jumblog" />
+      <Banner bannerText="the_jumblog" />
       <HomeBlogs
         homeBlogData={poplulateHomeBlogData.slice(0, 10)}
         showBtn={true}
       />
-      <Banner bannerText="Support" />
-      <TextList data={supportData} />
+      <Banner bannerText="support" />
+      <TextList data={supportData} showBtn={true} />
       <Banner bannerText="FAQS" />
-      <TextList data={faqData} />
+      <TextList data={faqData} showBtn={true} />
       <Footer />
     </Fragment>
   );

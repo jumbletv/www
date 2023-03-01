@@ -13,5 +13,6 @@
   background-color: $white;
   & h1 {
     @include textGroupMd;
+    color: $black;
   }
 }

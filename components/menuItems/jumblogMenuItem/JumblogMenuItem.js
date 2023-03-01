@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./JumblogMenuItem.module.scss";
 import Link from "next/link";
 
-function JumblogMenuItem({ title, link, menuItemBg, menuItemColor }) {
+function JumblogMenuItem({ link, menuItemBg, menuItemColor, text }) {
   const { jumblogMenuItemContainer } = styles;
 
   const handleMenuItem = () => {
@@ -21,7 +21,7 @@ function JumblogMenuItem({ title, link, menuItemBg, menuItemColor }) {
       href={link}
       className={`${jumblogMenuItemContainer} ${menuItemBg} ${menuItemColor}`}
     >
-      {title}
+      {text}
     </Link>
   );
 }

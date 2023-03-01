@@ -29,6 +29,23 @@
   font-family: $timesRoman;
 }
 
+@mixin textGroupBig {
+  font-size: 8rem;
+  font-family: $timesRoman;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 6.4rem;
+  letter-spacing: -0.6px;
+  @include noteBook {
+    font-size: 5rem;
+  }
+  @include tablet {
+    font-size: 3rem;
+  }
+}
+
 @mixin textGroupExtraLg {
   text-transform: uppercase;
   color: $black;

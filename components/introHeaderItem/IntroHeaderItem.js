@@ -10,7 +10,7 @@ export function IntroHeaderItem({ headerImg, title, detail }) {
     introHeaderImgContainer,
   } = styles;
 
-  const { t } = useTranslation("intro");
+  const { t } = useTranslation("article-types");
   const blogTitleT = t(`${title}`);
   const blogDetailT = t(`${detail}`);
 

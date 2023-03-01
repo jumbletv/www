@@ -3,11 +3,11 @@ import styles from "./AutherCardItem.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 
-export function AutherCardItem({ headerImg, title, detail, by }) {
+export function AutherCardItem({ headerImg, title, detail, autherLink }) {
   const { autherCardItemContainer, autherDetailContainer, autherImgContainer } =
     styles;
   return (
-    <Link href={by} className={autherCardItemContainer}>
+    <Link href={autherLink} className={autherCardItemContainer}>
       <div className={autherImgContainer}>
         <Image src={headerImg} alt="auther-img" />
       </div>

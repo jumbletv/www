@@ -1,0 +1,60 @@
+@import "styles/colors.scss";
+@import "styles/breakpoints";
+@import "styles/flexes";
+@import "styles/text";
+
+.pageListContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  background-color: $darkBlue;
+  border-bottom: 1px solid $black;
+  border-top: 1px solid $black;
+  @include tablet {
+    grid-template-columns: 100%;
+  }
+}
+.textComtainer {
+  padding: 3.2rem;
+  border-right: 1px solid $black;
+  @include tablet {
+    border-right: 0;
+    border-bottom: 1px solid $black;
+  }
+  & h1 {
+    @include textGroupBig;
+    font-size: 7rem;
+    font-weight: 600;
+    color: $black;
+  }
+}
+.listContainer {
+  @include flexColumnStartCenter;
+  & > a {
+    @include flexRowBetweenCenter;
+    width: 100%;
+    padding: 3.2rem;
+    &:nth-child(1) {
+      border-bottom: 1px solid $black;
+    }
+    & h1 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      font-family: $timesRoman;
+      text-transform: uppercase;
+      color: $black;
+    }
+    &:hover {
+      cursor: pointer;
+      background-color: $black;
+      color: $darkBlue;
+      & h1 {
+        color: $darkBlue;
+      }
+      & svg {
+        & path {
+          fill: $darkBlue;
+        }
+      }
+    }
+  }
+}

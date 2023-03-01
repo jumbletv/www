@@ -3,9 +3,11 @@ import styles from "./Footer.module.scss";
 import commonStyles from "../../styles/Common.module.scss";
 import Bars from "../../common/bars/Bars";
 import Link from "next/link";
-import FacebookIcon from "../../components/social/FacebookIcon";
-import InstagramIcon from "../../components/social/InstagramIcon";
-import WhatsappIcon from "../../components/social/WhatsappIcon";
+import FacebookIcon from "../../components/customIcons/FacebookIcon";
+import InstagramIcon from "../../components/customIcons/InstagramIcon";
+import WhatsappIcon from "../../components/customIcons/WhatsappIcon";
+import { useTranslation } from "next-i18next";
+
 const { darkBlueBg, lightBlueBg, lightPinkBg, darkPinkBg } = commonStyles;
 const barData = [
   { id: 1, barBg: darkBlueBg },
@@ -25,24 +27,26 @@ function Footer() {
     copyright,
   } = styles;
 
+  const { t } = useTranslation("common");
+
   return (
     <div>
       <Bars barData={barData} />
       <div className={`${footerLinksContainer} ${flexRowCenterCenter} `}>
-        <Link href="https://jumble.tv" className={footerLink}>
-          The jumblog
+        <Link href="/the-jumblog/page/1" className={footerLink}>
+          {t("the_jumblog")}
         </Link>
-        <Link href="https://jumble.tv" className={footerLink}>
-          Brands
+        <Link href="/brands/page/1" className={footerLink}>
+          {t("brands")}
         </Link>
-        <Link href="https://jumble.tv" className={footerLink}>
-          Privacy Policy
+        <Link href="/privacy-policy" className={footerLink}>
+          {t("privacy_policy")}
         </Link>
-        <Link href="https://jumble.tv" className={footerLink}>
-          Terms and conditions of sale
+        <Link href="/terms-conditions" className={footerLink}>
+          {t("terms_conditions_sale")}
         </Link>
-        <Link href="https://jumble.tv" className={footerLink}>
-          Get in touch
+        <Link href="/get-in-touch" className={footerLink}>
+          {t("get_in_touch")}
         </Link>
       </div>
       <div className={`${footerSocialContainer}`}>

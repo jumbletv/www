@@ -1,0 +1,53 @@
+@import "styles/colors";
+@import "styles/breakpoints";
+@import "styles/flexes";
+@import "styles/text";
+
+.privacyDetailWrapper {
+  @include flexRowCenterCenter;
+  background-color: $white;
+}
+
+.privacyDetailContainer {
+  width: 750px;
+  margin: 5rem 0;
+  @include tablet {
+    width: 100%;
+    margin: 2rem;
+  }
+  & h1 {
+    @include textGroupMd;
+    font-weight: 700;
+    text-transform: capitalize;
+    color: $black;
+  }
+  & p {
+    @include textGroupMd;
+    color: $black;
+    & a {
+      display: inline;
+    }
+  }
+  & .leadingHeading {
+    text-transform: uppercase;
+    margin-top: 5rem;
+    letter-spacing: -0.03px;
+  }
+  & ul {
+    li {
+      @include textGroupMd;
+      color: $black;
+      margin-top: 1rem;
+      & span {
+        font-weight: 800;
+      }
+    }
+  }
+  a {
+    display: block;
+    @include textGroupMd;
+    text-decoration: underline;
+    color: $strongBlue;
+    margin-top: 1rem;
+  }
+}

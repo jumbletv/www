@@ -65,7 +65,7 @@ function ArticlePage({ poplulateHomeBlogData }) {
       <Navbar />
       <Bars barData={jumblogNavBarData} />
       <Breadcrumbs links={breadcrumbsLinks} />
-      <JumblogMenu activeMenu="All" />
+      <JumblogMenu activeMenu="all" />
       <HomeBlogs homeBlogData={currentArticles} />
       {pageNo && (
         <Pagination
@@ -84,7 +84,11 @@ export async function getStaticProps({ locale }) {
   return {
     props: {
       poplulateHomeBlogData: homeBlogData,
-      ...(await serverSideTranslations(locale, ["common", "blogs"])),
+      ...(await serverSideTranslations(locale, [
+        "common",
+        "blogs",
+        "article-types",
+      ])),
     },
     revalidate: 60,
   };

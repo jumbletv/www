@@ -9,14 +9,14 @@
   @include flexRowStartCenter;
   flex-wrap: wrap;
   gap: 1rem;
+  & span {
+    color: $black;
+  }
   & a {
     @include extraSmallText;
     text-transform: uppercase;
     font-weight: 800;
     color: $black;
-    & span {
-      background-color: $black;
-    }
   }
   & :hover {
     text-decoration: underline;

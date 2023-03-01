@@ -23,7 +23,7 @@ function Auther({ poplulateHomeBlogData }) {
   const { auther } = query;
 
   const [blogsByAuther, setBlogsByAuther] = useState([]);
-  const [introHeaderData, setIntroHeaderData] = useState([]);
+  const [introHeaderData, setIntroHeaderData] = useState({});
 
   useEffect(() => {
     getBlogsByAuther();
@@ -41,13 +41,11 @@ function Auther({ poplulateHomeBlogData }) {
   };
 
   const getTypeHeaderData = () => {
-    const headerTypeArr = [];
     articlesByData.forEach((article) => {
       if (article.by === asPath) {
-        headerTypeArr.push(article);
+        setIntroHeaderData(article);
       }
     });
-    setIntroHeaderData(headerTypeArr);
   };
 
   const breadcrumbsLinks = [

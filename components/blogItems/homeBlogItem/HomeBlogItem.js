@@ -1,29 +1,34 @@
 import React from "react";
 import styles from "./HomeBlogItem.module.scss";
 import Image from "next/image";
-import commonStyles from "../../../styles/Common.module.scss";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import BlogTag from "components/tags/blogTag/BlogTag";
 
 function HomeBlogItem({ id, blogImg, date, type, title, detail, tags, link }) {
   const { t } = useTranslation("blogs");
-  const blogTitleT = t(`${title}`);
-  const blogDetailT = t(`${detail}`);
 
-  const { flexColumnBetweenStart } = commonStyles;
-  const { blogItemTagWrapper, dateContainer } = styles;
+  const {
+    blogItemTagWrapper,
+    dateContainer,
+    homeBlogItemContainer,
+    homeBlogDetail,
+    greenBg,
+    blueBg,
+  } = styles;
+
+  const typeBg = type === "editorials" ? blueBg : greenBg;
 
   return (
-    <div className={`${styles.homeBlogItemContainer} `}>
-      <div className={`${styles.homeBlogDetail} ${flexColumnBetweenStart} `}>
+    <div className={`${homeBlogItemContainer} ${typeBg}`}>
+      <div className={homeBlogDetail}>
         <Link href={link}>
           <div className={`${dateContainer}`}>
             <h1>{date}</h1>
             <h1>{type}</h1>
           </div>
-          <h2>{blogTitleT}</h2>
-          <p>{blogDetailT}</p>
+          <h2>{t(title)}</h2>
+          <p>{t(detail)}</p>
         </Link>
         <div className={blogItemTagWrapper}>
           <BlogTag tags={tags} />

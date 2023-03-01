@@ -24,7 +24,7 @@ function Type({ poplulateHomeBlogData }) {
   const { type } = query;
 
   const [blogsByType, setBlogsByType] = useState([]);
-  const [introHeaderData, setIntroHeaderData] = useState([]);
+  const [introHeaderData, setIntroHeaderData] = useState({});
   const [articleType, setArticleType] = useState("");
 
   useEffect(() => {
@@ -50,18 +50,16 @@ function Type({ poplulateHomeBlogData }) {
   };
 
   const getTypeHeaderData = () => {
-    const headerTypeArr = [];
     articleTypesData.forEach((article) => {
       if (article.type.toLocaleLowerCase() === articleType) {
-        headerTypeArr.push(article);
+        setIntroHeaderData(article);
       }
     });
-    setIntroHeaderData(headerTypeArr);
   };
 
   const breadcrumbsLinks = [
     { id: 1, title: "Home", link: "/" },
-    { id: 2, title: "The Jumblog", link: "/the-jumblog" },
+    { id: 2, title: "The Jumblog", link: "/the-jumblog/page/1" },
     {
       id: 3,
       title: `Article with tag ${articleType} `,
@@ -92,7 +90,11 @@ export async function getStaticProps({ locale }) {
   return {
     props: {
       poplulateHomeBlogData: homeBlogData,
-      ...(await serverSideTranslations(locale, ["common", "blogs", "intro"])),
+      ...(await serverSideTranslations(locale, [
+        "common",
+        "blogs",
+        "article-types",
+      ])),
     },
     revalidate: 60,
   };

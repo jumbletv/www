@@ -3,9 +3,9 @@ import styles from "./Navbar.module.scss";
 import commonStyles from "styles/Common.module.scss";
 import logo from "assets/logos/jumble-logo.svg";
 import Image from "next/image";
-import FacebookIcon from "components/social/FacebookIcon";
-import InstagramIcon from "components/social/InstagramIcon";
-import WhatsappIcon from "components/social/WhatsappIcon";
+import FacebookIcon from "components/customIcons/FacebookIcon";
+import InstagramIcon from "components/customIcons/InstagramIcon";
+import WhatsappIcon from "components/customIcons/WhatsappIcon";
 import LeftArrow from "assets/icons/left-arrow.svg";
 import RightArrow from "assets/icons/right-arrow.svg";
 import MenuIcon from "assets/icons/menu-icon.svg";
@@ -20,7 +20,7 @@ function Navbar() {
       if (toggleMenu) {
         navId.style.height = "0";
       } else {
-        navId.style.height = "300px";
+        navId.style.height = "30rem";
       }
       setToggleMenu(!toggleMenu);
     }
@@ -63,20 +63,23 @@ function Navbar() {
             <Image src={LeftArrow} alt="arrow-left" className={arrows} />
           </Link>
           <Link
-            href="/brands"
+            href="/brands/page/1"
             className={`${menuItem} ${flexRowBetweenCenter}`}
           >
             <Image src={RightArrow} alt="arrow-left" className={arrows} />
             <p>{t("brands")}</p>
             <Image src={LeftArrow} alt="arrow-left" className={arrows} />
           </Link>
-          <Link href="faqs" className={`${menuItem} ${flexRowBetweenCenter}`}>
+          <Link
+            href="/frequently-asked-questions"
+            className={`${menuItem} ${flexRowBetweenCenter}`}
+          >
             <Image src={RightArrow} alt="arrow-left" className={arrows} />
             <p>{t("faq")}</p>
             <Image src={LeftArrow} alt="arrow-left" className={arrows} />
           </Link>
           <Link
-            href="/contact"
+            href="/get-in-touch"
             className={`${menuItem} ${flexRowBetweenCenter}`}
           >
             <Image src={RightArrow} alt="arrow-left" className={arrows} />
@@ -108,7 +111,7 @@ function Navbar() {
             <Link href="/the-jumblog/page/1" className={mobileMenuItem}>
               {t("the_jumblog")}
             </Link>
-            <Link href="/faqs" className={mobileMenuItem}>
+            <Link href="/frequently-asked-questions" className={mobileMenuItem}>
               {t("faq")}
             </Link>
             <Link href="/get-in-touch" className={mobileMenuItem}>

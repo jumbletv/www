@@ -24,26 +24,24 @@ function SingleArticle({ poplulateHomeBlogData, populateAutherData }) {
     query: { singleblog },
   } = router;
 
-  const [singleBlog, setSingleBlog] = useState([]);
+  const [singleBlog, setSingleBlog] = useState({});
   const [articleType, setArticleType] = useState("");
-  const [articleAuther, setArticleAuther] = useState([]);
+  const [articleAuther, setArticleAuther] = useState({});
+
   useEffect(() => {
     getSingleBlog();
   }, [locale, router]);
 
   const getSingleBlog = () => {
-    const articleAutherArr = [];
     poplulateHomeBlogData?.forEach((blog) => {
       if (blog?.link === asPath) {
         setSingleBlog(blog);
         setArticleType(blog.type);
         populateAutherData?.forEach((auther) => {
-          if (auther.by === blog.by) {
-            articleAutherArr.push(auther);
+          if (auther.autherLink === blog.by) {
+            setArticleAuther(auther);
           }
         });
-        setArticleAuther(articleAutherArr);
-        return;
       }
     });
   };

@@ -1,14 +1,7 @@
 import Head from "next/head";
 import Navbar from "layout/navbar/Navbar";
-import Banner from "common/banner/Banner";
 import HomeProducts from "components/products/homeProducts/HomeProducts";
-import TextList from "common/textList/TextList";
-import HomeBlogs from "components/blogs/homeBlogs/HomeBlogs";
-import { ProductDetail } from "components/productDetail/ProductDetail";
-import { homeBlogData } from "data/blogData";
 import Footer from "layout/footer/Footer";
-import { supportData } from "data/supportData";
-import { faqData } from "data/faqData";
 import { Fragment } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useEffect, useState } from "react";
@@ -31,7 +24,7 @@ function InfluencerName({ poplulateInfluencerData, populateProductData }) {
 
   console.log(asPath);
 
-  const [influencerData, setInfluencerData] = useState([]);
+  const [influencerData, setInfluencerData] = useState({});
   const [influencerSales, setInfluencerSales] = useState([]);
 
   useEffect(() => {
@@ -40,13 +33,11 @@ function InfluencerName({ poplulateInfluencerData, populateProductData }) {
   }, [asPath]);
 
   const getInfluencerData = () => {
-    const influencerDataArr = [];
     poplulateInfluencerData?.forEach((influencer) => {
       if (influencer.influencerLink === asPath) {
-        influencerDataArr.push(influencer);
+        setInfluencerData(influencer);
       }
     });
-    setInfluencerData(influencerDataArr);
   };
 
   const getSalesByInfluencer = () => {

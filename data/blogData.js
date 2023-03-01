@@ -8,6 +8,8 @@ import Blog7 from "../assets/blogs/blog-7.webp";
 import Blog8 from "../assets/blogs/blog-8.webp";
 import Blog9 from "../assets/blogs/blog-9.webp";
 import Blog10 from "../assets/blogs/blog-10.webp";
+import article11 from "../assets/blogs/article-11.jpeg";
+import article12 from "../assets/blogs/article-12.jpeg";
 
 const completeBlog = [
   {
@@ -244,6 +246,44 @@ export const homeBlogData = [
     blogImg: Blog10,
     date: "JULY 5, 2022",
     type: "news",
+    by: "/by/izabella-makukha",
+    title: "TIKTOK FASHION TRENDS EVERYONE'S OBSESSED WITH",
+    link: "/the-jumblog/tiktok-fashion-trends-everyone-obsessed-with",
+    detail:
+      "TikTok is an app most of us swore to stay away from before the pandemic. A lot can change in a year. It’s now an app we look at before even checking out Instagram or Twitter. The app, which is dominated by Generation Z and Millennials, has come to dominate the fashion trends. Who would have thought the app would have the power to cancel skinny jeans? We’re rounding up a few of our favourite fashion trends from TikTok that everyone is obsessed with.",
+    tags: [
+      { id: 1, tag: "fashion", url: "/tag/fashion" },
+      { id: 2, tag: "genz", url: "/tag/genz" },
+      { id: 3, tag: "social", url: "/tag/social" },
+      { id: 4, tag: "style", url: "/tag/style" },
+      { id: 5, tag: "apps", url: "/tag/apps" },
+    ],
+    completeBlog,
+  },
+  {
+    id: 11,
+    blogImg: article11,
+    date: "JULY 5, 2022",
+    type: "editorials",
+    by: "/by/izabella-makukha",
+    title: "9 LIVESTREAMING MISTAKES TO AVOID",
+    link: "/the-jumblog/9-livestreaming-mistakes-to-avoid",
+    detail:
+      "Livestreaming industry has been seeing exponential growth in the past few years. And, it’s not just the pandemic that’s driving its popularity; the consumer behavior is making it more relevant than ever. As more and more brands jump on the bandwagon of livestreaming, you need to up your game. Avoiding a few common and underrated mistakes can make your livestreams more effective. In this article, we discuss the 9 livestreaming mistakes that you want to avoid for maximum results. Let’s get into them.",
+    tags: [
+      { id: 1, tag: "fashion", url: "/tag/fashion" },
+      { id: 2, tag: "genz", url: "/tag/genz" },
+      { id: 3, tag: "social", url: "/tag/social" },
+      { id: 4, tag: "style", url: "/tag/style" },
+      { id: 5, tag: "apps", url: "/tag/apps" },
+    ],
+    completeBlog,
+  },
+  {
+    id: 12,
+    blogImg: article12,
+    date: "JULY 5, 2022",
+    type: "editorials",
     by: "/by/izabella-makukha",
     title: "TIKTOK FASHION TRENDS EVERYONE'S OBSESSED WITH",
     link: "/the-jumblog/tiktok-fashion-trends-everyone-obsessed-with",

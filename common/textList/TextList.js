@@ -7,23 +7,23 @@ import Link from "next/link";
 import CircleBtn from "../circleBtn/CircleBtn";
 import { useTranslation } from "next-i18next";
 
-function TextList({ data }) {
+function TextList({ data, showBtn }) {
   const { supportContainer, supportItem } = styles;
   const { t } = useTranslation("faq");
 
   return (
     <div className={supportContainer}>
-      {data.map(({ id, text, bg }) => (
+      {data.map(({ id, text, bg, link }) => (
         <Link
           key={id}
-          href="/"
+          href={link}
           className={`${supportItem} ${commonStyles.flexRowCenterCenter} ${bg}`}
         >
           <h1> {t(`${text}`)}</h1>
           <Image src={TriagleArrow} alt="triangle-arrow" />
         </Link>
       ))}
-      <CircleBtn />
+      {showBtn && <CircleBtn />}
     </div>
   );
 }

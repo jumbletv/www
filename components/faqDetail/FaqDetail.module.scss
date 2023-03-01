@@ -1,0 +1,92 @@
+@import "styles/flexes";
+@import "styles/text";
+@import "styles/colors";
+
+@mixin faqHeading {
+  color: $black;
+  font-family: $timesRoman;
+  font-size: 2.7rem;
+  line-height: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -0.06px;
+}
+
+.faqDetailWrapper {
+  @include flexRowCenterCenter;
+}
+.faqDetailContainer {
+  width: 500px;
+  padding: 5.4rem 0;
+  @include tablet {
+    width: 100%;
+    text-align: center;
+    margin: 1rem;
+    padding: 2rem 0;
+  }
+  & h1 {
+    @include faqHeading;
+    @include tablet {
+      font-size: 2rem;
+    }
+  }
+  & p {
+    color: $black;
+    margin-top: 3rem;
+    white-space: pre-line;
+    @include textGroupMd;
+    & a {
+      @include textGroupMd;
+      color: $strongBlue;
+      text-decoration: underline;
+      margin: 0 1rem;
+    }
+  }
+}
+
+.preNextContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-top: 1px solid $black;
+  @include tablet {
+    grid-template-columns: 100%;
+  }
+}
+
+.faqContainer {
+  @include flexRowCenterCenter;
+  height: 8rem;
+  gap: 1rem;
+  border-right: 1px solid $black;
+
+  &:nth-child(2) {
+    border-right: 0;
+  }
+  &:hover {
+    background-color: $black;
+    color: $white;
+    cursor: pointer;
+    & h1 {
+      color: $white;
+    }
+    & .faqArrow {
+      color: $white;
+    }
+  }
+  & h1 {
+    @include faqHeading;
+    font-size: 18px;
+  }
+  & .faqArrow {
+    display: block;
+    width: 32px;
+    margin-right: 0.8rem;
+    margin-left: 0.8rem;
+    font-size: 3rem;
+    height: 4rem;
+    color: $black;
+  }
+}
+
+.noFaq {
+  background-color: $white;
+}

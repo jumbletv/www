@@ -2,14 +2,16 @@ import React from "react";
 import HomeBlogItem from "../../blogItems/homeBlogItem/HomeBlogItem";
 import styles from "./HomeBlogs.module.scss";
 import CircleBtn from "../../../common/circleBtn/CircleBtn";
+import { useTranslation } from "next-i18next";
 
 function HomeBlog({ homeBlogData, showBtn }) {
   const { noArticleContainer, homeBlogContainer } = styles;
+  const { t } = useTranslation("common");
 
   if (homeBlogData?.length === 0) {
     return (
       <div className={noArticleContainer}>
-        <h1>There are no articles yet</h1>
+        <h1>{t("no_articles")}</h1>
       </div>
     );
   }

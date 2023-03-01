@@ -4,17 +4,48 @@ import JumblogMenuItem from "components/menuItems/jumblogMenuItem/JumblogMenuIte
 import commonStyles from "styles/Common.module.scss";
 import dropArrow from "assets/icons/down-arrow.svg";
 import Image from "next/image";
+import { useTranslation } from "next-i18next";
 
 const jumblogMenuData = [
-  { id: 1, title: "ALL", link: "/the-jumblog/page/1" },
-  { id: 2, title: "EDITORIALS", link: "/type/editorials" },
-  { id: 3, title: "ESSAYS", link: "/type/essays" },
-  { id: 4, title: "FEATURES", link: "/type/features" },
-  { id: 5, title: "INTERVIEWS", link: "/type/interviews" },
-  { id: 6, title: "NEWS", link: "/type/news" },
-  { id: 7, title: "PORTRAITS", link: "/type/portraits" },
-  { id: 8, title: "RETRO REPORTS", link: "/type/retro-reports" },
-  { id: 9, title: "REVIEWS", link: "/type/reviews" },
+  {
+    id: 1,
+    title: "all",
+    text: "all_title",
+    link: "/the-jumblog/page/1",
+  },
+  {
+    id: 2,
+    title: "editorials",
+    text: "editorials_title",
+    link: "/type/editorials",
+  },
+  { id: 3, title: "essays", text: "essays_title", link: "/type/essays" },
+  {
+    id: 4,
+    title: "features",
+    text: "features_title",
+    link: "/type/features",
+  },
+  {
+    id: 5,
+    title: "interviews",
+    text: "interviews_title",
+    link: "/type/interviews",
+  },
+  { id: 6, title: "news", text: "news_title", link: "/type/news" },
+  {
+    id: 7,
+    title: "portraits",
+    text: "portraits_title",
+    link: "/type/portraits",
+  },
+  {
+    id: 8,
+    title: "retro reports",
+    text: "retro_reports_title",
+    link: "/type/retro-reports",
+  },
+  { id: 9, title: "reviews", text: "reviews_title", link: "/type/reviews" },
 ];
 
 function JumblogMenu({ activeMenu }) {
@@ -23,17 +54,19 @@ function JumblogMenu({ activeMenu }) {
   const { blackBg, black, white, whiteBg } = commonStyles;
   const [toggleMenu, setToggleMenu] = useState(false);
 
+  const { t } = useTranslation("article-types");
+
   useEffect(() => {
-    eleHeight();
-    window.addEventListener("resize", eleHeight);
-    return () => window.removeEventListener("resize", eleHeight);
+    menuHeight();
+    window.addEventListener("resize", menuHeight);
+    return () => window.removeEventListener("resize", menuHeight);
   }, []);
 
-  const eleHeight = () => {
+  const menuHeight = () => {
     const navId = document.getElementById("jumblog-menu");
     if (navId) {
       if (window.innerWidth > 1024) {
-        navId.style.height = "35px";
+        navId.style.height = "3.5rem";
       } else {
         navId.style.height = "0";
       }
@@ -47,7 +80,7 @@ function JumblogMenu({ activeMenu }) {
         navId.style.height = "0";
         navId.style.zIndex = "-1";
       } else {
-        navId.style.height = "350px";
+        navId.style.height = "35rem";
         navId.style.zIndex = "1";
       }
       setToggleMenu(!toggleMenu);
@@ -62,15 +95,13 @@ function JumblogMenu({ activeMenu }) {
       </div>
       <div className={jumblogMenuWrapper}>
         <div className={jumblogMenuContainer} id="jumblog-menu">
-          {jumblogMenuData.map(({ id, title, link }) => (
+          {jumblogMenuData.map(({ id, title, link, text }) => (
             <JumblogMenuItem
               key={id}
-              title={title}
+              text={t(text)}
               link={link}
-              menuItemBg={
-                activeMenu?.toUpperCase() == title ? whiteBg : blackBg
-              }
-              menuItemColor={activeMenu?.toUpperCase() == title ? black : white}
+              menuItemBg={activeMenu == title ? whiteBg : blackBg}
+              menuItemColor={activeMenu == title ? black : white}
             />
           ))}
         </div>

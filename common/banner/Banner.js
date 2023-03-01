@@ -1,9 +1,14 @@
 import React, { useRef, useEffect, useState } from "react";
 import styles from "./Banner.module.scss";
+import { useTranslation } from "next-i18next";
 
-function Banner({ bannerText }) {
+function Banner({ bannerText, singleText }) {
   const parentRef = useRef(null);
   const [repeatTimes, setRepeatTimes] = useState(0);
+
+  const { bannerContainer, singleBannerContainer } = styles;
+
+  const { t } = useTranslation("common");
 
   useEffect(() => {
     calcElement();
@@ -12,20 +17,31 @@ function Banner({ bannerText }) {
   }, []);
 
   const calcElement = () => {
-    const parentWidth = parentRef.current.offsetWidth;
+    const parentWidth = parentRef?.current?.offsetWidth;
     const repeatingNumber = Math.ceil(parentWidth / 200);
     setRepeatTimes(repeatingNumber);
   };
 
-  const keys = [...Array(repeatTimes).keys()];
+  const renderBanner = () => {
+    if (singleText) {
+      return (
+        <div className={singleBannerContainer}>
+          <h1>{t(bannerText)}</h1>
+        </div>
+      );
+    } else {
+      const keys = [...Array(repeatTimes).keys()];
+      return (
+        <div className={bannerContainer} ref={parentRef}>
+          {keys.map((item) => (
+            <h1 key={item}>{t(bannerText)}</h1>
+          ))}
+        </div>
+      );
+    }
+  };
 
-  return (
-    <div className={`${styles.bannerContainer}`} ref={parentRef}>
-      {keys.map((item) => (
-        <h1 key={item}>{bannerText}</h1>
-      ))}
-    </div>
-  );
+  return renderBanner();
 }
 
 export default Banner;

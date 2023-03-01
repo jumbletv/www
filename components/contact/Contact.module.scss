@@ -1,0 +1,114 @@
+@import "styles/flexes";
+@import "styles/text";
+@import "styles/colors";
+
+.contactContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-top: 1px solid $black;
+  @include noteBook {
+    grid-template-columns: 100%;
+  }
+}
+.contactInfo {
+  background-color: $yellow;
+  padding: 3.2rem;
+  border-right: 1px solid $black;
+  @include noteBook {
+    padding: 2rem;
+  }
+  & h1 {
+    @include textGroupBig;
+    color: $black;
+  }
+  & p {
+    @include textGroupMd;
+    color: $black;
+  }
+}
+
+.contactForm {
+  background-color: $lightPink;
+  padding: 3.2rem;
+  @include noteBook {
+    padding: 2rem;
+  }
+
+  & button {
+    width: 100%;
+    height: 8rem;
+    background-color: $black;
+    font-size: 1.6rem;
+    line-height: 4rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: $white;
+    border: 0;
+    outline: none;
+    font-family: $timesRoman;
+    margin-top: 2rem;
+    &:hover {
+      background-color: $darkPink;
+      cursor: pointer;
+    }
+  }
+}
+.inputGroup {
+  @include flexRowBetweenStart;
+  padding: 1.5rem 0;
+  @include tablet {
+    flex-direction: column;
+  }
+  & input {
+    width: 70%;
+    height: 4rem;
+    margin-bottom: 0;
+    padding-right: 1.6rem;
+    padding-left: 1.6rem;
+    border: 1px solid $black;
+    font-size: 1.6rem;
+    font-weight: 400;
+    background-color: $white;
+    color: $black;
+    &::placeholder {
+      font-size: 1.6rem;
+      font-family: $timesRoman;
+    }
+    @include tablet {
+      width: 100%;
+    }
+  }
+  & label {
+    height: 4rem;
+    margin-bottom: 0;
+    padding-right: 1.2rem;
+    font-family: $timesRoman;
+    font-size: 1.4rem;
+    line-height: 2.4rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 4rem;
+    color: $black;
+  }
+  & textarea {
+    width: 70%;
+    padding-right: 1.6rem;
+    padding-left: 1.6rem;
+    background-color: $white;
+    color: $black;
+    &::placeholder {
+      font-size: 1.6rem;
+      font-family: $timesRoman;
+      padding-top: 0.8rem;
+    }
+    @include tablet {
+      width: 100%;
+    }
+  }
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  background-color: $black;
+}
