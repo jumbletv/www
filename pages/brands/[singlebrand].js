@@ -70,7 +70,11 @@ export async function getStaticProps({ locale }) {
     props: {
       poplulateBrandsData: brandsData,
       populateAutherData: articlesByData,
-      ...(await serverSideTranslations(locale, ["common", "brands"])),
+      ...(await serverSideTranslations(locale, [
+        "common",
+        "brands",
+        "article-types",
+      ])),
     },
     revalidate: 60,
   };

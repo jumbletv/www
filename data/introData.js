@@ -75,23 +75,20 @@ export const articlesByData = [
     headerImg: izabellaImg,
     autherLink: "/by/izabella-makukha",
     title: "Izabella Makukha",
-    detail:
-      "Izabella is a seasoned data scientist with 4+ years of marketing and data analytics experience in the fashion industry. She has a verifiable history of contributing directly to company growth and expansion throughout her career. She is progressive, driven and down-to-earth.",
+    detail: "izabella_detail",
   },
   {
     id: 2,
     headerImg: natalyaImg,
     autherLink: "/by/natalya-shayk",
-    title: "Anna Shvalyuk",
-    detail:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed repudiandae quia illum quaerat. Excepturi odit eum nemo possimus, tenetur optio doloremque ab, sint quisquam veniam quae dolore nam, beatae atque.",
+    title: "Natalya Shayk",
+    detail: "natalya_detail",
   },
   {
     id: 3,
     headerImg: annaImg,
     autherLink: "/by/anna-shvalyuk",
     title: "Anna Shvalyuk",
-    detail:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed repudiandae quia illum quaerat. Excepturi odit eum nemo possimus, tenetur optio doloremque ab, sint quisquam veniam quae dolore nam, beatae atque.",
+    detail: "anna_detail",
   },
 ];

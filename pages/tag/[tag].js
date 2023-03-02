@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Navbar from "layout/navbar/Navbar";
-import HomeBlogs from "components/blogs/homeBlogs/HomeBlogs";
-import { homeBlogData } from "data/blogData";
+import { Articles } from "components/articles/articles/Articles";
+import { articlesData } from "data/articlesData";
 import Footer from "layout/footer/Footer";
 import { Fragment } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -15,28 +15,28 @@ import Header from "layout/header/Header";
 import LogoBanner from "common/logoBanner/LogoBanner";
 import { splitWord, splitAndCapitalize } from "helper/splitWord";
 
-function Tag({ poplulateHomeBlogData }) {
+function Tag({ poplulateArticlesData }) {
   const router = useRouter();
   const {
     locale,
     query: { tag },
   } = router;
 
-  const [blogsByTag, setBlogsByTag] = useState([]);
+  const [articlesByTag, setArticlesByTag] = useState([]);
 
   useEffect(() => {
-    getBlogsByTag();
+    getArticlesByTag();
   }, [locale, tag]);
 
-  const getBlogsByTag = () => {
-    const blogs = [];
-    poplulateHomeBlogData?.forEach((blog) => {
-      blog.tags.forEach((singleTag) => {
+  const getArticlesByTag = () => {
+    const articles = [];
+    poplulateArticlesData?.forEach((article) => {
+      article.tags.forEach((singleTag) => {
         if (singleTag.tag === splitWord(tag)) {
-          blogs.push(blog);
+          articles.push(article);
         }
       });
-      setBlogsByTag(blogs);
+      setArticlesByTag(articles);
     });
   };
 
@@ -62,7 +62,7 @@ function Tag({ poplulateHomeBlogData }) {
       <Breadcrumbs links={breadcrumbsLinks} />
       <Header headerText="THE JUMBLOG" />
       <LogoBanner />
-      <HomeBlogs homeBlogData={blogsByTag} />
+      <Articles articlesData={articlesByTag} />
       <Footer />
     </Fragment>
   );
@@ -71,15 +71,15 @@ function Tag({ poplulateHomeBlogData }) {
 export async function getStaticProps({ locale }) {
   return {
     props: {
-      poplulateHomeBlogData: homeBlogData,
-      ...(await serverSideTranslations(locale, ["common", "blogs"])),
+      poplulateArticlesData: articlesData,
+      ...(await serverSideTranslations(locale, ["common", "articles"])),
     },
     revalidate: 60,
   };
 }
 export async function getStaticPaths() {
   let tagPaths = [];
-  homeBlogData.forEach((blog) =>
+  articlesData.forEach((blog) =>
     blog.tags.forEach((tag) => tagPaths.push(tag.url))
   );
 

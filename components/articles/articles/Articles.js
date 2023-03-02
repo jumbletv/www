@@ -1,14 +1,14 @@
 import React from "react";
-import HomeBlogItem from "../../blogItems/homeBlogItem/HomeBlogItem";
-import styles from "./HomeBlogs.module.scss";
+import { ArticleItem } from "../../articleItems/articleItem/ArticleItem";
+import styles from "./Articles.module.scss";
 import CircleBtn from "../../../common/circleBtn/CircleBtn";
 import { useTranslation } from "next-i18next";
 
-function HomeBlog({ homeBlogData, showBtn }) {
-  const { noArticleContainer, homeBlogContainer } = styles;
+export function Articles({ articlesData, showBtn }) {
+  const { noArticleContainer, articlesContainer } = styles;
   const { t } = useTranslation("common");
 
-  if (homeBlogData?.length === 0) {
+  if (articlesData?.length === 0) {
     return (
       <div className={noArticleContainer}>
         <h1>{t("no_articles")}</h1>
@@ -17,13 +17,13 @@ function HomeBlog({ homeBlogData, showBtn }) {
   }
 
   return (
-    <div className={homeBlogContainer}>
-      {homeBlogData?.map(
-        ({ id, blogImg, date, type, detail, tags, title, link }) => (
-          <HomeBlogItem
+    <div className={articlesContainer}>
+      {articlesData?.map(
+        ({ id, img, date, type, detail, tags, title, link }) => (
+          <ArticleItem
             id={id}
             key={id}
-            blogImg={blogImg}
+            img={img}
             date={date}
             type={type}
             detail={detail}
@@ -37,5 +37,3 @@ function HomeBlog({ homeBlogData, showBtn }) {
     </div>
   );
 }
-
-export default HomeBlog;

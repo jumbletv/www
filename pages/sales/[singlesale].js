@@ -3,9 +3,9 @@ import Navbar from "layout/navbar/Navbar";
 import Banner from "common/banner/Banner";
 import HomeProducts from "components/products/homeProducts/HomeProducts";
 import TextList from "common/textList/TextList";
-import HomeBlogs from "components/blogs/homeBlogs/HomeBlogs";
+import { Articles } from "components/articles/articles/Articles";
 import { ProductDetail } from "components/productDetail/ProductDetail";
-import { homeBlogData } from "data/blogData";
+import { articlesData } from "data/articlesData";
 import Footer from "layout/footer/Footer";
 import { supportData } from "data/supportData";
 import { faqData } from "data/faqData";
@@ -20,7 +20,7 @@ import { productsData, influencerData } from "data/products";
 import { splitWord, splitAndCapitalize } from "helper/splitWord";
 
 function SingleSale({
-  poplulateHomeBlogData,
+  poplulateArticlesData,
   populateProductsData,
   poplulateInfluencerData,
 }) {
@@ -81,7 +81,7 @@ function SingleSale({
       )}
       <HomeProducts />
       <Banner bannerText="Related Posts" />
-      <HomeBlogs homeBlogData={poplulateHomeBlogData} showBtn={true} />
+      <Articles articlesData={poplulateArticlesData} showBtn={true} />
       <Banner bannerText="Support" />
       <TextList data={supportData} />
       <Banner bannerText="FAQS" />
@@ -95,9 +95,14 @@ export async function getStaticProps({ locale }) {
   return {
     props: {
       populateProductsData: productsData,
-      poplulateHomeBlogData: homeBlogData,
+      poplulateArticlesData: articlesData,
       poplulateInfluencerData: influencerData,
-      ...(await serverSideTranslations(locale, ["common", "blogs", "faq"])),
+      ...(await serverSideTranslations(locale, [
+        "common",
+        "articles",
+        "faq",
+        "article-types",
+      ])),
     },
     revalidate: 60,
   };

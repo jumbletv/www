@@ -1,7 +1,5 @@
 import Head from "next/head";
 import Navbar from "layout/navbar/Navbar";
-import HomeBlogs from "components/blogs/homeBlogs/HomeBlogs";
-import { homeBlogData } from "data/blogData";
 import Footer from "layout/footer/Footer";
 import { Fragment } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";

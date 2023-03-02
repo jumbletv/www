@@ -1,17 +1,17 @@
-import Blog1 from "../assets/blogs/blog-1.webp";
-import Blog2 from "../assets/blogs/blog-2.webp";
-import Blog3 from "../assets/blogs/blog-3.webp";
-import Blog4 from "../assets/blogs/blog-4.webp";
-import Blog5 from "../assets/blogs/blog-5.webp";
-import Blog6 from "../assets/blogs/blog-6.webp";
-import Blog7 from "../assets/blogs/blog-7.webp";
-import Blog8 from "../assets/blogs/blog-8.webp";
-import Blog9 from "../assets/blogs/blog-9.webp";
-import Blog10 from "../assets/blogs/blog-10.webp";
-import article11 from "../assets/blogs/article-11.jpeg";
-import article12 from "../assets/blogs/article-12.jpeg";
+import articleImg1 from "../assets/articles/article-1.webp";
+import articleImg2 from "../assets/articles/article-2.webp";
+import articleImg3 from "../assets/articles/article-3.webp";
+import articleImg4 from "../assets/articles/article-4.webp";
+import articleImg5 from "../assets/articles/article-5.webp";
+import articleImg6 from "../assets/articles/article-6.webp";
+import articleImg7 from "../assets/articles/article-7.webp";
+import articleImg8 from "../assets/articles/article-8.webp";
+import articleImg9 from "../assets/articles/article-9.webp";
+import articleImg10 from "../assets/articles/article-10.webp";
+import articleImg11 from "../assets/articles/article-11.jpeg";
+import articleImg12 from "../assets/articles/article-12.jpeg";
 
-const completeBlog = [
+const completeArticle = [
   {
     id: 1,
     para: "blog_1_para_1",
@@ -79,10 +79,10 @@ const completeBlog = [
   },
 ];
 
-export const homeBlogData = [
+export const articlesData = [
   {
     id: 1,
-    blogImg: Blog1,
+    img: articleImg1,
     date: "NOVEMBER 9, 2022",
     type: "news",
     by: "/by/izabella-makukha",
@@ -95,11 +95,11 @@ export const homeBlogData = [
       { id: 3, tag: "green", url: "/tag/green" },
       { id: 4, tag: "beauty industry", url: "/tag/beauty-industry" },
     ],
-    completeBlog,
+    completeArticle,
   },
   {
     id: 2,
-    blogImg: Blog2,
+    img: articleImg2,
     date: "NOVEMBER 2, 2022",
     type: "news",
     by: "/by/natalya-shayk",
@@ -112,11 +112,11 @@ export const homeBlogData = [
       { id: 2, tag: "genz", url: "/tag/gen-z" },
       { id: 3, tag: "colore", url: "/tag/colore" },
     ],
-    completeBlog,
+    completeArticle,
   },
   {
     id: 3,
-    blogImg: Blog3,
+    img: articleImg3,
     date: "OCTOBER 25, 2022",
     type: "news",
     by: "/by/izabella-makukha",
@@ -130,11 +130,11 @@ export const homeBlogData = [
       { id: 3, tag: "social", url: "/tag/social" },
       { id: 4, tag: "trends", url: "/tag/trends" },
     ],
-    completeBlog,
+    completeArticle,
   },
   {
     id: 4,
-    blogImg: Blog4,
+    img: articleImg4,
     date: "OCTOBER 11, 2022",
     type: "news",
     by: "/by/natalya-shayk",
@@ -148,11 +148,11 @@ export const homeBlogData = [
       { id: 3, tag: "beauty", url: "/tag/beauty" },
       { id: 4, tag: "makeup", url: "/tag/make-up" },
     ],
-    completeBlog,
+    completeArticle,
   },
   {
     id: 5,
-    blogImg: Blog5,
+    img: articleImg5,
     date: "SEPTEMBER 6, 2022",
     type: "news",
     by: "/by/izabella-makukha",
@@ -165,11 +165,11 @@ export const homeBlogData = [
       { id: 2, tag: "beauty", url: "/tag/beauty" },
       { id: 3, tag: "beauty care", url: "/tag/beauty-care" },
     ],
-    completeBlog,
+    completeArticle,
   },
   {
     id: 6,
-    blogImg: Blog6,
+    img: articleImg6,
     date: "AUGUST 30, 2022",
     type: "news",
     by: "/by/izabella-makukha",
@@ -183,11 +183,11 @@ export const homeBlogData = [
       { id: 3, tag: "beauty", url: "/tag/beauty" },
       { id: 4, tag: "makeup", url: "/tag/make-up" },
     ],
-    completeBlog,
+    completeArticle,
   },
   {
     id: 7,
-    blogImg: Blog7,
+    img: articleImg7,
     date: "AUGUST 16, 2022",
     type: "news",
     by: "/by/natalya-shayk",
@@ -201,11 +201,11 @@ export const homeBlogData = [
       { id: 3, tag: "trends", url: "/tag/trends" },
       { id: 4, tag: "social", url: "/tag/social" },
     ],
-    completeBlog,
+    completeArticle,
   },
   {
     id: 8,
-    blogImg: Blog8,
+    img: articleImg8,
     date: "AUGUST 2, 2022",
     type: "news",
     by: "/by/izabella-makukha",
@@ -219,11 +219,11 @@ export const homeBlogData = [
       { id: 3, tag: "outfits", url: "/tag/outfits" },
       { id: 4, tag: "apparel", url: "/tag/apparel" },
     ],
-    completeBlog,
+    completeArticle,
   },
   {
     id: 9,
-    blogImg: Blog9,
+    img: articleImg9,
     date: "JULY 19, 2022",
     type: "news",
     by: "/by/anna-shvalyuk",
@@ -239,11 +239,11 @@ export const homeBlogData = [
       { id: 5, tag: "style", url: "/tag/style" },
       { id: 6, tag: "TikTok", url: "/tag/tiktok" },
     ],
-    completeBlog,
+    completeArticle,
   },
   {
     id: 10,
-    blogImg: Blog10,
+    img: articleImg10,
     date: "JULY 5, 2022",
     type: "news",
     by: "/by/izabella-makukha",
@@ -258,11 +258,11 @@ export const homeBlogData = [
       { id: 4, tag: "style", url: "/tag/style" },
       { id: 5, tag: "apps", url: "/tag/apps" },
     ],
-    completeBlog,
+    completeArticle,
   },
   {
     id: 11,
-    blogImg: article11,
+    img: articleImg11,
     date: "JULY 5, 2022",
     type: "editorials",
     by: "/by/izabella-makukha",
@@ -277,11 +277,11 @@ export const homeBlogData = [
       { id: 4, tag: "style", url: "/tag/style" },
       { id: 5, tag: "apps", url: "/tag/apps" },
     ],
-    completeBlog,
+    completeArticle,
   },
   {
     id: 12,
-    blogImg: article12,
+    img: articleImg12,
     date: "JULY 5, 2022",
     type: "editorials",
     by: "/by/izabella-makukha",
@@ -296,6 +296,6 @@ export const homeBlogData = [
       { id: 4, tag: "style", url: "/tag/style" },
       { id: 5, tag: "apps", url: "/tag/apps" },
     ],
-    completeBlog,
+    completeArticle,
   },
 ];

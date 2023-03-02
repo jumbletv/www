@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Navbar from "layout/navbar/Navbar";
-import HomeBlogs from "components/blogs/homeBlogs/HomeBlogs";
-import { homeBlogData } from "data/blogData";
+import { Articles } from "components/articles/articles/Articles";
+import { articlesData } from "data/articlesData";
 import Footer from "layout/footer/Footer";
 import { Fragment } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -18,17 +18,17 @@ import { articleTypesData } from "data/introData";
 import { IntroHeader } from "components/introHeader/IntroHeader";
 import { splitAndCapitalize, splitWord } from "helper/splitWord";
 
-function Type({ poplulateHomeBlogData }) {
+function Type({ poplulateArticlesData }) {
   const router = useRouter();
   const { locale, query } = router;
   const { type } = query;
 
-  const [blogsByType, setBlogsByType] = useState([]);
+  const [articlesByType, setArticlesByType] = useState([]);
   const [introHeaderData, setIntroHeaderData] = useState({});
   const [articleType, setArticleType] = useState("");
 
   useEffect(() => {
-    getBlogsByTag();
+    getArticlesByType();
     getTypeHeaderData();
     getArticleType();
   }, [locale, type, articleType]);
@@ -39,14 +39,14 @@ function Type({ poplulateHomeBlogData }) {
     }
   };
 
-  const getBlogsByTag = () => {
-    const blogs = [];
-    poplulateHomeBlogData?.forEach((blog) => {
-      if (blog.type === articleType) {
-        blogs.push(blog);
+  const getArticlesByType = () => {
+    const articles = [];
+    poplulateArticlesData?.forEach((article) => {
+      if (article.type === articleType) {
+        articles.push(article);
       }
     });
-    setBlogsByType(blogs);
+    setArticlesByType(articles);
   };
 
   const getTypeHeaderData = () => {
@@ -80,7 +80,7 @@ function Type({ poplulateHomeBlogData }) {
       <LogoBanner />
       <JumblogMenu activeMenu={articleType} />
       <IntroHeader introHeaderData={introHeaderData} />
-      <HomeBlogs homeBlogData={blogsByType} />
+      <Articles articlesData={articlesByType} />
       <Footer />
     </Fragment>
   );
@@ -89,10 +89,10 @@ function Type({ poplulateHomeBlogData }) {
 export async function getStaticProps({ locale }) {
   return {
     props: {
-      poplulateHomeBlogData: homeBlogData,
+      poplulateArticlesData: articlesData,
       ...(await serverSideTranslations(locale, [
         "common",
-        "blogs",
+        "articles",
         "article-types",
       ])),
     },
@@ -100,8 +100,6 @@ export async function getStaticProps({ locale }) {
   };
 }
 export async function getStaticPaths() {
-  const blogPaths = homeBlogData.map((blog) => blog.link);
-
   return {
     paths: [],
     fallback: true,

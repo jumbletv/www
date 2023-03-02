@@ -11,14 +11,12 @@ export function IntroHeaderItem({ headerImg, title, detail }) {
   } = styles;
 
   const { t } = useTranslation("article-types");
-  const blogTitleT = t(`${title}`);
-  const blogDetailT = t(`${detail}`);
 
   return (
     <div className={`${introHeaderItemContainer}`}>
       <div className={`${introHeaderDetail}`}>
-        <h2>{blogTitleT}</h2>
-        <p>{blogDetailT}</p>
+        <h2>{t(title)}</h2>
+        <p>{t(detail)}</p>
       </div>
       <div className={introHeaderImgContainer}>
         <Image src={headerImg} alt="header-img" />

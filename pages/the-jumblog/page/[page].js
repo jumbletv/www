@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Navbar from "layout/navbar/Navbar";
-import HomeBlogs from "components/blogs/homeBlogs/HomeBlogs";
-import { homeBlogData } from "data/blogData";
+import { Articles } from "components/articles/articles/Articles";
+import { articlesData } from "data/articlesData";
 import Footer from "layout/footer/Footer";
 import { Fragment } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -15,7 +15,7 @@ import { Pagination } from "components/pagination/Pagination";
 import JumblogMenu from "components/menus/jumblogMenu/JumblogMenu";
 import { itemsPerPage } from "data/pagination";
 
-function ArticlePage({ poplulateHomeBlogData }) {
+function ArticlePage({ poplulateArticlesData }) {
   const router = useRouter();
 
   const {
@@ -26,7 +26,7 @@ function ArticlePage({ poplulateHomeBlogData }) {
   const [currentArticles, setCurrentArticles] = useState([]);
   const [pageNo, setPageNo] = useState(null);
 
-  const articlesLength = poplulateHomeBlogData?.length;
+  const articlesLength = poplulateArticlesData?.length;
   const pageCount = Math.ceil(articlesLength / itemsPerPage);
 
   useEffect(() => {
@@ -37,7 +37,7 @@ function ArticlePage({ poplulateHomeBlogData }) {
     if (page) {
       const newOffset = ((page - 1) * itemsPerPage) % articlesLength;
       const endOffset = newOffset + itemsPerPage;
-      const currentArticles = poplulateHomeBlogData?.slice(
+      const currentArticles = poplulateArticlesData?.slice(
         newOffset,
         endOffset
       );
@@ -66,7 +66,7 @@ function ArticlePage({ poplulateHomeBlogData }) {
       <Bars barData={jumblogNavBarData} />
       <Breadcrumbs links={breadcrumbsLinks} />
       <JumblogMenu activeMenu="all" />
-      <HomeBlogs homeBlogData={currentArticles} />
+      <Articles articlesData={currentArticles} />
       {pageNo && (
         <Pagination
           itemsPerPage={itemsPerPage}
@@ -83,10 +83,10 @@ function ArticlePage({ poplulateHomeBlogData }) {
 export async function getStaticProps({ locale }) {
   return {
     props: {
-      poplulateHomeBlogData: homeBlogData,
+      poplulateArticlesData: articlesData,
       ...(await serverSideTranslations(locale, [
         "common",
-        "blogs",
+        "articles",
         "article-types",
       ])),
     },

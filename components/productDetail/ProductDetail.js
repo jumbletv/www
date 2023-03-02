@@ -6,6 +6,7 @@ import Link from "next/link";
 import Carousel from "common/carousel/Carousel";
 import Marquee from "react-fast-marquee";
 import logo from "assets/logos/logo-3.svg";
+import { useTranslation } from "next-i18next";
 
 export function ProductDetail({ product, influencerData }) {
   const {
@@ -47,6 +48,7 @@ export function ProductDetail({ product, influencerData }) {
   const { title, headerImg, influencerLink, detail } = influencerData;
 
   const logoArr = [0, 1, 2, 3, 4, 5, 6, 7, 8, , 9];
+  const { t } = useTranslation("article-types");
 
   return (
     <>
@@ -112,7 +114,7 @@ export function ProductDetail({ product, influencerData }) {
           </div>
           <div className={influencerText}>
             <h1> {title} </h1>
-            <p>{detail}</p>
+            <p>{t(detail)}</p>
           </div>
           <div className={logoContainer}>
             {logoArr.map((arrItem) => (

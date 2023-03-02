@@ -71,7 +71,7 @@ export async function getStaticProps({ locale }) {
   return {
     props: {
       poplulateProductsData: productsData,
-      ...(await serverSideTranslations(locale, ["common", "blogs"])),
+      ...(await serverSideTranslations(locale, ["common", "articles"])),
     },
     revalidate: 60,
   };

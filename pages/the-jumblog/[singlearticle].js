@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Navbar from "layout/navbar/Navbar";
-import HomeBlogs from "components/blogs/homeBlogs/HomeBlogs";
-import { homeBlogData } from "data/blogData";
+import { Articles } from "components/articles/articles/Articles";
+import { articlesData } from "data/articlesData";
 import Footer from "layout/footer/Footer";
 import { Fragment } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -10,21 +10,21 @@ import { useRouter } from "next/router";
 import Bars from "common/bars/Bars";
 import { homeNavBarData } from "data/barData";
 import Breadcrumbs from "common/breadcrumbs/Breadcrumbs";
-import BlogDetail from "components/blogDetail/BlogDetail";
+import { ArticleDetail } from "components/articleDetail/ArticleDetail";
 import { useState } from "react";
 import { splitWord } from "helper/splitWord";
 import { articlesByData } from "data/introData";
 
-function SingleArticle({ poplulateHomeBlogData, populateAutherData }) {
+function SingleArticle({ poplulateArticlesData, populateAutherData }) {
   const router = useRouter();
 
   const {
     locale,
     asPath,
-    query: { singleblog },
+    query: { singlearticle },
   } = router;
 
-  const [singleBlog, setSingleBlog] = useState({});
+  const [singleArticle, setSingleArticle] = useState({});
   const [articleType, setArticleType] = useState("");
   const [articleAuther, setArticleAuther] = useState({});
 
@@ -33,12 +33,12 @@ function SingleArticle({ poplulateHomeBlogData, populateAutherData }) {
   }, [locale, router]);
 
   const getSingleBlog = () => {
-    poplulateHomeBlogData?.forEach((blog) => {
-      if (blog?.link === asPath) {
-        setSingleBlog(blog);
-        setArticleType(blog.type);
+    poplulateArticlesData?.forEach((article) => {
+      if (article?.link === asPath) {
+        setSingleArticle(article);
+        setArticleType(article.type);
         populateAutherData?.forEach((auther) => {
-          if (auther.autherLink === blog.by) {
+          if (auther.autherLink === article.by) {
             setArticleAuther(auther);
           }
         });
@@ -52,11 +52,11 @@ function SingleArticle({ poplulateHomeBlogData, populateAutherData }) {
     { id: 3, title: `${articleType}`, link: `/type/${articleType}` },
     {
       id: 4,
-      title: splitWord(singleblog),
-      link: `/the-jumblog/${singleblog}`,
+      title: splitWord(singlearticle),
+      link: `/the-jumblog/${singlearticle}`,
     },
   ];
-  const titleText = `JUMBLE | Article ${splitWord(singleblog)}`;
+  const titleText = `JUMBLE | Article ${splitWord(singlearticle)}`;
 
   return (
     <Fragment>
@@ -66,8 +66,8 @@ function SingleArticle({ poplulateHomeBlogData, populateAutherData }) {
       <Navbar />
       <Bars barData={homeNavBarData} />
       <Breadcrumbs links={breadcrumbsLinks} />
-      <BlogDetail blog={singleBlog} auther={articleAuther} />
-      <HomeBlogs homeBlogData={poplulateHomeBlogData} />
+      <ArticleDetail articleDetail={singleArticle} auther={articleAuther} />
+      <Articles articlesData={poplulateArticlesData} />
       <Footer />
     </Fragment>
   );
@@ -76,15 +76,19 @@ function SingleArticle({ poplulateHomeBlogData, populateAutherData }) {
 export async function getStaticProps({ locale }) {
   return {
     props: {
-      poplulateHomeBlogData: homeBlogData,
+      poplulateArticlesData: articlesData,
       populateAutherData: articlesByData,
-      ...(await serverSideTranslations(locale, ["common", "blogs"])),
+      ...(await serverSideTranslations(locale, [
+        "common",
+        "articles",
+        "article-types",
+      ])),
     },
     revalidate: 60,
   };
 }
 export async function getStaticPaths() {
-  const blogPaths = homeBlogData.map((blog) => blog.link);
+  const blogPaths = articlesData.map((blog) => blog.link);
 
   return {
     paths: blogPaths,

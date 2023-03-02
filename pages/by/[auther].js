@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Navbar from "layout/navbar/Navbar";
-import HomeBlogs from "components/blogs/homeBlogs/HomeBlogs";
-import { homeBlogData } from "data/blogData";
+import { Articles } from "components/articles/articles/Articles";
+import { articlesData } from "data/articlesData";
 import Footer from "layout/footer/Footer";
 import { Fragment } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -17,32 +17,32 @@ import { IntroHeader } from "components/introHeader/IntroHeader";
 import { articlesByData } from "data/introData";
 import { splitWord, splitAndCapitalize } from "helper/splitWord";
 
-function Auther({ poplulateHomeBlogData }) {
+function Auther({ poplulateArticlesData }) {
   const router = useRouter();
   const { locale, query, asPath } = router;
   const { auther } = query;
 
-  const [blogsByAuther, setBlogsByAuther] = useState([]);
+  const [articlesByAuther, setArticlesByAuther] = useState([]);
   const [introHeaderData, setIntroHeaderData] = useState({});
 
   useEffect(() => {
-    getBlogsByAuther();
+    getArticlesByAuther();
     getTypeHeaderData();
   }, [locale, auther]);
 
-  const getBlogsByAuther = () => {
-    const blogs = [];
-    poplulateHomeBlogData?.forEach((blog) => {
-      if (blog.by === asPath) {
-        blogs.push(blog);
+  const getArticlesByAuther = () => {
+    const articles = [];
+    poplulateArticlesData?.forEach((article) => {
+      if (article.by === asPath) {
+        articles.push(article);
       }
-      setBlogsByAuther(blogs);
+      setArticlesByAuther(articles);
     });
   };
 
   const getTypeHeaderData = () => {
     articlesByData.forEach((article) => {
-      if (article.by === asPath) {
+      if (article.autherLink === asPath) {
         setIntroHeaderData(article);
       }
     });
@@ -71,7 +71,7 @@ function Auther({ poplulateHomeBlogData }) {
       <Header headerText="THE JUMBLOG" />
       <LogoBanner />
       <IntroHeader introHeaderData={introHeaderData} />
-      <HomeBlogs homeBlogData={blogsByAuther} />
+      <Articles articlesData={articlesByAuther} />
       <Footer />
     </Fragment>
   );
@@ -80,15 +80,19 @@ function Auther({ poplulateHomeBlogData }) {
 export async function getStaticProps({ locale }) {
   return {
     props: {
-      poplulateHomeBlogData: homeBlogData,
-      ...(await serverSideTranslations(locale, ["common", "blogs", "intro"])),
+      poplulateArticlesData: articlesData,
+      ...(await serverSideTranslations(locale, [
+        "common",
+        "articles",
+        "article-types",
+      ])),
     },
     revalidate: 60,
   };
 }
 export async function getStaticPaths() {
   let autherPaths = [];
-  homeBlogData.forEach((blog) => blog.by);
+  articlesData.forEach((blog) => blog.by);
 
   return {
     paths: autherPaths,

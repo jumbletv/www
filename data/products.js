@@ -165,8 +165,7 @@ export const influencerData = [
     id: 1,
     title: "Charlotte Briand Tanguy",
     headerImg: charlotteImg,
-    detail:
-      "Charlotte will share with you her passion for beauty and make up industry.",
+    detail: "charlotte_detail",
     influencerLink: "/influencer/charlotte-briand-tanguy",
     products: [
       { id: 1, productLink: "/sales/pulpe-de-vie" },
@@ -178,8 +177,7 @@ export const influencerData = [
     id: 2,
     title: "Martine Pigassou",
     headerImg: martinImg,
-    detail:
-      "Martine Pigassou, la fondatrice de Modologie présente 3 produits pour prendre soin de vos visages ! Leurs textures sublimatrices permettent une gestuelle riche et des soins d’une qualité extraordinaire. Modologie est une marque engagée et responsable dont les produits contiennent des extraits de plantes naturelles et des actifs exclusifs de haute qualité.",
+    detail: "martine_detail",
     influencerLink: "/influencer/martine-pigassou",
     products: [
       {

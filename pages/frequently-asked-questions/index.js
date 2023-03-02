@@ -11,7 +11,7 @@ import { useRouter } from "next/router";
 import Bars from "common/bars/Bars";
 import { homeNavBarData } from "data/barData";
 
-function FAQs({}) {
+function FAQs() {
   const router = useRouter();
   const { locale } = router;
 
@@ -23,13 +23,13 @@ function FAQs({}) {
       <Navbar />
       <Bars barData={homeNavBarData} />
       <Header headerText="FAQs" locale={locale} shrink={false} />
-      <Banner bannerText="Getting Started With Jumble" singleText={true} />
+      <Banner bannerText="getting_started" singleText={true} />
       <TextList data={allFaqData.slice(0, 7)} />
-      <Banner bannerText="Sell On Jumble" singleText={true} />
+      <Banner bannerText="sell_on_jumble" singleText={true} />
       <TextList data={allFaqData.slice(7, 17)} />
-      <Banner bannerText="Payments" singleText={true} />
+      <Banner bannerText="payments" singleText={true} />
       <TextList data={allFaqData.slice(17, 21)} />
-      <Banner bannerText="Shipping" singleText={true} />
+      <Banner bannerText="shipping" singleText={true} />
       <TextList data={allFaqData.slice(21, 24)} />
       <Footer />
     </Fragment>
@@ -39,7 +39,7 @@ function FAQs({}) {
 export async function getStaticProps({ locale }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ["common", "blogs", "faq"])),
+      ...(await serverSideTranslations(locale, ["common", "articles", "faq"])),
     },
     revalidate: 60,
   };

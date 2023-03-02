@@ -21,7 +21,7 @@ export function Contact() {
         <div className={contactForm}>
           <div className={divider} />
           <div className={inputGroup}>
-            <label htmlFor="name">Name</label>
+            <label htmlFor="name">{t("name")}</label>
             <input type="text" placeholder="What is your name ? " />
           </div>
           <div className={divider} />
@@ -35,7 +35,7 @@ export function Contact() {
             <textarea type="text" placeholder="Share your thoughts" rows={8} />
           </div>
           <div className={divider} />
-          <button>Send</button>
+          <button>{t("send")}</button>
         </div>
       </div>
       <PageList />
