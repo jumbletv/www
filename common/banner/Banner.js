@@ -1,26 +1,11 @@
-import React, { useRef, useEffect, useState } from "react";
+import React from "react";
 import styles from "./Banner.module.scss";
 import { useTranslation } from "next-i18next";
 
-function Banner({ bannerText, singleText }) {
-  const parentRef = useRef(null);
-  const [repeatTimes, setRepeatTimes] = useState(0);
-
+export function Banner({ bannerText, singleText }) {
   const { bannerContainer, singleBannerContainer } = styles;
 
   const { t } = useTranslation("common");
-
-  useEffect(() => {
-    calcElement();
-    window.addEventListener("resize", calcElement);
-    return () => window.removeEventListener("resize", calcElement);
-  }, []);
-
-  const calcElement = () => {
-    const parentWidth = parentRef?.current?.offsetWidth;
-    const repeatingNumber = Math.ceil(parentWidth / 200);
-    setRepeatTimes(repeatingNumber);
-  };
 
   const renderBanner = () => {
     if (singleText) {
@@ -30,9 +15,9 @@ function Banner({ bannerText, singleText }) {
         </div>
       );
     } else {
-      const keys = [...Array(repeatTimes).keys()];
+      const keys = [...Array(100).keys()];
       return (
-        <div className={bannerContainer} ref={parentRef}>
+        <div className={bannerContainer}>
           {keys.map((item) => (
             <h1 key={item}>{t(bannerText)}</h1>
           ))}
@@ -43,5 +28,3 @@ function Banner({ bannerText, singleText }) {
 
   return renderBanner();
 }
-
-export default Banner;

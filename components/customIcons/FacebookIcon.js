@@ -1,6 +1,6 @@
 import React from "react";
 
-function FacebookIcon() {
+export function FacebookIcon() {
   return (
     <svg
       width="8"
@@ -16,5 +16,3 @@ function FacebookIcon() {
     </svg>
   );
 }
-
-export default FacebookIcon;

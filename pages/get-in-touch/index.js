@@ -1,18 +1,14 @@
 import Head from "next/head";
-import Navbar from "layout/navbar/Navbar";
-import Footer from "layout/footer/Footer";
+import { Navbar } from "layout/navbar/Navbar";
+import { Footer } from "layout/footer/Footer";
 import { Fragment } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useRouter } from "next/router";
-import Bars from "common/bars/Bars";
+import { Bars } from "common/bars/Bars";
 import { homeNavBarData } from "data/barData";
-import Breadcrumbs from "common/breadcrumbs/Breadcrumbs";
+import { Breadcrumbs } from "common/breadcrumbs/Breadcrumbs";
 import { Contact } from "components/contact/Contact";
 
 function GetInTouch({}) {
-  const router = useRouter();
-  const { locale } = router;
-
   const breadcrumbsLinks = [
     { id: 1, title: "Home", link: "/" },
     {

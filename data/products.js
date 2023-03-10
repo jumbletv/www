@@ -20,11 +20,12 @@ import product4Img2 from "assets/sales/product-4-img-2.webp";
 import product4Img3 from "assets/sales/product-4-img-3.webp";
 import product4Img4 from "assets/sales/product-4-img-4.webp";
 import charlotteImg from "assets/influencers/charlotte.webp";
+import charlotteSecondImg from "assets/influencers/charlotte-second.webp";
 import martinImg from "assets/influencers/martin.webp";
 
 const { lightPinkBg, lightBlueBg, darkBlueBg, yellowBg } = commonStyles;
 
-export const productsData = [
+export const salesData = [
   {
     id: 1,
     productBg: ProductBg1,
@@ -35,7 +36,7 @@ export const productsData = [
     productLink: "/sales/pulpe-de-vie",
     influencerLink: "/influencer/charlotte-briand-tanguy",
     productDetail: {
-      price: "62",
+      price: "8.75",
       deliverDate: "October 31, 2022",
       productLabel: "The Cream",
       productPics: [
@@ -46,33 +47,27 @@ export const productsData = [
       aboutProduct: [
         {
           id: 1,
-          description:
-            "The Cream : une crème hydratante universelle visage à la pêche BIO pour hydrater naturellement tous les types de peaux au quotidien.",
+          description: "produdct_1_description_1",
         },
         {
           id: 2,
-          description:
-            "Frimousse : Une mousse nettoyante éclat à la tomate BIO anti-gaspi qui nettoie efficacement, purifie et réveille le teint. Débarrassées de leurs impuretés, les peaux ternes retrouvent de l’éclat !",
+          description: "produdct_1_description_2",
         },
         {
           id: 3,
-          description:
-            "Sucré frappé : Gommage et masque au pamplemousse BIO qui exfolie naturellement la peau et la purifie en profondeur. ",
+          description: "produdct_1_description_3",
         },
         {
           id: 4,
-          description:
-            "Au bal masqué : coffret de 3 masques en tissu de coton BIO et biodégradable pour redonner du peps à la peau en 10min chrono.",
+          description: "produdct_1_description_4",
         },
         {
           id: 5,
-          description:
-            "Cocoon addiction : un baume nourrissant à la texture onctueuse qui nourrit intensément la peau.",
+          description: "produdct_1_description_5",
         },
         {
           id: 6,
-          description:
-            "Oh my gold : une huile sèche multi-usage à la figue BIO.",
+          description: "produdct_1_description_6",
         },
       ],
     },
@@ -98,8 +93,18 @@ export const productsData = [
       aboutProduct: [
         {
           id: 1,
-          description:
-            "The Cream : une crème hydratante universelle visage à la pêche BIO pour hydrater naturellement tous les types de peaux au quotidien.",
+          heading: "GEL NETTOYANT 240mL",
+          description: "produdct_2_description_1",
+        },
+        {
+          id: 2,
+          heading: "NOURISH SCRUB",
+          description: "produdct_2_description_1",
+        },
+        {
+          id: 3,
+          heading: "MASQUE OXYGENE",
+          description: "produdct_2_description_1",
         },
       ],
     },
@@ -114,7 +119,7 @@ export const productsData = [
     productLink: "/sales/danacare",
     influencerLink: "/influencer/charlotte-briand-tanguy",
     productDetail: {
-      price: "62",
+      price: "52.0",
       deliverDate: "October 31, 2022",
       productLabel: "The Cream",
       productPics: [
@@ -124,8 +129,27 @@ export const productsData = [
       aboutProduct: [
         {
           id: 1,
-          description:
-            "The Cream : une crème hydratante universelle visage à la pêche BIO pour hydrater naturellement tous les types de peaux au quotidien.",
+          description: "produdct_3_description_1",
+        },
+        {
+          id: 2,
+          description: "produdct_3_description_2",
+        },
+        {
+          id: 3,
+          description: "produdct_3_description_3",
+        },
+        {
+          id: 4,
+          description: "produdct_3_description_4",
+        },
+        {
+          id: 5,
+          description: "produdct_3_description_5",
+        },
+        {
+          id: 6,
+          description: "produdct_3_description_6",
         },
       ],
     },
@@ -140,7 +164,7 @@ export const productsData = [
     productLink: "/sales/s-and-vae",
     influencerLink: "/influencer/charlotte-briand-tanguy",
     productDetail: {
-      price: "62",
+      price: "23.90",
       deliverDate: "October 31, 2022",
       productLabel: "Le Kit Tan & Glow",
       productPics: [
@@ -152,8 +176,15 @@ export const productsData = [
       aboutProduct: [
         {
           id: 1,
-          description:
-            "The Cream : une crème hydratante universelle visage à la pêche BIO pour hydrater naturellement tous les types de peaux au quotidien.",
+          description: "produdct_4_description_1",
+        },
+        {
+          id: 2,
+          description: "produdct_4_description_2",
+        },
+        {
+          id: 3,
+          description: "produdct_4_description_3",
         },
       ],
     },
@@ -165,6 +196,7 @@ export const influencerData = [
     id: 1,
     title: "Charlotte Briand Tanguy",
     headerImg: charlotteImg,
+    secondImg: charlotteSecondImg,
     detail: "charlotte_detail",
     influencerLink: "/influencer/charlotte-briand-tanguy",
     products: [

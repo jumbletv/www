@@ -1,6 +1,6 @@
 import React from "react";
 
-function WhatsappIcon() {
+export function WhatsappIcon() {
   return (
     <svg
       width="16"
@@ -16,5 +16,3 @@ function WhatsappIcon() {
     </svg>
   );
 }
-
-export default WhatsappIcon;

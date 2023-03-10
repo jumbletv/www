@@ -18,9 +18,11 @@ export function IntroHeaderItem({ headerImg, title, detail }) {
         <h2>{t(title)}</h2>
         <p>{t(detail)}</p>
       </div>
-      <div className={introHeaderImgContainer}>
-        <Image src={headerImg} alt="header-img" />
-      </div>
+      {headerImg && (
+        <div className={introHeaderImgContainer}>
+          <Image src={headerImg} alt="header-img" priority={true} />
+        </div>
+      )}
     </div>
   );
 }

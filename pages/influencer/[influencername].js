@@ -1,17 +1,17 @@
 import Head from "next/head";
-import Navbar from "layout/navbar/Navbar";
+import { Navbar } from "layout/navbar/Navbar";
 import HomeProducts from "components/products/homeProducts/HomeProducts";
-import Footer from "layout/footer/Footer";
+import { Footer } from "layout/footer/Footer";
 import { Fragment } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import Bars from "common/bars/Bars";
+import { Bars } from "common/bars/Bars";
 import { jumblogNavBarData } from "data/barData";
-import Breadcrumbs from "common/breadcrumbs/Breadcrumbs";
-import { productsData, influencerData } from "data/products";
+import { Breadcrumbs } from "common/breadcrumbs/Breadcrumbs";
+import { salesData, influencerData } from "data/products";
 import { splitWord, splitAndCapitalize } from "helper/splitWord";
-import Header from "layout/header/Header";
+import { Header } from "layout/header/Header";
 import { IntroHeader } from "components/introHeader/IntroHeader";
 
 function InfluencerName({ poplulateInfluencerData, populateProductData }) {
@@ -22,14 +22,13 @@ function InfluencerName({ poplulateInfluencerData, populateProductData }) {
     query: { influencername },
   } = router;
 
-  console.log(asPath);
-
   const [influencerData, setInfluencerData] = useState({});
   const [influencerSales, setInfluencerSales] = useState([]);
 
   useEffect(() => {
     getInfluencerData();
     getSalesByInfluencer();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [asPath]);
 
   const getInfluencerData = () => {
@@ -81,7 +80,7 @@ export async function getStaticProps({ locale }) {
   return {
     props: {
       poplulateInfluencerData: influencerData,
-      populateProductData: productsData,
+      populateProductData: salesData,
       ...(await serverSideTranslations(locale, ["common", "article-types"])),
     },
     revalidate: 60,

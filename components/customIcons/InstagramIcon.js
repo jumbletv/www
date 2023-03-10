@@ -1,6 +1,6 @@
 import React from "react";
 
-function InstagramIcon() {
+export function InstagramIcon() {
   return (
     <svg
       width="16"
@@ -16,5 +16,3 @@ function InstagramIcon() {
     </svg>
   );
 }
-
-export default InstagramIcon;

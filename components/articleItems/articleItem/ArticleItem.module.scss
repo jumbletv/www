@@ -7,6 +7,9 @@
 .articleItemTagWrapper {
   margin-top: 4rem;
   margin-bottom: 2rem;
+  @include flexRowStartCenter;
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }
 .dateContainer {
   @include flexRowBetweenCenter;
@@ -17,24 +20,28 @@
   grid-template-columns: calc(100% - 47rem) 47rem;
   grid-auto-rows: 1fr;
   border-bottom: 0.2rem solid $black;
+  min-height: 48rem;
 }
 .articleItemDetail {
   @include flexColumnBetweenStart;
   padding: 2rem 4rem;
   border-right: 0.1rem solid $black;
-  h1 {
+  p {
     font-weight: 700;
     text-transform: uppercase;
     color: $black;
     font-family: $timesRoman;
     font-size: 1.8rem;
+    @include tablet {
+      font-size: 1.6rem;
+    }
   }
-  h2 {
+  h1 {
     @include textGroupExtraLg;
     margin-top: 0.2rem;
     margin-bottom: 0.25rem;
   }
-  p {
+  h2 {
     @include textGroupMd;
     margin-top: 1.6rem;
     color: $black;
@@ -65,14 +72,6 @@
     img {
       height: 100%;
       position: relative;
-    }
-  }
-  .articleItemDetail {
-    h2 {
-      line-height: 2.5rem;
-    }
-    h1 {
-      font-size: 1.2rem;
     }
   }
 }

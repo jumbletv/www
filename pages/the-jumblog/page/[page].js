@@ -1,21 +1,21 @@
 import Head from "next/head";
-import Navbar from "layout/navbar/Navbar";
-import { Articles } from "components/articles/articles/Articles";
+import { Navbar } from "layout/navbar/Navbar";
+import { ArticlesList } from "components/articles/articlesList/ArticlesList";
 import { articlesData } from "data/articlesData";
-import Footer from "layout/footer/Footer";
+import { Footer } from "layout/footer/Footer";
 import { Fragment } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import Bars from "common/bars/Bars";
+import { Bars } from "common/bars/Bars";
 import { jumblogNavBarData } from "data/barData";
-import Breadcrumbs from "common/breadcrumbs/Breadcrumbs";
+import { Breadcrumbs } from "common/breadcrumbs/Breadcrumbs";
 import { useState } from "react";
 import { Pagination } from "components/pagination/Pagination";
 import JumblogMenu from "components/menus/jumblogMenu/JumblogMenu";
 import { itemsPerPage } from "data/pagination";
 
-function ArticlePage({ poplulateArticlesData }) {
+function JumblogHome({ poplulateArticlesData }) {
   const router = useRouter();
 
   const {
@@ -31,6 +31,7 @@ function ArticlePage({ poplulateArticlesData }) {
 
   useEffect(() => {
     getPageNo();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locale, page]);
 
   const getPageNo = () => {
@@ -48,13 +49,8 @@ function ArticlePage({ poplulateArticlesData }) {
 
   const breadcrumbsLinks = [
     { id: 1, title: "Home", link: "/" },
-    { id: 2, title: "The Jumblog", link: "/the-jumblog" },
-    { id: 3, title: "News", link: "/type/news" },
-    {
-      id: 4,
-      title: "why sustainable beautiful is here to stay",
-      link: "/the-jumblog/why-sustainable-beautiful-is-here-to-stay",
-    },
+    { id: 2, title: "The Jumblog", link: "/the-jumblog/page/1" },
+    { id: 3, title: `Page ${page}`, link: `/the-jumblog/page/${page}` },
   ];
 
   return (
@@ -66,14 +62,9 @@ function ArticlePage({ poplulateArticlesData }) {
       <Bars barData={jumblogNavBarData} />
       <Breadcrumbs links={breadcrumbsLinks} />
       <JumblogMenu activeMenu="all" />
-      <Articles articlesData={currentArticles} />
+      <ArticlesList articlesData={currentArticles} />
       {pageNo && (
-        <Pagination
-          itemsPerPage={itemsPerPage}
-          pageCount={pageCount}
-          pageNo={pageNo}
-          path="the-jumblog"
-        />
+        <Pagination pageCount={pageCount} pageNo={pageNo} path="the-jumblog" />
       )}
       <Footer />
     </Fragment>
@@ -100,4 +91,4 @@ export async function getStaticPaths() {
   };
 }
 
-export default ArticlePage;
+export default JumblogHome;

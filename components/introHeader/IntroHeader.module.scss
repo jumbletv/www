@@ -1,3 +1,17 @@
+@import "styles/colors.scss";
+@import "styles/breakpoints";
+@import "styles/flexes";
+@import "styles/reuseables";
+@import "styles/text";
+
 .introHeaderContainer {
   position: relative;
+  min-height: 48rem;
+}
+.noIntroContainer {
+  height: 50rem;
+  & p {
+    font-size: 2rem;
+    color: $black;
+  }
 }

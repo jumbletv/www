@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Contact.module.scss";
-import { PageList } from "common/pageList/PageList";
+import { MorePages } from "common/morePages/MorePages";
 import { useTranslation } from "next-i18next";
 
 export function Contact() {
@@ -38,7 +38,7 @@ export function Contact() {
           <button>{t("send")}</button>
         </div>
       </div>
-      <PageList />
+      <MorePages />
     </>
   );
 }

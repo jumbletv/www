@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import { ArticleTags } from "components/tags/articleTags/ArticleTags";
+import { ArticleHeading } from "common/articleHeading/ArticleHeading";
 
 export function ArticleItem({
   id,
@@ -34,21 +35,19 @@ export function ArticleItem({
       <div className={articleItemDetail}>
         <Link href={link}>
           <div className={`${dateContainer}`}>
-            <h1>{date}</h1>
-            <h1>{type}</h1>
+            <p>{date}</p>
+            <p>{type}</p>
           </div>
-          <h2>{t(title)}</h2>
-          <p>{t(detail)}</p>
+          <ArticleHeading heading={t(title)} />
+          <h2>{t(detail)}</h2>
         </Link>
         <div className={articleItemTagWrapper}>
           <ArticleTags tags={tags} />
         </div>
       </div>
-      <div className={articleItemImgContainer}>
-        <Link href={link}>
-          <Image src={img} alt="blog-img" priority={id === 1} />
-        </Link>
-      </div>
+      <Link href={link} className={articleItemImgContainer}>
+        <Image src={img} alt="article-img" priority={id === 1} />
+      </Link>
     </div>
   );
 }

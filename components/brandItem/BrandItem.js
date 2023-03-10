@@ -3,6 +3,7 @@ import React from "react";
 import styles from "./BrandItem.module.scss";
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
+import { ArticleHeading } from "common/articleHeading/ArticleHeading";
 
 export function BrandItem({ name, link, image, detail }) {
   const { brandItemContainer, brandDetail, brandImgContainer } = styles;
@@ -12,7 +13,7 @@ export function BrandItem({ name, link, image, detail }) {
   return (
     <Link href={link} className={brandItemContainer}>
       <div className={brandDetail}>
-        <h1>{name}</h1>
+        <ArticleHeading heading={name} />
         <p>{t(detail)}</p>
       </div>
       <div className={brandImgContainer}>

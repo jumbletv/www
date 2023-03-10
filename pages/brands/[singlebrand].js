@@ -1,14 +1,14 @@
 import Head from "next/head";
-import Navbar from "layout/navbar/Navbar";
+import { Navbar } from "layout/navbar/Navbar";
 import { brandsData } from "data/brands";
-import Footer from "layout/footer/Footer";
+import { Footer } from "layout/footer/Footer";
 import { Fragment } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import Bars from "common/bars/Bars";
+import { Bars } from "common/bars/Bars";
 import { homeNavBarData } from "data/barData";
-import Breadcrumbs from "common/breadcrumbs/Breadcrumbs";
+import { Breadcrumbs } from "common/breadcrumbs/Breadcrumbs";
 import { useState } from "react";
 import { splitWord } from "helper/splitWord";
 import { articlesByData } from "data/introData";
@@ -28,6 +28,7 @@ function SingleBrand({ poplulateBrandsData, populateAutherData }) {
 
   useEffect(() => {
     getSingleBrand();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locale, router]);
 
   const getSingleBrand = () => {

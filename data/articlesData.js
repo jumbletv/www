@@ -11,7 +11,7 @@ import articleImg10 from "../assets/articles/article-10.webp";
 import articleImg11 from "../assets/articles/article-11.jpeg";
 import articleImg12 from "../assets/articles/article-12.jpeg";
 
-const completeArticle = [
+const placeholderArticleContent = [
   {
     id: 1,
     para: "blog_1_para_1",
@@ -95,7 +95,7 @@ export const articlesData = [
       { id: 3, tag: "green", url: "/tag/green" },
       { id: 4, tag: "beauty industry", url: "/tag/beauty-industry" },
     ],
-    completeArticle,
+    placeholderArticleContent,
   },
   {
     id: 2,
@@ -112,7 +112,7 @@ export const articlesData = [
       { id: 2, tag: "genz", url: "/tag/gen-z" },
       { id: 3, tag: "colore", url: "/tag/colore" },
     ],
-    completeArticle,
+    placeholderArticleContent,
   },
   {
     id: 3,
@@ -130,7 +130,7 @@ export const articlesData = [
       { id: 3, tag: "social", url: "/tag/social" },
       { id: 4, tag: "trends", url: "/tag/trends" },
     ],
-    completeArticle,
+    placeholderArticleContent,
   },
   {
     id: 4,
@@ -148,7 +148,7 @@ export const articlesData = [
       { id: 3, tag: "beauty", url: "/tag/beauty" },
       { id: 4, tag: "makeup", url: "/tag/make-up" },
     ],
-    completeArticle,
+    placeholderArticleContent,
   },
   {
     id: 5,
@@ -165,7 +165,7 @@ export const articlesData = [
       { id: 2, tag: "beauty", url: "/tag/beauty" },
       { id: 3, tag: "beauty care", url: "/tag/beauty-care" },
     ],
-    completeArticle,
+    placeholderArticleContent,
   },
   {
     id: 6,
@@ -183,7 +183,7 @@ export const articlesData = [
       { id: 3, tag: "beauty", url: "/tag/beauty" },
       { id: 4, tag: "makeup", url: "/tag/make-up" },
     ],
-    completeArticle,
+    placeholderArticleContent,
   },
   {
     id: 7,
@@ -201,7 +201,7 @@ export const articlesData = [
       { id: 3, tag: "trends", url: "/tag/trends" },
       { id: 4, tag: "social", url: "/tag/social" },
     ],
-    completeArticle,
+    placeholderArticleContent,
   },
   {
     id: 8,
@@ -219,7 +219,7 @@ export const articlesData = [
       { id: 3, tag: "outfits", url: "/tag/outfits" },
       { id: 4, tag: "apparel", url: "/tag/apparel" },
     ],
-    completeArticle,
+    placeholderArticleContent,
   },
   {
     id: 9,
@@ -239,7 +239,7 @@ export const articlesData = [
       { id: 5, tag: "style", url: "/tag/style" },
       { id: 6, tag: "TikTok", url: "/tag/tiktok" },
     ],
-    completeArticle,
+    placeholderArticleContent,
   },
   {
     id: 10,
@@ -258,7 +258,7 @@ export const articlesData = [
       { id: 4, tag: "style", url: "/tag/style" },
       { id: 5, tag: "apps", url: "/tag/apps" },
     ],
-    completeArticle,
+    placeholderArticleContent,
   },
   {
     id: 11,
@@ -277,7 +277,7 @@ export const articlesData = [
       { id: 4, tag: "style", url: "/tag/style" },
       { id: 5, tag: "apps", url: "/tag/apps" },
     ],
-    completeArticle,
+    placeholderArticleContent,
   },
   {
     id: 12,
@@ -296,6 +296,6 @@ export const articlesData = [
       { id: 4, tag: "style", url: "/tag/style" },
       { id: 5, tag: "apps", url: "/tag/apps" },
     ],
-    completeArticle,
+    placeholderArticleContent,
   },
 ];

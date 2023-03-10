@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
-import BarItem from "../barItem/BarItem";
-function Bars({ barData }) {
+import { BarItem } from "../barItem/BarItem";
+export function Bars({ barData }) {
   return (
     <Fragment>
       {barData.map(({ id, barBg }) => (
@@ -9,4 +9,3 @@ function Bars({ barData }) {
     </Fragment>
   );
 }
-export default Bars;

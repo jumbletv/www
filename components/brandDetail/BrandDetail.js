@@ -2,6 +2,7 @@ import { AutherCard } from "components/cards/autherCardItem/AutherCard";
 import React from "react";
 import styles from "./BrandDetail.module.scss";
 import Image from "next/image";
+import { ArticleHeading } from "common/articleHeading/ArticleHeading";
 
 export function BrandDetail({ brandDetail, auther }) {
   const {
@@ -27,11 +28,10 @@ export function BrandDetail({ brandDetail, auther }) {
             priority={true}
           />
           <div className={brandDateContainer}>
-            <h2>{date}</h2>
-            <h2>{type}</h2>
+            <p>{date}</p>
+            <p>{type}</p>
           </div>
-          <h1 className={mainHeading}> {name} </h1>
-
+          <ArticleHeading heading={name} />
           <div className={autherCardWrapper}>
             <AutherCard auther={auther} />
           </div>

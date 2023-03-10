@@ -1,13 +1,15 @@
-@import "../../styles/colors.scss";
-@import "../../styles/flexes";
-@import "../../styles/breakpoints";
+@import "styles/colors.scss";
+@import "styles/flexes";
+@import "styles/breakpoints";
 
 .logoBannerContainer {
   @include flexRowStartStart;
   overflow: hidden;
+  min-height: 5rem;
 }
 .logoWrapper {
   @include flexRowStartCenter;
+  min-height: 5rem;
 }
 
 .logoBox {

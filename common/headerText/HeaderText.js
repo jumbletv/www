@@ -3,7 +3,7 @@ import styles from "./HeaderText.module.scss";
 import commonStyles from "../../styles/Common.module.scss";
 import { useTranslation } from "next-i18next";
 
-function HeaderText() {
+export function HeaderText() {
   const { t } = useTranslation("common");
 
   return (
@@ -14,4 +14,3 @@ function HeaderText() {
     </div>
   );
 }
-export default HeaderText;

@@ -1,4 +1,4 @@
-import { ArticleTagItem } from "components/tagItems/articleTagItem/ArticleTagItem";
+import Link from "next/link";
 import React from "react";
 import styles from "./ArticleTags.module.scss";
 
@@ -7,7 +7,9 @@ export function ArticleTags({ tags }) {
   return (
     <div className={articleTagsContainer}>
       {tags?.map(({ id, tag, url }) => (
-        <ArticleTagItem key={id} tag={tag} url={url} />
+        <Link key={id} href={url}>
+          {tag}
+        </Link>
       ))}
     </div>
   );

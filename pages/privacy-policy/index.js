@@ -1,14 +1,13 @@
 import Head from "next/head";
-import Navbar from "layout/navbar/Navbar";
-import Footer from "layout/footer/Footer";
+import { Navbar } from "layout/navbar/Navbar";
+import { Footer } from "layout/footer/Footer";
 import { Fragment } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useRouter } from "next/router";
-import Bars from "common/bars/Bars";
+import { Bars } from "common/bars/Bars";
 import { jumblogNavBarData } from "data/barData";
-import Breadcrumbs from "common/breadcrumbs/Breadcrumbs";
-import { PageList } from "common/pageList/PageList";
-import Header from "layout/header/Header";
+import { Breadcrumbs } from "common/breadcrumbs/Breadcrumbs";
+import { MorePages } from "common/morePages/MorePages";
+import { Header } from "layout/header/Header";
 import { PrivacyDetail } from "components/privacyDetail/PrivacyDetail";
 
 function PrivacyPolicy() {
@@ -31,7 +30,7 @@ function PrivacyPolicy() {
       <Breadcrumbs links={breadcrumbsLinks} />
       <Header headerText="Privacy Policy" />
       <PrivacyDetail />
-      <PageList />
+      <MorePages />
       <Footer />
     </Fragment>
   );

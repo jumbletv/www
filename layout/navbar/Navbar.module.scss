@@ -53,27 +53,7 @@
     }
   }
 }
-.socialBox {
-  background-color: $yellow;
-  height: 3.8rem;
-  width: 4rem;
-  border-right: 0.1rem solid $black;
-  @include flexColumnCenterCenter;
-  &:hover {
-    cursor: pointer;
-    background-color: $black;
-    svg {
-      path {
-        fill: $white;
-        transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-      }
-    }
-  }
-}
-.socialIcon {
-  width: 16px;
-  height: 16px;
-}
+
 .mobileMenu {
   display: none;
 }
@@ -155,8 +135,9 @@
     &:nth-child(1) {
       display: flex !important;
       padding: 0 1rem;
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       height: 3.8rem;
+      text-shadow: 1px 1px 6px $black;
     }
   }
   .mobileMenuItem {
@@ -181,4 +162,8 @@
   .logoImg {
     width: 7rem;
   }
+}
+
+.socialIconWrapper {
+  @include flexRowCenterCenter;
 }

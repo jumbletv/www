@@ -58,7 +58,11 @@ export function PrivacyDetail() {
         <h1> {t("heading_8")} </h1>
         <p> {t("para_14")} </p>
         <p> {t("para_15")} </p>
-        <a href="https://policies.google.com/technologies/ads" target="_blank">
+        <a
+          href="https://policies.google.com/technologies/ads"
+          target="_blank"
+          rel="noreferrer"
+        >
           {t("link_text_3")}
         </a>
         <a

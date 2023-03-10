@@ -1,9 +1,13 @@
 @import "styles/colors.scss";
 @import "styles/breakpoints";
 @import "styles/flexes";
+@import "styles/reuseables";
 
 .articleTagsContainer {
   @include flexRowStartCenter;
   gap: 1rem;
   flex-wrap: wrap;
+  & a {
+    @include tagLink;
+  }
 }

@@ -1,7 +1,8 @@
-@import "../../styles/colors.scss";
-@import "../../styles/breakpoints";
+@import "styles/colors.scss";
+@import "styles/breakpoints";
+@import "styles/flexes";
 
-.viewAllContainer {
+.circleBtnContainer {
   width: 9.5rem;
   height: 9.5rem;
   border-radius: 50%;
@@ -12,33 +13,42 @@
   z-index: 1000;
   position: -webkit-sticky;
   top: 84vh;
+  @include flexColumnCenterCenter;
+  &:hover {
+    background-color: $black;
+    border: 1px solid $white;
+    color: $white;
+    & .insideCircle {
+      background-color: $black;
+      border: 1px solid $white;
+      color: $white;
+    }
+  }
+
+  @include tablet {
+    display: none;
+  }
 }
 .insideCircle {
-  width: 8rem;
+  width: 7.3rem;
   height: 8rem;
   border-radius: 50%;
   background-color: $white;
   border: 1px solid $black;
+  color: $black;
   padding: 1rem;
-  h1 {
-    text-align: center;
-    font-size: 1.5rem;
-    font-weight: 600;
-    font-family: $timesRoman;
-    text-transform: uppercase;
-  }
+  @include flexColumnCenterCenter;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-family: $timesRoman;
+  text-transform: uppercase;
 }
-.viewAllWrapper {
+.circleBtnWrapper {
   position: absolute;
   top: 0;
   right: 3.2rem;
   bottom: 0;
   padding: 2.4rem 0;
   left: auto;
-}
-
-@include tablet {
-  .viewAllContainer {
-    display: none;
-  }
 }

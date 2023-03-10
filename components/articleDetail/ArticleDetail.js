@@ -2,37 +2,31 @@ import React from "react";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import styles from "./ArticleDetail.module.scss";
-import Image from "next/image";
-import { ArticleTags } from "components/tags/articleTags/ArticleTags";
 import { EmbedElement } from "components/embedElement/EmbedElement";
 import { InfluencerText } from "common/influencerText/InfluencerText";
 import { ArticleList } from "components/lists/ArticleList";
 import { AutherCard } from "components/cards/autherCardItem/AutherCard";
+import { ArticleDetailHeader } from "./articleDetailHeader/ArticleDetailHeader";
 
 export function ArticleDetail({ articleDetail, auther }) {
   const { t } = useTranslation("articles");
-
   const {
     articleDetailWrapper,
     articleDetailContainer,
-    articleImgContainer,
-    articleDateContainer,
-    mainHeading,
     articleText,
-    articleDetailTagWrapper,
     paraLink,
     paraHeading,
     autherCardWrapper,
   } = styles;
 
-  const { completeArticle, img, date, type, tags, title } = articleDetail;
+  const { placeholderArticleContent } = articleDetail;
 
   const renderText = () => {
     const segmenter = new Intl.Segmenter([], {
       granularity: "word",
     });
-    if (completeArticle) {
-      return completeArticle.map(
+    if (placeholderArticleContent) {
+      return placeholderArticleContent.map(
         ({ id, para, matchTexts, heading, embed, influencer, list }) => {
           const paraT = t(`${para}`);
 
@@ -73,26 +67,11 @@ export function ArticleDetail({ articleDetail, auther }) {
     }
   };
 
-  const blogTitleT = t(`${title}`);
-
   return (
-    completeArticle && (
+    placeholderArticleContent && (
       <div className={articleDetailWrapper}>
         <div className={articleDetailContainer}>
-          <Image
-            src={img}
-            alt="blog-img"
-            className={articleImgContainer}
-            priority={true}
-          />
-          <div className={articleDateContainer}>
-            <h2>{date}</h2>
-            <h2>{type}</h2>
-          </div>
-          <h1 className={mainHeading}> {blogTitleT} </h1>
-          <div className={articleDetailTagWrapper}>
-            <ArticleTags tags={tags} />
-          </div>
+          <ArticleDetailHeader articleDetail={articleDetail} />
           {renderText()}
           <div className={autherCardWrapper}>
             <AutherCard auther={auther} />

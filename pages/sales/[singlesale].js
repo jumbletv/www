@@ -1,22 +1,21 @@
 import Head from "next/head";
-import Navbar from "layout/navbar/Navbar";
-import Banner from "common/banner/Banner";
-import HomeProducts from "components/products/homeProducts/HomeProducts";
-import TextList from "common/textList/TextList";
-import { Articles } from "components/articles/articles/Articles";
+import { Navbar } from "layout/navbar/Navbar";
+import { Banner } from "common/banner/Banner";
+import { TextList } from "common/textList/TextList";
+import { ArticlesList } from "components/articles/articlesList/ArticlesList";
 import { ProductDetail } from "components/productDetail/ProductDetail";
 import { articlesData } from "data/articlesData";
-import Footer from "layout/footer/Footer";
+import { Footer } from "layout/footer/Footer";
 import { supportData } from "data/supportData";
 import { faqData } from "data/faqData";
 import { Fragment } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import Bars from "common/bars/Bars";
+import { Bars } from "common/bars/Bars";
 import { jumblogNavBarData } from "data/barData";
-import Breadcrumbs from "common/breadcrumbs/Breadcrumbs";
-import { productsData, influencerData } from "data/products";
+import { Breadcrumbs } from "common/breadcrumbs/Breadcrumbs";
+import { salesData, influencerData } from "data/products";
 import { splitWord, splitAndCapitalize } from "helper/splitWord";
 
 function SingleSale({
@@ -36,6 +35,7 @@ function SingleSale({
   useEffect(() => {
     getSingleSale();
     getInfluencerData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [asPath, singleSale]);
 
   const getSingleSale = () => {
@@ -79,10 +79,9 @@ function SingleSale({
       {singleSale && (
         <ProductDetail product={singleSale} influencerData={influencerData} />
       )}
-      <HomeProducts />
-      <Banner bannerText="Related Posts" />
-      <Articles articlesData={poplulateArticlesData} showBtn={true} />
-      <Banner bannerText="Support" />
+      <Banner bannerText="related_posts" />
+      <ArticlesList articlesData={poplulateArticlesData} showBtn={true} />
+      <Banner bannerText="support" />
       <TextList data={supportData} />
       <Banner bannerText="FAQS" />
       <TextList data={faqData} />
@@ -94,7 +93,7 @@ function SingleSale({
 export async function getStaticProps({ locale }) {
   return {
     props: {
-      populateProductsData: productsData,
+      populateProductsData: salesData,
       poplulateArticlesData: articlesData,
       poplulateInfluencerData: influencerData,
       ...(await serverSideTranslations(locale, [
@@ -102,6 +101,7 @@ export async function getStaticProps({ locale }) {
         "articles",
         "faq",
         "article-types",
+        "products",
       ])),
     },
     revalidate: 60,
@@ -110,7 +110,7 @@ export async function getStaticProps({ locale }) {
 
 export async function getStaticPaths() {
   let productsPaths = [];
-  productsData.forEach(({ productLink }) => productsPaths.push(productLink));
+  salesData.forEach(({ productLink }) => productsPaths.push(productLink));
 
   return {
     paths: productsPaths,

@@ -1,16 +1,16 @@
 import Head from "next/head";
-import Navbar from "layout/navbar/Navbar";
-import Footer from "layout/footer/Footer";
+import { Navbar } from "layout/navbar/Navbar";
+import { Footer } from "layout/footer/Footer";
 import { Fragment } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import Bars from "common/bars/Bars";
+import { Bars } from "common/bars/Bars";
 import { jumblogNavBarData } from "data/barData";
 import { useState } from "react";
 import { Pagination } from "components/pagination/Pagination";
 import { brandsPerPage } from "data/pagination";
-import Header from "layout/header/Header";
+import { Header } from "layout/header/Header";
 import { Brands } from "components/brands/Brands";
 import { brandsData } from "data/brands";
 
@@ -30,6 +30,7 @@ function BrandsWeLike({ poplulateBrandsData }) {
 
   useEffect(() => {
     getPageNo();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locale, page]);
 
   const getPageNo = () => {
@@ -52,12 +53,7 @@ function BrandsWeLike({ poplulateBrandsData }) {
       <Header headerText="brands_we_like" locale={locale} shrink={true} />
       <Brands brands={currentBrands} />
       {pageNo && (
-        <Pagination
-          itemsPerPage={brandsPerPage}
-          pageCount={pageCount}
-          pageNo={pageNo}
-          path="brands"
-        />
+        <Pagination pageCount={pageCount} pageNo={pageNo} path="brands" />
       )}
       <Footer />
     </Fragment>

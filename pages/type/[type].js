@@ -1,24 +1,24 @@
 import Head from "next/head";
-import Navbar from "layout/navbar/Navbar";
-import { Articles } from "components/articles/articles/Articles";
+import { Navbar } from "layout/navbar/Navbar";
+import { ArticlesList } from "components/articles/articlesList/ArticlesList";
 import { articlesData } from "data/articlesData";
-import Footer from "layout/footer/Footer";
+import { Footer } from "layout/footer/Footer";
 import { Fragment } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import Bars from "common/bars/Bars";
+import { Bars } from "common/bars/Bars";
 import { homeNavBarData } from "data/barData";
-import Breadcrumbs from "common/breadcrumbs/Breadcrumbs";
+import { Breadcrumbs } from "common/breadcrumbs/Breadcrumbs";
 import { useState } from "react";
 import JumblogMenu from "components/menus/jumblogMenu/JumblogMenu";
-import Header from "layout/header/Header";
-import LogoBanner from "common/logoBanner/LogoBanner";
+import { Header } from "layout/header/Header";
+import { LogoBanner } from "common/logoBanner/LogoBanner";
 import { articleTypesData } from "data/introData";
 import { IntroHeader } from "components/introHeader/IntroHeader";
 import { splitAndCapitalize, splitWord } from "helper/splitWord";
 
-function Type({ poplulateArticlesData }) {
+function ArticleTypePage({ poplulateArticlesData }) {
   const router = useRouter();
   const { locale, query } = router;
   const { type } = query;
@@ -31,6 +31,7 @@ function Type({ poplulateArticlesData }) {
     getArticlesByType();
     getTypeHeaderData();
     getArticleType();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locale, type, articleType]);
 
   const getArticleType = () => {
@@ -62,7 +63,7 @@ function Type({ poplulateArticlesData }) {
     { id: 2, title: "The Jumblog", link: "/the-jumblog/page/1" },
     {
       id: 3,
-      title: `Article with tag ${articleType} `,
+      title: `Article with tag ${articleType}`,
       link: `/type/${type}`,
     },
   ];
@@ -80,7 +81,7 @@ function Type({ poplulateArticlesData }) {
       <LogoBanner />
       <JumblogMenu activeMenu={articleType} />
       <IntroHeader introHeaderData={introHeaderData} />
-      <Articles articlesData={articlesByType} />
+      <ArticlesList articlesData={articlesByType} />
       <Footer />
     </Fragment>
   );
@@ -106,4 +107,4 @@ export async function getStaticPaths() {
   };
 }
 
-export default Type;
+export default ArticleTypePage;

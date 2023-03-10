@@ -1,0 +1,75 @@
+@import "styles/colors.scss";
+@import "styles/breakpoints";
+@import "styles/flexes";
+@import "styles/text";
+@import "styles/buttons";
+@import "styles/reuseables";
+
+@mixin commonHeading {
+  font-weight: 700;
+  font-family: $timesRoman;
+  color: $black;
+  text-transform: uppercase;
+}
+
+.carouselWrapper {
+  display: grid;
+  grid-template-columns: 66% 34%;
+  margin-bottom: 2.5rem;
+  background-color: $lightPink;
+  @include tablet {
+    grid-template-columns: 100%;
+  }
+}
+.aboutProductContainer {
+  border-left: 1px solid $black;
+  padding: 2rem 0;
+  position: relative;
+  & h4 {
+    font-size: 1.8rem;
+    @include commonHeading;
+    padding: 0 2rem;
+  }
+  & p {
+    font-weight: thin;
+    font-family: $timesRoman;
+    font-size: 2rem;
+    color: $black;
+    line-height: 3rem;
+    letter-spacing: -0.3px;
+    padding: 0 2rem;
+  }
+  & h2 {
+    @include commonHeading;
+    font-size: 2rem;
+    padding: 0 2rem;
+  }
+  & a {
+    padding: 3rem;
+    text-transform: uppercase;
+    color: $white;
+    background-color: $black;
+    font-size: 1.6rem;
+    font-family: $timesRoman;
+    font-weight: 800;
+    letter-spacing: -0.6px;
+    width: 100%;
+    display: block;
+    text-align: center;
+    position: absolute;
+    bottom: -2.5rem;
+    border-top: 1.5px solid $black;
+  }
+}
+
+.deliveryContainer {
+  padding: 2rem 0;
+}
+.priceContainer {
+  padding: 2rem 0 5rem 0;
+}
+.divider {
+  height: 1px;
+  width: 100%;
+  background-color: $black;
+}

@@ -39,6 +39,7 @@ export const allFaqData = [
     bg: lightBlueBg,
     link: "/frequently-asked-questions/why-is-livestream-important-for-your-brand",
     detail: "faq_1_detail",
+    addLink: false,
   },
   {
     id: 2,
@@ -46,6 +47,7 @@ export const allFaqData = [
     bg: lightBlueBg,
     link: "/frequently-asked-questions/can-i-share-a-show-with-friends",
     detail: "faq_2_detail",
+    addLink: false,
   },
   {
     id: 3,
@@ -53,6 +55,7 @@ export const allFaqData = [
     bg: lightBlueBg,
     link: "/frequently-asked-questions/can-i-pay-in-installments",
     detail: "faq_3_detail",
+    addLink: false,
   },
   {
     id: 4,
@@ -86,6 +89,7 @@ export const allFaqData = [
     bg: lightBlueBg,
     link: "/frequently-asked-questions/do-i-need-an-external-display-for-my-livestream",
     detail: "faq_6_detail",
+    addLink: false,
   },
   {
     id: 7,
@@ -93,6 +97,7 @@ export const allFaqData = [
     bg: lightBlueBg,
     link: "/frequently-asked-questions/do-i-need-an-assistant-for-the-live-show",
     detail: "faq_7_detail",
+    addLink: false,
   },
   {
     id: 8,
@@ -100,6 +105,7 @@ export const allFaqData = [
     bg: greenBg,
     link: "/frequently-asked-questions/how-do-i-get-reminders-for-live-shows",
     detail: "faq_8_detail",
+    addLink: false,
   },
   {
     id: 9,
@@ -107,6 +113,7 @@ export const allFaqData = [
     bg: greenBg,
     link: "/frequently-asked-questions/how-i-choose-the-best-time-and-day-for-my-livestream-show",
     detail: "faq_9_detail",
+    addLink: false,
   },
   {
     id: 10,
@@ -114,6 +121,7 @@ export const allFaqData = [
     bg: greenBg,
     link: "/frequently-asked-questions/how-many-products-i-can-present-during-my-live-show",
     detail: "faq_10_detail",
+    addLink: false,
   },
   {
     id: 11,
@@ -121,6 +129,7 @@ export const allFaqData = [
     bg: greenBg,
     link: "/frequently-asked-questions/how-can-i-promote-my-upcoming-live-show",
     detail: "faq_11_detail",
+    addLink: false,
   },
   {
     id: 12,
@@ -128,6 +137,7 @@ export const allFaqData = [
     bg: greenBg,
     link: "/frequently-asked-questions/who-can-host-my-livestream-show-on-jumble-tv",
     detail: "faq_12_detail",
+    addLink: false,
   },
   {
     id: 13,
@@ -135,6 +145,7 @@ export const allFaqData = [
     bg: greenBg,
     link: "/frequently-asked-questions/how-do-i-prepare-the-content-for-the-livestream-show",
     detail: "faq_13_detail",
+    addLink: false,
   },
   {
     id: 14,
@@ -142,6 +153,7 @@ export const allFaqData = [
     bg: greenBg,
     link: "/frequently-asked-questions/how-long-can-my-live-show-be-on-jumble-tv",
     detail: "faq_14_detail",
+    addLink: false,
   },
   {
     id: 15,
@@ -149,6 +161,7 @@ export const allFaqData = [
     bg: greenBg,
     link: "/frequently-asked-questions/what-is-the-best-shooting-location-for-my-livestream",
     detail: "faq_15_detail",
+    addLink: false,
   },
   {
     id: 16,
@@ -156,6 +169,7 @@ export const allFaqData = [
     bg: greenBg,
     link: "/frequently-asked-questions/how-do-i-improve-viewer-engagement",
     detail: "faq_16_detail",
+    addLink: false,
   },
   {
     id: 17,
@@ -163,6 +177,7 @@ export const allFaqData = [
     bg: greenBg,
     link: "/frequently-asked-questions/can-viewers-watch-my-video-after-the-broadcast",
     detail: "faq_17_detail",
+    addLink: false,
   },
   {
     id: 18,
@@ -170,6 +185,7 @@ export const allFaqData = [
     bg: yellowBg,
     link: "/frequently-asked-questions/how-do-i-contact-a-seller",
     detail: "faq_18_detail",
+    addLink: false,
   },
   {
     id: 19,
@@ -177,6 +193,7 @@ export const allFaqData = [
     bg: yellowBg,
     link: "/frequently-asked-questions/how-do-i-update-my-personal-details",
     detail: "faq_19_detail",
+    addLink: false,
   },
   {
     id: 20,
@@ -184,6 +201,7 @@ export const allFaqData = [
     bg: yellowBg,
     link: "/frequently-asked-questions/when-can-i-make-a-purchase",
     detail: "faq_20_detail",
+    addLink: false,
   },
   {
     id: 21,
@@ -191,6 +209,7 @@ export const allFaqData = [
     bg: yellowBg,
     link: "/frequently-asked-questions/how-do-i-make-a-purchase",
     detail: "faq_21_detail",
+    addLink: false,
   },
   {
     id: 22,
@@ -198,6 +217,7 @@ export const allFaqData = [
     bg: lightPinkBg,
     link: "/frequently-asked-questions/what-is-your-returns-policy",
     detail: "faq_22_detail",
+    addLink: false,
   },
   {
     id: 23,
@@ -205,6 +225,7 @@ export const allFaqData = [
     bg: lightPinkBg,
     link: "/frequently-asked-questions/who-do-i-contact-with-an-order-query",
     detail: "faq_23_detail",
+    addLink: false,
   },
   {
     id: 24,
@@ -212,5 +233,6 @@ export const allFaqData = [
     bg: lightPinkBg,
     link: "/frequently-asked-questions/how-long-will-my-order-take-to-ship",
     detail: "faq_24_detail",
+    addLink: false,
   },
 ];

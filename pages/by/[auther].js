@@ -1,18 +1,18 @@
 import Head from "next/head";
-import Navbar from "layout/navbar/Navbar";
-import { Articles } from "components/articles/articles/Articles";
+import { Navbar } from "layout/navbar/Navbar";
+import { ArticlesList } from "components/articles/articlesList/ArticlesList";
 import { articlesData } from "data/articlesData";
-import Footer from "layout/footer/Footer";
+import { Footer } from "layout/footer/Footer";
 import { Fragment } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import Bars from "common/bars/Bars";
+import { Bars } from "common/bars/Bars";
 import { homeNavBarData } from "data/barData";
-import Breadcrumbs from "common/breadcrumbs/Breadcrumbs";
+import { Breadcrumbs } from "common/breadcrumbs/Breadcrumbs";
 import { useState } from "react";
-import Header from "layout/header/Header";
-import LogoBanner from "common/logoBanner/LogoBanner";
+import { Header } from "layout/header/Header";
+import { LogoBanner } from "common/logoBanner/LogoBanner";
 import { IntroHeader } from "components/introHeader/IntroHeader";
 import { articlesByData } from "data/introData";
 import { splitWord, splitAndCapitalize } from "helper/splitWord";
@@ -28,6 +28,7 @@ function Auther({ poplulateArticlesData }) {
   useEffect(() => {
     getArticlesByAuther();
     getTypeHeaderData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locale, auther]);
 
   const getArticlesByAuther = () => {
@@ -71,7 +72,7 @@ function Auther({ poplulateArticlesData }) {
       <Header headerText="THE JUMBLOG" />
       <LogoBanner />
       <IntroHeader introHeaderData={introHeaderData} />
-      <Articles articlesData={articlesByAuther} />
+      <ArticlesList articlesData={articlesByAuther} />
       <Footer />
     </Fragment>
   );

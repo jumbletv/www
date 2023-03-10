@@ -1,5 +1,6 @@
-@import "../../../styles/colors.scss";
-@import "../../../styles/breakpoints";
+@import "styles/colors.scss";
+@import "styles/breakpoints";
+@import "styles/flexes";
 
 .homeProductsContainer {
   display: grid;
@@ -14,5 +15,18 @@
 @include tablet {
   .homeProductsContainer {
     grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.homeProductsWrapper {
+  position: relative;
+  min-height: 48rem;
+}
+.noSaleContainer {
+  @include flexRowCenterCenter;
+  height: 50rem;
+  & p {
+    font-size: 2rem;
+    color: $white;
   }
 }

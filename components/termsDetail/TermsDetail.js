@@ -13,7 +13,7 @@ export function TermsDetail() {
         <p> {t("para_1")}</p>
         <p>
           <span>{t("heading_1")}: </span>
-          Nathalie Gueyne d'Aboville
+          Nathalie Gueyne d&apos;Aboville
         </p>
         <p>
           <span>{t("heading_2")}:</span> Qonto (Olinda SAS), 20 Bis Rue la

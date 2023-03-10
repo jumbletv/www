@@ -1,13 +1,13 @@
 import Head from "next/head";
-import Navbar from "layout/navbar/Navbar";
-import Header from "layout/header/Header";
-import HeaderText from "common/headerText/HeaderText";
-import Banner from "common/banner/Banner";
+import { Navbar } from "layout/navbar/Navbar";
+import { Header } from "layout/header/Header";
+import { HeaderText } from "common/headerText/HeaderText";
+import { Banner } from "common/banner/Banner";
 import HomeProducts from "components/products/homeProducts/HomeProducts";
-import TextList from "common/textList/TextList";
-import { Articles } from "components/articles/articles/Articles";
+import { TextList } from "common/textList/TextList";
+import { ArticlesList } from "components/articles/articlesList/ArticlesList";
 import { articlesData } from "data/articlesData";
-import Footer from "layout/footer/Footer";
+import { Footer } from "layout/footer/Footer";
 import { supportData } from "data/supportData";
 import { faqData } from "data/faqData";
 import { Fragment } from "react";
@@ -15,9 +15,9 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import Bars from "common/bars/Bars";
+import { Bars } from "common/bars/Bars";
 import { homeNavBarData } from "data/barData";
-import { productsData } from "data/products";
+import { salesData } from "data/products";
 
 function Home({ poplulateArticlesData, populateProductsData }) {
   const router = useRouter();
@@ -26,6 +26,7 @@ function Home({ poplulateArticlesData, populateProductsData }) {
 
   useEffect(() => {
     i18n.changeLanguage(locale);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locale]);
 
   return (
@@ -40,7 +41,7 @@ function Home({ poplulateArticlesData, populateProductsData }) {
       <Banner bannerText="upcoming_sales" />
       <HomeProducts productsData={populateProductsData.slice(0, 3)} />
       <Banner bannerText="the_jumblog" />
-      <Articles
+      <ArticlesList
         articlesData={poplulateArticlesData.slice(0, 10)}
         showBtn={true}
       />
@@ -56,7 +57,7 @@ function Home({ poplulateArticlesData, populateProductsData }) {
 export async function getStaticProps({ locale }) {
   return {
     props: {
-      populateProductsData: productsData,
+      populateProductsData: salesData,
       poplulateArticlesData: articlesData,
       ...(await serverSideTranslations(locale, ["common", "articles", "faq"])),
     },

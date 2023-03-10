@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Script from "next/script";
 
-function InstaEmbed({ url }) {
+export function InstaEmbed({ url }) {
   useEffect(() => {
     if (window?.instgrm) {
       window?.instgrm?.Embeds?.process();
@@ -291,5 +291,3 @@ function InstaEmbed({ url }) {
     </>
   );
 }
-
-export default InstaEmbed;

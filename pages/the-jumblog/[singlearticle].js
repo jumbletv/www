@@ -1,15 +1,15 @@
 import Head from "next/head";
-import Navbar from "layout/navbar/Navbar";
-import { Articles } from "components/articles/articles/Articles";
+import { Navbar } from "layout/navbar/Navbar";
+import { ArticlesList } from "components/articles/articlesList/ArticlesList";
 import { articlesData } from "data/articlesData";
-import Footer from "layout/footer/Footer";
+import { Footer } from "layout/footer/Footer";
 import { Fragment } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import Bars from "common/bars/Bars";
+import { Bars } from "common/bars/Bars";
 import { homeNavBarData } from "data/barData";
-import Breadcrumbs from "common/breadcrumbs/Breadcrumbs";
+import { Breadcrumbs } from "common/breadcrumbs/Breadcrumbs";
 import { ArticleDetail } from "components/articleDetail/ArticleDetail";
 import { useState } from "react";
 import { splitWord } from "helper/splitWord";
@@ -30,6 +30,7 @@ function SingleArticle({ poplulateArticlesData, populateAutherData }) {
 
   useEffect(() => {
     getSingleBlog();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locale, router]);
 
   const getSingleBlog = () => {
@@ -67,7 +68,7 @@ function SingleArticle({ poplulateArticlesData, populateAutherData }) {
       <Bars barData={homeNavBarData} />
       <Breadcrumbs links={breadcrumbsLinks} />
       <ArticleDetail articleDetail={singleArticle} auther={articleAuther} />
-      <Articles articlesData={poplulateArticlesData} />
+      <ArticlesList articlesData={poplulateArticlesData} />
       <Footer />
     </Fragment>
   );

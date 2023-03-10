@@ -1,26 +1,14 @@
 import React from "react";
 import styles from "./CircleBtn.module.scss";
-import commonStyles from "../../styles/Common.module.scss";
 import Link from "next/link";
 
-function CircleBtn() {
-  const { flexColumnCenterCenter } = commonStyles;
-  const { viewAllWrapper, viewAllContainer, insideCircle } = styles;
+export function CircleBtn({ link }) {
+  const { circleBtnWrapper, circleBtnContainer, insideCircle } = styles;
   return (
-    <div className={viewAllWrapper}>
-      <Link
-        href="/the-jumblog/page/1"
-        className={`${viewAllContainer} ${flexColumnCenterCenter}`}
-      >
-        <div className={`${insideCircle} ${flexColumnCenterCenter}`}>
-          <h1>
-            View
-            <br />
-            All
-          </h1>
-        </div>
+    <div className={circleBtnWrapper}>
+      <Link href={link} className={circleBtnContainer}>
+        <div className={insideCircle}>View All</div>
       </Link>
     </div>
   );
 }
-export default CircleBtn;

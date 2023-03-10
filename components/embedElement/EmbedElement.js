@@ -1,5 +1,5 @@
 import React from "react";
-import InstaEmbed from "common/instaEmbed/InstaEmbed";
+import { InstaEmbed } from "common/instaEmbed/InstaEmbed";
 import styles from "./EmbedURL.module.scss";
 import { TikTokEmbed } from "react-social-media-embed";
 

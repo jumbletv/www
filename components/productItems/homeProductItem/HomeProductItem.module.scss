@@ -1,5 +1,6 @@
-@import "../../../styles/colors.scss";
-@import "../../../styles/breakpoints";
+@import "styles/colors.scss";
+@import "styles/breakpoints";
+@import "styles/flexes";
 
 .homeProductItemContainer {
   background-position: center;
@@ -7,6 +8,7 @@
   background-repeat: no-repeat;
   width: 100%;
   height: 65vh;
+  @include flexColumnCenterCenter;
   img {
     width: 30rem;
     height: 30rem;

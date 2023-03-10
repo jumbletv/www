@@ -2,6 +2,7 @@
 @import "styles/breakpoints";
 @import "styles/flexes";
 @import "styles/text";
+@import "styles/reuseables";
 
 @mixin articleDetailMobileText {
   @include noteBook {
@@ -26,31 +27,6 @@
   color: $strongBlue;
 }
 
-.articleImgContainer {
-  width: 100%;
-  height: 64rem;
-  margin-top: 8rem;
-  @include mobile {
-    width: 100%;
-    height: 100%;
-  }
-}
-
-.articleDetailTagWrapper {
-  @include articleDetailMobileText;
-}
-.articleDateContainer {
-  @include flexRowBetweenCenter;
-  width: 100%;
-  margin-top: 2rem;
-  & h2 {
-    margin-top: 0;
-    @include mediumText;
-    color: $black;
-    text-transform: uppercase;
-    @include articleDetailMobileText;
-  }
-}
 .mainHeading {
   @include textGroupExtraLg;
   color: $black;

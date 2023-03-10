@@ -1,10 +1,12 @@
-@import "../../styles/colors.scss";
-@import "../../styles/breakpoints";
+@import "styles/colors.scss";
+@import "styles/breakpoints";
+@import "styles/flexes";
 
 .logoBox {
   width: 10rem;
   height: 10rem;
   border-left: 1px solid $white;
+  @include flexColumnCenterCenter;
   &:nth-child(1) {
     width: 10rem;
     height: 10rem;
@@ -16,6 +18,11 @@
   background-color: $black;
   height: 10rem;
   border-bottom: 0.1rem solid $white;
+  @include flexRowBetweenCenter;
+  @include mobile {
+    height: auto;
+    min-height: 10rem;
+  }
   h1 {
     font-weight: bold;
     text-align: center;
@@ -24,6 +31,11 @@
     font-family: $timesRoman;
     padding: 0;
     margin: 0;
+    @include mobile {
+      font-size: 3.8rem !important;
+      line-height: 3.8rem;
+      margin: 0 1rem;
+    }
   }
 }
 
@@ -41,14 +53,5 @@
   }
   .headerContainer {
     justify-content: center;
-  }
-}
-
-@include tablet {
-  .headerContainer {
-    h1 {
-      font-size: 3rem;
-      margin: 0 1rem;
-    }
   }
 }

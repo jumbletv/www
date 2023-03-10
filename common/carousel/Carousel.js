@@ -15,7 +15,7 @@ function CustomArrows(props) {
   );
 }
 
-function UserSlider(props) {
+export function ProductSlider(props) {
   const { productPics, productBg, productBgColor } = props;
   const { carouselContainer, carouselImgContainer } = styles;
 
@@ -40,11 +40,15 @@ function UserSlider(props) {
     >
       {productPics?.map(({ id, pic }) => (
         <div key={id} className={carouselImgContainer}>
-          <Image src={pic.src} alt="product-pic" width={500} height={500} />
+          <Image
+            src={pic.src}
+            alt="product-pic"
+            width={500}
+            height={500}
+            priority={id === 1}
+          />
         </div>
       ))}
     </Slider>
   );
 }
-
-export default UserSlider;

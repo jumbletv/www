@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState, Fragment } from "react";
+import React, { Fragment } from "react";
 import styles from "./LogoBanner.module.scss";
 import blueLogo from "assets/logos/blue-logo.svg";
 import greenLogo from "assets/logos/green-logo.svg";
@@ -8,23 +8,8 @@ import purpleLogo from "assets/logos/purple-logo.svg";
 import darkBlueLogo from "assets/logos/dark-blue-logo.svg";
 import Image from "next/image";
 
-function LogoBanner() {
+export function LogoBanner() {
   const { logoBannerContainer, logoWrapper, logoBox } = styles;
-
-  const parentRef = useRef(null);
-  const [repeatTimes, setRepeatTimes] = useState(0);
-
-  useEffect(() => {
-    calcElement();
-    window.addEventListener("resize", calcElement);
-    return () => window.removeEventListener("resize", calcElement);
-  }, []);
-
-  const calcElement = () => {
-    const parentWidth = parentRef.current.offsetWidth;
-    const repeatingNumber = Math.ceil(parentWidth / 300);
-    setRepeatTimes(repeatingNumber);
-  };
 
   const logoData = [
     { id: 1, logo: blueLogo },
@@ -38,7 +23,7 @@ function LogoBanner() {
   const renderLogos = () => {
     return (
       <div className={logoWrapper}>
-        {logoData.map(({ id, logo }) => (
+        {logoData?.map(({ id, logo }) => (
           <div key={id} className={logoBox}>
             <Image src={logo} alt="logo" />
           </div>
@@ -47,15 +32,13 @@ function LogoBanner() {
     );
   };
 
-  const keys = [...Array(repeatTimes).keys()];
+  const keys = [...Array(50).keys()];
 
   return (
-    <div className={`${logoBannerContainer}`} ref={parentRef}>
-      {keys.map((item) => (
+    <div className={logoBannerContainer}>
+      {keys?.map((item) => (
         <Fragment key={item}> {renderLogos()} </Fragment>
       ))}
     </div>
   );
 }
-
-export default LogoBanner;

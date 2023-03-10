@@ -1,10 +1,10 @@
 import React from "react";
 import { ArticleItem } from "../../articleItems/articleItem/ArticleItem";
-import styles from "./Articles.module.scss";
-import CircleBtn from "../../../common/circleBtn/CircleBtn";
+import styles from "./ArticlesList.module.scss";
+import { CircleBtn } from "../../../common/circleBtn/CircleBtn";
 import { useTranslation } from "next-i18next";
 
-export function Articles({ articlesData, showBtn }) {
+export function ArticlesList({ articlesData, showBtn }) {
   const { noArticleContainer, articlesContainer } = styles;
   const { t } = useTranslation("common");
 
@@ -33,7 +33,7 @@ export function Articles({ articlesData, showBtn }) {
           />
         )
       )}
-      {showBtn && <CircleBtn />}
+      {showBtn && <CircleBtn link="/the-jumblog/page/1" />}
     </div>
   );
 }

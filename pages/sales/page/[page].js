@@ -1,16 +1,15 @@
 import Head from "next/head";
-import Navbar from "layout/navbar/Navbar";
-import Header from "layout/header/Header";
+import { Navbar } from "layout/navbar/Navbar";
+import { Header } from "layout/header/Header";
 import HomeProducts from "components/products/homeProducts/HomeProducts";
-import Footer from "layout/footer/Footer";
+import { Footer } from "layout/footer/Footer";
 import { Fragment, useState } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useTranslation } from "next-i18next";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import Bars from "common/bars/Bars";
+import { Bars } from "common/bars/Bars";
 import { homeNavBarData } from "data/barData";
-import { productsData } from "data/products";
+import { salesData } from "data/products";
 import { Pagination } from "components/pagination/Pagination";
 import { salesPerPage } from "data/pagination";
 
@@ -20,7 +19,6 @@ function Sales({ poplulateProductsData }) {
     locale,
     query: { page },
   } = router;
-  const { i18n } = useTranslation();
 
   const [pageNo, setPageNo] = useState(null);
   const [currentSales, setCurrentSales] = useState([]);
@@ -29,8 +27,8 @@ function Sales({ poplulateProductsData }) {
   const pageCount = Math.ceil(salesLength / salesPerPage);
 
   useEffect(() => {
-    // i18n.changeLanguage(locale);
     getPageNo();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locale, page]);
 
   const getPageNo = () => {
@@ -55,12 +53,7 @@ function Sales({ poplulateProductsData }) {
       <Header headerText="upcoming_sales" locale={locale} shrink={false} />
       <HomeProducts productsData={currentSales} />
       {pageNo && (
-        <Pagination
-          itemsPerPage={salesPerPage}
-          pageCount={pageCount}
-          pageNo={pageNo}
-          path="sales"
-        />
+        <Pagination pageCount={pageCount} pageNo={pageNo} path="sales" />
       )}
       <Footer />
     </Fragment>
@@ -70,7 +63,7 @@ function Sales({ poplulateProductsData }) {
 export async function getStaticProps({ locale }) {
   return {
     props: {
-      poplulateProductsData: productsData,
+      poplulateProductsData: salesData,
       ...(await serverSideTranslations(locale, ["common", "articles"])),
     },
     revalidate: 60,

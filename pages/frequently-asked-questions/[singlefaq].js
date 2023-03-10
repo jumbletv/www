@@ -1,17 +1,17 @@
 import Head from "next/head";
-import Navbar from "layout/navbar/Navbar";
-import Footer from "layout/footer/Footer";
+import { Navbar } from "layout/navbar/Navbar";
+import { Footer } from "layout/footer/Footer";
 import { Fragment } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import Bars from "common/bars/Bars";
+import { Bars } from "common/bars/Bars";
 import { homeNavBarData } from "data/barData";
-import Breadcrumbs from "common/breadcrumbs/Breadcrumbs";
+import { Breadcrumbs } from "common/breadcrumbs/Breadcrumbs";
 import { useState } from "react";
 import { splitWord, splitAndCapitalize } from "helper/splitWord";
 import { allFaqData } from "data/faqData";
-import Banner from "common/banner/Banner";
+import { Banner } from "common/banner/Banner";
 import { FaqDetail } from "components/faqDetail/FaqDetail";
 
 function SingleFAq({ populateAllFaqData }) {
@@ -28,9 +28,8 @@ function SingleFAq({ populateAllFaqData }) {
 
   useEffect(() => {
     getFaqDetail();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locale, singlefaq, asPath]);
-
-  console.log(asPath);
 
   const getFaqDetail = () => {
     populateAllFaqData?.forEach((faq, index) => {
