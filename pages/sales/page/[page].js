@@ -12,6 +12,7 @@ import { homeNavBarData } from "data/barData";
 import { salesData } from "data/products";
 import { Pagination } from "components/pagination/Pagination";
 import { salesPerPage } from "data/pagination";
+import { NotFoundMessage } from "common/notFoundMessage/NotFoundMessage";
 
 function Sales({ poplulateProductsData }) {
   const router = useRouter();
@@ -51,9 +52,15 @@ function Sales({ poplulateProductsData }) {
       <Navbar />
       <Bars barData={homeNavBarData} />
       <Header headerText="upcoming_sales" locale={locale} shrink={false} />
-      <HomeProducts productsData={currentSales} />
-      {pageNo && (
+      {currentSales ? (
+        <HomeProducts productsData={currentSales} />
+      ) : (
+        <NotFoundMessage message="No Sale Found" />
+      )}
+      {pageNo ? (
         <Pagination pageCount={pageCount} pageNo={pageNo} path="sales" />
+      ) : (
+        <NotFoundMessage message="No Such Page Found" />
       )}
       <Footer />
     </Fragment>

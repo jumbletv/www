@@ -17,6 +17,7 @@ import { jumblogNavBarData } from "data/barData";
 import { Breadcrumbs } from "common/breadcrumbs/Breadcrumbs";
 import { salesData, influencerData } from "data/products";
 import { splitWord, splitAndCapitalize } from "helper/splitWord";
+import { NotFoundMessage } from "common/notFoundMessage/NotFoundMessage";
 
 function SingleSale({
   poplulateArticlesData,
@@ -76,8 +77,10 @@ function SingleSale({
       <Navbar />
       <Bars barData={jumblogNavBarData} />
       <Breadcrumbs links={breadcrumbsLinks} />
-      {singleSale && (
+      {singleSale ? (
         <ProductDetail product={singleSale} influencerData={influencerData} />
+      ) : (
+        <NotFoundMessage message="Product Not Found" />
       )}
       <Banner bannerText="related_posts" />
       <ArticlesList articlesData={poplulateArticlesData} showBtn={true} />

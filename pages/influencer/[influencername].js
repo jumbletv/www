@@ -13,6 +13,7 @@ import { salesData, influencerData } from "data/products";
 import { splitWord, splitAndCapitalize } from "helper/splitWord";
 import { Header } from "layout/header/Header";
 import { IntroHeader } from "components/introHeader/IntroHeader";
+import { NotFoundMessage } from "common/notFoundMessage/NotFoundMessage";
 
 function InfluencerName({ poplulateInfluencerData, populateProductData }) {
   const router = useRouter();
@@ -69,8 +70,16 @@ function InfluencerName({ poplulateInfluencerData, populateProductData }) {
       <Bars barData={jumblogNavBarData} />
       <Breadcrumbs links={breadcrumbsLinks} />
       <Header headerText="featured_sales" locale={locale} shrink={false} />
-      <IntroHeader introHeaderData={influencerData} />
-      <HomeProducts productsData={influencerSales} />
+      {influencerData ? (
+        <IntroHeader introHeaderData={influencerData} />
+      ) : (
+        <NotFoundMessage message="No Auther Found" />
+      )}
+      {influencerSales ? (
+        <HomeProducts productsData={influencerSales} />
+      ) : (
+        <NotFoundMessage message="This Auther has no sales at the moment" />
+      )}
       <Footer />
     </Fragment>
   );

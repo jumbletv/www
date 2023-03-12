@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./IntroHeaderItem.module.scss";
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
+import { NotFoundMessage } from "common/notFoundMessage/NotFoundMessage";
 
 export function IntroHeaderItem({ headerImg, title, detail }) {
   const {
@@ -13,16 +14,18 @@ export function IntroHeaderItem({ headerImg, title, detail }) {
   const { t } = useTranslation("article-types");
 
   return (
-    <div className={`${introHeaderItemContainer}`}>
+    <div className={introHeaderItemContainer}>
       <div className={`${introHeaderDetail}`}>
         <h2>{t(title)}</h2>
         <p>{t(detail)}</p>
       </div>
-      {headerImg && (
-        <div className={introHeaderImgContainer}>
+      <div className={introHeaderImgContainer}>
+        {headerImg ? (
           <Image src={headerImg} alt="header-img" priority={true} />
-        </div>
-      )}
+        ) : (
+          <NotFoundMessage message="Loading...." />
+        )}
+      </div>
     </div>
   );
 }

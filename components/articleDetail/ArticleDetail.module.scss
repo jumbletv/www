@@ -22,9 +22,12 @@
     width: 100%;
     gap: 1rem;
   }
-}
-.paraLink {
-  color: $strongBlue;
+  @include noteBook {
+    h1 {
+      margin-left: 2rem;
+      margin-right: 2rem;
+    }
+  }
 }
 
 .mainHeading {
@@ -33,27 +36,10 @@
   line-height: 6rem;
   @include articleDetailMobileText;
 }
-.paraHeading {
-  @include textGroupLg;
-  font-family: $interSans;
-  color: $black;
-
-  @include noteBook {
-    margin: 2rem;
-  }
-}
-.articleText {
-  @include textGroupMd;
-  color: $black;
-  font-family: $interSans;
-  font-weight: 200;
-  @include noteBook {
-    margin: 0 2rem;
-  }
-}
 
 .autherCardWrapper {
   @include flexRowCenterCenter;
   margin-bottom: 5rem;
   align-self: center;
+  margin-top: 5rem;
 }

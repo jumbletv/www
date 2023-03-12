@@ -18,6 +18,7 @@ import { useRouter } from "next/router";
 import { Bars } from "common/bars/Bars";
 import { homeNavBarData } from "data/barData";
 import { salesData } from "data/products";
+import { NotFoundMessage } from "common/notFoundMessage/NotFoundMessage";
 
 function Home({ poplulateArticlesData, populateProductsData }) {
   const router = useRouter();
@@ -39,12 +40,20 @@ function Home({ poplulateArticlesData, populateProductsData }) {
       <Header headerText="have_fun" locale={locale} shrink={true} />
       <HeaderText />
       <Banner bannerText="upcoming_sales" />
-      <HomeProducts productsData={populateProductsData.slice(0, 3)} />
+      {populateProductsData ? (
+        <HomeProducts productsData={populateProductsData.slice(0, 3)} />
+      ) : (
+        <NotFoundMessage message="No Product Found" />
+      )}
       <Banner bannerText="the_jumblog" />
-      <ArticlesList
-        articlesData={poplulateArticlesData.slice(0, 10)}
-        showBtn={true}
-      />
+      {poplulateArticlesData ? (
+        <ArticlesList
+          articlesData={poplulateArticlesData.slice(0, 10)}
+          showBtn={true}
+        />
+      ) : (
+        <NotFoundMessage message="No Article Found" />
+      )}
       <Banner bannerText="support" />
       <TextList data={supportData} showBtn={true} />
       <Banner bannerText="FAQS" />

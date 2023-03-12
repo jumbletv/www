@@ -14,6 +14,7 @@ import { ArticleDetail } from "components/articleDetail/ArticleDetail";
 import { useState } from "react";
 import { splitWord } from "helper/splitWord";
 import { articlesByData } from "data/introData";
+import { NotFoundMessage } from "common/notFoundMessage/NotFoundMessage";
 
 function SingleArticle({ poplulateArticlesData, populateAutherData }) {
   const router = useRouter();
@@ -67,7 +68,9 @@ function SingleArticle({ poplulateArticlesData, populateAutherData }) {
       <Navbar />
       <Bars barData={homeNavBarData} />
       <Breadcrumbs links={breadcrumbsLinks} />
-      <ArticleDetail articleDetail={singleArticle} auther={articleAuther} />
+      {singleArticle && (
+        <ArticleDetail articleDetail={singleArticle} auther={articleAuther} />
+      )}
       <ArticlesList articlesData={poplulateArticlesData} />
       <Footer />
     </Fragment>

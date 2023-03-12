@@ -25,12 +25,18 @@
   border-right: 1px solid $white;
   border-left: none;
   @include flexColumnCenterCenter;
+  @include noteBook {
+    display: none;
+  }
 }
 
 .productHeading {
   @include flexRowStartCenter;
   width: 100%;
   gap: 20%;
+  @include noteBook {
+    @include flexRowCenterCenter;
+  }
   @include mobile {
     gap: 1rem;
   }

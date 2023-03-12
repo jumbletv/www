@@ -17,6 +17,7 @@ import { LogoBanner } from "common/logoBanner/LogoBanner";
 import { articleTypesData } from "data/introData";
 import { IntroHeader } from "components/introHeader/IntroHeader";
 import { splitAndCapitalize, splitWord } from "helper/splitWord";
+import { NotFoundMessage } from "common/notFoundMessage/NotFoundMessage";
 
 function ArticleTypePage({ poplulateArticlesData }) {
   const router = useRouter();

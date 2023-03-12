@@ -15,6 +15,11 @@
     width: 100%;
     gap: 1rem;
   }
+  @include noteBook {
+    h1 {
+      margin-left: 1rem;
+    }
+  }
 }
 
 .brandImgContainer {

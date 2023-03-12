@@ -1,18 +1,15 @@
 @import "styles/colors.scss";
 @import "styles/breakpoints";
-@import "styles/flexes";
 @import "styles/text";
+@import "styles/reuseables";
+@import "styles/flexes";
 
-.articlesContainer {
-  position: relative;
-}
-
-.noArticleContainer {
+.notFoundMessageContaienr {
   @include flexColumnCenterCenter;
   min-height: 48rem;
-  background-color: $white;
-  & h1 {
+  & p {
     @include textGroupMd;
-    color: $black;
+    color: $white;
+    font-family: $timesRoman;
   }
 }

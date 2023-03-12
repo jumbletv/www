@@ -1,7 +1,7 @@
-@import "../../styles/colors.scss";
-@import "../../styles/breakpoints";
-@import "../../styles/text";
-@import "../../styles/flexes";
+@import "styles/colors.scss";
+@import "styles/breakpoints";
+@import "styles/text";
+@import "styles/flexes";
 
 .breadcrumbsContainer {
   background-color: $darkPink;
@@ -9,7 +9,10 @@
   @include flexRowStartCenter;
   flex-wrap: wrap;
   gap: 1rem;
-  min-height: 3rem;
+  min-height: 5rem;
+  @include tablet {
+    min-height: 8rem;
+  }
   & span {
     color: $black;
   }

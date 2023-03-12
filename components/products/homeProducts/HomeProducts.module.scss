@@ -20,13 +20,4 @@
 
 .homeProductsWrapper {
   position: relative;
-  min-height: 48rem;
-}
-.noSaleContainer {
-  @include flexRowCenterCenter;
-  height: 50rem;
-  & p {
-    font-size: 2rem;
-    color: $white;
-  }
 }

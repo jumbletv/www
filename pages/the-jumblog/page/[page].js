@@ -14,6 +14,7 @@ import { useState } from "react";
 import { Pagination } from "components/pagination/Pagination";
 import JumblogMenu from "components/menus/jumblogMenu/JumblogMenu";
 import { itemsPerPage } from "data/pagination";
+import { NotFoundMessage } from "common/notFoundMessage/NotFoundMessage";
 
 function JumblogHome({ poplulateArticlesData }) {
   const router = useRouter();
@@ -62,7 +63,11 @@ function JumblogHome({ poplulateArticlesData }) {
       <Bars barData={jumblogNavBarData} />
       <Breadcrumbs links={breadcrumbsLinks} />
       <JumblogMenu activeMenu="all" />
-      <ArticlesList articlesData={currentArticles} />
+      {currentArticles ? (
+        <ArticlesList articlesData={currentArticles} />
+      ) : (
+        <NotFoundMessage message="No Article Found" />
+      )}
       {pageNo && (
         <Pagination pageCount={pageCount} pageNo={pageNo} path="the-jumblog" />
       )}

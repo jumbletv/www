@@ -4,16 +4,7 @@ import { CircleBtn } from "../../../common/circleBtn/CircleBtn";
 import styles from "./HomeProducts.module.scss";
 
 function HomeProducts({ productsData, showBtn }) {
-  const { homeProductsWrapper, homeProductsContainer, noSaleContainer } =
-    styles;
-
-  if (productsData?.length === 0) {
-    return (
-      <div className={noSaleContainer}>
-        <p>No Sale Found</p>
-      </div>
-    );
-  }
+  const { homeProductsWrapper, homeProductsContainer } = styles;
 
   return (
     <div className={homeProductsWrapper}>

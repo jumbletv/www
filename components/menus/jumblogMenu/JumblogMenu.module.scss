@@ -1,7 +1,7 @@
-@import "../../../styles/colors.scss";
-@import "../../../styles/breakpoints";
-@import "../../../styles/flexes";
-@import "../../../styles/text";
+@import "styles/colors.scss";
+@import "styles/breakpoints";
+@import "styles/flexes";
+@import "styles/text";
 
 .jumblogMenuContainer {
   @include flexRowStartCenter;
