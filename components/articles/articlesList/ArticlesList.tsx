@@ -3,8 +3,9 @@ import { ArticleItem } from "../../articleItems/articleItem/ArticleItem";
 import styles from "./ArticlesList.module.scss";
 import { CircleBtn } from "../../../common/circleBtn/CircleBtn";
 import { useTranslation } from "next-i18next";
+import { articleListTypes } from "types/articleList";
 
-export function ArticlesList({ articlesData, showBtn }) {
+export function ArticlesList({ articlesData, showBtn }: articleListTypes) {
   const { noArticleContainer, articlesContainer } = styles;
   const { t } = useTranslation("common");
 

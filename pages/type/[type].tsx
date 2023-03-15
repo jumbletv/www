@@ -17,16 +17,20 @@ import { LogoBanner } from "common/logoBanner/LogoBanner";
 import { articleTypesData } from "data/introData";
 import { IntroHeader } from "components/introHeader/IntroHeader";
 import { splitAndCapitalize, splitWord } from "helper/splitWord";
-import { NotFoundMessage } from "common/notFoundMessage/NotFoundMessage";
+import { articleDataTypes } from "types/articleList";
+import { introHeaderTypes, introHeaderValues } from "types/introHeader";
+import { GetStaticProps, GetStaticPaths } from "next";
+import { breadcrumsTypes } from "types/breadcrumbs";
 
 function ArticleTypePage({ poplulateArticlesData }) {
   const router = useRouter();
   const { locale, query } = router;
   const { type } = query;
 
-  const [articlesByType, setArticlesByType] = useState([]);
-  const [introHeaderData, setIntroHeaderData] = useState({});
-  const [articleType, setArticleType] = useState("");
+  const [articlesByType, setArticlesByType] = useState<articleDataTypes[]>([]);
+  const [introHeaderData, setIntroHeaderData] =
+    useState<introHeaderTypes>(introHeaderValues);
+  const [articleType, setArticleType] = useState<string>("");
 
   useEffect(() => {
     getArticlesByType();
@@ -43,7 +47,7 @@ function ArticleTypePage({ poplulateArticlesData }) {
 
   const getArticlesByType = () => {
     const articles = [];
-    poplulateArticlesData?.forEach((article) => {
+    poplulateArticlesData?.forEach((article: articleDataTypes) => {
       if (article.type === articleType) {
         articles.push(article);
       }
@@ -52,14 +56,14 @@ function ArticleTypePage({ poplulateArticlesData }) {
   };
 
   const getTypeHeaderData = () => {
-    articleTypesData.forEach((article) => {
+    articleTypesData.forEach((article: introHeaderTypes) => {
       if (article.type.toLocaleLowerCase() === articleType) {
         setIntroHeaderData(article);
       }
     });
   };
 
-  const breadcrumbsLinks = [
+  const breadcrumbsLinks: breadcrumsTypes[] = [
     { id: 1, title: "Home", link: "/" },
     { id: 2, title: "The Jumblog", link: "/the-jumblog/page/1" },
     {
@@ -68,7 +72,7 @@ function ArticleTypePage({ poplulateArticlesData }) {
       link: `/type/${type}`,
     },
   ];
-  const titleText = `JUMBLE | Type ${splitAndCapitalize(type)}`;
+  const titleText: string = `JUMBLE | Type ${splitAndCapitalize(type)}`;
 
   return (
     <Fragment>
@@ -88,7 +92,7 @@ function ArticleTypePage({ poplulateArticlesData }) {
   );
 }
 
-export async function getStaticProps({ locale }) {
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
       poplulateArticlesData: articlesData,
@@ -100,12 +104,12 @@ export async function getStaticProps({ locale }) {
     },
     revalidate: 60,
   };
-}
-export async function getStaticPaths() {
+};
+export const getStaticPaths: GetStaticPaths = () => {
   return {
     paths: [],
     fallback: true,
   };
-}
+};
 
 export default ArticleTypePage;

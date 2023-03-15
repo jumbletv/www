@@ -13,7 +13,7 @@ export function AutherCardItem({ headerImg, title, detail, autherLink }) {
   return (
     <Link href={autherLink} className={autherCardItemContainer}>
       <div className={autherImgContainer}>
-        <Image src={headerImg} alt="auther-img" />
+        {headerImg && <Image src={headerImg} alt="auther-img" />}
       </div>
       <div className={autherDetailContainer}>
         <h1>{title}</h1>

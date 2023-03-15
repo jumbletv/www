@@ -3,8 +3,9 @@ import styles from "./Header.module.scss";
 import Logo2 from "../../assets/logos/logo-2.svg";
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
+import { headerTypes } from "types/header";
 
-export function Header({ headerText, locale, shrink }) {
+export function Header({ headerText, locale, shrink }: headerTypes) {
   const { headerContainer, logoBox } = styles;
 
   const { t } = useTranslation("common");

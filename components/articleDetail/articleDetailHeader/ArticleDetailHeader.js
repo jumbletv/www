@@ -4,6 +4,7 @@ import { ArticleTags } from "components/tags/articleTags/ArticleTags";
 import { ArticleHeading } from "common/articleHeading/ArticleHeading";
 import { useTranslation } from "next-i18next";
 import styles from "./ArticleDetailHeader.module.scss";
+import { NotFoundMessage } from "common/notFoundMessage/NotFoundMessage";
 
 export function ArticleDetailHeader({ articleDetail }) {
   const { articleImgContainer, articleDateContainer, articleDetailTagWrapper } =
@@ -13,12 +14,19 @@ export function ArticleDetailHeader({ articleDetail }) {
 
   return (
     <>
-      <Image
-        src={img}
-        alt="blog-img"
-        className={articleImgContainer}
-        priority={true}
-      />
+      {img ? (
+        <Image
+          src={img.src}
+          alt="blog-img"
+          className={articleImgContainer}
+          blurDataURL={img.blurDataURL}
+          placeholder="blur"
+          priority={true}
+        />
+      ) : (
+        <NotFoundMessage message="Loading..." />
+      )}
+
       <div className={articleDateContainer}>
         <p>{date}</p>
         <p>{type}</p>

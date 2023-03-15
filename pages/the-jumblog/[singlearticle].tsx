@@ -14,7 +14,10 @@ import { ArticleDetail } from "components/articleDetail/ArticleDetail";
 import { useState } from "react";
 import { splitWord } from "helper/splitWord";
 import { articlesByData } from "data/introData";
-import { NotFoundMessage } from "common/notFoundMessage/NotFoundMessage";
+import { articleDataTypes, articleDataValues } from "types/articleList";
+import { autherDataTypes, autherDataValues } from "types/introHeader";
+import { GetStaticProps, GetStaticPaths } from "next";
+import { breadcrumsTypes } from "types/breadcrumbs";
 
 function SingleArticle({ poplulateArticlesData, populateAutherData }) {
   const router = useRouter();
@@ -25,9 +28,11 @@ function SingleArticle({ poplulateArticlesData, populateAutherData }) {
     query: { singlearticle },
   } = router;
 
-  const [singleArticle, setSingleArticle] = useState({});
-  const [articleType, setArticleType] = useState("");
-  const [articleAuther, setArticleAuther] = useState({});
+  const [singleArticle, setSingleArticle] =
+    useState<articleDataTypes>(articleDataValues);
+  const [articleType, setArticleType] = useState<string>("");
+  const [articleAuther, setArticleAuther] =
+    useState<autherDataTypes>(autherDataValues);
 
   useEffect(() => {
     getSingleBlog();
@@ -35,11 +40,11 @@ function SingleArticle({ poplulateArticlesData, populateAutherData }) {
   }, [locale, router]);
 
   const getSingleBlog = () => {
-    poplulateArticlesData?.forEach((article) => {
+    poplulateArticlesData?.forEach((article: articleDataTypes) => {
       if (article?.link === asPath) {
         setSingleArticle(article);
         setArticleType(article.type);
-        populateAutherData?.forEach((auther) => {
+        populateAutherData?.forEach((auther: autherDataTypes) => {
           if (auther.autherLink === article.by) {
             setArticleAuther(auther);
           }
@@ -48,7 +53,7 @@ function SingleArticle({ poplulateArticlesData, populateAutherData }) {
     });
   };
 
-  const breadcrumbsLinks = [
+  const breadcrumbsLinks: breadcrumsTypes[] = [
     { id: 1, title: "Home", link: "/" },
     { id: 2, title: "The Jumblog", link: "/the-jumblog/page/1" },
     { id: 3, title: `${articleType}`, link: `/type/${articleType}` },
@@ -58,7 +63,7 @@ function SingleArticle({ poplulateArticlesData, populateAutherData }) {
       link: `/the-jumblog/${singlearticle}`,
     },
   ];
-  const titleText = `JUMBLE | Article ${splitWord(singlearticle)}`;
+  const titleText: string = `JUMBLE | Article ${splitWord(singlearticle)}`;
 
   return (
     <Fragment>
@@ -77,7 +82,7 @@ function SingleArticle({ poplulateArticlesData, populateAutherData }) {
   );
 }
 
-export async function getStaticProps({ locale }) {
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
       poplulateArticlesData: articlesData,
@@ -90,14 +95,14 @@ export async function getStaticProps({ locale }) {
     },
     revalidate: 60,
   };
-}
-export async function getStaticPaths() {
+};
+export const getStaticPaths: GetStaticPaths = () => {
   const blogPaths = articlesData.map((blog) => blog.link);
 
   return {
     paths: blogPaths,
     fallback: true,
   };
-}
+};
 
 export default SingleArticle;

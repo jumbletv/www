@@ -11,74 +11,6 @@ import articleImg10 from "../assets/articles/article-10.webp";
 import articleImg11 from "../assets/articles/article-11.jpeg";
 import articleImg12 from "../assets/articles/article-12.jpeg";
 
-const placeholderArticleContent = [
-  {
-    id: 1,
-    para: "blog_1_para_1",
-    embed: [
-      {
-        id: 1,
-        url: "https://www.instagram.com/p/Cj2OgQ0riVP",
-        type: "instagram",
-      },
-    ],
-    matchTexts: [
-      {
-        id: 1,
-        matchText: "blog_1_para_1_matchText_1",
-        linkText: "blog_1_para_1_linkText_1",
-        linkTo: "/the-jumblog",
-      },
-    ],
-    list: {
-      listHeading: "For instance:",
-      lists: [
-        {
-          id: 1,
-          listItem: "Your content should resonate with the audience",
-        },
-        { id: 2, listItem: "You should use the right livestream software" },
-        {
-          id: 3,
-          listItem:
-            "Your content and host should be fun enough to captivate the audience",
-        },
-        {
-          id: 4,
-          listItem:
-            "Troubleshoot any technical issues before getting into the action",
-        },
-        { id: 5, listItem: "And, more" },
-      ],
-    },
-  },
-  {
-    id: 2,
-    para: "blog_1_para_2",
-    heading: "La bouche rouge",
-    matchTexts: [
-      {
-        id: 1,
-        matchText: "blog_1_para_2_matchText_1",
-        linkText: "blog_1_para_2_linkText_1",
-        linkTo: "/the-jumblog/lipstick",
-      },
-    ],
-    embed: [
-      {
-        id: 1,
-        url: "https://www.tiktok.com/embed/v2/7158537663904009477?lang=en",
-        type: "tiktok",
-      },
-    ],
-    influencer: {
-      name: "marimariamakeup",
-      url: "https://www.tiktok.com/@marimariamakeup?lang=fr",
-      followers: "3.4 M followers",
-    },
-  },
-];
-
 export const articlesData = [
   {
     id: 1,
@@ -95,7 +27,6 @@ export const articlesData = [
       { id: 3, tag: "green", url: "/tag/green" },
       { id: 4, tag: "beauty industry", url: "/tag/beauty-industry" },
     ],
-    placeholderArticleContent,
   },
   {
     id: 2,
@@ -112,7 +43,6 @@ export const articlesData = [
       { id: 2, tag: "genz", url: "/tag/gen-z" },
       { id: 3, tag: "colore", url: "/tag/colore" },
     ],
-    placeholderArticleContent,
   },
   {
     id: 3,
@@ -130,7 +60,6 @@ export const articlesData = [
       { id: 3, tag: "social", url: "/tag/social" },
       { id: 4, tag: "trends", url: "/tag/trends" },
     ],
-    placeholderArticleContent,
   },
   {
     id: 4,
@@ -148,7 +77,6 @@ export const articlesData = [
       { id: 3, tag: "beauty", url: "/tag/beauty" },
       { id: 4, tag: "makeup", url: "/tag/make-up" },
     ],
-    placeholderArticleContent,
   },
   {
     id: 5,
@@ -165,7 +93,6 @@ export const articlesData = [
       { id: 2, tag: "beauty", url: "/tag/beauty" },
       { id: 3, tag: "beauty care", url: "/tag/beauty-care" },
     ],
-    placeholderArticleContent,
   },
   {
     id: 6,
@@ -183,7 +110,6 @@ export const articlesData = [
       { id: 3, tag: "beauty", url: "/tag/beauty" },
       { id: 4, tag: "makeup", url: "/tag/make-up" },
     ],
-    placeholderArticleContent,
   },
   {
     id: 7,
@@ -201,7 +127,6 @@ export const articlesData = [
       { id: 3, tag: "trends", url: "/tag/trends" },
       { id: 4, tag: "social", url: "/tag/social" },
     ],
-    placeholderArticleContent,
   },
   {
     id: 8,
@@ -219,7 +144,6 @@ export const articlesData = [
       { id: 3, tag: "outfits", url: "/tag/outfits" },
       { id: 4, tag: "apparel", url: "/tag/apparel" },
     ],
-    placeholderArticleContent,
   },
   {
     id: 9,
@@ -239,7 +163,6 @@ export const articlesData = [
       { id: 5, tag: "style", url: "/tag/style" },
       { id: 6, tag: "TikTok", url: "/tag/tiktok" },
     ],
-    placeholderArticleContent,
   },
   {
     id: 10,
@@ -258,7 +181,6 @@ export const articlesData = [
       { id: 4, tag: "style", url: "/tag/style" },
       { id: 5, tag: "apps", url: "/tag/apps" },
     ],
-    placeholderArticleContent,
   },
   {
     id: 11,
@@ -277,7 +199,6 @@ export const articlesData = [
       { id: 4, tag: "style", url: "/tag/style" },
       { id: 5, tag: "apps", url: "/tag/apps" },
     ],
-    placeholderArticleContent,
   },
   {
     id: 12,
@@ -296,6 +217,5 @@ export const articlesData = [
       { id: 4, tag: "style", url: "/tag/style" },
       { id: 5, tag: "apps", url: "/tag/apps" },
     ],
-    placeholderArticleContent,
   },
 ];

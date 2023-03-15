@@ -21,7 +21,15 @@ export function IntroHeaderItem({ headerImg, title, detail }) {
       </div>
       <div className={introHeaderImgContainer}>
         {headerImg ? (
-          <Image src={headerImg} alt="header-img" priority={true} />
+          <Image
+            src={headerImg.src}
+            blurDataURL={headerImg.blurDataURL}
+            placeholder="blur"
+            width={1080}
+            height={1080}
+            alt="header-img"
+            priority={true}
+          />
         ) : (
           <NotFoundMessage message="Loading...." />
         )}

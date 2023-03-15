@@ -40,13 +40,7 @@ export function ProductSlider(props) {
     >
       {productPics?.map(({ id, pic }) => (
         <div key={id} className={carouselImgContainer}>
-          <Image
-            src={pic.src}
-            alt="product-pic"
-            width={500}
-            height={500}
-            priority={id === 1}
-          />
+          <Image src={pic} alt="product-pic" priority={id === 1} />
         </div>
       ))}
     </Slider>
