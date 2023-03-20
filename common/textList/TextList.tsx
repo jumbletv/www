@@ -5,7 +5,27 @@ import Image from "next/image";
 import { CircleBtn } from "../circleBtn/CircleBtn";
 import { useTranslation } from "next-i18next";
 
-export function TextList({ data, showBtn }) {
+type Detail = {
+  beforeLink?: string;
+  linkText?: string;
+  afterLink?: string;
+  link?: string;
+} | string;
+
+type Data = {
+  id: number;
+  text: string;
+  bg: string;
+  addLink?: boolean;
+  detail: Detail;
+};
+
+type Props = {
+  data: Data[];
+  showBtn?: boolean;
+};
+
+export function TextList({ data, showBtn }: Props) {
   const {
     supportContainer,
     supportItem,
@@ -14,27 +34,27 @@ export function TextList({ data, showBtn }) {
     downArrow,
   } = styles;
   const { t } = useTranslation("faq");
-  const [listId, setListId] = useState(null);
+  const [listId, setListId] = useState<number | null>(null);
   const [expanded, setExpanded] = useState(false);
 
-  const handleCollapse = (id) => {
-    setExpanded(listId === id && expanded ? false : true);
+  const handleCollapse = (id: number) => {
+    setExpanded((prev) => listId === id ? !prev : true);
     setListId(id);
   };
 
-  const renderDetail = (id, addLink, detail) => {
-    const { beforeLink, linkText, afterLink, link } = detail;
+  const renderDetail = (id: number, addLink?: boolean, detail?: Detail) => {
     if (id === listId && expanded) {
-      if (addLink) {
+      if (typeof detail === "string") {
+        return <p> {t(detail)} </p>;
+      } else {
+        const { beforeLink, linkText, afterLink, link } = detail;
         return (
           <p>
-            {t(beforeLink)}
-            <a href={link}>{t(linkText)}</a>
-            {t(afterLink)}
+            {t(beforeLink ?? "")}
+            <a href={link}>{t(linkText ?? "")}</a>
+            {t(afterLink ?? "")}
           </p>
         );
-      } else {
-        return <p> {t(detail)} </p>;
       }
     }
   };
@@ -53,7 +73,7 @@ export function TextList({ data, showBtn }) {
               <Image
                 src={TriagleArrow}
                 alt="triangle-arrow"
-                className={id === listId && expanded ? downArrow : null}
+                className={id === listId && expanded ? downArrow : undefined}
               />
             </div>
             {renderDetail(id, addLink, detail)}

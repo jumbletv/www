@@ -3,7 +3,7 @@ import styles from "./HeaderText.module.scss";
 import commonStyles from "../../styles/Common.module.scss";
 import { useTranslation } from "next-i18next";
 
-export function HeaderText() {
+export function HeaderText(): JSX.Element {
   const { t } = useTranslation("common");
 
   return (

@@ -3,11 +3,18 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import NextArrowIcon from "assets/icons/arrow-right-slider.svg";
 import PrevArrowIcon from "assets/icons/arrow-left-slider.svg";
-import Slider from "react-slick";
-import Image from "next/image";
+import Slider, { Settings } from "react-slick";
+import Image, { StaticImageData } from "next/image";
 import styles from "./Carousel.module.scss";
 
-function CustomArrows(props) {
+interface CustomArrowsProps {
+  onClick?: () => void;
+  imgSrc: StaticImageData;
+  imgAlt: string;
+  className?: string;
+}
+
+function CustomArrows(props: CustomArrowsProps) {
   const { onClick, imgSrc, imgAlt, className } = props;
 
   return (
@@ -15,11 +22,17 @@ function CustomArrows(props) {
   );
 }
 
-export function ProductSlider(props) {
+interface ProductSliderProps {
+  productPics?: { id: number; pic: StaticImageData }[];
+  productBg: StaticImageData;
+  productBgColor: string;
+}
+
+export function ProductSlider(props: ProductSliderProps) {
   const { productPics, productBg, productBgColor } = props;
   const { carouselContainer, carouselImgContainer } = styles;
 
-  const settings = {
+  const settings: Settings = {
     dots: true,
     infinite: true,
     speed: 500,

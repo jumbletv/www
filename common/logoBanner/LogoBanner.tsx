@@ -6,12 +6,17 @@ import yellowLogo from "assets/logos/yellow-logo.svg";
 import pinkLogo from "assets/logos/pink-logo.svg";
 import purpleLogo from "assets/logos/purple-logo.svg";
 import darkBlueLogo from "assets/logos/dark-blue-logo.svg";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
-export function LogoBanner() {
+interface LogoData {
+  id: number;
+  logo: StaticImageData;
+}
+
+export function LogoBanner(): JSX.Element {
   const { logoBannerContainer, logoWrapper, logoBox } = styles;
 
-  const logoData = [
+  const logoData: LogoData[] = [
     { id: 1, logo: blueLogo },
     { id: 2, logo: greenLogo },
     { id: 3, logo: yellowLogo },
@@ -20,7 +25,7 @@ export function LogoBanner() {
     { id: 6, logo: darkBlueLogo },
   ];
 
-  const renderLogos = () => {
+  const renderLogos = (): JSX.Element => {
     return (
       <div className={logoWrapper}>
         {logoData?.map(({ id, logo }) => (

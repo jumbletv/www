@@ -2,9 +2,9 @@ import React from "react";
 import styles from "./NotFoundMessage.module.scss";
 
 export function NotFoundMessage({ message }) {
-  const { notFoundMessageContaienr } = styles;
+  const { notFoundMessageContainer } = styles;
   return (
-    <div className={notFoundMessageContaienr}>
+    <div className={notFoundMessageContainer}>
       <p>{message}</p>
     </div>
   );

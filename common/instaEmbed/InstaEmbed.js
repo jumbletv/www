@@ -28,6 +28,7 @@ export function InstaEmbed({ url }) {
         <div style={{ padding: "16px" }}>
           <a
             href={url}
+            rel="noreferrer"
             style={{
               background: "#FFFFFF",
               lineHeight: 0,
@@ -271,6 +272,7 @@ export function InstaEmbed({ url }) {
           >
             <a
               href={url}
+              rel="noreferrer"
               style={{
                 color: "#c9c8cd",
                 fontFamily: "Arial,sans-serif",

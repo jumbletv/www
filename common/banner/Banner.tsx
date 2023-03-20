@@ -2,7 +2,12 @@ import React from "react";
 import styles from "./Banner.module.scss";
 import { useTranslation } from "next-i18next";
 
-export function Banner({ bannerText, singleText }) {
+interface BannerProps {
+  bannerText: string;
+  singleText?: boolean;
+}
+
+export function Banner({ bannerText, singleText }: BannerProps) {
   const { bannerContainer, singleBannerContainer } = styles;
 
   const { t } = useTranslation("common");

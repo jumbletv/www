@@ -4,10 +4,10 @@ import { ArrowRightIcon } from "components/customIcons/ArrowRight";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 
-export function MorePages() {
+export function MorePages(): JSX.Element {
   const { morePagesContainer, textComtainer, listContainer } = styles;
-
   const { t } = useTranslation("common");
+
   return (
     <div className={morePagesContainer}>
       <div className={textComtainer}>

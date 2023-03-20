@@ -16,6 +16,6 @@
     "jsx": "preserve",
     "baseUrl": "."
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["custom.d.ts", "next-env.d.ts", "**/*.ts", "**/*.tsx", "common/logoBanner/LogoBanner.tsx", "common/influencerText/InfluencerText.tsx"],
   "exclude": ["node_modules"]
 }

@@ -4,7 +4,7 @@
 @import "styles/reuseables";
 @import "styles/flexes";
 
-.notFoundMessageContaienr {
+.notFoundMessageContainer {
   @include flexColumnCenterCenter;
   min-height: 48rem;
   & p {
