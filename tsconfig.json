@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "esnext",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -16,6 +16,13 @@
     "jsx": "preserve",
     "baseUrl": "."
   },
-  "include": ["custom.d.ts", "next-env.d.ts", "**/*.ts", "**/*.tsx", "common/logoBanner/LogoBanner.tsx", "common/influencerText/InfluencerText.tsx", "components/customIcons/WhatsappIcon.tsx", "components/customIcons/MenuLeftArrow.tsx", "components/customIcons/InstagramIcon.tsx", "components/introHeaderItem/IntroHeaderItem.tsx"],
+  "include": [
+    "custom.d.ts",
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "common/logoBanner/LogoBanner.tsx",
+    "common/influencerText/InfluencerText.tsx"
+  ],
   "exclude": ["node_modules"]
 }
