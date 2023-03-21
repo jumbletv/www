@@ -8,9 +8,8 @@ import { articlesData } from "data/articlesData";
 import { Footer } from "layout/footer/Footer";
 import { supportData } from "data/supportData";
 import { faqData } from "data/faqData";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { Bars } from "common/bars/Bars";
 import { jumblogNavBarData } from "data/barData";
@@ -19,19 +18,25 @@ import { salesData, influencerData } from "data/products";
 import { splitWord, splitAndCapitalize } from "helper/splitWord";
 import { NotFoundMessage } from "common/notFoundMessage/NotFoundMessage";
 
+interface SingleSaleProps {
+  poplulateArticlesData: any[];
+  populateProductsData: any[];
+  poplulateInfluencerData: any[];
+}
+
 function SingleSale({
   poplulateArticlesData,
   populateProductsData,
   poplulateInfluencerData,
-}) {
+}: SingleSaleProps): JSX.Element {
   const router = useRouter();
   const {
     asPath,
     query: { singlesale },
   } = router;
 
-  const [singleSale, setSingleSale] = useState();
-  const [influencerData, setInfluencerData] = useState();
+  const [singleSale, setSingleSale] = useState<any>();
+  const [influencerData, setInfluencerData] = useState<any>();
 
   useEffect(() => {
     getSingleSale();
@@ -40,7 +45,7 @@ function SingleSale({
   }, [asPath, singleSale]);
 
   const getSingleSale = () => {
-    populateProductsData?.forEach((product) => {
+    populateProductsData?.forEach((product: any) => {
       if (product.productLink === asPath) {
         setSingleSale(product);
       }
@@ -48,8 +53,8 @@ function SingleSale({
   };
 
   const getInfluencerData = () => {
-    poplulateInfluencerData?.forEach((influencer) => {
-      influencer.products.forEach(({ productLink }) => {
+    poplulateInfluencerData?.forEach((influencer: any) => {
+      influencer.products.forEach(({ productLink }: any) => {
         if (productLink === asPath) {
           setInfluencerData(influencer);
         }
@@ -62,12 +67,12 @@ function SingleSale({
     { id: 2, title: "Sales", link: "/sales/page/1" },
     {
       id: 3,
-      title: `${splitWord(singlesale)}`,
+      title: `${splitWord(singlesale as string)}`,
       link: `/sales/${singlesale}`,
     },
   ];
 
-  const titleText = `JUMBLE | Sale ${splitAndCapitalize(singlesale)}`;
+  const titleText = `JUMBLE | Sale ${splitAndCapitalize(singlesale as string)}`;
 
   return (
     <Fragment>

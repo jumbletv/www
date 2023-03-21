@@ -2,9 +2,7 @@ import Head from "next/head";
 import { Navbar } from "layout/navbar/Navbar";
 import HomeProducts from "components/products/homeProducts/HomeProducts";
 import { Footer } from "layout/footer/Footer";
-import { Fragment } from "react";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { Bars } from "common/bars/Bars";
 import { jumblogNavBarData } from "data/barData";
@@ -14,8 +12,18 @@ import { splitWord, splitAndCapitalize } from "helper/splitWord";
 import { Header } from "layout/header/Header";
 import { IntroHeader } from "components/introHeader/IntroHeader";
 import { NotFoundMessage } from "common/notFoundMessage/NotFoundMessage";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-function InfluencerName({ poplulateInfluencerData, populateProductData }) {
+
+interface InfluencerProps {
+  poplulateInfluencerData: any;
+  populateProductData: any;
+}
+
+function InfluencerName({
+  poplulateInfluencerData,
+  populateProductData,
+}: InfluencerProps) {
   const router = useRouter();
   const {
     asPath,
@@ -23,8 +31,8 @@ function InfluencerName({ poplulateInfluencerData, populateProductData }) {
     query: { influencername },
   } = router;
 
-  const [influencerData, setInfluencerData] = useState({});
-  const [influencerSales, setInfluencerSales] = useState([]);
+  const [influencerData, setInfluencerData] = useState<any>({});
+  const [influencerSales, setInfluencerSales] = useState<any[]>([]);
 
   useEffect(() => {
     getInfluencerData();
@@ -33,7 +41,7 @@ function InfluencerName({ poplulateInfluencerData, populateProductData }) {
   }, [asPath]);
 
   const getInfluencerData = () => {
-    poplulateInfluencerData?.forEach((influencer) => {
+    poplulateInfluencerData?.forEach((influencer: any) => {
       if (influencer.influencerLink === asPath) {
         setInfluencerData(influencer);
       }
@@ -41,8 +49,8 @@ function InfluencerName({ poplulateInfluencerData, populateProductData }) {
   };
 
   const getSalesByInfluencer = () => {
-    const influencerSalesArr = [];
-    populateProductData?.forEach((product) => {
+    const influencerSalesArr: any[] = [];
+    populateProductData?.forEach((product: any) => {
       if (product.influencerLink === asPath) {
         influencerSalesArr.push(product);
       }
@@ -55,11 +63,13 @@ function InfluencerName({ poplulateInfluencerData, populateProductData }) {
     { id: 2, title: "Upcoming Sales", link: "/sales/page/1" },
     {
       id: 3,
-      title: `Sales By ${splitWord(influencername)}`,
+      title: `Sales By ${splitWord(influencername as string)}`,
       link: `/influencer/${influencername}`,
     },
   ];
-  const titleText = `JUMBLE | influencer ${splitAndCapitalize(influencername)}`;
+  const titleText = `JUMBLE | influencer ${splitAndCapitalize(
+    influencername as string
+  )}`;
 
   return (
     <Fragment>
@@ -69,14 +79,14 @@ function InfluencerName({ poplulateInfluencerData, populateProductData }) {
       <Navbar />
       <Bars barData={jumblogNavBarData} />
       <Breadcrumbs links={breadcrumbsLinks} />
-      <Header headerText="featured_sales" locale={locale} shrink={false} />
+      <Header headerText="featured_sales" locale={locale as string} shrink={false} />
       {influencerData ? (
         <IntroHeader introHeaderData={influencerData} />
       ) : (
         <NotFoundMessage message="No Auther Found" />
       )}
       {influencerSales ? (
-        <HomeProducts productsData={influencerSales} />
+        <HomeProducts productsData={influencerSales} showBtn />
       ) : (
         <NotFoundMessage message="This Auther has no sales at the moment" />
       )}
@@ -85,7 +95,7 @@ function InfluencerName({ poplulateInfluencerData, populateProductData }) {
   );
 }
 
-export async function getStaticProps({ locale }) {
+export async function getStaticProps({ locale }: { locale: string }) {
   return {
     props: {
       poplulateInfluencerData: influencerData,

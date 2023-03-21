@@ -4,44 +4,45 @@ import { Footer } from "layout/footer/Footer";
 import { Fragment } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { Bars } from "common/bars/Bars";
-import { jumblogNavBarData } from "data/barData";
+import { homeNavBarData } from "data/barData";
 import { Breadcrumbs } from "common/breadcrumbs/Breadcrumbs";
-import { MorePages } from "common/morePages/MorePages";
-import { Header } from "layout/header/Header";
-import { PrivacyDetail } from "components/privacyDetail/PrivacyDetail";
+import { Contact } from "components/contact/Contact";
 
-function PrivacyPolicy() {
+interface Props {
+  locale: string;
+}
+
+function GetInTouch({ locale }: Props) {
   const breadcrumbsLinks = [
     { id: 1, title: "Home", link: "/" },
     {
       id: 2,
-      title: `Privacey Policy`,
-      link: `/privacy-policy`,
+      title: `Contact Us`,
+      link: `/get-in-touch`,
     },
   ];
 
   return (
     <Fragment>
       <Head>
-        <title>Privacy Policy & Data Protection</title>
+        <title>JUMBLE | Get in Touch</title>
       </Head>
       <Navbar />
-      <Bars barData={jumblogNavBarData} />
+      <Bars barData={homeNavBarData} />
       <Breadcrumbs links={breadcrumbsLinks} />
-      <Header headerText="Privacy Policy" />
-      <PrivacyDetail />
-      <MorePages />
+      <Contact />
       <Footer />
     </Fragment>
   );
 }
 
-export async function getStaticProps({ locale }) {
+export async function getStaticProps({ locale }: Props) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ["common", "privacy"])),
+      ...(await serverSideTranslations(locale, ["common", "contact"])),
     },
     revalidate: 60,
   };
 }
-export default PrivacyPolicy;
+
+export default GetInTouch;

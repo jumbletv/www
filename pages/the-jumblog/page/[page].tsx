@@ -3,20 +3,22 @@ import { Navbar } from "layout/navbar/Navbar";
 import { ArticlesList } from "components/articles/articlesList/ArticlesList";
 import { articlesData } from "data/articlesData";
 import { Footer } from "layout/footer/Footer";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { Bars } from "common/bars/Bars";
 import { jumblogNavBarData } from "data/barData";
 import { Breadcrumbs } from "common/breadcrumbs/Breadcrumbs";
-import { useState } from "react";
 import { Pagination } from "components/pagination/Pagination";
 import JumblogMenu from "components/menus/jumblogMenu/JumblogMenu";
 import { itemsPerPage } from "data/pagination";
 import { NotFoundMessage } from "common/notFoundMessage/NotFoundMessage";
 
-function JumblogHome({ poplulateArticlesData }) {
+interface Props {
+  poplulateArticlesData: Array<any>;
+}
+
+function JumblogHome({ poplulateArticlesData }: Props) {
   const router = useRouter();
 
   const {
@@ -24,8 +26,8 @@ function JumblogHome({ poplulateArticlesData }) {
     query: { page },
   } = router;
 
-  const [currentArticles, setCurrentArticles] = useState([]);
-  const [pageNo, setPageNo] = useState(null);
+  const [currentArticles, setCurrentArticles] = useState<Array<any>>([]);
+  const [pageNo, setPageNo] = useState<number | null>(null);
 
   const articlesLength = poplulateArticlesData?.length;
   const pageCount = Math.ceil(articlesLength / itemsPerPage);
@@ -44,7 +46,7 @@ function JumblogHome({ poplulateArticlesData }) {
         endOffset
       );
       setCurrentArticles(currentArticles);
-      setPageNo(parseInt(page));
+      setPageNo(parseInt(page as string));
     }
   };
 
@@ -89,6 +91,7 @@ export async function getStaticProps({ locale }) {
     revalidate: 60,
   };
 }
+
 export async function getStaticPaths() {
   return {
     paths: [],

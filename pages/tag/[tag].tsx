@@ -3,19 +3,22 @@ import { Navbar } from "layout/navbar/Navbar";
 import { ArticlesList } from "components/articles/articlesList/ArticlesList";
 import { articlesData } from "data/articlesData";
 import { Footer } from "layout/footer/Footer";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { Bars } from "common/bars/Bars";
 import { homeNavBarData } from "data/barData";
 import { Breadcrumbs } from "common/breadcrumbs/Breadcrumbs";
-import { useState } from "react";
 import { Header } from "layout/header/Header";
 import { LogoBanner } from "common/logoBanner/LogoBanner";
 import { splitWord, splitAndCapitalize } from "helper/splitWord";
+import type { GetStaticPaths, GetStaticProps } from "next";
 
-function Tag({ poplulateArticlesData }) {
+interface TagProps {
+  poplulateArticlesData: Array<any>;
+}
+
+export default function Tag({ poplulateArticlesData }: TagProps) {
   const router = useRouter();
   const {
     locale,
@@ -33,7 +36,7 @@ function Tag({ poplulateArticlesData }) {
     const articles = [];
     poplulateArticlesData?.forEach((article) => {
       article.tags.forEach((singleTag) => {
-        if (singleTag.tag === splitWord(tag)) {
+        if (singleTag.tag === splitWord(tag as string)) {
           articles.push(article);
         }
       });
@@ -46,12 +49,12 @@ function Tag({ poplulateArticlesData }) {
     { id: 2, title: "The Jumblog", link: "/the-jumblog/page/1" },
     {
       id: 3,
-      title: `Article with tag ${splitWord(tag)}`,
+      title: `Article with tag ${splitWord(tag as string)}`,
       link: `/tag/${tag}`,
     },
   ];
 
-  const titleText = `JUMBLE | Tag ${splitAndCapitalize(tag)}`;
+  const titleText = `JUMBLE | Tag ${splitAndCapitalize(tag as string)}`;
 
   return (
     <Fragment>
@@ -69,7 +72,7 @@ function Tag({ poplulateArticlesData }) {
   );
 }
 
-export async function getStaticProps({ locale }) {
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
       poplulateArticlesData: articlesData,
@@ -77,8 +80,9 @@ export async function getStaticProps({ locale }) {
     },
     revalidate: 60,
   };
-}
-export async function getStaticPaths() {
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
   let tagPaths = [];
   articlesData.forEach((blog) =>
     blog.tags.forEach((tag) => tagPaths.push(tag.url))
@@ -88,6 +92,4 @@ export async function getStaticPaths() {
     paths: tagPaths,
     fallback: true,
   };
-}
-
-export default Tag;
+};

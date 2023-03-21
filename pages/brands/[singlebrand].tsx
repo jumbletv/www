@@ -30,9 +30,9 @@ function SingleBrand({ poplulateBrandsData, populateAutherData }) {
   const breadcrumbsLinks = [
     { id: 1, title: "Home", link: "/" },
     { id: 2, title: "Brands", link: "/brands/page/1" },
-    { id: 3, title: `${splitWord(singlebrand)}`, link: `${asPath}` },
+    { id: 3, title: `${splitWord(singlebrand as string)}`, link: `${asPath}` },
   ];
-  const titleText = `JUMBLE | Brands ${splitWord(singlebrand)}`;
+  const titleText = `JUMBLE | Brands ${splitWord(singlebrand as string)}`;
 
   return (
     <Fragment>

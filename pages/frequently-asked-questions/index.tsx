@@ -11,7 +11,7 @@ import { useRouter } from "next/router";
 import { Bars } from "common/bars/Bars";
 import { homeNavBarData } from "data/barData";
 
-function FAQs() {
+function FAQs(): JSX.Element {
   const router = useRouter();
   const { locale } = router;
 
@@ -36,7 +36,7 @@ function FAQs() {
   );
 }
 
-export async function getStaticProps({ locale }) {
+export async function getStaticProps({ locale }): Promise<{ props: { [key: string]: any }, revalidate: number }> {
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common", "articles", "faq"])),

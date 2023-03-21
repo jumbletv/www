@@ -1,29 +1,31 @@
 import Head from "next/head";
 import { Navbar } from "layout/navbar/Navbar";
 import { ArticlesList } from "components/articles/articlesList/ArticlesList";
-import { articlesData } from "data/articlesData";
+import { articlesData, ArticleData } from "data/articlesData";
 import { Footer } from "layout/footer/Footer";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { Bars } from "common/bars/Bars";
-import { homeNavBarData } from "data/barData";
-import { Breadcrumbs } from "common/breadcrumbs/Breadcrumbs";
-import { useState } from "react";
+import { homeNavBarData, BarData } from "data/barData";
+import { Breadcrumbs, BreadcrumbLink } from "common/breadcrumbs/Breadcrumbs";
 import { Header } from "layout/header/Header";
 import { LogoBanner } from "common/logoBanner/LogoBanner";
-import { IntroHeader } from "components/introHeader/IntroHeader";
-import { articlesByData } from "data/introData";
+import { IntroHeaderData, IntroHeader } from "components/introHeader/IntroHeader";
+import { articlesByData, IntroData } from "data/introData";
 import { splitWord, splitAndCapitalize } from "helper/splitWord";
 
-function Auther({ poplulateArticlesData }) {
+interface AutherProps {
+  poplulateArticlesData: ArticleData[];
+}
+
+function Auther({ poplulateArticlesData }: AutherProps) {
   const router = useRouter();
   const { locale, query, asPath } = router;
   const { auther } = query;
 
-  const [articlesByAuther, setArticlesByAuther] = useState([]);
-  const [introHeaderData, setIntroHeaderData] = useState({});
+  const [articlesByAuther, setArticlesByAuther] = useState<ArticleData[]>([]);
+  const [introHeaderData, setIntroHeaderData] = useState<IntroHeaderData>({});
 
   useEffect(() => {
     getArticlesByAuther();
@@ -32,8 +34,8 @@ function Auther({ poplulateArticlesData }) {
   }, [locale, auther]);
 
   const getArticlesByAuther = () => {
-    const articles = [];
-    poplulateArticlesData?.forEach((article) => {
+    const articles: ArticleData[] = [];
+    poplulateArticlesData?.forEach((article: ArticleData) => {
       if (article.by === asPath) {
         articles.push(article);
       }
@@ -42,24 +44,24 @@ function Auther({ poplulateArticlesData }) {
   };
 
   const getTypeHeaderData = () => {
-    articlesByData.forEach((article) => {
+    articlesByData.forEach((article: IntroData) => {
       if (article.autherLink === asPath) {
         setIntroHeaderData(article);
       }
     });
   };
 
-  const breadcrumbsLinks = [
+  const breadcrumbsLinks: BreadcrumbLink[] = [
     { id: 1, title: "Home", link: "/" },
     { id: 2, title: "The Jumblog", link: "/the-jumblog/page/1" },
     {
       id: 3,
-      title: `Article by ${splitWord(auther)}`,
+      title: `Article by ${splitWord(auther as string)}`,
       link: `/type/${auther}`,
     },
   ];
 
-  const titleText = `JUMBLE | Articles by ${splitAndCapitalize(auther)}`;
+  const titleText = `JUMBLE | Articles by ${splitAndCapitalize(auther as string)}`;
 
   return (
     <Fragment>
@@ -67,7 +69,7 @@ function Auther({ poplulateArticlesData }) {
         <title>{titleText}</title>
       </Head>
       <Navbar />
-      <Bars barData={homeNavBarData} />
+      <Bars barData={homeNavBarData as BarData[]} />
       <Breadcrumbs links={breadcrumbsLinks} />
       <Header headerText="THE JUMBLOG" />
       <LogoBanner />
@@ -78,7 +80,7 @@ function Auther({ poplulateArticlesData }) {
   );
 }
 
-export async function getStaticProps({ locale }) {
+export async function getStaticProps({ locale }: { locale: string }) {
   return {
     props: {
       poplulateArticlesData: articlesData,
@@ -91,6 +93,7 @@ export async function getStaticProps({ locale }) {
     revalidate: 60,
   };
 }
+
 export async function getStaticPaths() {
   let autherPaths = [];
   articlesData.forEach((blog) => blog.by);

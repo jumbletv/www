@@ -1,20 +1,29 @@
 import Head from "next/head";
 import { Navbar } from "layout/navbar/Navbar";
 import { Footer } from "layout/footer/Footer";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { Bars } from "common/bars/Bars";
 import { homeNavBarData } from "data/barData";
 import { Breadcrumbs } from "common/breadcrumbs/Breadcrumbs";
-import { useState } from "react";
 import { splitWord, splitAndCapitalize } from "helper/splitWord";
 import { allFaqData } from "data/faqData";
 import { Banner } from "common/banner/Banner";
 import { FaqDetail } from "components/faqDetail/FaqDetail";
 
-function SingleFAq({ populateAllFaqData }) {
+interface Faq {
+  id: number;
+  question: string;
+  answer: string;
+  link: string;
+}
+
+interface SingleFaqProps {
+  populateAllFaqData: Faq[];
+}
+
+function SingleFAq({ populateAllFaqData }: SingleFaqProps): JSX.Element {
   const router = useRouter();
   const {
     locale,
@@ -22,17 +31,16 @@ function SingleFAq({ populateAllFaqData }) {
     asPath,
   } = router;
 
-  const [faqDetail, setFaqDetail] = useState({});
-  const [prevFaq, setPrevFaq] = useState({});
-  const [nextFaq, setNextFaq] = useState({});
+  const [faqDetail, setFaqDetail] = useState<Faq>({ id: 0, question: "", answer: "", link: "" });
+  const [prevFaq, setPrevFaq] = useState<Faq>({ id: 0, question: "", answer: "", link: "" });
+  const [nextFaq, setNextFaq] = useState<Faq>({ id: 0, question: "", answer: "", link: "" });
 
   useEffect(() => {
     getFaqDetail();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locale, singlefaq, asPath]);
 
-  const getFaqDetail = () => {
-    populateAllFaqData?.forEach((faq, index) => {
+  const getFaqDetail = (): void => {
+    populateAllFaqData?.forEach((faq: Faq, index: number) => {
       if (faq.link === asPath) {
         setFaqDetail(faq);
         setPrevFaq(populateAllFaqData[index - 1]);
@@ -47,15 +55,15 @@ function SingleFAq({ populateAllFaqData }) {
     { id: 2, title: "Faq", link: "/frequently-asked-questions" },
     {
       id: 3,
-      title: `${splitWord(singlefaq)}`,
+      title: `${splitWord(singlefaq as string)}`,
       link: `/frequently-asked-questions/${singlefaq}`,
     },
   ];
 
-  const titleText = `JUMBLE | Tag ${splitAndCapitalize(singlefaq)}`;
+  const titleText = `JUMBLE | Tag ${splitAndCapitalize(singlefaq as string)}`;
 
   return (
-    <Fragment>
+    <>
       <Head>
         <title>{titleText}</title>
       </Head>
@@ -65,11 +73,11 @@ function SingleFAq({ populateAllFaqData }) {
       <Banner bannerText="FAQS" singleText={false} />
       <FaqDetail faqDetail={faqDetail} prevFaq={prevFaq} nextFaq={nextFaq} />
       <Footer />
-    </Fragment>
+    </>
   );
 }
 
-export async function getStaticProps({ locale }) {
+export async function getStaticProps({ locale }: { locale: string }): Promise<{ props: SingleFaqProps; revalidate: number }> {
   return {
     props: {
       populateAllFaqData: allFaqData,
@@ -78,7 +86,8 @@ export async function getStaticProps({ locale }) {
     revalidate: 60,
   };
 }
-export async function getStaticPaths() {
+
+export async function getStaticPaths(): Promise<{ paths: string[]; fallback: boolean }> {
   const faqPaths = allFaqData.map(({ link }) => link);
   return {
     paths: faqPaths,

@@ -11,7 +11,7 @@ import { MorePages } from "common/morePages/MorePages";
 import { Header } from "layout/header/Header";
 import { TermsDetail } from "components/termsDetail/TermsDetail";
 
-function TermsConditions() {
+function TermsConditions(): JSX.Element {
   const router = useRouter();
   const { locale } = router;
 
@@ -40,7 +40,7 @@ function TermsConditions() {
   );
 }
 
-export async function getStaticProps({ locale }) {
+export async function getStaticProps({ locale }: { locale: string }) {
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common", "terms"])),
