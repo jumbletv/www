@@ -13,11 +13,23 @@ import { SocialIconList } from "components/socialIconList/SocialIconList";
 import { socialIconData } from "data/socialIconData";
 import { navMenuData, mobileNavMenuData } from "data/menuData";
 
-export function Navbar() {
+interface NavMenu {
+  id: number;
+  title: string;
+  link: string;
+}
+
+interface MobileNavMenu {
+  id: number;
+  title: string;
+  link: string;
+}
+
+export function Navbar(): JSX.Element {
   const router = useRouter();
   const { asPath } = router;
 
-  const [menuId, setMenuId] = useState(0);
+  const [menuId, setMenuId] = useState<number>(0);
 
   useEffect(() => {
     getMenuId();
@@ -36,7 +48,7 @@ export function Navbar() {
     }
   };
 
-  const [toggleMenu, setToggleMenu] = useState(false);
+  const [toggleMenu, setToggleMenu] = useState<boolean>(false);
   const toggleMobileNav = () => {
     const navId = document.getElementById("mobile-nav");
     if (navId) {
@@ -70,7 +82,7 @@ export function Navbar() {
       </Link>
       <div className={menuListContainer}>
         <div className={flexRowStartCenter}>
-          {navMenuData.map(({ id, title, link }) => (
+          {navMenuData.map(({ id, title, link }: NavMenu) => (
             <Link href={link} className={menuItem} key={id}>
               <MenuRightArrow fill={menuId === id ? "black" : "#48c9ff"} />
               <p> {t(title)} </p>
@@ -86,7 +98,7 @@ export function Navbar() {
             <Image src={MenuIcon} alt="menu-icon" className={menuIcon} />
           </div>
           <div className={sideNav} id="mobile-nav">
-            {mobileNavMenuData.map(({ id, title, link }) => (
+            {mobileNavMenuData.map(({ id, title, link }: MobileNavMenu) => (
               <Link key={id} href={link} className={mobileMenuItem}>
                 {t(title)}
               </Link>

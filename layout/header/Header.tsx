@@ -5,7 +5,13 @@ import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import { headerTypes } from "types/header";
 
-export function Header({ headerText, locale, shrink }: headerTypes) {
+interface HeaderProps {
+  headerText: string;
+  locale: string;
+  shrink: boolean;
+}
+
+export function Header({ headerText, locale, shrink }: HeaderProps): JSX.Element {
   const { headerContainer, logoBox } = styles;
 
   const { t } = useTranslation("common");

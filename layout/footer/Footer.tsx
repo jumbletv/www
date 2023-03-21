@@ -17,7 +17,8 @@ const barData2 = [
   { id: 1, barBg: lightPinkBg },
   { id: 2, barBg: darkPinkBg },
 ];
-export function Footer() {
+
+export function Footer(): JSX.Element {
   const { footerLinksContainer, footerLink, footerSocialContainer, copyright } =
     styles;
 
