@@ -5,12 +5,14 @@ import Image from "next/image";
 import { CircleBtn } from "../circleBtn/CircleBtn";
 import { useTranslation } from "next-i18next";
 
-type Detail = {
-  beforeLink?: string;
-  linkText?: string;
-  afterLink?: string;
-  link?: string;
-} | string;
+type Detail =
+  | {
+      beforeLink?: string;
+      linkText?: string;
+      afterLink?: string;
+      link?: string;
+    }
+  | string;
 
 type Data = {
   id: number;
@@ -38,7 +40,7 @@ export function TextList({ data, showBtn }: Props) {
   const [expanded, setExpanded] = useState(false);
 
   const handleCollapse = (id: number) => {
-    setExpanded((prev) => listId === id ? !prev : true);
+    setExpanded((prev) => (listId === id ? !prev : true));
     setListId(id);
   };
 
