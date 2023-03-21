@@ -2,14 +2,12 @@ import Head from "next/head";
 import { Navbar } from "layout/navbar/Navbar";
 import { brandsData } from "data/brands";
 import { Footer } from "layout/footer/Footer";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { Bars } from "common/bars/Bars";
 import { homeNavBarData } from "data/barData";
 import { Breadcrumbs } from "common/breadcrumbs/Breadcrumbs";
-import { useState } from "react";
 import { splitWord } from "helper/splitWord";
 import { articlesByData } from "data/introData";
 import { BrandDetail } from "components/brandDetail/BrandDetail";
@@ -26,24 +24,8 @@ function SingleBrand({ poplulateBrandsData, populateAutherData }) {
   const [singleBrand, setSingleBrand] = useState({});
   const [brandAuther, setBrandAuther] = useState({});
 
-  useEffect(() => {
-    getSingleBrand();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [locale, router]);
-
-  const getSingleBrand = () => {
-    poplulateBrandsData?.forEach((brand) => {
-      if (brand?.link === asPath) {
-        setSingleBrand(brand);
-        populateAutherData?.forEach((auther) => {
-          if (auther.autherLink === brand.by) {
-            setBrandAuther(auther);
-            return;
-          }
-        });
-      }
-    });
-  };
+  const singleBrandData = poplulateBrandsData?.find((brand) => brand?.link === asPath);
+  const brandAutherData = populateAutherData?.find((auther) => auther.autherLink === singleBrandData?.by);
 
   const breadcrumbsLinks = [
     { id: 1, title: "Home", link: "/" },
@@ -60,7 +42,7 @@ function SingleBrand({ poplulateBrandsData, populateAutherData }) {
       <Navbar />
       <Bars barData={homeNavBarData} />
       <Breadcrumbs links={breadcrumbsLinks} />
-      <BrandDetail brandDetail={singleBrand} auther={brandAuther} />
+      <BrandDetail brandDetail={singleBrandData} auther={brandAutherData} />
       <Footer />
     </Fragment>
   );
