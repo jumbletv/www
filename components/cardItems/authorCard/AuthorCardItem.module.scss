@@ -3,7 +3,7 @@
 @import "styles/breakpoints";
 @import "styles/reuseables";
 
-.autherCardItemContainer {
+.authorCardItemContainer {
   display: grid;
   grid-template-columns: 20rem 48rem;
   border: 1px solid $black;
@@ -17,7 +17,7 @@
   }
 }
 
-.autherDetailContainer {
+.authorDetailContainer {
   padding: 3.2rem;
   @include tablet {
     padding: 1rem;
@@ -37,7 +37,7 @@
     margin: 0;
   }
 }
-.autherImgContainer {
+.authorImgContainer {
   border-right: 1px solid $black;
   @include articleImg;
   top: 0;

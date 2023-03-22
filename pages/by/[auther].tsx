@@ -15,37 +15,37 @@ import { IntroHeaderData, IntroHeader } from "components/introHeader/IntroHeader
 import { articlesByData, IntroData } from "data/introData";
 import { splitWord, splitAndCapitalize } from "helper/splitWord";
 
-interface AutherProps {
+interface authorProps {
   poplulateArticlesData: ArticleData[];
 }
 
-function Auther({ poplulateArticlesData }: AutherProps) {
+function author({ poplulateArticlesData }: authorProps) {
   const router = useRouter();
   const { locale, query, asPath } = router;
-  const { auther } = query;
+  const { author } = query;
 
-  const [articlesByAuther, setArticlesByAuther] = useState<ArticleData[]>([]);
+  const [articlesByauthor, setArticlesByauthor] = useState<ArticleData[]>([]);
   const [introHeaderData, setIntroHeaderData] = useState<IntroHeaderData>({});
 
   useEffect(() => {
-    getArticlesByAuther();
+    getArticlesByauthor();
     getTypeHeaderData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [locale, auther]);
+  }, [locale, author]);
 
-  const getArticlesByAuther = () => {
+  const getArticlesByauthor = () => {
     const articles: ArticleData[] = [];
     poplulateArticlesData?.forEach((article: ArticleData) => {
       if (article.by === asPath) {
         articles.push(article);
       }
-      setArticlesByAuther(articles);
+      setArticlesByauthor(articles);
     });
   };
 
   const getTypeHeaderData = () => {
     articlesByData.forEach((article: IntroData) => {
-      if (article.autherLink === asPath) {
+      if (article.authorLink === asPath) {
         setIntroHeaderData(article);
       }
     });
@@ -56,12 +56,12 @@ function Auther({ poplulateArticlesData }: AutherProps) {
     { id: 2, title: "The Jumblog", link: "/the-jumblog/page/1" },
     {
       id: 3,
-      title: `Article by ${splitWord(auther as string)}`,
-      link: `/type/${auther}`,
+      title: `Article by ${splitWord(author as string)}`,
+      link: `/type/${author}`,
     },
   ];
 
-  const titleText = `JUMBLE | Articles by ${splitAndCapitalize(auther as string)}`;
+  const titleText = `JUMBLE | Articles by ${splitAndCapitalize(author as string)}`;
 
   return (
     <Fragment>
@@ -74,7 +74,7 @@ function Auther({ poplulateArticlesData }: AutherProps) {
       <Header headerText="THE JUMBLOG" />
       <LogoBanner />
       <IntroHeader introHeaderData={introHeaderData} />
-      <ArticlesList articlesData={articlesByAuther} />
+      <ArticlesList articlesData={articlesByauthor} />
       <Footer />
     </Fragment>
   );
@@ -95,13 +95,13 @@ export async function getStaticProps({ locale }: { locale: string }) {
 }
 
 export async function getStaticPaths() {
-  let autherPaths = [];
+  let authorPaths = [];
   articlesData.forEach((blog) => blog.by);
 
   return {
-    paths: autherPaths,
+    paths: authorPaths,
     fallback: true,
   };
 }
 
-export default Auther;
+export default author;

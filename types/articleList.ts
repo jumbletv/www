@@ -1,4 +1,4 @@
-import { autherDataTypes } from "./introHeader";
+import { authorDataTypes } from "./introHeader";
 
 interface tagTypes {
   id: number;
@@ -25,7 +25,7 @@ export interface articleListTypes {
 
 export interface articleDetailTypes {
   articleDetail: articleDataTypes;
-  auther: autherDataTypes;
+  author: authorDataTypes;
 }
 
 // Valeus

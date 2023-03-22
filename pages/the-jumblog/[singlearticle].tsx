@@ -15,11 +15,11 @@ import { useState } from "react";
 import { splitWord } from "helper/splitWord";
 import { articlesByData } from "data/introData";
 import { articleDataTypes, articleDataValues } from "types/articleList";
-import { autherDataTypes, autherDataValues } from "types/introHeader";
+import { authorDataTypes, authorDataValues } from "types/introHeader";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { breadcrumsTypes } from "types/breadcrumbs";
 
-function SingleArticle({ poplulateArticlesData, populateAutherData }) {
+function SingleArticle({ poplulateArticlesData, populateauthorData }) {
   const router = useRouter();
 
   const {
@@ -31,8 +31,8 @@ function SingleArticle({ poplulateArticlesData, populateAutherData }) {
   const [singleArticle, setSingleArticle] =
     useState<articleDataTypes>(articleDataValues);
   const [articleType, setArticleType] = useState<string>("");
-  const [articleAuther, setArticleAuther] =
-    useState<autherDataTypes>(autherDataValues);
+  const [articleauthor, setArticleauthor] =
+    useState<authorDataTypes>(authorDataValues);
 
   useEffect(() => {
     getSingleBlog();
@@ -44,9 +44,9 @@ function SingleArticle({ poplulateArticlesData, populateAutherData }) {
       if (article?.link === asPath) {
         setSingleArticle(article);
         setArticleType(article.type);
-        populateAutherData?.forEach((auther: autherDataTypes) => {
-          if (auther.autherLink === article.by) {
-            setArticleAuther(auther);
+        populateauthorData?.forEach((author: authorDataTypes) => {
+          if (author.authorLink === article.by) {
+            setArticleauthor(author);
           }
         });
       }
@@ -74,7 +74,7 @@ function SingleArticle({ poplulateArticlesData, populateAutherData }) {
       <Bars barData={homeNavBarData} />
       <Breadcrumbs links={breadcrumbsLinks} />
       {singleArticle && (
-        <ArticleDetail articleDetail={singleArticle} auther={articleAuther} />
+        <ArticleDetail articleDetail={singleArticle} author={articleauthor} />
       )}
       <ArticlesList articlesData={poplulateArticlesData} />
       <Footer />
@@ -86,7 +86,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
       poplulateArticlesData: articlesData,
-      populateAutherData: articlesByData,
+      populateauthorData: articlesByData,
       ...(await serverSideTranslations(locale, [
         "common",
         "articles",

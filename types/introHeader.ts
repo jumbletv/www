@@ -20,8 +20,8 @@ export interface introHeaderTypes extends introCommonTypes {
   type: string;
 }
 
-export interface autherDataTypes extends introCommonTypes {
-  autherLink: string;
+export interface authorDataTypes extends introCommonTypes {
+  authorLink: string;
 }
 
 // Values
@@ -46,7 +46,7 @@ export const introHeaderValues = {
   type: "",
 };
 
-export const autherDataValues = {
+export const authorDataValues = {
   ...introCommonValues,
-  autherLink: "",
+  authorLink: "",
 };

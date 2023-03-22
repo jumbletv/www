@@ -83,12 +83,12 @@ function InfluencerName({
       {influencerData ? (
         <IntroHeader introHeaderData={influencerData} />
       ) : (
-        <NotFoundMessage message="No Auther Found" />
+        <NotFoundMessage message="No author Found" />
       )}
       {influencerSales ? (
         <HomeProducts productsData={influencerSales} showBtn />
       ) : (
-        <NotFoundMessage message="This Auther has no sales at the moment" />
+        <NotFoundMessage message="This author has no sales at the moment" />
       )}
       <Footer />
     </Fragment>

@@ -12,7 +12,7 @@ import { splitWord } from "helper/splitWord";
 import { articlesByData } from "data/introData";
 import { BrandDetail } from "components/brandDetail/BrandDetail";
 
-function SingleBrand({ poplulateBrandsData, populateAutherData }) {
+function SingleBrand({ poplulateBrandsData, populateauthorData }) {
   const router = useRouter();
 
   const {
@@ -22,13 +22,13 @@ function SingleBrand({ poplulateBrandsData, populateAutherData }) {
   } = router;
 
   const [singleBrand, setSingleBrand] = useState({});
-  const [brandAuther, setBrandAuther] = useState({});
+  const [brandauthor, setBrandauthor] = useState({});
 
   const singleBrandData = poplulateBrandsData?.find(
     (brand) => brand?.link === asPath
   );
-  const brandAutherData = populateAutherData?.find(
-    (auther) => auther.autherLink === singleBrandData?.by
+  const brandauthorData = populateauthorData?.find(
+    (author) => author.authorLink === singleBrandData?.by
   );
 
   const breadcrumbsLinks = [
@@ -46,7 +46,7 @@ function SingleBrand({ poplulateBrandsData, populateAutherData }) {
       <Navbar />
       <Bars barData={homeNavBarData} />
       <Breadcrumbs links={breadcrumbsLinks} />
-      <BrandDetail brandDetail={singleBrandData} auther={brandAutherData} />
+      <BrandDetail brandDetail={singleBrandData} author={brandauthorData} />
       <Footer />
     </Fragment>
   );
@@ -56,7 +56,7 @@ export async function getStaticProps({ locale }) {
   return {
     props: {
       poplulateBrandsData: brandsData,
-      populateAutherData: articlesByData,
+      populateauthorData: articlesByData,
       ...(await serverSideTranslations(locale, [
         "common",
         "brands",

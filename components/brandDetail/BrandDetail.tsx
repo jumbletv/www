@@ -1,4 +1,4 @@
-import { AutherCard } from "components/cards/autherCardItem/AutherCard";
+import { authorCard } from "components/cards/authorCardItem/authorCard";
 import React from "react";
 import Image from "next/image";
 import { ArticleHeading } from "common/articleHeading/ArticleHeading";
@@ -12,34 +12,34 @@ interface BrandDetailType {
   name: string;
 }
 
-type AutherType = {
+type authorType = {
   id: number;
   name: string;
   profilePic: string;
   description: string;
-  autherLink: string;
+  authorLink: string;
   twitterLink: string;
   linkedinLink: string;
 };
 
 type BrandDetailProps = {
   brandDetail: BrandDetailType;
-  auther: AutherType;
+  author: authorType;
 };
 
-export function BrandDetail({ brandDetail, auther }: BrandDetailProps) {
+export function BrandDetail({ brandDetail, author }: BrandDetailProps) {
   const {
     brandDetailWrapper,
     brandDetailContainer,
     brandDateContainer,
     brandImgContainer,
     mainHeading,
-    autherCardWrapper,
+    authorCardWrapper,
   } = styles;
 
   const { image, type, date, name } = brandDetail;
 
-  return auther.autherLink && brandDetail ? (
+  return author.authorLink && brandDetail ? (
     <div className={brandDetailWrapper}>
       <div className={brandDetailContainer}>
         <Image
@@ -53,8 +53,8 @@ export function BrandDetail({ brandDetail, auther }: BrandDetailProps) {
           <p>{type}</p>
         </div>
         <ArticleHeading heading={name} />
-        <div className={autherCardWrapper}>
-          <AutherCard auther={auther} />
+        <div className={authorCardWrapper}>
+          <authorCard author={author} />
         </div>
       </div>
     </div>

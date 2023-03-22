@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./InfluencerText.module.scss";
+import { useTranslation } from "next-i18next";
 
 interface Influencer {
   name: string;
@@ -13,6 +14,7 @@ interface InfluencerTextProps {
 
 export function InfluencerText({ influencer }: InfluencerTextProps): JSX.Element | null {
   const { influencerTextContainer } = styles;
+  const { t } = useTranslation("common");
 
   if (!influencer) {
     return null;
@@ -26,6 +28,7 @@ export function InfluencerText({ influencer }: InfluencerTextProps): JSX.Element
         {name}
       </a>
       <h2>- {followers}</h2>
+      <p>{t("influencer_description")}</p>
     </div>
   );
 }
