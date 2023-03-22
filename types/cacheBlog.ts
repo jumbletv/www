@@ -1,0 +1,31 @@
+export type CacheBlog = {
+    _archived: boolean;
+    _cid: string;
+    _draft: boolean;
+    _id: string;
+    author: string;
+    "created-by": string;
+    "created-on": Date;
+    date: Date;
+    featured: boolean;
+    keywords: string;
+    "main-image": {
+      alt: any;
+      fileId: string;
+      url: string;
+    };
+    "meta-description": string;
+    "meta-title": string;
+    name: string;
+    "post-body": string;
+    "post-summary": string;
+    "published-by": string;
+    "published-on": Date;
+    "related-posts": string[];
+    slug: string;
+    tags: string[];
+    "type-2": string;
+    "updated-by": string;
+    "updated-on": Date;
+    wordcount: number;
+  };

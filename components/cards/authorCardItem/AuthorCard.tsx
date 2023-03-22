@@ -1,15 +1,15 @@
-import { AuthorCardItem } from "components/cardItems/authorCard/authorCardItem";
+import { AuthorCardItem } from "components/cardItems/authorCard/AuthorCardItem";
 import React from "react";
-import { authorType } from "types/authorType";
+import { AuthorType } from "types/authorType";
 
 interface authorCardProps {
-  author: authorType;
+  author: AuthorType;
 }
 
-export function authorCard({ author }: authorCardProps) {
+export function AuthorCard({ author }: authorCardProps) {
   const { id, title, detail, headerImg, authorLink } = author;
   return (
-    <authorCardItem
+    <AuthorCardItem
       key={id}
       authorLink={authorLink}
       title={title}

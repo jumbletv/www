@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./ArticleDetail.module.scss";
-import { authorCard } from "components/cards/authorCardItem/authorCard";
+import { AuthorCard } from "components/cards/authorCardItem/AuthorCard";
 import { ArticleDetailHeader } from "./articleDetailHeader/ArticleDetailHeader";
 import { NotFoundMessage } from "common/notFoundMessage/NotFoundMessage";
 import { articleDetailTypes } from "types/articleList";
@@ -14,7 +14,7 @@ export function ArticleDetail({ articleDetail, author }: articleDetailTypes) {
       <div className={articleDetailContainer}>
         <ArticleDetailHeader articleDetail={articleDetail} />
         <div className={authorCardWrapper}>
-          <authorCard author={author} />
+          <AuthorCard author={author} />
         </div>
       </div>
     </div>

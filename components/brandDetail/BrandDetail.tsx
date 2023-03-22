@@ -1,4 +1,4 @@
-import { authorCard } from "components/cards/authorCardItem/authorCard";
+import { AuthorCard } from "components/cards/authorCardItem/authorCard";
 import React from "react";
 import Image from "next/image";
 import { ArticleHeading } from "common/articleHeading/ArticleHeading";
