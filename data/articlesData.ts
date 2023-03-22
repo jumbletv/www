@@ -25,7 +25,7 @@ export const articlesData = [
       { id: 1, tag: "beauty", url: "/tag/beauty" },
       { id: 2, tag: "eco", url: "/tag/eco" },
       { id: 3, tag: "green", url: "/tag/green" },
-      { id: 4, tag: "beauty industry", url: "/tag/beauty-industry" },
+      { id: 4, tag: "beauty industry", url: "/tag/beauty-industry" }
     ],
   },
   {

@@ -14,14 +14,22 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["*"],
+      "components/*": ["components/*"],
+      "common/*": ["common/*"],
+      "data/*": ["data/*"],
+      "pages/*": ["pages/*"],
+      "styles/*": ["styles/*"],
+      "utils/*": ["utils/*"]}
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     "common/logoBanner/LogoBanner.tsx",
-    "common/influencerText/InfluencerText.tsx"
-  ],
+    "common/influencerText/InfluencerText.tsx", 
+    "data/socialIconData.js"  ],
   "exclude": ["node_modules"]
 }
