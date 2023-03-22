@@ -24,8 +24,12 @@ function SingleBrand({ poplulateBrandsData, populateAutherData }) {
   const [singleBrand, setSingleBrand] = useState({});
   const [brandAuther, setBrandAuther] = useState({});
 
-  const singleBrandData = poplulateBrandsData?.find((brand) => brand?.link === asPath);
-  const brandAutherData = populateAutherData?.find((auther) => auther.autherLink === singleBrandData?.by);
+  const singleBrandData = poplulateBrandsData?.find(
+    (brand) => brand?.link === asPath
+  );
+  const brandAutherData = populateAutherData?.find(
+    (auther) => auther.autherLink === singleBrandData?.by
+  );
 
   const breadcrumbsLinks = [
     { id: 1, title: "Home", link: "/" },

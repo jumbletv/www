@@ -11,10 +11,16 @@ type SocialIconListProps = {
   socialIconData: SocialIcon[];
 };
 
-export function SocialIconList({ socialIconData }: SocialIconListProps) {
-  return socialIconData.map(({ id, link, icon }) => (
-    <SocialIconItem key={id} link={link}>
-      {icon}
-    </SocialIconItem>
-  ));
+export function SocialIconList({
+  socialIconData,
+}: SocialIconListProps): JSX.Element {
+  return (
+    <>
+      {socialIconData.map(({ id, link, icon }) => (
+        <SocialIconItem key={id} link={link}>
+          {icon}
+        </SocialIconItem>
+      ))}
+    </>
+  );
 }
