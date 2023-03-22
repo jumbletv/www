@@ -1,16 +1,16 @@
 import React from "react";
-import Image from "next/image";
-import { ArticleTags } from "components/tags/articleTags/ArticleTags";
+import Image, { StaticImageData } from "next/image";
+import { ArticleTags, Tag } from "components/tags/articleTags/ArticleTags";
 import { ArticleHeading } from "common/articleHeading/ArticleHeading";
 import { useTranslation } from "next-i18next";
 import styles from "./ArticleDetailHeader.module.scss";
 import { NotFoundMessage } from "common/notFoundMessage/NotFoundMessage";
 
 interface ArticleDetail {
-  img: { src: string; blurDataURL: string };
+  img: StaticImageData;
   date: string;
   type: string;
-  tags: string[];
+  tags: Tag[];
   title: string;
 }
 
@@ -19,11 +19,8 @@ interface Props {
 }
 
 export function ArticleDetailHeader({ articleDetail }: Props) {
-  const {
-    articleImgContainer,
-    articleDateContainer,
-    articleDetailTagWrapper,
-  } = styles;
+  const { articleImgContainer, articleDateContainer, articleDetailTagWrapper } =
+    styles;
   const { img, date, type, tags, title } = articleDetail;
   const { t } = useTranslation("articles");
 
@@ -37,6 +34,8 @@ export function ArticleDetailHeader({ articleDetail }: Props) {
           blurDataURL={img.blurDataURL}
           placeholder="blur"
           priority={true}
+          width={100}
+          height={100}
         />
       ) : (
         <NotFoundMessage message="Loading..." />

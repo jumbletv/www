@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 import styles from "./ArticleTags.module.scss";
 
-interface Tag {
+export interface Tag {
   id: string;
   tag: string;
   url: string;

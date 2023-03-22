@@ -17,7 +17,7 @@ import { LogoBanner } from "common/logoBanner/LogoBanner";
 import { articleTypesData } from "data/introData";
 import { IntroHeader } from "components/introHeader/IntroHeader";
 import { splitAndCapitalize, splitWord } from "helper/splitWord";
-import { articleDataTypes } from "types/articleList";
+import { ArticleDataTypes } from "types/articleList";
 import { introHeaderTypes, introHeaderValues } from "types/introHeader";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { breadcrumsTypes } from "types/breadcrumbs";
@@ -27,7 +27,7 @@ function ArticleTypePage({ poplulateArticlesData }) {
   const { locale, query } = router;
   const { type } = query;
 
-  const [articlesByType, setArticlesByType] = useState<articleDataTypes[]>([]);
+  const [articlesByType, setArticlesByType] = useState<ArticleDataTypes[]>([]);
   const [introHeaderData, setIntroHeaderData] =
     useState<introHeaderTypes>(introHeaderValues);
   const [articleType, setArticleType] = useState<string>("");
@@ -47,7 +47,7 @@ function ArticleTypePage({ poplulateArticlesData }) {
 
   const getArticlesByType = () => {
     const articles = [];
-    poplulateArticlesData?.forEach((article: articleDataTypes) => {
+    poplulateArticlesData?.forEach((article: ArticleDataTypes) => {
       if (article.type === articleType) {
         articles.push(article);
       }

@@ -14,7 +14,7 @@ import { ArticleDetail } from "components/articleDetail/ArticleDetail";
 import { useState } from "react";
 import { splitWord } from "helper/splitWord";
 import { articlesByData } from "data/introData";
-import { articleDataTypes, articleDataValues } from "types/articleList";
+import { ArticleDataTypes, articleDataValues } from "types/articleList";
 import { authorDataTypes, authorDataValues } from "types/introHeader";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { breadcrumsTypes } from "types/breadcrumbs";
@@ -29,7 +29,7 @@ function SingleArticle({ poplulateArticlesData, populateauthorData }) {
   } = router;
 
   const [singleArticle, setSingleArticle] =
-    useState<articleDataTypes>(articleDataValues);
+    useState<ArticleDataTypes>(articleDataValues);
   const [articleType, setArticleType] = useState<string>("");
   const [articleauthor, setArticleauthor] =
     useState<authorDataTypes>(authorDataValues);
@@ -40,7 +40,7 @@ function SingleArticle({ poplulateArticlesData, populateauthorData }) {
   }, [locale, router]);
 
   const getSingleBlog = () => {
-    poplulateArticlesData?.forEach((article: articleDataTypes) => {
+    poplulateArticlesData?.forEach((article: ArticleDataTypes) => {
       if (article?.link === asPath) {
         setSingleArticle(article);
         setArticleType(article.type);
@@ -59,11 +59,13 @@ function SingleArticle({ poplulateArticlesData, populateauthorData }) {
     { id: 3, title: `${articleType}`, link: `/type/${articleType}` },
     {
       id: 4,
-      title: splitWord(singlearticle),
+      title: splitWord(singlearticle as string),
       link: `/the-jumblog/${singlearticle}`,
     },
   ];
-  const titleText: string = `JUMBLE | Article ${splitWord(singlearticle)}`;
+  const titleText: string = `JUMBLE | Article ${splitWord(
+    singlearticle as string
+  )}`;
 
   return (
     <Fragment>

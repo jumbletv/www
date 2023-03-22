@@ -1,3 +1,6 @@
+import { StaticImageData } from "next/image";
+import { Tag } from "../components/tags/articleTags/ArticleTags";
+import { AuthorType } from "./authorType";
 import { authorDataTypes } from "./introHeader";
 
 interface tagTypes {
@@ -6,38 +9,38 @@ interface tagTypes {
   url: string;
 }
 
-export interface articleDataTypes {
+export interface ArticleDataTypes {
   id: number;
-  img: string;
+  img: StaticImageData;
   date: string;
   type: string;
   by: string;
   title: string;
   link: string;
   detail: string;
-  tags: Array<tagTypes>;
+  tags: Tag[];
 }
 
 export interface articleListTypes {
-  articlesData: Array<articleDataTypes>;
+  articlesData: Array<ArticleDataTypes>;
   showBtn?: boolean;
 }
 
-export interface articleDetailTypes {
-  articleDetail: articleDataTypes;
-  author: authorDataTypes;
+export interface ArticleDetailTypes {
+  articleDetail: ArticleDataTypes;
+  author: AuthorType;
 }
 
 // Valeus
 
-export const articleDataValues = {
+export const articleDataValues: ArticleDataTypes = {
   id: 1,
-  img: "",
+  img: undefined,
   date: "",
   type: "",
   by: "",
   title: "",
   link: "",
   detail: "",
-  tags: [{ id: 1, tag: "", url: "" }],
+  tags: [],
 };
