@@ -15,6 +15,7 @@ export interface ProductDetail {
   }[];
   price: number;
   deliverDate: string;
+  productLabel: string;
 }
 
 interface Props {
@@ -23,9 +24,7 @@ interface Props {
     productDate: string;
     productBg: string;
     productBgColor: string;
-    productDetail: {
-      productLabel: string;
-    };
+    productDetail: ProductDetail;
   };
   influencerData: {
     title: string;
