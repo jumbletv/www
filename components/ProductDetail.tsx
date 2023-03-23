@@ -6,6 +6,17 @@ import Link from "next/link";
 import { ProductInfo } from "components/ProductInfo";
 import { InfluencerInfo } from "components/InfluencerInfo";
 
+export interface ProductDetail {
+  productPics: string[];
+  aboutProduct: {
+    id: string;
+    heading?: string;
+    description: string;
+  }[];
+  price: number;
+  deliverDate: string;
+}
+
 interface Props {
   product: {
     productTitle: string;
@@ -38,9 +49,9 @@ export function ProductDetail({ product, influencerData }: Props) {
     productDate,
     productBg,
     productBgColor,
-    productDetail: { productLabel },
+    productDetail,
   } = product;
-  const { productDetail } = product;
+  const { productLabel } = productDetail;
   const { title, headerImg, influencerLink } = influencerData;
 
   return (

@@ -1,5 +1,6 @@
-import { SocialIconItem } from "components/SocialIconItem";
+import Link from "next/link";
 import React from "react";
+import styles from "./SocialIconList.module.scss";
 
 type SocialIcon = {
   id: number;
@@ -11,15 +12,15 @@ type SocialIconListProps = {
   socialIconData: SocialIcon[];
 };
 
-export function SocialIconList({
-  socialIconData,
-}: SocialIconListProps): JSX.Element {
+export function SocialIconList({ socialIconData }: SocialIconListProps) {
+  const { socialIconItemContainer } = styles;
+
   return (
     <>
       {socialIconData.map(({ id, link, icon }) => (
-        <SocialIconItem key={id} link={link}>
+        <Link key={id} href={link} className={socialIconItemContainer}>
           {icon}
-        </SocialIconItem>
+        </Link>
       ))}
     </>
   );

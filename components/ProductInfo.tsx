@@ -3,18 +3,10 @@ import React, { Fragment } from "react";
 import styles from "./ProductInfo.module.scss";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
+import { ProductDetail } from "./ProductDetail";
 
 interface ProductInfoProps {
-  productDetail: {
-    productPics: string[];
-    aboutProduct: {
-      id: string;
-      heading?: string;
-      description: string;
-    }[];
-    price: number;
-    deliverDate: string;
-  };
+  productDetail: ProductDetail;
   productBg: string;
   productBgColor: string;
 }
