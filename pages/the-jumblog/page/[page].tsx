@@ -1,18 +1,18 @@
 import Head from "next/head";
-import { Navbar } from "layout/navbar/Navbar";
-import { ArticlesList } from "components/articles/articlesList/ArticlesList";
+import { Navbar } from "layout/Navbar";
+import { ArticlesList } from "components/ArticlesList";
 import { articlesData } from "data/articlesData";
-import { Footer } from "layout/footer/Footer";
+import { Footer } from "layout/Footer";
 import { Fragment, useEffect, useState } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
-import { Bars } from "common/bars/Bars";
+import { Bars } from "common/Bars";
 import { jumblogNavBarData } from "data/barData";
-import { Breadcrumbs } from "common/breadcrumbs/Breadcrumbs";
-import { Pagination } from "components/pagination/Pagination";
-import JumblogMenu from "components/menus/jumblogMenu/JumblogMenu";
+import { Breadcrumbs } from "common/Breadcrumbs";
+import { Pagination } from "components/Pagination";
+import JumblogMenu from "components/JumblogMenu";
 import { itemsPerPage } from "data/pagination";
-import { NotFoundMessage } from "common/notFoundMessage/NotFoundMessage";
+import { NotFoundMessage } from "common/NotFoundMessage";
 
 interface Props {
   poplulateArticlesData: Array<any>;

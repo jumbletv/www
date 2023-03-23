@@ -1,13 +1,13 @@
 import Head from "next/head";
-import { Navbar } from "layout/navbar/Navbar";
-import { Header } from "layout/header/Header";
+import { Navbar } from "layout/Navbar";
+import { Header } from "layout/Header";
 import { HeaderText } from "common/headerText/HeaderText";
 import { Banner } from "common/banner/Banner";
 import HomeProducts from "components/products/homeProducts/HomeProducts";
 import { TextList } from "common/textList/TextList";
 import { ArticlesList } from "components/articles/articlesList/ArticlesList";
 import { articlesData } from "data/articlesData";
-import { Footer } from "layout/footer/Footer";
+import { Footer } from "layout/Footer";
 import { supportData } from "data/supportData";
 import { faqData } from "data/faqData";
 import { Fragment } from "react";

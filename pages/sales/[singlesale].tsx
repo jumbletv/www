@@ -1,22 +1,22 @@
 import Head from "next/head";
-import { Navbar } from "layout/navbar/Navbar";
-import { Banner } from "common/banner/Banner";
-import { TextList } from "common/textList/TextList";
-import { ArticlesList } from "components/articles/articlesList/ArticlesList";
+import { Navbar } from "layout/Navbar";
+import { Banner } from "common/Banner";
+import { TextList } from "common/TextList";
+import { ArticlesList } from "components/ArticlesList";
 import { ProductDetail } from "components/productDetail/ProductDetail";
 import { articlesData } from "data/articlesData";
-import { Footer } from "layout/footer/Footer";
+import { Footer } from "layout/Footer";
 import { supportData } from "data/supportData";
 import { faqData } from "data/faqData";
 import { Fragment, useEffect, useState } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
-import { Bars } from "common/bars/Bars";
+import { Bars } from "common/Bars";
 import { jumblogNavBarData } from "data/barData";
-import { Breadcrumbs } from "common/breadcrumbs/Breadcrumbs";
+import { Breadcrumbs } from "common/Breadcrumbs";
 import { salesData, influencerData } from "data/products";
-import { splitWord, splitAndCapitalize } from "helper/splitWord";
-import { NotFoundMessage } from "common/notFoundMessage/NotFoundMessage";
+import { splitWord, splitAndCapitalize } from "helper/stringHelpers";
+import { NotFoundMessage } from "common/NotFoundMessage";
 
 interface SingleSaleProps {
   poplulateArticlesData: any[];

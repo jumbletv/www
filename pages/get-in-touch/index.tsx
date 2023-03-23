@@ -1,12 +1,12 @@
 import Head from "next/head";
-import { Navbar } from "layout/navbar/Navbar";
-import { Footer } from "layout/footer/Footer";
+import { Navbar } from "layout/Navbar";
+import { Footer } from "layout/Footer";
 import { Fragment } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { Bars } from "common/bars/Bars";
+import { Bars } from "common/Bars";
 import { homeNavBarData } from "data/barData";
-import { Breadcrumbs } from "common/breadcrumbs/Breadcrumbs";
-import { Contact } from "components/contact/Contact";
+import { Breadcrumbs } from "common/Breadcrumbs";
+import { Contact } from "components/Contact";
 
 interface Props {
   locale: string;

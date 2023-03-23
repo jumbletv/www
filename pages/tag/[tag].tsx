@@ -1,17 +1,17 @@
 import Head from "next/head";
-import { Navbar } from "layout/navbar/Navbar";
-import { ArticlesList } from "components/articles/articlesList/ArticlesList";
+import { Navbar } from "layout/Navbar";
+import { ArticlesList } from "components/ArticlesList";
 import { articlesData } from "data/articlesData";
-import { Footer } from "layout/footer/Footer";
+import { Footer } from "layout/Footer";
 import { Fragment, useEffect, useState } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
-import { Bars } from "common/bars/Bars";
+import { Bars } from "common/Bars";
 import { homeNavBarData } from "data/barData";
-import { Breadcrumbs } from "common/breadcrumbs/Breadcrumbs";
-import { Header } from "layout/header/Header";
-import { LogoBanner } from "common/logoBanner/LogoBanner";
-import { splitWord, splitAndCapitalize } from "helper/splitWord";
+import { Breadcrumbs } from "common/Breadcrumbs";
+import { Header } from "layout/Header";
+import { LogoBanner } from "common/LogoBanner";
+import { splitWord, splitAndCapitalize } from "helper/stringHelpers";
 import type { GetStaticPaths, GetStaticProps } from "next";
 
 interface TagProps {

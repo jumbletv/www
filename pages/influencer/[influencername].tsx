@@ -1,17 +1,17 @@
 import Head from "next/head";
-import { Navbar } from "layout/navbar/Navbar";
-import HomeProducts from "components/products/homeProducts/HomeProducts";
-import { Footer } from "layout/footer/Footer";
+import { Navbar } from "layout/Navbar";
+import HomeProducts from "components/HomeProducts";
+import { Footer } from "layout/Footer";
 import { Fragment, useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { Bars } from "common/bars/Bars";
+import { Bars } from "common/Bars";
 import { jumblogNavBarData } from "data/barData";
-import { Breadcrumbs } from "common/breadcrumbs/Breadcrumbs";
+import { Breadcrumbs } from "common/Breadcrumbs";
 import { salesData, influencerData } from "data/products";
-import { splitWord, splitAndCapitalize } from "helper/splitWord";
-import { Header } from "layout/header/Header";
-import { IntroHeader } from "components/introHeader/IntroHeader";
-import { NotFoundMessage } from "common/notFoundMessage/NotFoundMessage";
+import { splitWord, splitAndCapitalize } from "helper/stringHelpers";
+import { Header } from "layout/Header";
+import { IntroHeader } from "components/IntroHeader";
+import { NotFoundMessage } from "common/NotFoundMessage";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 

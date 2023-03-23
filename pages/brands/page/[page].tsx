@@ -1,15 +1,15 @@
 import Head from "next/head";
-import { Navbar } from "layout/navbar/Navbar";
-import { Footer } from "layout/footer/Footer";
+import { Navbar } from "layout/Navbar";
+import { Footer } from "layout/Footer";
 import { Fragment, useEffect, useState } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
-import { Bars } from "common/bars/Bars";
+import { Bars } from "common/Bars";
 import { jumblogNavBarData } from "data/barData";
-import { Pagination } from "components/pagination/Pagination";
+import { Pagination } from "components/Pagination";
 import { brandsPerPage } from "data/pagination";
-import { Header } from "layout/header/Header";
-import { Brands } from "components/brands/Brands";
+import { Header } from "layout/Header";
+import { Brands } from "components/Brands";
 import { brandsData } from "data/brands";
 
 interface Props {

@@ -1,8 +1,8 @@
 import Head from "next/head";
-import { Navbar } from "layout/navbar/Navbar";
-import { Header } from "layout/header/Header";
+import { Navbar } from "layout/Navbar";
+import { Header } from "layout/Header";
 import HomeProducts from "components/products/homeProducts/HomeProducts";
-import { Footer } from "layout/footer/Footer";
+import { Footer } from "layout/Footer";
 import { Fragment, useState } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useEffect } from "react";

@@ -1,68 +1,45 @@
 import Head from "next/head";
-import { Navbar } from "layout/navbar/Navbar";
-import { ArticlesList } from "components/articles/articlesList/ArticlesList";
+import { Navbar } from "layout/Navbar";
+import { ArticlesList } from "components/ArticlesList";
 import { articlesData, ArticleData } from "data/articlesData";
-import { Footer } from "layout/footer/Footer";
-import { Fragment, useEffect, useState } from "react";
+import { Footer } from "layout/Footer";
+import { Fragment } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
-import { Bars } from "common/bars/Bars";
+import { Bars } from "common/Bars";
 import { homeNavBarData, BarData } from "data/barData";
-import { Breadcrumbs, BreadcrumbLink } from "common/breadcrumbs/Breadcrumbs";
-import { Header } from "layout/header/Header";
-import { LogoBanner } from "common/logoBanner/LogoBanner";
-import { IntroHeaderData, IntroHeader } from "components/introHeader/IntroHeader";
+import { Breadcrumbs, BreadcrumbLink } from "common/Breadcrumbs";
+import { Header } from "layout/Header";
+import { LogoBanner } from "common/LogoBanner";
+import { IntroHeaderData, IntroHeader } from "components/IntroHeader";
 import { articlesByData, IntroData } from "data/introData";
-import { splitWord, splitAndCapitalize } from "helper/splitWord";
+import { splitWord, splitAndCapitalize } from "helper/stringHelpers";
 
-
-interface authorProps {
-  poplulateArticlesData: ArticleData[];
+interface AuthorProps {
+  populateArticlesData: ArticleData[];
+  introHeaderData: IntroHeaderData;
+  author: string;
 }
 
-function author({ poplulateArticlesData }: authorProps) {
+function Author({ populateArticlesData, introHeaderData, author }: AuthorProps) {
   const router = useRouter();
-  const { locale, query, asPath } = router;
-  const { author } = query;
+  const { locale, query } = router;
 
-  const [articlesByauthor, setArticlesByauthor] = useState<ArticleData[]>([]);
-  const [introHeaderData, setIntroHeaderData] = useState<IntroHeaderData>({});
-
-  useEffect(() => {
-    getArticlesByAuthor();
-    getTypeHeaderData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [locale, author]);
-
-  const getArticlesByAuthor = () => {
-    const articles: ArticleData[] = [];
-    poplulateArticlesData?.forEach((article: ArticleData) => {
-      if (article.by === asPath) {
-        articles.push(article);
-      }
-      setArticlesByauthor(articles);
-    });
-  };
-
-  const getTypeHeaderData = () => {
-    articlesByData.forEach((article: IntroData) => {
-      if (article.authorLink === asPath) {
-        setIntroHeaderData(article);
-      }
-    });
-  };
+  const articlesByAuthor = populateArticlesData.filter(
+    (article) => article.by === author
+  );
 
   const breadcrumbsLinks: BreadcrumbLink[] = [
     { id: 1, title: "Home", link: "/" },
     { id: 2, title: "The Jumblog", link: "/the-jumblog/page/1" },
     {
       id: 3,
-      title: `Article by ${splitWord(author as string)}`,
+      title: `Article by ${splitWord(author)}`,
       link: `/type/${author}`,
     },
   ];
 
-  const titleText = `JUMBLE | Articles by ${splitAndCapitalize(author as string)}`;
+  const titleText = `JUMBLE | Articles by ${splitAndCapitalize(author)}`;
 
   return (
     <Fragment>
@@ -75,16 +52,21 @@ function author({ poplulateArticlesData }: authorProps) {
       <Header headerText="THE JUMBLOG" />
       <LogoBanner />
       <IntroHeader introHeaderData={introHeaderData} />
-      <ArticlesList articlesData={articlesByauthor} />
+      <ArticlesList articlesData={articlesByAuthor} />
       <Footer />
     </Fragment>
   );
 }
 
-export async function getStaticProps({ locale }: { locale: string }) {
+export async function getStaticProps({ locale, params }: { locale: string; params: { author: string } }) {
+  const author = params.author;
+  const introHeaderData = articlesByData.find((article) => article.authorLink === author) || {};
+
   return {
     props: {
-      poplulateArticlesData: articlesData,
+      populateArticlesData: articlesData,
+      introHeaderData,
+      author,
       ...(await serverSideTranslations(locale, [
         "common",
         "articles",
@@ -96,8 +78,7 @@ export async function getStaticProps({ locale }: { locale: string }) {
 }
 
 export async function getStaticPaths() {
-  let authorPaths = [];
-  articlesData.forEach((blog) => blog.by);
+  const authorPaths = articlesData.map((blog) => ({ params: { author: blog.by } }));
 
   return {
     paths: authorPaths,
@@ -105,4 +86,4 @@ export async function getStaticPaths() {
   };
 }
 
-export default author;
+export default Author;

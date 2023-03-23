@@ -1,15 +1,15 @@
 import Head from "next/head";
-import { Navbar } from "layout/navbar/Navbar";
-import { Footer } from "layout/footer/Footer";
+import { Navbar } from "layout/Navbar";
+import { Footer } from "layout/Footer";
 import { Fragment } from "react";
 import { GetStaticProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { Bars } from "common/bars/Bars";
+import { Bars } from "common/Bars";
 import { jumblogNavBarData } from "data/barData";
-import { Breadcrumbs } from "common/breadcrumbs/Breadcrumbs";
-import { MorePages } from "common/morePages/MorePages";
-import { Header } from "layout/header/Header";
-import { PrivacyDetail } from "components/privacyDetail/PrivacyDetail";
+import { Breadcrumbs } from "common/Breadcrumbs";
+import { MorePages } from "common/MorePages";
+import { Header } from "layout/Header";
+import { PrivacyDetail } from "components/PrivacyDetail";
 
 interface PrivacyPolicyProps {
   locale: string;

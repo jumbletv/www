@@ -1,16 +1,16 @@
 import Head from "next/head";
-import { Navbar } from "layout/navbar/Navbar";
+import { Navbar } from "layout/Navbar";
 import { brandsData } from "data/brands";
-import { Footer } from "layout/footer/Footer";
+import { Footer } from "layout/Footer";
 import { Fragment, useState } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
-import { Bars } from "common/bars/Bars";
+import { Bars } from "common/Bars";
 import { homeNavBarData } from "data/barData";
-import { Breadcrumbs } from "common/breadcrumbs/Breadcrumbs";
-import { splitWord } from "helper/splitWord";
+import { Breadcrumbs } from "common/Breadcrumbs";
+import { splitWord } from "helper/stringHelpers";
 import { articlesByData } from "data/introData";
-import { BrandDetail } from "components/brandDetail/BrandDetail";
+import { BrandDetail } from "components/BrandDetail";
 
 function SingleBrand({ poplulateBrandsData, populateauthorData }) {
   const router = useRouter();

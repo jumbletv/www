@@ -19,6 +19,7 @@
       "@/*": ["*"],
       "components/*": ["components/*"],
       "common/*": ["common/*"],
+      "layout//*": ["layout/*"],
       "data/*": ["data/*"],
       "pages/*": ["pages/*"],
       "styles/*": ["styles/*"],
@@ -28,8 +29,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "common/logoBanner/LogoBanner.tsx",
-    "common/influencerText/InfluencerText.tsx", 
+    "common/LogoBanner.tsx",
+    "common/InfluencerText.tsx", 
     "data/socialIconData.js"  ],
   "exclude": ["node_modules"]
 }
