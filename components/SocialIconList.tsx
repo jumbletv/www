@@ -2,10 +2,10 @@ import Link from "next/link";
 import React from "react";
 import styles from "./SocialIconList.module.scss";
 
-type SocialIcon = {
+export type SocialIcon = {
   id: number;
   link: string;
-  icon: React.ReactNode;
+  icon: JSX.Element;
 };
 
 type SocialIconListProps = {
