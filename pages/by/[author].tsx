@@ -15,6 +15,7 @@ import { IntroHeaderData, IntroHeader } from "components/introHeader/IntroHeader
 import { articlesByData, IntroData } from "data/introData";
 import { splitWord, splitAndCapitalize } from "helper/splitWord";
 
+
 interface authorProps {
   poplulateArticlesData: ArticleData[];
 }
@@ -28,12 +29,12 @@ function author({ poplulateArticlesData }: authorProps) {
   const [introHeaderData, setIntroHeaderData] = useState<IntroHeaderData>({});
 
   useEffect(() => {
-    getArticlesByauthor();
+    getArticlesByAuthor();
     getTypeHeaderData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locale, author]);
 
-  const getArticlesByauthor = () => {
+  const getArticlesByAuthor = () => {
     const articles: ArticleData[] = [];
     poplulateArticlesData?.forEach((article: ArticleData) => {
       if (article.by === asPath) {

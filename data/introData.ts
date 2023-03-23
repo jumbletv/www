@@ -69,6 +69,14 @@ export const articleTypesData = [
   },
 ];
 
+export type IntroData = {
+  id: number;
+  headerImg: string;
+  authorLink: string;
+  title: string;
+  detail: string;
+};
+
 export const articlesByData = [
   {
     id: 1,

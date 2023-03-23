@@ -2,16 +2,16 @@ import { IntroHeaderItem } from "components/introHeaderItem/IntroHeaderItem";
 import React from "react";
 import styles from "./IntroHeader.module.scss";
 
-interface IntroHeaderProps {
+export type IntroHeaderData = {
   introHeaderData: {
     id: number;
-    headerImg: string;
+    headerImg: any;
     title: string;
     detail: string;
   };
 }
 
-export function IntroHeader({ introHeaderData }: IntroHeaderProps) {
+export function IntroHeader({ introHeaderData }: IntroHeaderData) {
   const { introHeaderContainer } = styles;
   const { id, headerImg, title, detail } = introHeaderData;
 

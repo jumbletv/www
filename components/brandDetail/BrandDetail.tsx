@@ -12,9 +12,12 @@ interface BrandDetailType {
   name: string;
 }
 
-type authorType = {
+interface authorType {
   id: number;
   name: string;
+  title: string;
+  headerImg: string;
+  detail: string;
   profilePic: string;
   description: string;
   authorLink: string;
@@ -54,7 +57,7 @@ export function BrandDetail({ brandDetail, author }: BrandDetailProps) {
         </div>
         <ArticleHeading heading={name} />
         <div className={authorCardWrapper}>
-          <authorCard author={author} />
+          <AuthorCard author={author} />
         </div>
       </div>
     </div>

@@ -11,6 +11,18 @@ import articleImg10 from "../assets/articles/article-10.webp";
 import articleImg11 from "../assets/articles/article-11.jpeg";
 import articleImg12 from "../assets/articles/article-12.jpeg";
 
+export type ArticleData = {
+  id: number;
+  img: string;
+  date: string;
+  type: string;
+  by: string;
+  title: string;
+  link: string;
+  detail: string;
+  tags: { id: number; tag: string; url: string }[];
+};
+
 export const articlesData = [
   {
     id: 1,

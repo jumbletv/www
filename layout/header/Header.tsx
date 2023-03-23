@@ -7,11 +7,11 @@ import { headerTypes } from "types/header";
 
 interface HeaderProps {
   headerText: string;
-  locale: string;
-  shrink: boolean;
+  locale?: string;
+  shrink?: boolean;
 }
 
-export function Header({ headerText, locale, shrink }: HeaderProps): JSX.Element {
+export function Header({ headerText, locale = 'en', shrink = false }: HeaderProps): JSX.Element {
   const { headerContainer, logoBox } = styles;
 
   const { t } = useTranslation("common");

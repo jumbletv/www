@@ -3,14 +3,14 @@ import styles from "./Breadcrumbs.module.scss";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 
-interface LinkProps {
+export type BreadcrumbLink = {
   id: number;
   link: string;
   title: string;
 }
 
 interface BreadcrumbsProps {
-  links?: LinkProps[];
+  links?: BreadcrumbLink[];
 }
 
 export function Breadcrumbs({ links }: BreadcrumbsProps) {
