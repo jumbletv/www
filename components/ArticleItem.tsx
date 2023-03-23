@@ -3,7 +3,7 @@ import styles from "./ArticleItem.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
-import { ArticleTags } from "components/ArticleTags";
+import { ArticleTags, Tag } from "components/ArticleTags";
 import { ArticleHeading } from "common/ArticleHeading";
 
 interface Props {
@@ -13,7 +13,7 @@ interface Props {
   type: string;
   title: string;
   detail: string;
-  tags: string[];
+  tags: Tag[];
   link: string;
 }
 
