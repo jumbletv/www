@@ -1,10 +1,10 @@
 import Head from "next/head";
 import { Navbar } from "layout/Navbar";
 import { Header } from "layout/Header";
-import { HeaderText } from "common/headerText/HeaderText";
-import { Banner } from "common/banner/Banner";
+import { HeaderText } from "common/HeaderText";
+import { Banner } from "common/Banner";
 import HomeProducts from "components/products/homeProducts/HomeProducts";
-import { TextList } from "common/textList/TextList";
+import { TextList } from "common/TextList";
 import { ArticlesList } from "components/articles/articlesList/ArticlesList";
 import { articlesData } from "data/articlesData";
 import { Footer } from "layout/Footer";
@@ -15,10 +15,10 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { Bars } from "common/bars/Bars";
+import { Bars } from "common/Bars";
 import { homeNavBarData } from "data/barData";
 import { salesData } from "data/products";
-import { NotFoundMessage } from "common/notFoundMessage/NotFoundMessage";
+import { NotFoundMessage } from "common/NotFoundMessage";
 
 function Home({ poplulateArticlesData, populateProductsData }) {
   const router = useRouter();

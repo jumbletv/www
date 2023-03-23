@@ -32,7 +32,8 @@
     "**/*.tsx",
     "common/LogoBanner.tsx",
     "common/InfluencerText.tsx",
-    "data/socialIconData.ts"
+    "data/socialIconData.ts",
+    "pages/index.js"
   ],
   "exclude": ["node_modules"]
 }

@@ -21,9 +21,9 @@ type Product = {
 type Props = {
   productsData: Product[];
   showBtn: boolean;
-}
+};
 
-function HomeProducts({ productsData, showBtn }: Props) {
+export function HomeProducts({ productsData, showBtn }: Props) {
   const { homeProductsWrapper, homeProductsContainer } = styles;
 
   return (
@@ -37,5 +37,3 @@ function HomeProducts({ productsData, showBtn }: Props) {
     </div>
   );
 }
-
-export default HomeProducts;
