@@ -1,4 +1,4 @@
-export type CacheBlog = {
+export type FAQ = {
     _archived: boolean;
     _cid: string;
     _draft: boolean;
@@ -7,25 +7,20 @@ export type CacheBlog = {
     "created-by": string;
     "created-on": Date;
     date: Date;
+    answer: string;
+    category: string;
     featured: boolean;
-    keywords: string;
-    "main-image": {
-      alt: any;
-      fileId: string;
-      url: string;
-    };
+    "meta-answer": string;
     "meta-description": string;
     "meta-title": string;
     name: string;
-    "post-body": string;
-    "post-summary": string;
+    number: number;
     "published-by": string;
     "published-on": Date;
-    "related-posts": string[];
+    question: string;
     slug: string;
     tags: string[];
-    "type-2": string;
+    type: string;
     "updated-by": string;
     "updated-on": Date;
-    wordcount: number;
-  };
+  }

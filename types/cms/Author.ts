@@ -1,4 +1,4 @@
-export type CacheAuthor = {
+export type Author = {
     _archived: boolean;
     _cid: string;
     _draft: boolean;

@@ -1,4 +1,4 @@
-export type CacheInfluencer = {
+export type Tag = {
     _archived: boolean;
     _cid: string;
     _draft: boolean;
@@ -7,23 +7,17 @@ export type CacheInfluencer = {
     'created-by': string;
     'created-on': Date;
     date: Date;
-    bio: string;
-    featured: boolean;
-    image: {
+    description: string;
+    icon: {
       alt: string;
       fileId: string;
       url: string;
     };
-    'meta-description': string;
     name: string;
-    profilPic: {
-      alt: unknown;
-      fileId: string;
-      url: string;
-    };
     'published-by': string;
     'published-on': Date;
     slug: string;
     'updated-by': string;
     'updated-on': Date;
   }
+  

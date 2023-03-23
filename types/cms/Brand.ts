@@ -1,4 +1,4 @@
-export type CacheBrand = {
+export type Brand = {
     _archived: boolean;
     _cid: string;
     _draft: boolean;

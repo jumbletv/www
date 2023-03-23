@@ -1,4 +1,4 @@
-export type CacheSale = {
+export type Sale = {
     _archived: boolean;
     _cid: string;
     _draft: boolean;
