@@ -1,13 +1,13 @@
 import styles from "./ProductDetail.module.scss";
 import Logo2 from "assets/logos/logo-2.svg";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
 import { ProductInfo } from "components/ProductInfo";
 import { InfluencerInfo } from "components/InfluencerInfo";
 
 export interface ProductDetail {
-  productPics: string[];
+  productPics: { id: number; pic: StaticImageData }[];
   aboutProduct: {
     id: string;
     heading?: string;
@@ -18,19 +18,23 @@ export interface ProductDetail {
   productLabel: string;
 }
 
+export interface InfluencerData {
+  title: string;
+  headerImg: string;
+  detail: string;
+  secondImg?: string;
+  influencerLink?: string;
+}
+
 interface Props {
   product: {
     productTitle: string;
     productDate: string;
-    productBg: string;
+    productBg: StaticImageData;
     productBgColor: string;
     productDetail: ProductDetail;
   };
-  influencerData: {
-    title: string;
-    headerImg: string;
-    influencerLink: string;
-  };
+  influencerData: InfluencerData;
 }
 
 export function ProductDetail({ product, influencerData }: Props) {

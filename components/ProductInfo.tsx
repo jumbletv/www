@@ -1,13 +1,14 @@
-import { ProductSlider } from "common/Carousel";
+import { ProductSlider } from "common/ProductSlider";
 import React, { Fragment } from "react";
 import styles from "./ProductInfo.module.scss";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import { ProductDetail } from "./ProductDetail";
+import { StaticImageData } from "next/image";
 
 interface ProductInfoProps {
   productDetail: ProductDetail;
-  productBg: string;
+  productBg: StaticImageData;
   productBgColor: string;
 }
 
