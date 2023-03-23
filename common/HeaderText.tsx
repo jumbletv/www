@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./HeaderText.module.scss";
-import commonStyles from "../../styles/Common.module.scss";
+import commonStyles from "../styles/Common.module.scss";
 import { useTranslation } from "next-i18next";
 
 export function HeaderText(): JSX.Element {

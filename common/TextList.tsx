@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./TextList.module.scss";
-import TriagleArrow from "../../assets/icons/triangle-arrow.svg";
+import TriagleArrow from "../assets/icons/triangle-arrow.svg";
 import Image from "next/image";
 import { CircleBtn } from "./CircleBtn";
 import { useTranslation } from "next-i18next";
