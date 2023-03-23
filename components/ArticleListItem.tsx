@@ -1,8 +1,20 @@
 import React from "react";
 import styles from "components/ArticleListItem.module.scss";
 
+export interface ArticleListItem {
+  title: string;
+  detail: string;
+  id: number;
+  thumbnail: {
+    blurDataURL: string;
+    src: string;
+  };
+  category: string;
+  date: string;
+}
+
 interface ArticleListItemProps {
-  listItem: string;
+  listItem: ArticleListItem;
 }
 
 export function ArticleListItem({ listItem }: ArticleListItemProps) {

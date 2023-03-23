@@ -6,17 +6,7 @@ interface ListProps {
   list: {
     lists: {
       id: number;
-      listItem: {
-        title: string;
-        detail: string;
-        id: number;
-        thumbnail: {
-          blurDataURL: string;
-          src: string;
-        };
-        category: string;
-        date: string;
-      };
+      listItem: ArticleListItem;
     }[];
     listHeading: string;
   };

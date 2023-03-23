@@ -23,14 +23,16 @@
       "data/*": ["data/*"],
       "pages/*": ["pages/*"],
       "styles/*": ["styles/*"],
-      "utils/*": ["utils/*"]}
+      "utils/*": ["utils/*"]
+    }
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     "common/LogoBanner.tsx",
-    "common/InfluencerText.tsx", 
-    "data/socialIconData.js"  ],
+    "common/InfluencerText.tsx",
+    "data/socialIconData.ts"
+  ],
   "exclude": ["node_modules"]
 }
