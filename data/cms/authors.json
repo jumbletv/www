@@ -1,0 +1,87 @@
+[
+	{
+		"_archived": false,
+		"_cid": "60740e8ff21778628df26626",
+		"_draft": false,
+		"_id": "60740f236cf6c03a9ddadaa2",
+		"avatar": {
+			"alt": null,
+			"fileId": "60815680d3687fcd7ec7fd4c",
+			"url": "https://uploads-ssl.webflow.com/606666aea1b1202a0508dc39/60815680d3687fcd7ec7fd4c_606fac8da5a20c6e3e6404af_IMG_0386.jpeg"
+		},
+		"bio": "Paris, Tech, Fashion, Soccer, Data, Infosec, Interpretative dancing of quantum physics are my main hobbies.",
+		"by": "Paris, Tech, Soccer, Data, Infosec, Interpretative dancing of quantum physics are my main hobbies.",
+		"created-by": "Person_5e788e2ee7efaf5f54a407a9",
+		"created-on": "2021-04-12T09:13:07.743Z",
+		"name": "Laurent Fabre",
+		"published-by": "Person_5f8ecd45c766b50677a9dcf9",
+		"published-on": "2021-04-22T10:57:04.975Z",
+		"quote": "\"Have you tried turning dark energy off and on again?\"",
+		"slug": "laurent-fabre",
+		"updated-by": "Person_5f8ecd45c766b50677a9dcf9",
+		"updated-on": "2021-04-22T10:57:04.975Z"
+	},
+	{
+		"_archived": false,
+		"_cid": "60740e8ff21778628df26626",
+		"_draft": false,
+		"_id": "60740f23ed8dc65637d65f83",
+		"avatar": {
+			"alt": null,
+			"fileId": "608156880aa70bc65c8e317e",
+			"url": "https://uploads-ssl.webflow.com/606666aea1b1202a0508dc39/608156880aa70bc65c8e317e_606fac85aab364465995369b_image-4.jpeg"
+		},
+		"bio": "Natalya was born in Moscow. She later worked for top marketing agencies and tech companies in the U.S. She now lives in Paris.",
+		"by": "Natalya was born in Moscow. She later worked for top marketing agencies and tech companies in the U.S. She now lives in Paris.",
+		"created-by": "Person_5e788e2ee7efaf5f54a407a9",
+		"created-on": "2021-04-12T09:13:07.248Z",
+		"name": "Natalya Shayk",
+		"published-by": "Person_5f8ecd45c766b50677a9dcf9",
+		"published-on": "2021-04-22T10:57:12.296Z",
+		"slug": "natalya-shayk",
+		"updated-by": "Person_5f8ecd45c766b50677a9dcf9",
+		"updated-on": "2021-04-22T10:57:12.296Z"
+	},
+	{
+		"_archived": false,
+		"_cid": "60740e8ff21778628df26626",
+		"_draft": false,
+		"_id": "60740f22ed8dc64b4bd65f7f",
+		"avatar": {
+			"alt": null,
+			"fileId": "6081568d90349604866ea03c",
+			"url": "https://uploads-ssl.webflow.com/606666aea1b1202a0508dc39/6081568d90349604866ea03c_606fac7e686d0c517b92a856_1596990404335.jpeg"
+		},
+		"bio": "Izabella is a seasoned data scientist with 4+ years of marketing and data analytics experience in the fashion industry. She has a verifiable history of contributing directly to company growth and expansion throughout her career. She is progressive, driven and down-to-earth.",
+		"by": "Izabella is a seasoned data scientist with 4+ years of marketing and data analytics experience in the fashion industry.",
+		"created-by": "Person_5e788e2ee7efaf5f54a407a9",
+		"created-on": "2021-04-12T09:13:06.650Z",
+		"name": "Izabella Makukha",
+		"published-by": "Person_5f8ecd45c766b50677a9dcf9",
+		"published-on": "2021-04-22T10:57:17.404Z",
+		"slug": "izabella-makukha",
+		"updated-by": "Person_5f8ecd45c766b50677a9dcf9",
+		"updated-on": "2021-04-22T10:57:17.404Z"
+	},
+	{
+		"_archived": false,
+		"_cid": "60740e8ff21778628df26626",
+		"_draft": false,
+		"_id": "60740f2280ced74507dffbb0",
+		"avatar": {
+			"alt": null,
+			"fileId": "6081569523874f2928e56edd",
+			"url": "https://uploads-ssl.webflow.com/606666aea1b1202a0508dc39/6081569523874f2928e56edd_606fac78141208826049a2e5_119621097_128778225277904_1511869073470976021_n.jpeg"
+		},
+		"bio": "Anna Shvalyuk is a Russian girl who studied in England and Aix-en-Provence and is currently exploring her chapter in Paris. She has graduated as an International Management Bachelor, building her professional experience in different spheres.",
+		"by": "Anna was born in Moscow. Currently lives in Paris. Studied at ISG Business School. Has a scholarship Paris 2020 / 2021 at university ISG Business School.",
+		"created-by": "Person_5e788e2ee7efaf5f54a407a9",
+		"created-on": "2021-04-12T09:13:06.179Z",
+		"name": "Anna Shvalyuk",
+		"published-by": "Person_6054dd0c26316243e358337e",
+		"published-on": "2021-06-01T08:33:01.203Z",
+		"slug": "anna-shvalyuk",
+		"updated-by": "Person_6054dd0c26316243e358337e",
+		"updated-on": "2021-06-01T08:33:01.203Z"
+	}
+]

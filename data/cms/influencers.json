@@ -1,0 +1,57 @@
+[
+	{
+		"_archived": false,
+		"_cid": "607423c3ed8dc6260bd6b611",
+		"_draft": false,
+		"_id": "6357e7330cfd2756308a99cb",
+		"bio": "Martine Pigassou, la fondatrice de Modologie présente 3 produits pour prendre soin de vos visages ! Leurs textures sublimatrices permettent une gestuelle riche et des soins d’une qualité extraordinaire. Modologie est une marque engagée et responsable dont les produits contiennent des extraits de plantes naturelles et des actifs exclusifs de haute qualité. ",
+		"created-by": "Person_6054dd0c26316243e358337e",
+		"created-on": "2022-10-25T13:40:03.185Z",
+		"featured": false,
+		"image": {
+			"alt": null,
+			"fileId": "6357e7268cf58de5d7d2da9c",
+			"url": "https://uploads-ssl.webflow.com/606666aea1b1202a0508dc39/6357e7268cf58de5d7d2da9c_Martine%20Pigassou.png"
+		},
+		"meta-description": "Martine Pigassou, la fondatrice de Modologie présente 3 produits pour prendre soin de vos visages ! ",
+		"name": "Martine Pigassou",
+		"profil-pic": {
+			"alt": null,
+			"fileId": "6357e7268cf58de5d7d2da9c",
+			"url": "https://uploads-ssl.webflow.com/606666aea1b1202a0508dc39/6357e7268cf58de5d7d2da9c_Martine%20Pigassou.png"
+		},
+		"published-by": "Person_6054dd0c26316243e358337e",
+		"published-on": "2022-10-25T13:40:03.185Z",
+		"slug": "martine-pigassou",
+		"updated-by": "Person_6054dd0c26316243e358337e",
+		"updated-on": "2022-10-25T13:40:03.185Z",
+		"website": "https://www.modologie.fr/"
+	},
+	{
+		"_archived": false,
+		"_cid": "607423c3ed8dc6260bd6b611",
+		"_draft": false,
+		"_id": "633598339148da04d88f2711",
+		"bio": "Charlotte will share with you her passion for beauty and make up industry. ",
+		"created-by": "Person_6054dd0c26316243e358337e",
+		"created-on": "2022-09-29T13:05:55.085Z",
+		"featured": true,
+		"image": {
+			"alt": null,
+			"fileId": "63359707d2a8d519676b0c56",
+			"url": "https://uploads-ssl.webflow.com/606666aea1b1202a0508dc39/63359707d2a8d519676b0c56_Charlotte%20Briand%20Tanguy_jumble.jpeg"
+		},
+		"meta-description": "Beauty and makeup lover, Live shopping expert. Join Live on Jumble to learn more",
+		"name": "Charlotte Briand Tanguy",
+		"profil-pic": {
+			"alt": null,
+			"fileId": "633598fbb25be30fa0cf3288",
+			"url": "https://uploads-ssl.webflow.com/606666aea1b1202a0508dc39/633598fbb25be30fa0cf3288_Charlotte%20Briand.jpeg"
+		},
+		"published-by": "Person_6054dd0c26316243e358337e",
+		"published-on": "2022-09-29T13:09:17.040Z",
+		"slug": "charlotte-briand-tanguy",
+		"updated-by": "Person_6054dd0c26316243e358337e",
+		"updated-on": "2022-09-29T13:09:17.040Z"
+	}
+]
