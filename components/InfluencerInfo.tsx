@@ -4,13 +4,7 @@ import Marquee from "react-fast-marquee";
 import logo from "assets/logos/logo-3.svg";
 import { useTranslation } from "next-i18next";
 import Image from "next/image";
-
-interface InfluencerData {
-  title: string;
-  headerImg: string;
-  detail: string;
-  secondImg?: string;
-}
+import type { InfluencerData } from "./ProductDetail";
 
 interface Props {
   influencerData: InfluencerData;

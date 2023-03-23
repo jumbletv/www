@@ -41,7 +41,7 @@ function ArticleTypePage({ poplulateArticlesData }) {
 
   const getArticleType = () => {
     if (type) {
-      setArticleType(splitWord(type));
+      setArticleType(splitWord(type as string));
     }
   };
 

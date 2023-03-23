@@ -6,12 +6,14 @@ import Link from "next/link";
 interface FaqDetailProps {
   faqDetail: {
     text: string;
-    detail: string | {
-      beforeLink: string;
-      link: string;
-      linkText: string;
-      afterLink: string;
-    };
+    detail:
+      | string
+      | {
+          beforeLink: string;
+          link: string;
+          linkText: string;
+          afterLink: string;
+        };
     bg: string;
     addLink?: boolean;
   };
@@ -45,7 +47,7 @@ export function FaqDetail({ faqDetail, prevFaq, nextFaq }: FaqDetailProps) {
       <div className={`${faqDetailWrapper} ${bg}`}>
         <div className={faqDetailContainer}>
           <h1> {t(`${text}`)} </h1>
-          {addLink ? (
+          {addLink && typeof detail !== "string" ? (
             <p>
               {t(`${detail.beforeLink}`)}
               <a href={detail.link}>{t(`${detail.linkText}`)}</a>

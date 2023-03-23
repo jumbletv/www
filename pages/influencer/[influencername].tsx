@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { Navbar } from "layout/Navbar";
-import HomeProducts from "components/HomeProducts";
+import { HomeProducts } from "components/HomeProducts";
 import { Footer } from "layout/Footer";
 import { Fragment, useEffect, useState } from "react";
 import { useRouter } from "next/router";
@@ -13,7 +13,6 @@ import { Header } from "layout/Header";
 import { IntroHeader } from "components/IntroHeader";
 import { NotFoundMessage } from "common/NotFoundMessage";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-
 
 interface InfluencerProps {
   poplulateInfluencerData: any;
@@ -79,7 +78,11 @@ function InfluencerName({
       <Navbar />
       <Bars barData={jumblogNavBarData} />
       <Breadcrumbs links={breadcrumbsLinks} />
-      <Header headerText="featured_sales" locale={locale as string} shrink={false} />
+      <Header
+        headerText="featured_sales"
+        locale={locale as string}
+        shrink={false}
+      />
       {influencerData ? (
         <IntroHeader introHeaderData={influencerData} />
       ) : (
