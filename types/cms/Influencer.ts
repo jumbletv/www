@@ -3,27 +3,26 @@ export type Influencer = {
     _cid: string;
     _draft: boolean;
     _id: string;
-    author: string;
     'created-by': string;
-    'created-on': Date;
-    date: Date;
+    'created-on': string;
     bio: string;
     featured: boolean;
     image: {
-      alt: string;
+      alt: any;
       fileId: string;
       url: string;
     };
     'meta-description': string;
     name: string;
-    profilPic: {
+    "profil-pic": {
       alt: unknown;
       fileId: string;
       url: string;
     };
     'published-by': string;
-    'published-on': Date;
+    'published-on': string;
     slug: string;
     'updated-by': string;
-    'updated-on': Date;
+    'updated-on': string;
+    link?: string;
   }

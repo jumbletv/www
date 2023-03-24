@@ -11,6 +11,7 @@ import { Breadcrumbs } from "common/Breadcrumbs";
 import { splitWord } from "helper/stringHelpers";
 import { articlesByData } from "data/introData";
 import { BrandDetail } from "components/BrandDetail";
+import {getBrandsBySlug} from "data/loaders/getBrandsBySlug";
 
 function SingleBrand({ poplulateBrandsData, populateauthorData }) {
   const router = useRouter();
@@ -67,10 +68,9 @@ export async function getStaticProps({ locale }) {
   };
 }
 export async function getStaticPaths() {
-  const brandPaths = brandsData.map(({ link }) => link);
-
+  const paths = getBrandsBySlug().map((brand) => "/brand/" + brand.slug);
   return {
-    paths: brandPaths,
+    paths,
     fallback: true,
   };
 }

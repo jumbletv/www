@@ -18,6 +18,7 @@ import { ArticleDataTypes, articleDataValues } from "types/articleList";
 import { authorDataTypes, authorDataValues } from "types/introHeader";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { breadcrumsTypes } from "types/breadcrumbs";
+import {getBlogPostsBySlug} from "data/loaders/getBlogPostsBySlug";
 
 function SingleArticle({ poplulateArticlesData, populateauthorData }) {
   const router = useRouter();
@@ -99,10 +100,10 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   };
 };
 export const getStaticPaths: GetStaticPaths = () => {
-  const blogPaths = articlesData.map((blog) => blog.link);
+  const paths = getBlogPostsBySlug().map((blog) => "/the-jumblog/" + blog.slug);
 
   return {
-    paths: blogPaths,
+    paths: paths,
     fallback: true,
   };
 };

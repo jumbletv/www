@@ -3,22 +3,21 @@ export type Type = {
     _cid: string;
     _draft: boolean;
     _id: string;
-    author: string;
     'created-by': string;
-    'created-on': Date;
-    date: Date;
+    'created-on': string;
     'body-description': string;
     'main-image': {
-        alt: string;
+        alt: any;
         fileId: string;
         url: string;
     };
     'meta-description': string;
     name: string;
     'published-by': string;
-    'published-on': Date;
+    'published-on': string;
     slug: string;
     'type-color': string;
     'updated-by': string;
-    'updated-on': Date;
+    'updated-on': string;
+    link?: string;
 }

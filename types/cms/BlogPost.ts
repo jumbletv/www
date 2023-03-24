@@ -1,14 +1,19 @@
+import { Author } from "./Author";
+import { Tag } from "./Tag";
+import { Type } from "./Type";
+
 export type BlogPost = {
     _archived: boolean;
     _cid: string;
     _draft: boolean;
     _id: string;
     author: string;
+    authorRef?: Author;
     "created-by": string;
-    "created-on": Date;
-    date: Date;
+    "created-on": string;
+    date: string;
     featured: boolean;
-    keywords: string;
+    keywords?: string;
     "main-image": {
       alt: any;
       fileId: string;
@@ -20,12 +25,21 @@ export type BlogPost = {
     "post-body": string;
     "post-summary": string;
     "published-by": string;
-    "published-on": Date;
-    "related-posts": string[];
+    "published-on": string;
+    "related-posts"?: string[];
+    "relatedPostsRef"?: BlogPost[];
     slug: string;
     tags: string[];
-    "type-2": string;
+    tagsRef?: Tag[];
+    "thumbnail-image"?: {
+      alt: any;
+      fileId: string;
+      url: string;
+    };
+    "type": string;
+    "typeRef"?: Type;
     "updated-by": string;
-    "updated-on": Date;
+    "updated-on": string;
     wordcount: number;
+    link?: string;
   };

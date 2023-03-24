@@ -14,6 +14,7 @@ import { LogoBanner } from "common/LogoBanner";
 import { IntroHeaderData, IntroHeader } from "components/IntroHeader";
 import { articlesByData, IntroData } from "data/introData";
 import { splitWord, splitAndCapitalize } from "helper/stringHelpers";
+import {getAuthorsBySlug} from "data/loaders/getAuthorsBySlug";
 
 interface AuthorProps {
   populateArticlesData: ArticleData[];
@@ -78,10 +79,10 @@ export async function getStaticProps({ locale, params }: { locale: string; param
 }
 
 export async function getStaticPaths() {
-  const authorPaths = articlesData.map((blog) => ({ params: { author: blog.by } }));
+  const paths = getAuthorsBySlug().map((author) => "/by/" + author.slug);
 
   return {
-    paths: authorPaths,
+    paths: paths,
     fallback: true,
   };
 }

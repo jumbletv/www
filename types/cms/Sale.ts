@@ -1,52 +1,57 @@
+import {Influencer} from "@/types/cms/Influencer";
+import {BlogPost} from "@/types/cms/BlogPost";
+
 export type Sale = {
     _archived: boolean;
     _cid: string;
     _draft: boolean;
     _id: string;
-    author: string;
-    createdBy: string;
-    createdOn: Date;
-    date: Date;
+    "created-by": string;
+    "created-on": string;
     availability: string;
-    bgColor: string;
-    bgPattern: string;
-    brandName: string;
+    "bg-color": string;
+    "bg-pattern": string;
+    "brand-name": string;
     condition: string;
-    estimatedDelivery: Date;
+    "estimated-delivery": string;
     featured: boolean;
-    gtin13: string;
-    influencer: string;
-    mainProductPhoto: {
+    gtin13?: string;
+    influencer?: string;
+    influencerRef?: Influencer;
+    "link-to-player"?: string;
+    "main-product-photo": {
       alt: any;
       fileId: string;
       url: string;
     };
-    mainProductPhotoList: {
+    "main-product-photo-list": {
       alt: any;
       fileId: string;
       url: string;
     }[];
-    metaDescription: string;
-    motif: {
+    "meta-description": string;
+    motif?: {
       alt: any;
       fileId: string;
       url: string;
     };
     name: string;
     price: string;
-    priceCurrency: string;
-    productDescription: string;
-    productName: string;
-    productSynopsys: string;
-    publishedBy: string;
-    publishedOn: Date;
-    ratingValue: string;
-    relatedPosts: string[];
-    reviewCount: string;
-    sellOn: Date;
-    sku: string;
+    "price-currency": string;
+    "product-description": string;
+    "product-name": string;
+    "product-synopsys": string;
+    "published-by": string;
+    "published-on": string;
+    "rating-value": string;
+    "related-posts"?: string[];
+    relatedPostsRef?: BlogPost[];
+    "review-count": string;
+    "sell-on": string;
+    sku?: string;
     slug: string;
-    updatedBy: string;
-    updatedOn: Date;
+    "updated-by": string;
+    "updated-on": string;
+    link?: string;
   }
   

@@ -3,21 +3,20 @@ export type Tag = {
     _cid: string;
     _draft: boolean;
     _id: string;
-    author: string;
     'created-by': string;
-    'created-on': Date;
-    date: Date;
-    description: string;
-    icon: {
-      alt: string;
+    'created-on': string;
+    description?: string;
+    icon?: {
+      alt: any;
       fileId: string;
       url: string;
     };
     name: string;
     'published-by': string;
-    'published-on': Date;
+    'published-on': string;
     slug: string;
     'updated-by': string;
-    'updated-on': Date;
+    'updated-on': string;
+    link?: string;
   }
   
