@@ -70,14 +70,14 @@ export async function getStaticProps({
   locale: string;
   params: { author: string };
 }) {
-  const author = params.author;
-  const introHeaderData = getAuthorsBySlug() || {};
+  const slug = params.author;
+  const data = getAuthorsBySlug(slug) || {};
+  console.log(slug);
 
   return {
     props: {
-      data: getAuthorsBySlug(),
-      introHeaderData,
-      author,
+      data,
+      slug,
       ...(await serverSideTranslations(locale, [
         "common",
         "articles",
@@ -89,10 +89,10 @@ export async function getStaticProps({
 }
 
 export async function getStaticPaths() {
-    console.log(getAuthorsBySlug());
+    //console.log(getAuthorsBySlug());
 
   const paths = getAuthorsBySlug().map((author) => "/by/" + author?.slug);
-  console.log(paths);
+  //console.log(paths);
 
   return {
     paths: paths,
