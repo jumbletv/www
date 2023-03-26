@@ -9,6 +9,8 @@ export function ArticlesList({ articlesData, showBtn }: { articlesData: BlogPost
   const { noArticleContainer, articlesContainer } = styles;
   const { t } = useTranslation("common");
 
+  console.log(articlesData?.length);
+
   return (
     <div className={articlesContainer}>
       {articlesData?.length > 0 ? (
@@ -17,9 +19,9 @@ export function ArticlesList({ articlesData, showBtn }: { articlesData: BlogPost
             <ArticleItem
               id={a._id}
               key={a._id}
-              img={a["main-image"].url}
+              img={a["main-image"]?.url}
               date={a.date}
-              type={a.typeRef[0].name}
+              type={a.typeRef?.name}
               detail={a["post-summary"]}
               tags={a.tagsRef}
               title={a.name}

@@ -9,7 +9,7 @@ import {Type} from "@/types/cms/Type";
 
 export function getBlogPostsBySlug(slug?: string): BlogPost[] {
   return BlogPosts.map((blogPost) => {
-    if (blogPost.slug !== slug) return
+    if (slug !== undefined && blogPost.slug !== slug) return
     const author = Authors.find((author) => author["_id"] === blogPost.author)
     const tags = Tags.filter((tag) => blogPost.tags.includes(tag["_id"]))
     const relatedPosts = BlogPosts.filter((related) => blogPost['related-posts'].includes(related["_id"]))

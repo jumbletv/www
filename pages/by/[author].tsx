@@ -89,7 +89,10 @@ export async function getStaticProps({
 }
 
 export async function getStaticPaths() {
-  const paths = getAuthorsBySlug().map((author) => "/by/" + author.slug);
+    console.log(getAuthorsBySlug());
+
+  const paths = getAuthorsBySlug().map((author) => "/by/" + author?.slug);
+  console.log(paths);
 
   return {
     paths: paths,

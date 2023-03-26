@@ -5,7 +5,7 @@ import Tags from "data/cms/Tags.json";
 
 export function getAuthorsBySlug(slug?: string): Author[] {
     return Authors.map((author: Author) => {
-        if (author.slug !== slug) return;
+        if (slug !== undefined && author.slug !== slug) return;
         author.relatedPostsRef = author["related-posts"]?.map((id) => {
             const post = BlogPosts.find((post) => post._id === id);
             if (!post) return;

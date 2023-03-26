@@ -18,5 +18,6 @@ export type Tag = {
     'updated-by': string;
     'updated-on': string;
     link?: string;
+    relatedPostsRef?: BlogPost[];
   }
   

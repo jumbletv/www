@@ -6,7 +6,7 @@ import Types from "data/cms/Types.json";
 
 export function getFAQsBySlug(slug?: string): FAQ[] {
     return FAQs.map((faq) => {
-        if (faq.slug !== slug) return;
+        if (slug !== undefined && faq.slug !== slug) return;
         const author = Authors.find((author) => author["_id"] === faq.author)
         const tags = Tags.filter((tag) => faq.tags.includes(tag["_id"]))
         const type = Types.find((type) => type["_id"] === faq["type"])

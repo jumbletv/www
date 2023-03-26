@@ -3,7 +3,7 @@ import {Influencer} from  'types/cms/Influencer';
 
 export function getInfluencersBySlug(slug?: string): Influencer[] {
   return Influencers.map((influencer) => {
-    if (influencer.slug !== slug) return;
+    if (slug !== undefined && influencer.slug !== slug) return;
     return {
       ...influencer,
       link: "/influencers/" + influencer.slug

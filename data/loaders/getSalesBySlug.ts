@@ -7,7 +7,7 @@ import Tags from 'data/cms/Tags.json'
 
 export const getSalesBySlug = (slug: string): Sale[] => {
     return Sales.map((sale) => {
-        if (sale.slug !== slug) return;
+        if (slug !== undefined && sale.slug !== slug) return;
         return {
         ...sale,
         link: "/sales/" + sale.slug,
