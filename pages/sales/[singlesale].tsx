@@ -3,7 +3,7 @@ import { Navbar } from "layout/Navbar";
 import { Banner } from "common/Banner";
 import { TextList } from "common/TextList";
 import { ArticlesList } from "components/ArticlesList";
-import { ProductDetail } from "components/productDetail/ProductDetail";
+import { ProductDetail } from "components/ProductDetail";
 import { articlesData } from "data/articlesData";
 import { Footer } from "layout/Footer";
 import { supportData } from "data/supportData";

@@ -5,7 +5,7 @@ import NextArrowIcon from "assets/icons/arrow-right-slider.svg";
 import PrevArrowIcon from "assets/icons/arrow-left-slider.svg";
 import Slider, { Settings } from "react-slick";
 import Image, { StaticImageData } from "next/image";
-import styles from "./Carousel.module.scss";
+import styles from "./ProductSlider.module.scss";
 
 interface CustomArrowsProps {
   onClick?: () => void;
@@ -30,7 +30,7 @@ interface ProductSliderProps {
 
 export function ProductSlider(props: ProductSliderProps) {
   const { productPics, productBg, productBgColor } = props;
-  const { carouselContainer, carouselImgContainer } = styles;
+  const { productSliderContainer, productSliderImgContainer } = styles;
 
   const settings: Settings = {
     dots: true,
@@ -46,13 +46,13 @@ export function ProductSlider(props: ProductSliderProps) {
   return (
     <Slider
       {...settings}
-      className={`${carouselContainer} ${productBgColor}`}
+      className={`${productSliderContainer} ${productBgColor}`}
       style={{
         backgroundImage: `url(${productBg.src})`,
       }}
     >
       {productPics?.map(({ id, pic }) => (
-        <div key={id} className={carouselImgContainer}>
+        <div key={id} className={productSliderImgContainer}>
           <Image src={pic} alt="product-pic" priority={id === 1} />
         </div>
       ))}
