@@ -39,8 +39,6 @@ function Author({data, slug}: AuthorSingleProps) {
         },
     ];
 
-    console.log(data);
-
     const titleText = `JUMBLE | Articles by ${splitAndCapitalize(data[0]["name"])}`;
 
     const {id, headerImg, title, detail} = getAuthorIntroHeader(data[0]);

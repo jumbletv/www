@@ -2,8 +2,8 @@ import Head from "next/head";
 import { Navbar } from "layout//Navbar";
 import { Header } from "layout//Header";
 import { Banner } from "common/Banner";
-import { TextList } from "common/TextList";
-import { Footer } from "layout//Footer";
+import { QuestionsList } from "common/QuestionsList";
+import { Footer } from "layout/Footer";
 import { allFaqData } from "data/faqData";
 import { Fragment } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -24,19 +24,21 @@ function FAQs(): JSX.Element {
       <Bars barData={homeNavBarData} />
       <Header headerText="FAQs" locale={locale} shrink={false} />
       <Banner bannerText="getting_started" singleText={true} />
-      <TextList data={allFaqData.slice(0, 7)} />
+      <QuestionsList data={allFaqData.slice(0, 7)} />
       <Banner bannerText="sell_on_jumble" singleText={true} />
-      <TextList data={allFaqData.slice(7, 17)} />
+      <QuestionsList data={allFaqData.slice(7, 17)} />
       <Banner bannerText="payments" singleText={true} />
-      <TextList data={allFaqData.slice(17, 21)} />
+      <QuestionsList data={allFaqData.slice(17, 21)} />
       <Banner bannerText="shipping" singleText={true} />
-      <TextList data={allFaqData.slice(21, 24)} />
+      <QuestionsList data={allFaqData.slice(21, 24)} />
       <Footer />
     </Fragment>
   );
 }
 
-export async function getStaticProps({ locale }): Promise<{ props: { [key: string]: any }, revalidate: number }> {
+export async function getStaticProps({
+  locale,
+}): Promise<{ props: { [key: string]: any }; revalidate: number }> {
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common", "articles", "faq"])),

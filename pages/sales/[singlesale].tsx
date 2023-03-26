@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { Navbar } from "layout/Navbar";
 import { Banner } from "common/Banner";
-import { TextList } from "common/TextList";
+import { QuestionsList } from "common/QuestionsList";
 import { ArticlesList } from "components/ArticlesList";
 import { ProductDetail } from "components/ProductDetail";
 import { articlesData } from "data/articlesData";
@@ -93,9 +93,9 @@ function SingleSale({
       <Banner bannerText="related_posts" />
       <ArticlesList articlesData={poplulateArticlesData} showBtn={true} />
       <Banner bannerText="support" />
-      <TextList data={supportData} />
+      <QuestionsList data={supportData} />
       <Banner bannerText="FAQS" />
-      <TextList data={faqData} />
+      <QuestionsList data={faqData} />
       <Footer />
     </Fragment>
   );

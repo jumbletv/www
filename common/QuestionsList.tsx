@@ -27,7 +27,7 @@ type Props = {
   showBtn?: boolean;
 };
 
-export function TextList({ data, showBtn }: Props) {
+export function QuestionsList({ data, showBtn }: Props) {
   const {
     supportContainer,
     supportItem,

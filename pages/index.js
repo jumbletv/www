@@ -4,7 +4,7 @@ import { Header } from "layout/Header";
 import { HeaderText } from "common/HeaderText";
 import { Banner } from "common/Banner";
 import { HomeProducts } from "components/HomeProducts";
-import { TextList } from "common/TextList";
+import { QuestionsList } from "common/QuestionsList";
 import { ArticlesList } from "components/ArticlesList";
 import { articlesData } from "data/articlesData";
 import { Footer } from "layout/Footer";
@@ -55,9 +55,9 @@ function Home({ poplulateArticlesData, populateProductsData }) {
         <NotFoundMessage message="No Article Found" />
       )}
       <Banner bannerText="support" />
-      <TextList data={supportData} showBtn={true} />
+      <QuestionsList data={supportData} showBtn={true} />
       <Banner bannerText="FAQS" />
-      <TextList data={faqData} showBtn={true} />
+      <QuestionsList data={faqData} showBtn={true} />
       <Footer />
     </Fragment>
   );

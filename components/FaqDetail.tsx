@@ -3,30 +3,29 @@ import styles from "./FaqDetail.module.scss";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
 
+export type FaqAnswer =
+  | string
+  | {
+      beforeLink: string;
+      link: string;
+      linkText: string;
+      afterLink: string;
+      linkquestion?: string;
+    };
+
+export interface Faq {
+  id: number;
+  question: string;
+  answer: FaqAnswer;
+  link: string;
+  bg: string;
+  addLink?: boolean;
+}
+
 interface FaqDetailProps {
-  faqDetail: {
-    text: string;
-    detail:
-      | string
-      | {
-          beforeLink: string;
-          link: string;
-          linkText: string;
-          afterLink: string;
-        };
-    bg: string;
-    addLink?: boolean;
-  };
-  prevFaq?: {
-    text: string;
-    link: string;
-    bg: string;
-  };
-  nextFaq?: {
-    text: string;
-    link: string;
-    bg: string;
-  };
+  faqDetail: Faq;
+  prevFaq?: Faq;
+  nextFaq?: Faq;
 }
 
 export function FaqDetail({ faqDetail, prevFaq, nextFaq }: FaqDetailProps) {
@@ -38,7 +37,7 @@ export function FaqDetail({ faqDetail, prevFaq, nextFaq }: FaqDetailProps) {
     faqArrow,
     noFaq,
   } = styles;
-  const { text, detail, bg, addLink } = faqDetail;
+  const { question, answer, bg, addLink } = faqDetail;
 
   const { t } = useTranslation("faq");
 
@@ -46,22 +45,22 @@ export function FaqDetail({ faqDetail, prevFaq, nextFaq }: FaqDetailProps) {
     <>
       <div className={`${faqDetailWrapper} ${bg}`}>
         <div className={faqDetailContainer}>
-          <h1> {t(`${text}`)} </h1>
-          {addLink && typeof detail !== "string" ? (
+          <h1> {t(`${question}`)} </h1>
+          {addLink && typeof answer !== "string" ? (
             <p>
-              {t(`${detail.beforeLink}`)}
-              <a href={detail.link}>{t(`${detail.linkText}`)}</a>
-              {t(`${detail.afterLink}`)}
+              {t(`${answer.beforeLink}`)}
+              <a href={answer.link}>{t(`${answer.linkquestion}`)}</a>
+              {t(`${answer.afterLink}`)}
             </p>
           ) : (
-            <p> {t(`${detail}`)} </p>
+            <p> {t(`${answer}`)} </p>
           )}
         </div>
       </div>
       <div className={`${preNextContainer}`}>
         {prevFaq?.link ? (
           <Link href={prevFaq.link} className={`${faqContainer} ${prevFaq.bg}`}>
-            <h1>{t(prevFaq.text)}</h1>
+            <h1>{t(prevFaq.question)}</h1>
             <div className={faqArrow}>⟶</div>
           </Link>
         ) : (
@@ -71,7 +70,7 @@ export function FaqDetail({ faqDetail, prevFaq, nextFaq }: FaqDetailProps) {
         )}
         {nextFaq?.link ? (
           <Link href={nextFaq.link} className={`${faqContainer} ${nextFaq.bg}`}>
-            <h1>{t(nextFaq.text)}</h1>
+            <h1>{t(nextFaq.question)}</h1>
             <div className={faqArrow}>⟶</div>
           </Link>
         ) : (

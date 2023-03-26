@@ -1,7 +1,7 @@
 import Head from "next/head";
-import { Navbar } from "layout//Navbar";
-import { Footer } from "layout//Footer";
-import { Fragment, useEffect, useState } from "react";
+import { Navbar } from "layout/Navbar";
+import { Footer } from "layout/Footer";
+import { useEffect, useState } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
 import { Bars } from "common/Bars";
@@ -10,14 +10,7 @@ import { Breadcrumbs } from "common/Breadcrumbs";
 import { splitWord, splitAndCapitalize } from "@/helper/stringHelpers";
 import { allFaqData } from "data/faqData";
 import { Banner } from "common/Banner";
-import { FaqDetail } from "components/FaqDetail";
-
-interface Faq {
-  id: number;
-  question: string;
-  answer: string;
-  link: string;
-}
+import { Faq, FaqDetail } from "components/FaqDetail";
 
 interface SingleFaqProps {
   populateAllFaqData: Faq[];
@@ -31,10 +24,9 @@ function SingleFAq({ populateAllFaqData }: SingleFaqProps): JSX.Element {
     asPath,
   } = router;
 
-  const [faqDetail, setFaqDetail] = useState<Faq>({ id: 0, question: "", answer: "", link: "" });
-  const [prevFaq, setPrevFaq] = useState<Faq>({ id: 0, question: "", answer: "", link: "" });
-  const [nextFaq, setNextFaq] = useState<Faq>({ id: 0, question: "", answer: "", link: "" });
-
+  const [faqDetail, setFaqDetail] = useState<Faq>();
+  const [prevFaq, setPrevFaq] = useState<Faq>();
+  const [nextFaq, setNextFaq] = useState<Faq>();
   useEffect(() => {
     getFaqDetail();
   }, [locale, singlefaq, asPath]);
@@ -77,7 +69,11 @@ function SingleFAq({ populateAllFaqData }: SingleFaqProps): JSX.Element {
   );
 }
 
-export async function getStaticProps({ locale }: { locale: string }): Promise<{ props: SingleFaqProps; revalidate: number }> {
+export async function getStaticProps({
+  locale,
+}: {
+  locale: string;
+}): Promise<{ props: SingleFaqProps; revalidate: number }> {
   return {
     props: {
       populateAllFaqData: allFaqData,
@@ -87,7 +83,10 @@ export async function getStaticProps({ locale }: { locale: string }): Promise<{ 
   };
 }
 
-export async function getStaticPaths(): Promise<{ paths: string[]; fallback: boolean }> {
+export async function getStaticPaths(): Promise<{
+  paths: string[];
+  fallback: boolean;
+}> {
   const faqPaths = allFaqData.map(({ link }) => link);
   return {
     paths: faqPaths,
