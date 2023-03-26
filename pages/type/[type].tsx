@@ -72,7 +72,10 @@ function ArticleTypePage({ poplulateArticlesData }) {
       link: `/type/${type}`,
     },
   ];
-  const titleText: string = `JUMBLE | Type ${splitAndCapitalize(type)}`;
+  const titleText: string = `JUMBLE | Type ${splitAndCapitalize(
+    type as string
+  )}`;
+  const { id, headerImg, title, detail } = introHeaderData;
 
   return (
     <Fragment>
@@ -85,7 +88,12 @@ function ArticleTypePage({ poplulateArticlesData }) {
       <Header headerText="THE JUMBLOG" />
       <LogoBanner />
       <JumblogMenu activeMenu={articleType} />
-      <IntroHeader introHeaderData={introHeaderData} />
+      <IntroHeader
+        id={id}
+        headerImg={headerImg}
+        title={title}
+        detail={detail}
+      />
       <ArticlesList articlesData={articlesByType} />
       <Footer />
     </Fragment>

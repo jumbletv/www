@@ -70,6 +70,8 @@ function InfluencerName({
     influencername as string
   )}`;
 
+  const { id, headerImg, title, detail } = influencerData;
+
   return (
     <Fragment>
       <Head>
@@ -84,7 +86,12 @@ function InfluencerName({
         shrink={false}
       />
       {influencerData ? (
-        <IntroHeader introHeaderData={influencerData} />
+        <IntroHeader
+          id={id}
+          headerImg={headerImg}
+          title={title}
+          detail={detail}
+        />
       ) : (
         <NotFoundMessage message="No author Found" />
       )}

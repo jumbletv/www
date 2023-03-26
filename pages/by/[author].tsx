@@ -14,7 +14,7 @@ import { LogoBanner } from "common/LogoBanner";
 import { IntroHeaderData, IntroHeader } from "components/IntroHeader";
 import { articlesByData, IntroData } from "data/introData";
 import { splitWord, splitAndCapitalize } from "helper/stringHelpers";
-import {getAuthorsBySlug} from "data/loaders/getAuthorsBySlug";
+import { getAuthorsBySlug } from "data/loaders/getAuthorsBySlug";
 
 interface AuthorProps {
   populateArticlesData: ArticleData[];
@@ -22,7 +22,11 @@ interface AuthorProps {
   author: string;
 }
 
-function Author({ populateArticlesData, introHeaderData, author }: AuthorProps) {
+function Author({
+  populateArticlesData,
+  introHeaderData,
+  author,
+}: AuthorProps) {
   const router = useRouter();
   const { locale, query } = router;
 
@@ -42,6 +46,8 @@ function Author({ populateArticlesData, introHeaderData, author }: AuthorProps) 
 
   const titleText = `JUMBLE | Articles by ${splitAndCapitalize(author)}`;
 
+  const { id, headerImg, title, detail } = introHeaderData;
+
   return (
     <Fragment>
       <Head>
@@ -52,16 +58,28 @@ function Author({ populateArticlesData, introHeaderData, author }: AuthorProps) 
       <Breadcrumbs links={breadcrumbsLinks} />
       <Header headerText="THE JUMBLOG" />
       <LogoBanner />
-      <IntroHeader introHeaderData={introHeaderData} />
+      <IntroHeader
+        id={id}
+        headerImg={headerImg}
+        title={title}
+        detail={detail}
+      />
       <ArticlesList articlesData={articlesByAuthor} />
       <Footer />
     </Fragment>
   );
 }
 
-export async function getStaticProps({ locale, params }: { locale: string; params: { author: string } }) {
+export async function getStaticProps({
+  locale,
+  params,
+}: {
+  locale: string;
+  params: { author: string };
+}) {
   const author = params.author;
-  const introHeaderData = articlesByData.find((article) => article.authorLink === author) || {};
+  const introHeaderData =
+    articlesByData.find((article) => article.authorLink === author) || {};
 
   return {
     props: {
