@@ -1,7 +1,7 @@
 import { StaticImageData } from "next/image";
 import { Tag } from "../components/tags/articleTags/ArticleTags";
-import { AuthorType } from "./authorType";
-import { authorDataTypes } from "./introHeader";
+import { AuthorType } from "../types/authorType";
+import { authorDataTypes } from "../types/introHeader";
 
 interface tagTypes {
   id: number;

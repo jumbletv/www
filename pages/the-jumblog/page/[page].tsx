@@ -1,87 +1,30 @@
 import Head from "next/head";
-import { Navbar } from "layout/Navbar";
-import { ArticlesList } from "components/ArticlesList";
-import { articlesData } from "data/articlesData";
-import { Footer } from "layout/Footer";
-import { Fragment, useEffect, useState } from "react";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
+import { Fragment } from "react";
+import { Navbar } from "layout/Navbar";
+import { Footer } from "layout/Footer";
+import { ArticlesList } from "components/ArticlesList";
+import { NotFoundMessage } from "common/NotFoundMessage";
 import { Bars } from "common/Bars";
-import { jumblogNavBarData } from "data/barData";
 import { Breadcrumbs } from "common/Breadcrumbs";
 import { Pagination } from "components/Pagination";
 import JumblogMenu from "components/JumblogMenu";
+import { articlesData } from "data/articlesData";
 import { itemsPerPage } from "data/pagination";
-import { NotFoundMessage } from "common/NotFoundMessage";
+import { jumblogNavBarData } from "data/barData";
+import {BlogPost, breadcrumbsTypes} from "types";
+import {getBlogPostsBySlug} from "data/loaders/getBlogPostsBySlug";
 
 interface Props {
-  poplulateArticlesData: Array<any>;
-}
-
-function JumblogHome({ poplulateArticlesData }: Props) {
-  const router = useRouter();
-
-  const {
-    locale,
-    query: { page },
-  } = router;
-
-  const [currentArticles, setCurrentArticles] = useState<Array<any>>([]);
-  const [pageNo, setPageNo] = useState<number | null>(null);
-
-  const articlesLength = poplulateArticlesData?.length;
-  const pageCount = Math.ceil(articlesLength / itemsPerPage);
-
-  useEffect(() => {
-    getPageNo();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [locale, page]);
-
-  const getPageNo = () => {
-    if (page) {
-      const newOffset = ((page - 1) * itemsPerPage) % articlesLength;
-      const endOffset = newOffset + itemsPerPage;
-      const currentArticles = poplulateArticlesData?.slice(
-        newOffset,
-        endOffset
-      );
-      setCurrentArticles(currentArticles);
-      setPageNo(parseInt(page as string));
-    }
-  };
-
-  const breadcrumbsLinks = [
-    { id: 1, title: "Home", link: "/" },
-    { id: 2, title: "The Jumblog", link: "/the-jumblog/page/1" },
-    { id: 3, title: `Page ${page}`, link: `/the-jumblog/page/${page}` },
-  ];
-
-  return (
-    <Fragment>
-      <Head>
-        <title>JUMBLE | The Jumblog Articles </title>
-      </Head>
-      <Navbar />
-      <Bars barData={jumblogNavBarData} />
-      <Breadcrumbs links={breadcrumbsLinks} />
-      <JumblogMenu activeMenu="all" />
-      {currentArticles ? (
-        <ArticlesList articlesData={currentArticles} />
-      ) : (
-        <NotFoundMessage message="No Article Found" />
-      )}
-      {pageNo && (
-        <Pagination pageCount={pageCount} pageNo={pageNo} path="the-jumblog" />
-      )}
-      <Footer />
-    </Fragment>
-  );
+  populateArticlesData: BlogPost[];
 }
 
 export async function getStaticProps({ locale }) {
   return {
     props: {
-      poplulateArticlesData: articlesData,
+      populateArticlesData: getBlogPostsBySlug(),
       ...(await serverSideTranslations(locale, [
         "common",
         "articles",
@@ -93,10 +36,72 @@ export async function getStaticProps({ locale }) {
 }
 
 export async function getStaticPaths() {
+  const articlesData = getBlogPostsBySlug();
+  const pageCount = Math.ceil(articlesData.length / itemsPerPage);
+
+  const paths = Array(pageCount)
+      .fill("")
+      .map((_, index) => ({ params: { page: (index + 1).toString() } }));
+
   return {
-    paths: ["/the-jumblog"],
+    paths: paths,
     fallback: true,
   };
 }
 
-export default JumblogHome;
+function JumblogHomePage({ populateArticlesData }: Props) {
+  const router = useRouter();
+  const { t } = useTranslation("articles");
+
+  const {
+    locale,
+    query: { page },
+  } = router;
+
+  const articlesLength = populateArticlesData?.length;
+  const pageCount = Math.ceil(articlesLength / itemsPerPage);
+
+  const newOffset = ((parseInt(page as string) - 1) * itemsPerPage) % articlesLength;
+  const endOffset = newOffset + itemsPerPage;
+  const currentArticles = populateArticlesData?.slice(newOffset, endOffset);
+  const currentPageNo = parseInt(page as string);
+
+  const breadcrumbsLinks: breadcrumbsTypes[] = [
+    { id: 1, title: t("breadcrumbHome"), link: "/" },
+    { id: 2, title: t("breadcrumbBlog"), link: "/the-jumblog/page/1" },
+    {
+      id: 3,
+      title: t("breadcrumbPage", { pageNumber: page }),
+      link: `/the-jumblog/page/${page}`,
+    },
+  ];
+
+  const pageTitle: string = t("pageTitleJumblog");
+
+  return (
+      <Fragment>
+        <Head>
+          <title>{pageTitle}</title>
+        </Head>
+        <Navbar />
+        <Bars barData={jumblogNavBarData} />
+        <Breadcrumbs links={breadcrumbsLinks} />
+        <JumblogMenu activeMenu="all" />
+        {currentArticles.length > 0 ? (
+            <ArticlesList articlesData={currentArticles} showBtn={true} />
+        ) : (
+            <NotFoundMessage message={t("noArticleFound")} />
+        )}
+        {currentPageNo && (
+            <Pagination
+                pageCount={pageCount}
+                pageNo={currentPageNo}
+                path="the-jumblog"
+            />
+        )}
+        <Footer />
+      </Fragment>
+  );
+}
+
+export default JumblogHomePage;
