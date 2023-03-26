@@ -4,15 +4,14 @@ import styles from "./IntroHeader.module.scss";
 import {Author} from "@/types/cms/Author";
 
 export type IntroHeaderData = {
-    id: number;
-    headerImg: any;
-    title: string;
-    detail: string;
-}
+  id: number;
+  headerImg: any;
+  title: string;
+  detail: string;
+};
 
-export function IntroHeader(introHeaderData: IntroHeaderData) {
+export function IntroHeader({ id, headerImg, title, detail }: IntroHeaderData) {
   const { introHeaderContainer } = styles;
-  const { id, headerImg, title, detail } = introHeaderData;
 
   return (
     <div className={introHeaderContainer}>

@@ -19,28 +19,26 @@ import {Author} from "types/cms/Author";
 
 interface AuthorSingleProps {
   data: Author[];
-  author:string;
+  slug: string;
 }
 
-function Author({ data, author }: AuthorSingleProps) {
+function Author({ data, slug }: AuthorSingleProps) {
   const router = useRouter();
   const { locale, query } = router;
-
-  const articlesByAuthor = getAuthorsBySlug().filter(
-    (article) => article.slug === author
-  );
 
   const breadcrumbsLinks: BreadcrumbLink[] = [
     { id: 1, title: "Home", link: "/" },
     { id: 2, title: "The Jumblog", link: "/the-jumblog/page/1" },
     {
       id: 3,
-      title: `Article by ${splitWord(author)}`,
-      link: `/type/${author}`,
+      title: `Article by ${splitWord(slug)}`,
+      link: `/by/${slug}`,
     },
   ];
 
-  const titleText = `JUMBLE | Articles by ${splitAndCapitalize(author)}`;
+  const titleText = `JUMBLE | Articles by ${splitAndCapitalize(data[0]["name"])}`;
+
+  const { id, headerImg, title, detail } = introHeaderData;
 
   return (
     <Fragment>
@@ -52,14 +50,25 @@ function Author({ data, author }: AuthorSingleProps) {
       <Breadcrumbs links={breadcrumbsLinks} />
       <Header headerText="THE JUMBLOG" />
       <LogoBanner />
-      <IntroHeader introHeaderData={introHeaderData} />
+      <IntroHeader
+        id={id}
+        headerImg={headerImg}
+        title={title}
+        detail={detail}
+      />
       <ArticlesList articlesData={articlesByAuthor} />
       <Footer />
     </Fragment>
   );
 }
 
-export async function getStaticProps({ locale, params }: { locale: string; params: { author: string } }) {
+export async function getStaticProps({
+  locale,
+  params,
+}: {
+  locale: string;
+  params: { author: string };
+}) {
   const author = params.author;
   const introHeaderData = getAuthorsBySlug() || {};
 
