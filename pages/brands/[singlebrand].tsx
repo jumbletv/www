@@ -1,64 +1,59 @@
 import Head from "next/head";
 import { Navbar } from "layout/Navbar";
-import { brandsData } from "data/brands";
 import { Footer } from "layout/Footer";
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
 import { Bars } from "common/Bars";
 import { homeNavBarData } from "data/barData";
 import { Breadcrumbs } from "common/Breadcrumbs";
-import { splitWord } from "helper/stringHelpers";
-import { articlesByData } from "data/introData";
 import { BrandDetail } from "components/BrandDetail";
-import {getBrandsBySlug} from "data/loaders/getBrandsBySlug";
-import {GetStaticPaths} from "next";
+import { GetStaticProps, GetStaticPaths } from "next";
+import { getBrandsBySlug } from "data/loaders/getBrandsBySlug";
+import { breadcrumbsTypes } from "types/breadcrumbs";
 
-function SingleBrand({ poplulateBrandsData, populateauthorData }) {
+function SingleBrandPage({ singleBrand }) {
   const router = useRouter();
 
   const {
     locale,
-    asPath,
-    query: { singlebrand },
+    query: { singleBrandSlug },
   } = router;
 
-  const [singleBrand, setSingleBrand] = useState({});
-  const [brandauthor, setBrandauthor] = useState({});
+  const brandAuthor = singleBrand.authorRef.name || "";
 
-  const singleBrandData = poplulateBrandsData?.find(
-    (brand) => brand?.link === asPath
-  );
-  const brandauthorData = populateauthorData?.find(
-    (author) => author.authorLink === singleBrandData?.by
-  );
-
-  const breadcrumbsLinks = [
+  const breadcrumbsLinks: breadcrumbsTypes[] = [
     { id: 1, title: "Home", link: "/" },
     { id: 2, title: "Brands", link: "/brands/page/1" },
-    { id: 3, title: `${splitWord(singlebrand as string)}`, link: `${asPath}` },
+    {
+      id: 3,
+      title: singleBrand.name,
+      link: `/brands/${singleBrand.slug}`,
+    },
   ];
-  const titleText = `JUMBLE | Brands ${splitWord(singlebrand as string)}`;
+  const titleText: string = `JUMBLE | Brands ${singleBrand.name}`;
 
   return (
-    <Fragment>
-      <Head>
-        <title>{titleText}</title>
-      </Head>
-      <Navbar />
-      <Bars barData={homeNavBarData} />
-      <Breadcrumbs links={breadcrumbsLinks} />
-      <BrandDetail brandDetail={singleBrandData} author={brandauthorData} />
-      <Footer />
-    </Fragment>
+      <Fragment>
+        <Head>
+          <title>{titleText}</title>
+        </Head>
+        <Navbar />
+        <Bars barData={homeNavBarData} />
+        <Breadcrumbs links={breadcrumbsLinks} />
+        <BrandDetail brandDetail={singleBrand} author={brandAuthor} />
+        <Footer />
+      </Fragment>
   );
 }
 
-export async function getStaticProps({ locale }) {
+export const getStaticProps: GetStaticProps = async ({ locale , params}) => {
+  const { singleBrandSlug } = params;
+  const singleBrand = getBrandsBySlug(singleBrandSlug as string)[0];
+
   return {
     props: {
-      poplulateBrandsData: brandsData,
-      populateauthorData: articlesByData,
+      singleBrand,
       ...(await serverSideTranslations(locale, [
         "common",
         "brands",
@@ -67,7 +62,8 @@ export async function getStaticProps({ locale }) {
     },
     revalidate: 60,
   };
-}
+};
+
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = getBrandsBySlug().map((brand) => "/brands/" + brand?.slug);
 
@@ -77,4 +73,4 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export default SingleBrand;
+export default SingleBrandPage;

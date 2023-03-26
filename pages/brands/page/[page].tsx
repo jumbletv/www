@@ -74,7 +74,7 @@ export async function getStaticProps({locale}: { locale: string }) {
 }
 
 export async function getStaticPaths() {
-    const paths = getBrandsBySlug().map((brand) => "/brand/" + brand.slug);
+    const paths = getBrandsBySlug().map((brand) => "/brands/" + brand.slug);
     return {
         paths,
         fallback: true,

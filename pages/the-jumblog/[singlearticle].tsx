@@ -14,10 +14,6 @@ import { homeNavBarData } from "data/barData";
 import { getBlogPostsBySlug } from "data/loaders/getBlogPostsBySlug";
 import { splitWord } from "helper/stringHelpers";
 import {
-    Author,
-    BlogPost,
-    Type,
-    Tag,
   breadcrumbsTypes,
 } from "types";
 
