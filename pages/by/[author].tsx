@@ -15,19 +15,19 @@ import { IntroHeaderData, IntroHeader } from "components/IntroHeader";
 import { articlesByData, IntroData } from "data/introData";
 import { splitWord, splitAndCapitalize } from "helper/stringHelpers";
 import {getAuthorsBySlug} from "data/loaders/getAuthorsBySlug";
+import {Author} from "types/cms/Author";
 
-interface AuthorProps {
-  populateArticlesData: ArticleData[];
-  introHeaderData: IntroHeaderData;
-  author: string;
+interface AuthorSingleProps {
+  data: Author[];
+  author:string;
 }
 
-function Author({ populateArticlesData, introHeaderData, author }: AuthorProps) {
+function Author({ data, author }: AuthorSingleProps) {
   const router = useRouter();
   const { locale, query } = router;
 
-  const articlesByAuthor = populateArticlesData.filter(
-    (article) => article.by === author
+  const articlesByAuthor = getAuthorsBySlug().filter(
+    (article) => article.slug === author
   );
 
   const breadcrumbsLinks: BreadcrumbLink[] = [
@@ -61,11 +61,11 @@ function Author({ populateArticlesData, introHeaderData, author }: AuthorProps) 
 
 export async function getStaticProps({ locale, params }: { locale: string; params: { author: string } }) {
   const author = params.author;
-  const introHeaderData = articlesByData.find((article) => article.authorLink === author) || {};
+  const introHeaderData = getAuthorsBySlug() || {};
 
   return {
     props: {
-      populateArticlesData: articlesData,
+      data: getAuthorsBySlug(),
       introHeaderData,
       author,
       ...(await serverSideTranslations(locale, [

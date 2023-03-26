@@ -1,3 +1,5 @@
+import {BlogPost} from "@/types/cms/BlogPost";
+
 export type Author = {
     _archived: boolean;
     _cid: string;
@@ -19,4 +21,5 @@ export type Author = {
     "updated-by": string;
     "updated-on": string;
     link?: string;
+    relatedPostsRef?: BlogPost[];
   }

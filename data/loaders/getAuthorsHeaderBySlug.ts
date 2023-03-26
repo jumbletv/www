@@ -1,7 +1,6 @@
-import Authors from "data/cms/Authors.json";
-import {Author} from "types/cms/Author";
+import {Author} from "@/types/cms/Author";
 
-export function getAuthorsBySlug(slug?: string): Author[] {
+export function getAuthorsHeaderBySlug(slug?: string): Author[] {
     return Authors.map((author: Author) => {
         if (author.slug !== slug) return;
         author.relatedPostsRef = author["related-posts"]?.map((id) => {
