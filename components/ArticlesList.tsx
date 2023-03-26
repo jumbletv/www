@@ -3,9 +3,9 @@ import { ArticleItem } from "components/ArticleItem";
 import styles from "components/ArticlesList.module.scss";
 import { CircleBtn } from "common/CircleBtn";
 import { useTranslation } from "next-i18next";
-import { articleListTypes } from "types/articleList";
+import { BlogPost } from "@/types/cms/BlogPost";
 
-export function ArticlesList({ articlesData, showBtn }: articleListTypes) {
+export function ArticlesList({ articlesData, showBtn }: { articlesData: BlogPost[], showBtn: boolean }) {
   const { noArticleContainer, articlesContainer } = styles;
   const { t } = useTranslation("common");
 
@@ -13,17 +13,17 @@ export function ArticlesList({ articlesData, showBtn }: articleListTypes) {
     <div className={articlesContainer}>
       {articlesData?.length > 0 ? (
         articlesData.map(
-          ({ id, img, date, type, detail, tags, title, link }) => (
+          (a) => (
             <ArticleItem
-              id={id}
-              key={id}
-              img={img}
-              date={date}
-              type={type}
-              detail={detail}
-              tags={tags}
-              title={title}
-              link={link}
+              id={a._id}
+              key={a._id}
+              img={a["main-image"].url}
+              date={a.date}
+              type={a.typeRef[0].name}
+              detail={a["post-summary"]}
+              tags={a.tagsRef}
+              title={a.name}
+              link={a.slug}
             />
           )
         )

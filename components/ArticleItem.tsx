@@ -1,14 +1,15 @@
 import React from "react";
 import styles from "./ArticleItem.module.scss";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
-import { ArticleTags, Tag } from "components/ArticleTags";
+import { ArticleTags } from "components/ArticleTags";
 import { ArticleHeading } from "common/ArticleHeading";
+import { Tag } from "@/types/cms/Tag";
 
 interface Props {
-  id: number;
-  img: StaticImageData;
+  id: string;
+  img: string;
   date: string;
   type: string;
   title: string;
@@ -57,7 +58,7 @@ export function ArticleItem({
         </div>
       </div>
       <Link href={link} className={articleItemImgContainer}>
-        <Image src={img} alt="article-img" priority={id === 1} />
+        <Image src={img} fill alt={title} /* priority={_id === 1} */ />
       </Link>
     </div>
   );

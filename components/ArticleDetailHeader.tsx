@@ -1,10 +1,11 @@
 import React from "react";
 import Image, { StaticImageData } from "next/image";
-import { ArticleTags, Tag } from "components/ArticleTags";
+import { ArticleTags } from "components/ArticleTags";
 import { ArticleHeading } from "common/ArticleHeading";
 import { useTranslation } from "next-i18next";
 import styles from "./ArticleDetailHeader.module.scss";
 import { NotFoundMessage } from "common/NotFoundMessage";
+import { Tag } from "@/types/cms/Tag";
 
 interface ArticleDetail {
   img: StaticImageData;
