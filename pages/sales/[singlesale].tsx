@@ -17,6 +17,9 @@ import { Breadcrumbs } from "common/Breadcrumbs";
 import { salesData, influencerData } from "data/products";
 import { splitWord, splitAndCapitalize } from "helper/stringHelpers";
 import { NotFoundMessage } from "common/NotFoundMessage";
+import {getBrandsBySlug} from "data/loaders/getBrandsBySlug";
+import {getSalesBySlug} from "data/loaders/getSalesBySlug";
+import {GetStaticPaths} from "next";
 
 interface SingleSaleProps {
   poplulateArticlesData: any[];
@@ -116,12 +119,11 @@ export async function getStaticProps({ locale }) {
   };
 }
 
-export async function getStaticPaths() {
-  let productsPaths = [];
-  salesData.forEach(({ productLink }) => productsPaths.push(productLink));
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths = getSalesBySlug().map((sale) => "/brands/" + sale?.slug);
 
   return {
-    paths: productsPaths,
+    paths: paths,
     fallback: true,
   };
 }

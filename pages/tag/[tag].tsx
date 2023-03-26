@@ -13,6 +13,8 @@ import { Header } from "layout/Header";
 import { LogoBanner } from "common/LogoBanner";
 import { splitWord, splitAndCapitalize } from "helper/stringHelpers";
 import type { GetStaticPaths, GetStaticProps } from "next";
+import {getAuthorsBySlug} from "data/loaders/getAuthorsBySlug";
+import {getTagsBySlug} from "data/loaders/getTagsBySlug";
 
 interface TagProps {
   poplulateArticlesData: Array<any>;
@@ -83,13 +85,10 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  let tagPaths = [];
-  articlesData.forEach((blog) =>
-    blog.tags.forEach((tag) => tagPaths.push(tag.url))
-  );
+  const paths = getTagsBySlug().map((tag) => "/tag/" + tag?.slug);
 
   return {
-    paths: tagPaths,
+    paths: paths,
     fallback: true,
   };
 };

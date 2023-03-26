@@ -94,7 +94,7 @@ export async function getStaticProps({ locale }) {
 
 export async function getStaticPaths() {
   return {
-    paths: [],
+    paths: ["/the-jumblog"],
     fallback: true,
   };
 }

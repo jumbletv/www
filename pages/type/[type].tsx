@@ -21,6 +21,7 @@ import { ArticleDataTypes } from "types/articleList";
 import { introHeaderTypes, introHeaderValues } from "types/introHeader";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { breadcrumsTypes } from "types/breadcrumbs";
+import {getTypesBySlug} from "data/loaders/getTypesBySlug";
 
 function ArticleTypePage({ poplulateArticlesData }) {
   const router = useRouter();
@@ -113,9 +114,11 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     revalidate: 60,
   };
 };
-export const getStaticPaths: GetStaticPaths = () => {
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths = getTypesBySlug().map((type) => "/type/" + type?.slug);
+
   return {
-    paths: [],
+    paths: paths,
     fallback: true,
   };
 };

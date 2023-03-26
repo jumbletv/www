@@ -17,6 +17,7 @@ import {splitWord, splitAndCapitalize} from "helper/stringHelpers";
 import {getAuthorsBySlug} from "data/loaders/getAuthorsBySlug";
 import {Author} from "types/cms/Author";
 import {getAuthorIntroHeader} from "@/data/loaders/getIntroHeader";
+import {GetStaticPaths, GetStaticProps} from "next";
 
 interface AuthorSingleProps {
     data: Author[];
@@ -66,15 +67,9 @@ function Author({data, slug}: AuthorSingleProps) {
     );
 }
 
-export async function getStaticProps({
-                                         locale,
-                                         params,
-                                     }: {
-    locale: string;
-    params: { author: string };
-}) {
+export const getStaticProps: GetStaticProps = async ({ locale, params: any }) => {
     const slug = params.author;
-    const data = getAuthorsBySlug(slug);
+    const data = getAuthorsBySlug(params.slug);
     console.log("XXX" + slug);
 
     return {
@@ -91,7 +86,7 @@ export async function getStaticProps({
     };
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
     const paths = getAuthorsBySlug().map((author) => "/by/" + author?.slug);
 
     return {

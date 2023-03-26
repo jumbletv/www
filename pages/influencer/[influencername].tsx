@@ -13,6 +13,9 @@ import { Header } from "layout/Header";
 import { IntroHeader } from "components/IntroHeader";
 import { NotFoundMessage } from "common/NotFoundMessage";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import {getTypesBySlug} from "data/loaders/getTypesBySlug";
+import {getInfluencersBySlug} from "data/loaders/getInfluencersBySlug";
+import {GetStaticPaths} from "next";
 
 interface InfluencerProps {
   poplulateInfluencerData: any;
@@ -116,15 +119,13 @@ export async function getStaticProps({ locale }: { locale: string }) {
   };
 }
 
-export async function getStaticPaths() {
-  const influencerPaths = influencerData.map(
-    ({ influencerLink }) => influencerLink
-  );
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths = getInfluencersBySlug().map((inf) => "/influencer/" + inf?.slug);
 
   return {
-    paths: influencerPaths,
+    paths: paths,
     fallback: true,
   };
-}
+};
 
 export default InfluencerName;

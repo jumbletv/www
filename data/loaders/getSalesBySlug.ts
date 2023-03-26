@@ -5,7 +5,7 @@ import BlogPosts from 'data/cms/BlogPosts.json'
 import Authors from 'data/cms/Authors.json'
 import Tags from 'data/cms/Tags.json'
 
-export const getSalesBySlug = (slug: string): Sale[] => {
+export const getSalesBySlug = (slug?: string): Sale[] => {
     return Sales.map((sale) => {
         if (slug !== undefined && sale.slug !== slug) return;
         return {

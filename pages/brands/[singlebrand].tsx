@@ -12,6 +12,7 @@ import { splitWord } from "helper/stringHelpers";
 import { articlesByData } from "data/introData";
 import { BrandDetail } from "components/BrandDetail";
 import {getBrandsBySlug} from "data/loaders/getBrandsBySlug";
+import {GetStaticPaths} from "next";
 
 function SingleBrand({ poplulateBrandsData, populateauthorData }) {
   const router = useRouter();
@@ -67,12 +68,13 @@ export async function getStaticProps({ locale }) {
     revalidate: 60,
   };
 }
-export async function getStaticPaths() {
-  const paths = getBrandsBySlug().map((brand) => "/brand/" + brand.slug);
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths = getBrandsBySlug().map((brand) => "/brands/" + brand?.slug);
+
   return {
-    paths,
+    paths: paths,
     fallback: true,
   };
-}
+};
 
 export default SingleBrand;
