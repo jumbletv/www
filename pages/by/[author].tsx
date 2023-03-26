@@ -57,7 +57,7 @@ function Author({ data, slug }: AuthorSingleProps) {
         title={title}
         detail={detail}
       />
-      <ArticlesList articlesData={articlesByAuthor} />
+      <ArticlesList articlesData={data[0].relatedPostsRef} showBtn={true} />
       <Footer />
     </Fragment>
   );
