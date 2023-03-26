@@ -16,6 +16,7 @@ import { articlesByData, IntroData } from "data/introData";
 import { splitWord, splitAndCapitalize } from "helper/stringHelpers";
 import {getAuthorsBySlug} from "data/loaders/getAuthorsBySlug";
 import {Author} from "types/cms/Author";
+import { getAuthorIntroHeader } from "@/data/loaders/getIntroHeader";
 
 interface AuthorSingleProps {
   data: Author[];
@@ -38,7 +39,7 @@ function Author({ data, slug }: AuthorSingleProps) {
 
   const titleText = `JUMBLE | Articles by ${splitAndCapitalize(data[0]["name"])}`;
 
-  const { id, headerImg, title, detail } = introHeaderData;
+  const { id, headerImg, title, detail } = getAuthorIntroHeader(data[0]);
 
   return (
     <Fragment>
