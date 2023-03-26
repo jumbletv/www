@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./TextList.module.scss";
+import styles from "./QuestionsList.module.scss";
 import TriagleArrow from "../assets/icons/triangle-arrow.svg";
 import Image from "next/image";
 import { CircleBtn } from "./CircleBtn";
