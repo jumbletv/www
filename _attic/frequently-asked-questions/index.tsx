@@ -1,9 +1,9 @@
 import Head from "next/head";
-import { Navbar } from "layout/Navbar";
-import { Header } from "layout/Header";
+import { Navbar } from "layout//Navbar";
+import { Header } from "layout//Header";
 import { Banner } from "common/Banner";
 import { TextList } from "common/TextList";
-import { Footer } from "layout/Footer";
+import { Footer } from "layout//Footer";
 import { allFaqData } from "data/faqData";
 import { Fragment } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";

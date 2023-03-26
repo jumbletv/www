@@ -35,5 +35,5 @@
     "data/socialIconData.ts",
     "pages/index.js"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "_attic"]
 }

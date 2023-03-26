@@ -1,13 +1,13 @@
 import Head from "next/head";
-import { Navbar } from "layout/Navbar";
-import { Footer } from "layout/Footer";
+import { Navbar } from "layout//Navbar";
+import { Footer } from "layout//Footer";
 import { Fragment, useEffect, useState } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
 import { Bars } from "common/Bars";
 import { homeNavBarData } from "data/barData";
 import { Breadcrumbs } from "common/Breadcrumbs";
-import { splitWord, splitAndCapitalize } from "helper/stringHelpers";
+import { splitWord, splitAndCapitalize } from "@/helper/stringHelpers";
 import { allFaqData } from "data/faqData";
 import { Banner } from "common/Banner";
 import { FaqDetail } from "components/FaqDetail";
