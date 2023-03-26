@@ -14,8 +14,8 @@ import JumblogMenu from "components/JumblogMenu";
 import { articlesData } from "data/articlesData";
 import { itemsPerPage } from "data/pagination";
 import { jumblogNavBarData } from "data/barData";
-import {BlogPost, breadcrumbsTypes} from "types";
-import {getBlogPostsBySlug} from "data/loaders/getBlogPostsBySlug";
+import { BlogPost, breadcrumbsTypes } from "types";
+import { getBlogPostsBySlug } from "data/loaders/getBlogPostsBySlug";
 
 interface Props {
   populateArticlesData: BlogPost[];
@@ -40,8 +40,8 @@ export async function getStaticPaths() {
   const pageCount = Math.ceil(articlesData.length / itemsPerPage);
 
   const paths = Array(pageCount)
-      .fill("")
-      .map((_, index) => ({ params: { page: (index + 1).toString() } }));
+    .fill("")
+    .map((_, index) => ({ params: { page: (index + 1).toString() } }));
 
   return {
     paths: paths,
@@ -61,7 +61,8 @@ function JumblogHomePage({ populateArticlesData }: Props) {
   const articlesLength = populateArticlesData?.length;
   const pageCount = Math.ceil(articlesLength / itemsPerPage);
 
-  const newOffset = ((parseInt(page as string) - 1) * itemsPerPage) % articlesLength;
+  const newOffset =
+    ((parseInt(page as string) - 1) * itemsPerPage) % articlesLength;
   const endOffset = newOffset + itemsPerPage;
   const currentArticles = populateArticlesData?.slice(newOffset, endOffset);
   const currentPageNo = parseInt(page as string);
@@ -79,28 +80,28 @@ function JumblogHomePage({ populateArticlesData }: Props) {
   const pageTitle: string = t("pageTitleJumblog");
 
   return (
-      <Fragment>
-        <Head>
-          <title>{pageTitle}</title>
-        </Head>
-        <Navbar />
-        <Bars barData={jumblogNavBarData} />
-        <Breadcrumbs links={breadcrumbsLinks} />
-        <JumblogMenu activeMenu="all" />
-        {currentArticles.length > 0 ? (
-            <ArticlesList articlesData={currentArticles} showBtn={true} />
-        ) : (
-            <NotFoundMessage message={t("noArticleFound")} />
-        )}
-        {currentPageNo && (
-            <Pagination
-                pageCount={pageCount}
-                pageNo={currentPageNo}
-                path="the-jumblog"
-            />
-        )}
-        <Footer />
-      </Fragment>
+    <Fragment>
+      <Head>
+        <title>{pageTitle}</title>
+      </Head>
+      <Navbar />
+      <Bars barData={jumblogNavBarData} />
+      <Breadcrumbs links={breadcrumbsLinks} />
+      <JumblogMenu activeMenu="all" />
+      {currentArticles.length > 0 ? (
+        <ArticlesList articlesData={currentArticles} showBtn={true} />
+      ) : (
+        <NotFoundMessage message={t("noArticleFound")} />
+      )}
+      {currentPageNo && (
+        <Pagination
+          pageCount={pageCount}
+          pageNo={currentPageNo}
+          path="the-jumblog"
+        />
+      )}
+      <Footer />
+    </Fragment>
   );
 }
 

@@ -16,10 +16,10 @@ type Detail =
 
 type Data = {
   id: number;
-  text: string;
+  question: string;
   bg: string;
   addLink?: boolean;
-  detail: Detail;
+  answer: Detail;
 };
 
 type Props = {
@@ -63,7 +63,7 @@ export function QuestionsList({ data, showBtn }: Props) {
 
   return (
     <div className={supportContainer}>
-      {data.map(({ id, text, bg, addLink, detail }) => (
+      {data.map(({ id, question, bg, addLink, answer }) => (
         <div
           key={id}
           className={`${supportItem} ${bg}`}
@@ -71,14 +71,14 @@ export function QuestionsList({ data, showBtn }: Props) {
         >
           <div className={listContainer}>
             <div className={listTitleContainer}>
-              <h1> {t(`${text}`)}</h1>
+              <h1> {t(`${question}`)}</h1>
               <Image
                 src={TriagleArrow}
                 alt="triangle-arrow"
                 className={id === listId && expanded ? downArrow : undefined}
               />
             </div>
-            {renderDetail(id, addLink, detail)}
+            {renderDetail(id, addLink, answer)}
           </div>
         </div>
       ))}
