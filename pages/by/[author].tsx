@@ -72,7 +72,7 @@ export async function getStaticProps({
 }) {
   const slug = params.author;
   const data = getAuthorsBySlug(slug) || {};
-  console.log(slug);
+  console.log("XXX" + slug);
 
   return {
     props: {

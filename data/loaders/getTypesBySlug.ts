@@ -1,5 +1,8 @@
 import {Type} from 'types/cms/Type'
 import Types from 'data/cms/Types.json'
+import BlogPosts from 'data/cms/BlogPosts.json'
+import Authors from 'data/cms/Authors.json'
+import Tags from 'data/cms/Tags.json'
 
 export function getTypesBySlug(slug?: string): Type[] {
   return Types.map((type: Type) => {
