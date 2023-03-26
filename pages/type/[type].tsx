@@ -20,7 +20,7 @@ import { splitAndCapitalize, splitWord } from "helper/stringHelpers";
 import { ArticleDataTypes } from "types/articleList";
 import { introHeaderTypes, introHeaderValues } from "types/introHeader";
 import { GetStaticProps, GetStaticPaths } from "next";
-import { breadcrumsTypes } from "types/breadcrumbs";
+import { breadcrumbsTypes } from "types/breadcrumbs";
 import {getTypesBySlug} from "data/loaders/getTypesBySlug";
 
 function ArticleTypePage({ poplulateArticlesData }) {
@@ -64,7 +64,7 @@ function ArticleTypePage({ poplulateArticlesData }) {
     });
   };
 
-  const breadcrumbsLinks: breadcrumsTypes[] = [
+  const breadcrumbsLinks: breadcrumbsTypes[] = [
     { id: 1, title: "Home", link: "/" },
     { id: 2, title: "The Jumblog", link: "/the-jumblog/page/1" },
     {
@@ -95,7 +95,7 @@ function ArticleTypePage({ poplulateArticlesData }) {
         title={title}
         detail={detail}
       />
-      <ArticlesList articlesData={articlesByType} />
+      <ArticlesList articlesData={articlesByType} showBtn={true} />
       <Footer />
     </Fragment>
   );

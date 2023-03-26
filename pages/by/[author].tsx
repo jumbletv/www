@@ -67,9 +67,9 @@ function Author({data, slug}: AuthorSingleProps) {
     );
 }
 
-export const getStaticProps: GetStaticProps = async ({ locale, params: any }) => {
-    const slug = params.author;
-    const data = getAuthorsBySlug(params.slug);
+export const getStaticProps: GetStaticProps = async ({ locale, params}) => {
+    const slug = params.author as string;
+    const data = getAuthorsBySlug(slug);
     console.log("XXX" + slug);
 
     return {

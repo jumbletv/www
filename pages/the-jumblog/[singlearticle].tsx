@@ -1,96 +1,85 @@
-import Head from "next/head";
-import { Navbar } from "layout/Navbar";
-import { ArticlesList } from "components/ArticlesList";
-import { articlesData } from "data/articlesData";
-import { Footer } from "layout/Footer";
 import { Fragment } from "react";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useEffect } from "react";
+import Head from "next/head";
 import { useRouter } from "next/router";
-import { Bars } from "common/Bars";
-import { homeNavBarData } from "data/barData";
-import { Breadcrumbs } from "common/Breadcrumbs";
-import { ArticleDetail } from "components/ArticleDetail";
-import { useState } from "react";
-import { splitWord } from "helper/stringHelpers";
-import { articlesByData } from "data/introData";
-import { ArticleDataTypes, articleDataValues } from "types/articleList";
-import { authorDataTypes, authorDataValues } from "types/introHeader";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
 import { GetStaticProps, GetStaticPaths } from "next";
-import { breadcrumsTypes } from "types/breadcrumbs";
-import {getBlogPostsBySlug} from "data/loaders/getBlogPostsBySlug";
-import {getTypesBySlug} from "data/loaders/getTypesBySlug";
+import { Navbar } from "layout/Navbar";
+import { Footer } from "layout/Footer";
+import { ArticlesList } from "components/ArticlesList";
+import { ArticleDetail } from "components/ArticleDetail";
+import { Bars } from "common/Bars";
+import { Breadcrumbs } from "common/Breadcrumbs";
+import { homeNavBarData } from "data/barData";
+import { getBlogPostsBySlug } from "data/loaders/getBlogPostsBySlug";
+import { splitWord } from "helper/stringHelpers";
+import {
+    Author,
+    BlogPost,
+    Type,
+    Tag,
+  ArticleDataTypes,
+  articleDataValues,
+  authorDataTypes,
+  authorDataValues,
+  breadcrumbsTypes,
+} from "types";
 
-function SingleArticle({ poplulateArticlesData, populateauthorData }) {
+function SingleArticlePage({ singleArticle }) {
   const router = useRouter();
+  const { t } = useTranslation("articles");
 
   const {
     locale,
-    asPath,
-    query: { singlearticle },
+    query: { singleArticleSlug },
   } = router;
 
-  const [singleArticle, setSingleArticle] =
-    useState<ArticleDataTypes>(articleDataValues);
-  const [articleType, setArticleType] = useState<string>("");
-  const [articleauthor, setArticleauthor] =
-    useState<authorDataTypes>(authorDataValues);
+  const articleType = singleArticle?.typeRef.name || "";
+  const articleAuthor = singleArticle.authorRef.name || "";
 
-  useEffect(() => {
-    getSingleBlog();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [locale, router]);
-
-  const getSingleBlog = () => {
-    poplulateArticlesData?.forEach((article: ArticleDataTypes) => {
-      if (article?.link === asPath) {
-        setSingleArticle(article);
-        setArticleType(article.type);
-        populateauthorData?.forEach((author: authorDataTypes) => {
-          if (author.authorLink === article.by) {
-            setArticleauthor(author);
-          }
-        });
-      }
-    });
-  };
-
-  const breadcrumbsLinks: breadcrumsTypes[] = [
-    { id: 1, title: "Home", link: "/" },
-    { id: 2, title: "The Jumblog", link: "/the-jumblog/page/1" },
-    { id: 3, title: `${articleType}`, link: `/type/${articleType}` },
+  const breadcrumbsLinks: breadcrumbsTypes[] = [
+    { id: 1, title: t("breadcrumbHome"), link: "/" },
+    { id: 2, title: t("breadcrumbBlog"), link: "/the-jumblog/page/1" },
+    {
+      id: 3,
+      title: t(`breadcrumb${articleType}`),
+      link: `/type/${articleType}`,
+    },
     {
       id: 4,
-      title: splitWord(singlearticle as string),
-      link: `/the-jumblog/${singlearticle}`,
+      title: splitWord(singleArticleSlug as string),
+      link: `/the-jumblog/${singleArticleSlug}`,
     },
   ];
-  const titleText: string = `JUMBLE | Article ${splitWord(
-    singlearticle as string
-  )}`;
+
+  const pageTitle: string = t("pageTitle", {
+    articleName: splitWord(singleArticleSlug as string),
+  });
 
   return (
-    <Fragment>
-      <Head>
-        <title>{titleText}</title>
-      </Head>
-      <Navbar />
-      <Bars barData={homeNavBarData} />
-      <Breadcrumbs links={breadcrumbsLinks} />
-      {singleArticle && (
-        <ArticleDetail articleDetail={singleArticle} author={articleauthor} />
-      )}
-      <ArticlesList articlesData={poplulateArticlesData} />
-      <Footer />
-    </Fragment>
+      <Fragment>
+        <Head>
+          <title>{pageTitle}</title>
+        </Head>
+        <Navbar />
+        <Bars barData={homeNavBarData} />
+        <Breadcrumbs links={breadcrumbsLinks} />
+        {singleArticle && (
+            <ArticleDetail articleDetail={singleArticle} author={articleAuthor} />
+        )}
+        <ArticlesList articlesData={singleArticle.relatedPostsRef} showBtn={true} />
+        <Footer />
+      </Fragment>
   );
 }
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
+export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
+  const { singleArticleSlug } = params;
+  const singleArticle = getBlogPostsBySlug(singleArticleSlug as string)[0];
+
   return {
     props: {
-      poplulateArticlesData: articlesData,
-      populateauthorData: articlesByData,
+      singleArticle,
       ...(await serverSideTranslations(locale, [
         "common",
         "articles",
@@ -100,6 +89,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
     revalidate: 60,
   };
 };
+
 export const getStaticPaths: GetStaticPaths = () => {
   const paths = getBlogPostsBySlug().map((article) => "/the-jumblog/" + article?.slug);
 
@@ -109,4 +99,4 @@ export const getStaticPaths: GetStaticPaths = () => {
   };
 };
 
-export default SingleArticle;
+export default SingleArticlePage;

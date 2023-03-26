@@ -68,7 +68,7 @@ export default function Tag({ poplulateArticlesData }: TagProps) {
       <Breadcrumbs links={breadcrumbsLinks} />
       <Header headerText="THE JUMBLOG" />
       <LogoBanner />
-      <ArticlesList articlesData={articlesByTag} />
+      <ArticlesList articlesData={articlesByTag} showBtn={true} />
       <Footer />
     </Fragment>
   );
