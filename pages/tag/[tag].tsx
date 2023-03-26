@@ -16,10 +16,10 @@ import type { GetStaticPaths, GetStaticProps } from "next";
 import {getTagsBySlug} from "data/loaders/getTagsBySlug";
 
 interface TagProps {
-  poplulateArticlesData: Array<any>;
+  populateArticlesData: Array<any>;
 }
 
-export default function Tag({ poplulateArticlesData }: TagProps) {
+export default function Tag({ populateArticlesData }: TagProps) {
   const router = useRouter();
   const {
     locale,
@@ -35,7 +35,7 @@ export default function Tag({ poplulateArticlesData }: TagProps) {
 
   const getArticlesByTag = () => {
     const articles = [];
-    poplulateArticlesData?.forEach((article) => {
+    populateArticlesData?.forEach((article) => {
       article.tags.forEach((singleTag) => {
         if (singleTag.tag === splitWord(tag as string)) {
           articles.push(article);
@@ -76,7 +76,7 @@ export default function Tag({ poplulateArticlesData }: TagProps) {
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
-      poplulateArticlesData: articlesData,
+      populateArticlesData: articlesData,
       ...(await serverSideTranslations(locale, ["common", "articles"])),
     },
     revalidate: 60,
