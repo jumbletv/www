@@ -13,7 +13,6 @@ import { Header } from "layout/Header";
 import { LogoBanner } from "common/LogoBanner";
 import { splitWord, splitAndCapitalize } from "helper/stringHelpers";
 import type { GetStaticPaths, GetStaticProps } from "next";
-import {getAuthorsBySlug} from "data/loaders/getAuthorsBySlug";
 import {getTagsBySlug} from "data/loaders/getTagsBySlug";
 
 interface TagProps {

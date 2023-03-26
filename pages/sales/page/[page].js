@@ -1,18 +1,18 @@
 import Head from "next/head";
 import { Navbar } from "layout/Navbar";
 import { Header } from "layout/Header";
-import HomeProducts from "components/products/homeProducts/HomeProducts";
+import { HomeProducts } from "components/HomeProducts";
 import { Footer } from "layout/Footer";
 import { Fragment, useState } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { Bars } from "common/bars/Bars";
+import { Bars } from "common/Bars";
 import { homeNavBarData } from "data/barData";
 import { salesData } from "data/products";
-import { Pagination } from "components/pagination/Pagination";
+import { Pagination } from "components/Pagination";
 import { salesPerPage } from "data/pagination";
-import { NotFoundMessage } from "common/notFoundMessage/NotFoundMessage";
+import { NotFoundMessage } from "common/NotFoundMessage";
 
 function Sales({ poplulateProductsData }) {
   const router = useRouter();

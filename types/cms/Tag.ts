@@ -1,3 +1,5 @@
+import { BlogPost } from './BlogPost';
+
 export type Tag = {
     _archived: boolean;
     _cid: string;

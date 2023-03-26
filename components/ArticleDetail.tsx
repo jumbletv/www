@@ -3,9 +3,8 @@ import styles from "components/ArticleDetail.module.scss";
 import { AuthorCard } from "components/AuthorCard";
 import { ArticleDetailHeader } from "components/ArticleDetailHeader";
 import { NotFoundMessage } from "common/NotFoundMessage";
-import { ArticleDetailTypes } from "@/_attic/articleList";
 
-export function ArticleDetail({ articleDetail, author }: ArticleDetailTypes) {
+export function ArticleDetail({ articleDetail, author }) {
   const { articleDetailWrapper, articleDetailContainer, autherCardWrapper } =
     styles;
 

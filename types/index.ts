@@ -1,4 +1,3 @@
-export * from "../_attic/articleList";
 export * from "./introHeader";
 export * from "./breadcrumbs";
 export * from "./cms/Author";

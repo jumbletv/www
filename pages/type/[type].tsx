@@ -12,10 +12,8 @@ import { Breadcrumbs } from "common/Breadcrumbs";
 import JumblogMenu from "components/JumblogMenu";
 import { Header } from "layout/Header";
 import { LogoBanner } from "common/LogoBanner";
-import { articleTypesData } from "data/introData";
 import { IntroHeader } from "components/IntroHeader";
 import { splitAndCapitalize, splitWord } from "helper/stringHelpers";
-import { ArticleDataTypes } from "@/_attic/articleList";
 import { introHeaderTypes, introHeaderValues } from "types/introHeader";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { breadcrumbsTypes } from "types/breadcrumbs";
@@ -24,7 +22,6 @@ import {Type} from "@/types";
 
 interface Props {
   data: Type[];
-  articlesByType: ArticleDataTypes[];
   introHeaderData: introHeaderTypes;
   articleType: string;
 }

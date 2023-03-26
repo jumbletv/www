@@ -18,10 +18,6 @@ import {
     BlogPost,
     Type,
     Tag,
-  ArticleDataTypes,
-  articleDataValues,
-  authorDataTypes,
-  authorDataValues,
   breadcrumbsTypes,
 } from "types";
 
