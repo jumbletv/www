@@ -1,5 +1,7 @@
 import Authors from "data/cms/Authors.json";
 import {Author} from "types/cms/Author";
+import BlogPosts from "data/cms/BlogPosts.json";
+import Tags from "data/cms/Tags.json";
 
 export function getAuthorsBySlug(slug?: string): Author[] {
     return Authors.map((author: Author) => {
