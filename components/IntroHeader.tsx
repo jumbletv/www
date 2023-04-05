@@ -1,10 +1,10 @@
 import { IntroHeaderItem } from "components/IntroHeaderItem";
 import React from "react";
 import styles from "./IntroHeader.module.scss";
-import {Author} from "@/types/cms/Author";
+import { Author } from "@/types/cms/Author";
 
 export type IntroHeaderData = {
-  id: number;
+  id: string;
   headerImg: any;
   title: string;
   detail: string;
