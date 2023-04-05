@@ -2,6 +2,7 @@ import React from "react";
 import { HomeProductItem } from "components/HomeProductItem";
 import { CircleBtn } from "common/CircleBtn";
 import styles from "./HomeProducts.module.scss";
+import {Sale} from "@/types";
 
 type Product = {
   id: number;
@@ -19,18 +20,18 @@ type Product = {
 };
 
 type Props = {
-  productsData: Product[];
-  showBtn: boolean;
+  sales: Sale[];
+  showBtn?: boolean;
 };
 
-export function HomeProducts({ productsData, showBtn }: Props) {
+export function HomeProducts({ sales, showBtn }: Props) {
   const { homeProductsWrapper, homeProductsContainer } = styles;
 
   return (
     <div className={homeProductsWrapper}>
       <div className={homeProductsContainer}>
-        {productsData?.map((product) => (
-          <HomeProductItem key={product.id} product={product} />
+        {sales?.map((sale) => (
+          <HomeProductItem key={sale._id} sale={sale} />
         ))}
       </div>
       {showBtn && <CircleBtn link="" />}

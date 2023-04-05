@@ -3,46 +3,28 @@ import styles from "./HomeProductItem.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 
-interface Product {
-  id: number;
-  productBg: {
-    src: string;
-  };
-  productImg: string;
-  productBgColor: string;
-  productTitle: string;
-  productDate: string;
-  productLink: string;
-}
+import { Sale } from "@/types";
 
 interface Props {
-  product: Product;
+  sale: Sale;
 }
 
-export function HomeProductItem({ product }: Props) {
+export function HomeProductItem({ sale }: Props) {
   const { homeProductItemContainer, homeProductItemDetail } = styles;
-  const {
-    id,
-    productBg,
-    productImg,
-    productBgColor,
-    productTitle,
-    productDate,
-    productLink,
-  } = product;
+
   return (
-    <Link href={productLink}>
+    <Link href={"/sale/" + sale.slug}>
       <div
         style={{
-          backgroundImage: `url(${productBg.src})`,
+          backgroundImage: `url(${sale["bg-pattern"]})`,
         }}
-        className={`${homeProductItemContainer}  ${productBgColor}`}
+        className={`${homeProductItemContainer}  ${sale["bg-color"]}`}
       >
-        <Image src={productImg} alt="product" priority={id === 1} />
+        <Image src={sale["main-product-photo"].url} alt={sale.name} /* priority={id === 1} */ />
       </div>
-      <div className={`${homeProductItemDetail} ${productBgColor}`}>
-        <h1>{productTitle}</h1>
-        <h2>{productDate}</h2>
+      <div className={`${homeProductItemDetail} ${sale["bg-color"]}`}>
+        <h1>{sale.name}</h1>
+        <h2>{sale["sell-on"]}</h2>
       </div>
     </Link>
   );

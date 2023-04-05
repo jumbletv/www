@@ -19,29 +19,27 @@ import {Author} from "types/cms/Author";
 import {getAuthorIntroHeader} from "@/data/loaders/getIntroHeader";
 import {GetStaticPaths, GetStaticProps} from "next";
 
-interface AuthorSingleProps {
-    data: Author[];
-    slug: string;
+interface SingleAuthorProps {
+    data: Author;
 }
 
-function Author({data, slug}: AuthorSingleProps) {
+function SingleAuthorPage({data}: SingleAuthorProps) {
     const router = useRouter();
     const {locale, query} = router;
-    console.log('DATA',data);
 
     const breadcrumbsLinks: BreadcrumbLink[] = [
         {id: 1, title: "Home", link: "/"},
         {id: 2, title: "The Jumblog", link: "/the-jumblog/page/1"},
         {
             id: 3,
-            title: `Article by ${splitWord(slug)}`,
-            link: `/by/${slug}`,
+            title: `Article by ${data.name}`,
+            link: `/by/${data.slug}`,
         },
     ];
 
-    const titleText = `JUMBLE | Articles by ${splitAndCapitalize(data[0]["name"])}`;
+    const titleText = `JUMBLE | Articles by ${data.name}`;
 
-    const {id, headerImg, title, detail} = getAuthorIntroHeader(data[0]);
+    const {id, headerImg, title, detail} = getAuthorIntroHeader(data);
 
     return (
         <Fragment>
@@ -66,14 +64,11 @@ function Author({data, slug}: AuthorSingleProps) {
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale, params}) => {
-    const slug = params.author as string;
-    const data = getAuthorsBySlug(slug);
-    console.log("XXX" + slug);
+    const data = getAuthorsBySlug(params.slug as string);
 
     return {
         props: {
             data,
-            slug,
             ...(await serverSideTranslations(locale, [
                 "common",
                 "articles",
@@ -93,4 +88,4 @@ export const getStaticPaths: GetStaticPaths = async () => {
     };
 }
 
-export default Author;
+export default SingleAuthorPage;

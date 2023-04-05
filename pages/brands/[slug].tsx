@@ -11,8 +11,13 @@ import { BrandDetail } from "components/BrandDetail";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { getBrandsBySlug } from "data/loaders/getBrandsBySlug";
 import { breadcrumbsTypes } from "types/breadcrumbs";
+import {Brand} from "@/types";
 
-function SingleBrandPage({ singleBrand }) {
+interface SingleBrandProps {
+  data: Brand
+}
+
+function SingleBrandPage({data}: SingleBrandProps) {
   const router = useRouter();
 
   const {
@@ -20,18 +25,18 @@ function SingleBrandPage({ singleBrand }) {
     query: { singleBrandSlug },
   } = router;
 
-  const brandAuthor = singleBrand.authorRef.name || "";
+  const brandAuthor = data.authorRef.name || "";
 
   const breadcrumbsLinks: breadcrumbsTypes[] = [
     { id: 1, title: "Home", link: "/" },
     { id: 2, title: "Brands", link: "/brands/page/1" },
     {
       id: 3,
-      title: singleBrand.name,
-      link: `/brands/${singleBrand.slug}`,
+      title: data.name,
+      link: `/brands/${data.slug}`,
     },
   ];
-  const titleText: string = `JUMBLE | Brands ${singleBrand.name}`;
+  const titleText: string = `JUMBLE | Brands ${data.name}`;
 
   return (
       <Fragment>
@@ -41,19 +46,18 @@ function SingleBrandPage({ singleBrand }) {
         <Navbar />
         <Bars barData={homeNavBarData} />
         <Breadcrumbs links={breadcrumbsLinks} />
-        <BrandDetail brandDetail={singleBrand} author={brandAuthor} />
+        <BrandDetail brandDetail={data} author={brandAuthor} />
         <Footer />
       </Fragment>
   );
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale , params}) => {
-  const { singleBrandSlug } = params;
-  const singleBrand = getBrandsBySlug(singleBrandSlug as string)[0];
+  const data = getBrandsBySlug(params.slug as string)[0];
 
   return {
     props: {
-      singleBrand,
+      data,
       ...(await serverSideTranslations(locale, [
         "common",
         "brands",
