@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ArticleHeading } from "common/ArticleHeading";
 import { NotFoundMessage } from "common/NotFoundMessage";
 import styles from "./BrandDetail.module.scss";
+import { AuthorType } from "../types/authorType";
 
 interface BrandDetailType {
   image: string;
@@ -12,22 +13,9 @@ interface BrandDetailType {
   name: string;
 }
 
-interface authorType {
-  id: number;
-  name: string;
-  title: string;
-  headerImg: string;
-  detail: string;
-  profilePic: string;
-  description: string;
-  authorLink: string;
-  twitterLink: string;
-  linkedinLink: string;
-};
-
 type BrandDetailProps = {
   brandDetail: BrandDetailType;
-  author: authorType;
+  author: AuthorType;
 };
 
 export function BrandDetail({ brandDetail, author }: BrandDetailProps) {

@@ -11,13 +11,13 @@ import { BrandDetail } from "components/BrandDetail";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { getBrandsBySlug } from "data/loaders/getBrandsBySlug";
 import { breadcrumbsTypes } from "types/breadcrumbs";
-import {Brand} from "@/types";
+import { Brand } from "@/types";
 
 interface SingleBrandProps {
-  data: Brand
+  data: Brand;
 }
 
-function SingleBrandPage({data}: SingleBrandProps) {
+function SingleBrandPage({ data }: SingleBrandProps) {
   const router = useRouter();
 
   const {
@@ -25,7 +25,20 @@ function SingleBrandPage({data}: SingleBrandProps) {
     query: { singleBrandSlug },
   } = router;
 
-  const brandAuthor = data.authorRef.name || "";
+  const {
+    name,
+    date,
+    authorRef: {
+      _id: id,
+      name: title,
+      avatar: { url: headerImg },
+      link: authorLink,
+      bio: detail,
+    },
+  } = data;
+
+  const authorData = { id, title, headerImg, authorLink, detail };
+  const brandData = { name, date, image: data["main-image"].url, type: "" };
 
   const breadcrumbsLinks: breadcrumbsTypes[] = [
     { id: 1, title: "Home", link: "/" },
@@ -39,20 +52,20 @@ function SingleBrandPage({data}: SingleBrandProps) {
   const titleText: string = `JUMBLE | Brands ${data.name}`;
 
   return (
-      <Fragment>
-        <Head>
-          <title>{titleText}</title>
-        </Head>
-        <Navbar />
-        <Bars barData={homeNavBarData} />
-        <Breadcrumbs links={breadcrumbsLinks} />
-        <BrandDetail brandDetail={data} author={brandAuthor} />
-        <Footer />
-      </Fragment>
+    <Fragment>
+      <Head>
+        <title>{titleText}</title>
+      </Head>
+      <Navbar />
+      <Bars barData={homeNavBarData} />
+      <Breadcrumbs links={breadcrumbsLinks} />
+      <BrandDetail brandDetail={brandData} author={authorData} />
+      <Footer />
+    </Fragment>
   );
 }
 
-export const getStaticProps: GetStaticProps = async ({ locale , params}) => {
+export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
   const data = getBrandsBySlug(params.slug as string)[0];
 
   return {

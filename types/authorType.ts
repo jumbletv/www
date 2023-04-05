@@ -1,5 +1,5 @@
 export type AuthorType = {
-  id: number;
+  id: string;
   title: string;
   detail: string;
   headerImg: string;
