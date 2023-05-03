@@ -42,12 +42,19 @@ export function ArticleItem({
 
   const typeBg = type === "editorials" ? blueBg : greenBg;
 
+  const displayDate = new Date(date);
+  const year = displayDate.getFullYear();
+  const month = new Intl.DateTimeFormat('en-US', {month: 'long'}).format(
+    displayDate,
+  );
+  const day = displayDate.getDate();
+
   return (
     <div className={`${articleItemContainer} ${typeBg}`}>
       <div className={articleItemDetail}>
         <Link href={link}>
           <div className={`${dateContainer}`}>
-            <p>{date}</p>
+            <p>{month} {day}, {year}</p>
             <p>{type}</p>
           </div>
           <ArticleHeading heading={t(title)} />

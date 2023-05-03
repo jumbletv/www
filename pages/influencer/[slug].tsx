@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { Navbar } from "layout/Navbar";
-import { HomeProducts } from "components/HomeProducts";
 import { Footer } from "layout/Footer";
 import { Fragment } from "react";
 import { useRouter } from "next/router";

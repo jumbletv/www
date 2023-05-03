@@ -70,3 +70,7 @@ export function getBlogPostsByAuthorSlug(slug: string): BlogPost[] {
     return blogPost.authorRef.slug === slug;
   });
 }
+
+export function getLastBlogPosts(count: number): BlogPost[] {
+  return getBlogPostsBySlug().slice(0, count);
+}

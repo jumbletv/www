@@ -25,3 +25,7 @@ export const getSalesBySlug = (slug?: string): Sale[] => {
         };
     }).filter((sale) => sale !== undefined) as Sale[];
 }
+
+export const getLastSales = (count: number): Sale[] => {
+    return getSalesBySlug().slice(0, count);
+}
