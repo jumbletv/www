@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./HomeProductItem.module.scss";
+import styles from "./HomeSalesItem.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,7 +9,7 @@ interface Props {
   sale: Sale;
 }
 
-export function HomeProductItem({ sale }: Props) {
+export function HomeSalesItem({ sale }: Props) {
   const { homeProductItemContainer, homeProductItemDetail } = styles;
 
   return (
@@ -20,7 +20,12 @@ export function HomeProductItem({ sale }: Props) {
         }}
         className={`${homeProductItemContainer}  ${sale["bg-color"]}`}
       >
-        <Image src={sale["main-product-photo"].url} alt={sale.name} /* priority={id === 1} */ />
+        <Image
+          src={sale["main-product-photo"].url}
+          alt={sale.name} /* priority={id === 1} */
+          width={300}
+          height={300}
+        />
       </div>
       <div className={`${homeProductItemDetail} ${sale["bg-color"]}`}>
         <h1>{sale.name}</h1>
