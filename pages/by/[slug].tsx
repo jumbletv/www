@@ -1,7 +1,6 @@
 import Head from "next/head";
 import {Navbar} from "layout/Navbar";
 import {ArticlesList} from "components/ArticlesList";
-import {articlesData, ArticleData} from "data/articlesData";
 import {Footer} from "layout/Footer";
 import {Fragment} from "react";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
@@ -11,16 +10,19 @@ import {homeNavBarData, BarData} from "data/barData";
 import {Breadcrumbs, BreadcrumbLink} from "common/Breadcrumbs";
 import {Header} from "layout/Header";
 import {LogoBanner} from "common/LogoBanner";
-import {IntroHeaderData, IntroHeader} from "components/IntroHeader";
+import {IntroHeader} from "components/IntroHeader";
 import {getAuthorsBySlug} from "data/loaders/getAuthorsBySlug";
 import {Author} from "types/cms/Author";
-import {GetStaticPaths, GetStaticProps} from "next";
+import type { GetStaticPaths, GetStaticProps } from "next";
+import { BlogPost } from "@/types";
+import { getBlogPostsByAuthorSlug } from "@/data/loaders/getBlogPostsBySlug";
 
 interface SingleAuthorProps {
     data: Author;
+    articles: BlogPost[];
 }
 
-function SingleAuthorPage({data}: SingleAuthorProps) {
+function SingleAuthorPage({data, articles, }: SingleAuthorProps) {
     const router = useRouter();
     const {locale, query} = router;
 
@@ -52,7 +54,7 @@ function SingleAuthorPage({data}: SingleAuthorProps) {
                 title={data[0]["name"]}
                 detail={data[0]["bio"]}
             />
-            <ArticlesList articlesData={data[0].relatedPostsRef} showBtn={true}/>
+            <ArticlesList articlesData={articles} showBtn={true}/>
             <Footer/>
         </Fragment>
     );
@@ -60,10 +62,12 @@ function SingleAuthorPage({data}: SingleAuthorProps) {
 
 export const getStaticProps: GetStaticProps = async ({ locale, params}) => {
     const data = getAuthorsBySlug(params.slug as string);
+    const articles = getBlogPostsByAuthorSlug(params.slug as string)
 
     return {
         props: {
             data,
+            articles,
             ...(await serverSideTranslations(locale, [
                 "common",
                 "articles",

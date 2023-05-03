@@ -13,7 +13,7 @@ import { IntroHeader } from "components/IntroHeader";
 import { NotFoundMessage } from "common/NotFoundMessage";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { getInfluencersBySlug } from "data/loaders/getInfluencersBySlug";
-import { GetStaticPaths, GetStaticProps } from "next";
+import type { GetStaticPaths, GetStaticProps } from "next";
 import { Influencer } from "@/types";
 
 interface SingleInfluencerProps {

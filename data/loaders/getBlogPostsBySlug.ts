@@ -56,3 +56,17 @@ export function getBlogPostsByTagSlug(slug: string): BlogPost[] {
     return blogPost.tagsRef.map((tag) => tag.slug).includes(slug);
   });
 }
+
+export function getBlogPostsByTypeSlug(slug: string): BlogPost[] {
+  return getBlogPostsBySlug().filter((blogPost) => {
+    if (!blogPost.typeRef) return;
+    return blogPost.typeRef.slug === slug;
+  });
+}
+
+export function getBlogPostsByAuthorSlug(slug: string): BlogPost[] {
+  return getBlogPostsBySlug().filter((blogPost) => {
+    if (!blogPost.authorRef) return;
+    return blogPost.authorRef.slug === slug;
+  });
+}

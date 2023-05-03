@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { Navbar } from "layout/Navbar";
 import { ArticlesList } from "components/ArticlesList";
-import { articlesData } from "data/articlesData";
 import { Footer } from "layout/Footer";
 import { Fragment } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -13,18 +12,18 @@ import JumblogMenu from "components/JumblogMenu";
 import { Header } from "layout/Header";
 import { LogoBanner } from "common/LogoBanner";
 import { IntroHeader } from "components/IntroHeader";
-import { splitAndCapitalize } from "helper/stringHelpers";
-import { GetStaticProps, GetStaticPaths } from "next";
+import type { GetStaticPaths, GetStaticProps } from "next";
 import { breadcrumbsTypes } from "types/breadcrumbs";
 import {getTypesBySlug} from "data/loaders/getTypesBySlug";
-import {Type} from "@/types";
+import {BlogPost, Type} from "@/types";
+import { getBlogPostsByTypeSlug } from "@/data/loaders/getBlogPostsBySlug";
 
 interface Props {
   data: Type;
-  articleType: string;
+  articles: BlogPost[];
 }
 
-function ArticleTypePage({data, }: Props) {
+function ArticleTypePage({data, articles, }: Props) {
   const router = useRouter();
   const { locale, query } = router;
 
@@ -56,7 +55,7 @@ function ArticleTypePage({data, }: Props) {
             title={data["name"]}
             detail={data["meta-description"]}
         />
-        <ArticlesList articlesData={data.relatedPostsRef} showBtn={true} />
+        <ArticlesList articlesData={articles} showBtn={true} />
         <Footer />
       </Fragment>
   );
@@ -65,10 +64,12 @@ function ArticleTypePage({data, }: Props) {
 export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
   const { slug } = params;
   const data = getTypesBySlug(slug as string)[0];
+  const articlesByType = getBlogPostsByTypeSlug(slug as string)
 
   return {
     props: {
       data,
+      articlesByType,
       ...(await serverSideTranslations(locale, [
         "common",
         "articles",

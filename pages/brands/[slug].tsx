@@ -8,7 +8,7 @@ import { Bars } from "common/Bars";
 import { homeNavBarData } from "data/barData";
 import { Breadcrumbs } from "common/Breadcrumbs";
 import { BrandDetail } from "components/BrandDetail";
-import { GetStaticProps, GetStaticPaths } from "next";
+import type { GetStaticPaths, GetStaticProps } from "next";
 import { getBrandsBySlug } from "data/loaders/getBrandsBySlug";
 import { breadcrumbsTypes } from "types/breadcrumbs";
 import { Brand } from "@/types";

@@ -3,7 +3,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
-import { GetStaticProps, GetStaticPaths } from "next";
+import type { GetStaticPaths, GetStaticProps } from "next";
 import { Navbar } from "layout/Navbar";
 import { Footer } from "layout/Footer";
 import { ArticlesList } from "components/ArticlesList";
@@ -12,10 +12,7 @@ import { Bars } from "common/Bars";
 import { Breadcrumbs } from "common/Breadcrumbs";
 import { homeNavBarData } from "data/barData";
 import { getBlogPostsBySlug } from "data/loaders/getBlogPostsBySlug";
-import { splitWord } from "helper/stringHelpers";
-import {
-  breadcrumbsTypes,
-} from "types";
+import { breadcrumbsTypes,} from "types";
 
 function SingleArticlePage({ data }) {
   const router = useRouter();
