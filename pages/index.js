@@ -20,6 +20,8 @@ import { homeNavBarData } from "data/barData";
 import { salesData } from "data/products";
 import { NotFoundMessage } from "common/NotFoundMessage";
 
+// https://github.com/adrai/next-i18next-static-example/blob/main/pages/index.js
+
 function Home({ poplulateArticlesData, populateProductsData }) {
   const router = useRouter();
   const { locale } = router;

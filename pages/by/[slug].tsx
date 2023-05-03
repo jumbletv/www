@@ -60,7 +60,7 @@ function SingleAuthorPage({data}: SingleAuthorProps) {
 
 export const getStaticProps: GetStaticProps = async ({ locale, params}) => {
     const data = getAuthorsBySlug(params.slug as string);
-    //console.log("Author =====> ", data)
+
     return {
         props: {
             data,

@@ -17,7 +17,7 @@ import {
   breadcrumbsTypes,
 } from "types";
 
-function SingleArticlePage({ singleArticle }) {
+function SingleArticlePage({ data }) {
   const router = useRouter();
   const { t } = useTranslation("articles");
 
@@ -26,8 +26,8 @@ function SingleArticlePage({ singleArticle }) {
     query: { singleArticleSlug },
   } = router;
 
-  const articleType = singleArticle?.typeRef.name || "";
-  const articleAuthor = singleArticle.authorRef.name || "";
+  const articleType = data?.typeRef.name || "";
+  const articleAuthor = data.authorRef.name || "";
 
   const breadcrumbsLinks: breadcrumbsTypes[] = [
     { id: 1, title: t("breadcrumbHome"), link: "/" },
@@ -35,43 +35,39 @@ function SingleArticlePage({ singleArticle }) {
     {
       id: 3,
       title: t(`breadcrumb${articleType}`),
-      link: `/type/${articleType}`,
+      link: `/type/${data.slug}`,
     },
     {
       id: 4,
-      title: splitWord(singleArticleSlug as string),
-      link: `/the-jumblog/${singleArticleSlug}`,
+      title: `${data.name}`,
+      link: `/the-jumblog/${data.slug}`,
     },
   ];
-
-  const pageTitle: string = t("pageTitle", {
-    articleName: splitWord(singleArticleSlug as string),
-  });
 
   return (
       <Fragment>
         <Head>
-          <title>{pageTitle}</title>
+          <title>{data.name}</title>
         </Head>
         <Navbar />
         <Bars barData={homeNavBarData} />
         <Breadcrumbs links={breadcrumbsLinks} />
-        {singleArticle && (
-            <ArticleDetail articleDetail={singleArticle} author={articleAuthor} />
+        {data && (
+            <ArticleDetail articleDetail={data} author={articleAuthor} />
         )}
-        <ArticlesList articlesData={singleArticle.relatedPostsRef} showBtn={true} />
+        <ArticlesList articlesData={data.relatedPostsRef} showBtn={true} />
         <Footer />
       </Fragment>
   );
 }
 
 export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
-  const { singleArticleSlug } = params;
-  const singleArticle = getBlogPostsBySlug(singleArticleSlug as string)[0];
+  const { slug } = params;
+  const data = getBlogPostsBySlug(slug as string)[0];
 
   return {
     props: {
-      singleArticle,
+      data,
       ...(await serverSideTranslations(locale, [
         "common",
         "articles",

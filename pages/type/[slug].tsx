@@ -20,27 +20,24 @@ import {getTypesBySlug} from "data/loaders/getTypesBySlug";
 import {Type} from "@/types";
 
 interface Props {
-  data: Type[];
+  data: Type;
   articleType: string;
 }
 
 function ArticleTypePage({data, }: Props) {
   const router = useRouter();
   const { locale, query } = router;
-  const { type } = query;
 
   const breadcrumbsLinks: breadcrumbsTypes[] = [
     { id: 1, title: "Home", link: "/" },
     { id: 2, title: "The Jumblog", link: "/the-jumblog/page/1" },
     {
       id: 3,
-      title: `Article with tag ${data[0]?.name}`,
-      link: `/type/${type}`,
+      title: `Article with tag ${data.name}`,
+      link: `/type/${data.slug}`,
     },
   ];
-  const titleText: string = `JUMBLE | Type ${splitAndCapitalize(
-      type as string
-  )}`;
+  const titleText: string = `JUMBLE | Type ${data.name}`;
 
   return (
       <Fragment>
@@ -54,20 +51,21 @@ function ArticleTypePage({data, }: Props) {
         <LogoBanner />
         <JumblogMenu activeMenu="FIXME" />
         <IntroHeader
-            id={data[0]["_id"]}
-            headerImg={data[0]["main-image"]["url"]}
-            title={data[0]["name"]}
-            detail={data[0]["meta-description"]}
+            id={data["_id"]}
+            headerImg={data["main-image"]["url"]}
+            title={data["name"]}
+            detail={data["meta-description"]}
         />
-        <ArticlesList articlesData={data[0].relatedPostsRef} showBtn={true} />
+        <ArticlesList articlesData={data.relatedPostsRef} showBtn={true} />
         <Footer />
       </Fragment>
   );
 }
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const data = getTypesBySlug();
-  //console.log("OOOOOOOOOOOOO =>     ", data);
+export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
+  const { slug } = params;
+  const data = getTypesBySlug(slug as string)[0];
+
   return {
     props: {
       data,
