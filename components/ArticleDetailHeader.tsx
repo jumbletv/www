@@ -6,6 +6,7 @@ import { useTranslation } from "next-i18next";
 import styles from "./ArticleDetailHeader.module.scss";
 import { NotFoundMessage } from "common/NotFoundMessage";
 import { Tag } from "@/types/cms/Tag";
+import { BlogPost } from "@/types";
 
 interface ArticleDetail {
   img: StaticImageData;
@@ -16,23 +17,23 @@ interface ArticleDetail {
 }
 
 interface Props {
-  articleDetail: ArticleDetail;
+  article: BlogPost;
 }
 
-export function ArticleDetailHeader({ articleDetail }: Props) {
+export function ArticleDetailHeader({ article }: Props) {
   const { articleImgContainer, articleDateContainer, articleDetailTagWrapper } =
     styles;
-  const { img, date, type, tags, title } = articleDetail;
+
   const { t } = useTranslation("articles");
 
   return (
     <>
-      {img ? (
+      {article["main-image"] ? (
         <Image
-          src={img.src}
-          alt="blog-img"
+          src={article["main-image"].url}
+          alt={article.name}
           className={articleImgContainer}
-          blurDataURL={img.blurDataURL}
+          //blurDataURL={img.blurDataURL}
           placeholder="blur"
           priority={true}
           width={100}
@@ -43,12 +44,12 @@ export function ArticleDetailHeader({ articleDetail }: Props) {
       )}
 
       <div className={articleDateContainer}>
-        <p>{date}</p>
-        <p>{type}</p>
+        <p>{article.date}</p>
+        <p>{article.type}</p>
       </div>
-      <ArticleHeading heading={t(title)} />
+      <ArticleHeading heading={t(article.name)} />
       <div className={articleDetailTagWrapper}>
-        <ArticleTags tags={tags} />
+        <ArticleTags tags={article.tagsRef} />
       </div>
     </>
   );

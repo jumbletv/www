@@ -23,15 +23,12 @@ function SingleArticlePage({ data }) {
     query: { singleArticleSlug },
   } = router;
 
-  const articleType = data?.typeRef.name || "";
-  const articleAuthor = data.authorRef.name || "";
-
   const breadcrumbsLinks: breadcrumbsTypes[] = [
     { id: 1, title: t("breadcrumbHome"), link: "/" },
     { id: 2, title: t("breadcrumbBlog"), link: "/the-jumblog/page/1" },
     {
       id: 3,
-      title: t(`breadcrumb${articleType}`),
+      title: t(`breadcrumb${data?.typeRef.name}`),
       link: `/type/${data.slug}`,
     },
     {
@@ -50,7 +47,7 @@ function SingleArticlePage({ data }) {
         <Bars barData={homeNavBarData} />
         <Breadcrumbs links={breadcrumbsLinks} />
         {data && (
-            <ArticleDetail articleDetail={data} author={articleAuthor} />
+            <ArticleDetail article={data} />
         )}
         <ArticlesList articlesData={data.relatedPostsRef} showBtn={true} />
         <Footer />
