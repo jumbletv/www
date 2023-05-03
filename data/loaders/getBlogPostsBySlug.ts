@@ -49,3 +49,10 @@ export function getBlogPostsBySlug(slug?: string): BlogPost[] {
     };
   }).filter((blogPost) => blogPost !== undefined) as BlogPost[];
 }
+
+export function getBlogPostsByTagSlug(slug: string): BlogPost[] {
+  return getBlogPostsBySlug().filter((blogPost) => {
+    if (!blogPost.tagsRef) return;
+    return blogPost.tagsRef.map((tag) => tag.slug).includes(slug);
+  });
+}
