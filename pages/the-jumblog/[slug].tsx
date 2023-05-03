@@ -25,7 +25,7 @@ function SingleArticlePage({ data }) {
 
   const breadcrumbsLinks: breadcrumbsTypes[] = [
     { id: 1, title: t("breadcrumbHome"), link: "/" },
-    { id: 2, title: t("breadcrumbBlog"), link: "/the-jumblog/page/1" },
+    { id: 2, title: t("breadcrumbBlog"), link: "/the-jumblog" },
     {
       id: 3,
       title: t(`breadcrumb${data?.typeRef.name}`),

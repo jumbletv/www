@@ -49,7 +49,7 @@ function SingleSale({
 
   const breadcrumbsLinks = [
     { id: 1, title: "Home", link: "/" },
-    { id: 2, title: "Sales", link: "/sales/page/1" },
+    { id: 2, title: "Sales", link: "/sales/" },
     {
       id: 3,
       title: singlesale,

@@ -28,7 +28,7 @@ function SingleAuthorPage({data, articles, }: SingleAuthorProps) {
 
     const breadcrumbsLinks: BreadcrumbLink[] = [
         {id: 1, title: "Home", link: "/"},
-        {id: 2, title: "The Jumblog", link: "/the-jumblog/page/1"},
+        {id: 2, title: "The Jumblog", link: "/the-jumblog"},
         {
             id: 3,
             title: `Article by ${data.name}`,

@@ -25,7 +25,7 @@ const TagPage = ({ data, }: TagProps) => {
   const router = useRouter();
   const breadcrumbsLinks = [
     { id: 1, title: t("home"), link: "/" },
-    { id: 2, title: t("jumblog"), link: "/the-jumblog/page/1" },
+    { id: 2, title: t("jumblog"), link: "/the-jumblog" },
     { id: 3, title: `${t("tag")} ${data.name}`, link: router.asPath },
   ];
 

@@ -29,7 +29,7 @@ function ArticleTypePage({data, articles, }: Props) {
 
   const breadcrumbsLinks: breadcrumbsTypes[] = [
     { id: 1, title: "Home", link: "/" },
-    { id: 2, title: "The Jumblog", link: "/the-jumblog/page/1" },
+    { id: 2, title: "The Jumblog", link: "/the-jumblog" },
     {
       id: 3,
       title: `Article with tag ${data.name}`,

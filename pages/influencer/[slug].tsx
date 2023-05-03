@@ -25,7 +25,7 @@ function SingleInfluencerPage({ data }: SingleInfluencerProps) {
 
   const breadcrumbsLinks = [
     { id: 1, title: "Home", link: "/" },
-    { id: 2, title: "Upcoming Sales", link: "/sales/page/1" },
+    { id: 2, title: "Upcoming Sales", link: "/sales/" },
     {
       id: 3,
       title: `Sales By ${data.name}`,

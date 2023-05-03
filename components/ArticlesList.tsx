@@ -34,7 +34,7 @@ export function ArticlesList({ articlesData, showBtn }: { articlesData: BlogPost
           <h1>{t("no_articles")}</h1>
         </div>
       )}
-      {showBtn && <CircleBtn link="/the-jumblog/page/1" />}
+      {showBtn && <CircleBtn link="/the-jumblog" />}
     </div>
   );
 }

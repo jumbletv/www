@@ -38,7 +38,7 @@ function SingleBrandPage({ data }: SingleBrandProps) {
 
   const breadcrumbsLinks: breadcrumbsTypes[] = [
     { id: 1, title: "Home", link: "/" },
-    { id: 2, title: "Brands", link: "/brands/page/1" },
+    { id: 2, title: "Brands", link: "/brands/" },
     {
       id: 3,
       title: data.name,

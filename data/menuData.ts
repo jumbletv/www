@@ -1,21 +1,21 @@
 export const mobileNavMenuData = [
-  { id: 1, title: "upcoming_sales", link: "/sales/page/1" },
-  { id: 2, title: "the_jumblog", link: "/the-jumblog/page/1" },
+  { id: 1, title: "upcoming_sales", link: "/sales/" },
+  { id: 2, title: "the_jumblog", link: "/the-jumblog" },
   { id: 3, title: "faq", link: "/frequently-asked-questions" },
   { id: 4, title: "get_in_touch", link: "/get-in-touch" },
 ];
 
 export const navMenuData = [
   { id: 1, link: "/live", title: "live" },
-  { id: 2, link: "/the-jumblog/page/1", title: "the_jumblog" },
-  { id: 3, link: "/brands/page/1", title: "brands" },
+  { id: 2, link: "/the-jumblog", title: "the_jumblog" },
+  { id: 3, link: "/brands/", title: "brands" },
   { id: 4, link: "/frequently-asked-questions", title: "faq" },
   { id: 5, link: "/get-in-touch", title: "get_in_touch" },
 ];
 
 export const footerMenuData = [
-  { id: 1, title: "the_jumblog", link: "/the-jumblog/page/1" },
-  { id: 2, title: "brands", link: "/brands/page/1" },
+  { id: 1, title: "the_jumblog", link: "/the-jumblog" },
+  { id: 2, title: "brands", link: "/brands/" },
   { id: 3, title: "privacy_policy", link: "/privacy-policy" },
   { id: 4, title: "terms_conditions_sale", link: "/terms-conditions" },
   { id: 5, title: "get_in_touch", link: "/get-in-touch" },
@@ -26,7 +26,7 @@ export const jumblogMenuData = [
     id: 1,
     title: "all",
     text: "all_title",
-    link: "/the-jumblog/page/1",
+    link: "/the-jumblog",
   },
   {
     id: 2,
