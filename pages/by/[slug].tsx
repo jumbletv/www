@@ -16,6 +16,7 @@ import {Author} from "types/cms/Author";
 import type { GetStaticPaths, GetStaticProps } from "next";
 import { BlogPost } from "@/types";
 import { getBlogPostsByAuthorSlug } from "@/data/loaders/getBlogPostsBySlug";
+import { MetaSEO } from "@/components/MetaSEO";
 
 interface SingleAuthorProps {
     data: Author;
@@ -36,12 +37,16 @@ function SingleAuthorPage({data, articles, }: SingleAuthorProps) {
         },
     ];
 
-    const titleText = `JUMBLE | Articles by ${data.name}`;
+    const metaTitle = `Articles Written by ${data.name} | Jumble`;
 
     return (
         <Fragment>
             <Head>
-                <title>{titleText}</title>
+                <MetaSEO 
+                    title={metaTitle}
+                    description={data.bio}
+                    image={data.avatar.url}
+                />
             </Head>
             <Navbar/>
             <Bars barData={homeNavBarData as BarData[]}/>

@@ -17,6 +17,7 @@ import { breadcrumbsTypes } from "types/breadcrumbs";
 import {getTypesBySlug} from "data/loaders/getTypesBySlug";
 import {BlogPost, Type} from "@/types";
 import { getBlogPostsByTypeSlug } from "@/data/loaders/getBlogPostsBySlug";
+import { MetaSEO } from "@/components/MetaSEO";
 
 interface Props {
   data: Type;
@@ -36,12 +37,16 @@ function ArticleTypePage({data, articles, }: Props) {
       link: `/type/${data.slug}`,
     },
   ];
-  const titleText: string = `JUMBLE | Type ${data.name}`;
+  const metaTitle: string = `${data.name} | Jumble`;
 
   return (
       <Fragment>
         <Head>
-          <title>{titleText}</title>
+          <MetaSEO
+              title={metaTitle}
+              description={data["meta-description"]}
+              image={data["main-image"]["url"]}
+          />
         </Head>
         <Navbar />
         <Bars barData={homeNavBarData} />

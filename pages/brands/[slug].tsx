@@ -12,12 +12,9 @@ import type { GetStaticPaths, GetStaticProps } from "next";
 import { getBrandsBySlug } from "data/loaders/getBrandsBySlug";
 import { breadcrumbsTypes } from "types/breadcrumbs";
 import { Brand } from "@/types";
+import { MetaSEO } from "@/components/MetaSEO";
 
-interface SingleBrandProps {
-  data: Brand;
-}
-
-function SingleBrandPage({ data }: SingleBrandProps) {
+function SingleBrandPage({ data }: { data: Brand }) {
   const router = useRouter();
   const { locale, query } = router;
 
@@ -45,12 +42,16 @@ function SingleBrandPage({ data }: SingleBrandProps) {
       link: `/brands/${data.slug}`,
     },
   ];
-  const titleText: string = `JUMBLE | Brands ${data.name}`;
+  const metaTitle: string = `JUMBLE | Brands ${data["meta-title"]}`;
 
   return (
     <Fragment>
       <Head>
-        <title>{titleText}</title>
+          <MetaSEO 
+              title={metaTitle}
+              description={data["meta-description"]}
+              image={data["main-image"].url}
+          />
       </Head>
       <Navbar />
       <Bars barData={homeNavBarData} />

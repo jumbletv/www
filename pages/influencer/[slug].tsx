@@ -14,12 +14,9 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { getInfluencersBySlug } from "data/loaders/getInfluencersBySlug";
 import type { GetStaticPaths, GetStaticProps } from "next";
 import { Influencer } from "@/types";
+import { MetaSEO } from "@/components/MetaSEO";
 
-interface SingleInfluencerProps {
-  data: Influencer;
-}
-
-function SingleInfluencerPage({ data }: SingleInfluencerProps) {
+function SingleInfluencerPage({ data }: { data: Influencer }) {
   const router = useRouter();
   const { locale } = router;
 
@@ -32,12 +29,16 @@ function SingleInfluencerPage({ data }: SingleInfluencerProps) {
       link: `/influencer/${data.slug}`,
     },
   ];
-  const titleText = `JUMBLE | influencer ${data.name}`;
+  const metaTitle = `JUMBLE | influencer ${data.name}`;
 
   return (
     <Fragment>
       <Head>
-        <title>{titleText}</title>
+        <MetaSEO 
+          title={metaTitle}
+          description={data["meta-description"]}
+          image={data["profil-pic"].url}
+        />
       </Head>
       <Navbar />
       <Bars barData={jumblogNavBarData} />

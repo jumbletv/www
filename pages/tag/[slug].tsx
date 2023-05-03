@@ -15,12 +15,9 @@ import { getTagsBySlug } from "data/loaders/getTagsBySlug";
 import { useTranslation } from "next-i18next";
 import { Tag } from "@/types";
 import { getBlogPostsByTagSlug } from "@/data/loaders/getBlogPostsBySlug";
+import { MetaSEO } from "@/components/MetaSEO";
 
-interface TagProps {
-  data: Tag;
-}
-
-const TagPage = ({ data, }: TagProps) => {
+const TagPage = ({ data }: {data: Tag}) => {
   const { t } = useTranslation("common");
   const router = useRouter();
   const breadcrumbsLinks = [
@@ -32,7 +29,11 @@ const TagPage = ({ data, }: TagProps) => {
   return (
     <Fragment>
       <Head>
-        <title>{t("jumble")} | {}</title>
+        <MetaSEO
+          title={data.name}
+          description={data.description}
+          image={data.icon.url}
+        />
       </Head>
       <Navbar />
       <Bars barData={homeNavBarData} />

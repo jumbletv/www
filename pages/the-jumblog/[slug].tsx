@@ -12,9 +12,10 @@ import { Bars } from "common/Bars";
 import { Breadcrumbs } from "common/Breadcrumbs";
 import { homeNavBarData } from "data/barData";
 import { getBlogPostsBySlug } from "data/loaders/getBlogPostsBySlug";
-import { breadcrumbsTypes,} from "types";
+import { BlogPost, breadcrumbsTypes,} from "types";
+import { MetaSEO } from "@/components/MetaSEO";
 
-function SingleArticlePage({ data }) {
+function SingleArticlePage({ data }: {data: BlogPost}) {
   const router = useRouter();
   const { t } = useTranslation("articles");
 
@@ -41,7 +42,11 @@ function SingleArticlePage({ data }) {
   return (
       <Fragment>
         <Head>
-          <title>{data.name}</title>
+          <MetaSEO
+              title={data["meta-title"]}
+              description={data["meta-description"]}
+              image={data["main-image"]["url"]}
+          />
         </Head>
         <Navbar />
         <Bars barData={homeNavBarData} />
