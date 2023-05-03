@@ -14,6 +14,7 @@ import { LogoBanner } from "common/LogoBanner";
 import { splitWord, splitAndCapitalize } from "helper/stringHelpers";
 import type { GetStaticPaths, GetStaticProps } from "next";
 import {getTagsBySlug} from "data/loaders/getTagsBySlug";
+import { IntroHeader } from "@/components/IntroHeader";
 
 interface TagProps {
   populateArticlesData: Array<any>;
@@ -88,6 +89,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: paths,
-    fallback: true,
+    fallback: false,
   };
 };

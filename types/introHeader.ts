@@ -10,7 +10,7 @@ type staticImageTypes = {
 };
 
 interface introCommonTypes {
-  id: number;
+  id: string;
   title: string;
   detail: string;
   headerImg: staticImageTypes;

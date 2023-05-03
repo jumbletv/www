@@ -17,5 +17,5 @@ export function getFAQsBySlug(slug?: string): FAQ[] {
             typeRef: type,
             link: "/faq/" + faq.slug
         };
-    });
+    }).filter((faq) => faq !== undefined) as FAQ[];
 }

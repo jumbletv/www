@@ -9,7 +9,7 @@ export function ArticlesList({ articlesData, showBtn }: { articlesData: BlogPost
   const { noArticleContainer, articlesContainer } = styles;
   const { t } = useTranslation("common");
 
-  console.log(articlesData?.length);
+  //console.log(articlesData?.length);
 
   return (
     <div className={articlesContainer}>

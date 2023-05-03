@@ -13,8 +13,7 @@ import JumblogMenu from "components/JumblogMenu";
 import { Header } from "layout/Header";
 import { LogoBanner } from "common/LogoBanner";
 import { IntroHeader } from "components/IntroHeader";
-import { splitAndCapitalize, splitWord } from "helper/stringHelpers";
-import { introHeaderTypes, introHeaderValues } from "types/introHeader";
+import { splitAndCapitalize } from "helper/stringHelpers";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { breadcrumbsTypes } from "types/breadcrumbs";
 import {getTypesBySlug} from "data/loaders/getTypesBySlug";
@@ -22,14 +21,10 @@ import {Type} from "@/types";
 
 interface Props {
   data: Type[];
-  introHeaderData: introHeaderTypes;
   articleType: string;
 }
 
-function ArticleTypePage({
-                           data,
-                           introHeaderData,
-                         }: Props) {
+function ArticleTypePage({data, }: Props) {
   const router = useRouter();
   const { locale, query } = router;
   const { type } = query;
@@ -46,7 +41,6 @@ function ArticleTypePage({
   const titleText: string = `JUMBLE | Type ${splitAndCapitalize(
       type as string
   )}`;
-  const { id, headerImg, title, detail } = introHeaderData;
 
   return (
       <Fragment>
@@ -60,10 +54,10 @@ function ArticleTypePage({
         <LogoBanner />
         <JumblogMenu activeMenu="FIXME" />
         <IntroHeader
-            id={id}
-            headerImg={headerImg}
-            title={title}
-            detail={detail}
+            id={data[0]["_id"]}
+            headerImg={data[0]["main-image"]["url"]}
+            title={data[0]["name"]}
+            detail={data[0]["meta-description"]}
         />
         <ArticlesList articlesData={data[0].relatedPostsRef} showBtn={true} />
         <Footer />
@@ -73,7 +67,7 @@ function ArticleTypePage({
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const data = getTypesBySlug();
-
+  //console.log("OOOOOOOOOOOOO =>     ", data);
   return {
     props: {
       data,
@@ -92,7 +86,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: paths,
-    fallback: true,
+    fallback: false,
   };
 };
 

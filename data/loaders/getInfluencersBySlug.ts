@@ -8,5 +8,5 @@ export function getInfluencersBySlug(slug?: string): Influencer[] {
       ...influencer,
       link: "/influencers/" + influencer.slug
     };
-  });
+  }).filter((influencer) => influencer !== undefined) as Influencer[];
 }

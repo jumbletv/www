@@ -15,10 +15,10 @@ export function getTagsBySlug(slug?: string): Tag[] {
             authorRef: Authors.find((author) => author._id === post.author),
             tagsRef: post.tags?.map((id) => Tags.find((tag) => tag._id === id))
         }
-    });
+    }) || null;
     return {
       ...tag,
       link: "/tag/" + tag.slug
     };
-  });
+  }).filter((tag) => tag !== undefined) as Tag[];
 }

@@ -19,11 +19,7 @@ interface SingleBrandProps {
 
 function SingleBrandPage({ data }: SingleBrandProps) {
   const router = useRouter();
-
-  const {
-    locale,
-    query: { singleBrandSlug },
-  } = router;
+  const { locale, query } = router;
 
   const {
     name,
@@ -86,7 +82,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: paths,
-    fallback: true,
+    fallback: false,
   };
 };
 

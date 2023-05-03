@@ -7,13 +7,13 @@ import { useRouter } from "next/router";
 import { Bars } from "common/Bars";
 import { jumblogNavBarData } from "data/barData";
 import { Breadcrumbs } from "common/Breadcrumbs";
-import { salesData, influencerData } from "data/products";
+import { influencerData } from "data/products";
 import { Header } from "layout/Header";
 import { IntroHeader } from "components/IntroHeader";
 import { NotFoundMessage } from "common/NotFoundMessage";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { getInfluencersBySlug } from "data/loaders/getInfluencersBySlug";
-import { GetStaticPaths } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import { Influencer } from "@/types";
 
 interface SingleInfluencerProps {
@@ -35,8 +35,6 @@ function SingleInfluencerPage({ data }: SingleInfluencerProps) {
   ];
   const titleText = `JUMBLE | influencer ${data.name}`;
 
-  const { _id: id, name: title, bio: detail } = data;
-
   return (
     <Fragment>
       <Head>
@@ -48,10 +46,10 @@ function SingleInfluencerPage({ data }: SingleInfluencerProps) {
       <Header headerText="featured_sales" locale={locale} shrink={false} />
       {influencerData ? (
         <IntroHeader
-          id={id}
+          id={data["_id"]}
           headerImg={data["profil-pic"].url}
-          title={title}
-          detail={detail}
+          title={data["name"]}
+          detail={data["bio"]}
         />
       ) : (
         <NotFoundMessage message="No author Found" />
@@ -66,11 +64,12 @@ function SingleInfluencerPage({ data }: SingleInfluencerProps) {
   );
 }
 
-export async function getStaticProps({ locale }: { locale: string }) {
+export const getStaticProps: GetStaticProps = async ({ locale, params }) => {
+  const data = getInfluencersBySlug(params.slug as string)[0];
+
   return {
     props: {
-      poplulateInfluencerData: influencerData,
-      populateProductData: salesData,
+      data,
       ...(await serverSideTranslations(locale, ["common", "article-types"])),
     },
     revalidate: 60,
@@ -82,7 +81,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: paths,
-    fallback: true,
+    fallback: false,
   };
 };
 

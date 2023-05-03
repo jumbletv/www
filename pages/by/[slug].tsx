@@ -12,11 +12,8 @@ import {Breadcrumbs, BreadcrumbLink} from "common/Breadcrumbs";
 import {Header} from "layout/Header";
 import {LogoBanner} from "common/LogoBanner";
 import {IntroHeaderData, IntroHeader} from "components/IntroHeader";
-import {articlesByData, IntroData} from "data/introData";
-import {splitWord, splitAndCapitalize} from "helper/stringHelpers";
 import {getAuthorsBySlug} from "data/loaders/getAuthorsBySlug";
 import {Author} from "types/cms/Author";
-import {getAuthorIntroHeader} from "@/data/loaders/getIntroHeader";
 import {GetStaticPaths, GetStaticProps} from "next";
 
 interface SingleAuthorProps {
@@ -39,8 +36,6 @@ function SingleAuthorPage({data}: SingleAuthorProps) {
 
     const titleText = `JUMBLE | Articles by ${data.name}`;
 
-    const {id, headerImg, title, detail} = getAuthorIntroHeader(data);
-
     return (
         <Fragment>
             <Head>
@@ -52,10 +47,10 @@ function SingleAuthorPage({data}: SingleAuthorProps) {
             <Header headerText="THE JUMBLOG"/>
             <LogoBanner/>
             <IntroHeader
-                id={id}
-                headerImg={headerImg}
-                title={title}
-                detail={detail}
+                id={data[0]["_id"]}
+                headerImg={data[0]["avatar"]["url"]}
+                title={data[0]["name"]}
+                detail={data[0]["bio"]}
             />
             <ArticlesList articlesData={data[0].relatedPostsRef} showBtn={true}/>
             <Footer/>
@@ -65,7 +60,7 @@ function SingleAuthorPage({data}: SingleAuthorProps) {
 
 export const getStaticProps: GetStaticProps = async ({ locale, params}) => {
     const data = getAuthorsBySlug(params.slug as string);
-
+    //console.log("Author =====> ", data)
     return {
         props: {
             data,
@@ -84,7 +79,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
     return {
         paths: paths,
-        fallback: true,
+        fallback: false,
     };
 }
 

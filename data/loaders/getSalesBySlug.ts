@@ -21,7 +21,7 @@ export const getSalesBySlug = (slug?: string): Sale[] => {
             authorRef: Authors.find((author) => author._id === post.author),
             tagsRef: post.tags?.map((id) => Tags.find((tag) => tag._id === id))
             }
-        })
+        }) || null
         };
-    });
+    }).filter((sale) => sale !== undefined) as Sale[];
 }

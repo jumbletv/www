@@ -10,38 +10,11 @@ export type IntroHeader = {
   detail: string;
 };
 
-export function getAuthorIntroHeader(baseObject: Author): IntroHeader {
-  return {
-    id: baseObject["_id"],
-    headerImg: baseObject.avatar.url,
-    title: baseObject.name,
-    detail: baseObject.bio,
-  };
-}
-
-export function getTypeIntroHeader(baseObject: Type): IntroHeader {
-  return {
-    id: baseObject["_id"],
-    headerImg: baseObject["main-image"].url,
-    title: baseObject.name,
-    detail: baseObject["meta-description"],
-  };
-}
-
 export function getTagIntroHeader(baseObject: Tag): IntroHeader {
   return {
     id: baseObject["_id"],
     headerImg: baseObject["icon"].url,
     title: baseObject.name,
     detail: baseObject.description,
-  };
-}
-
-export function getInfluencerIntroHeader(baseObject: Influencer): IntroHeader {
-  return {
-    id: baseObject["_id"],
-    headerImg: baseObject.image.url,
-    title: baseObject.name,
-    detail: baseObject.bio,
   };
 }

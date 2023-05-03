@@ -21,21 +21,15 @@ import { supportData } from "data/supportData";
 
 import { getSalesBySlug } from "data/loaders/getSalesBySlug";
 
-import { Product, Influencer } from "types";
+import { Sale, Influencer } from "types";
 
 interface Props {
-  salesData: Product[];
-  articlesData: Article[];
-  faqData: FAQ[];
-  supportData: Question[];
+  salesData: Sale[];
   influencerData: Influencer[];
 }
 
 function SingleSale({
                       salesData,
-                      articlesData,
-                      faqData,
-                      supportData,
                       influencerData,
                     }: Props): JSX.Element {
   const router = useRouter();
@@ -96,7 +90,6 @@ export async function getStaticProps({ locale }) {
   return {
     props: {
       populateProductsData: salesData,
-      poplulateArticlesData: articlesData,
       poplulateInfluencerData: influencerData,
       ...(await serverSideTranslations(locale, [
         "common",

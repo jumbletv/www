@@ -13,8 +13,8 @@ export function getBlogPostsBySlug(slug?: string): BlogPost[] {
     const author = Authors.find((author) => author["_id"] === blogPost.author);
     const tags = Tags.filter((tag) => blogPost.tags.includes(tag["_id"]));
     const relatedPosts = BlogPosts.filter((related) =>
-      blogPost["related-posts"].includes(related["_id"])
-    );
+      blogPost["related-posts"]?.includes(related["_id"])
+    ) || null;
     const type = Types.find((type) => type["_id"] === blogPost["type"]);
     const link = "/the-jumblog/" + blogPost.slug;
 
@@ -47,5 +47,5 @@ export function getBlogPostsBySlug(slug?: string): BlogPost[] {
       relatedPostsRef: finalRelated,
       link,
     };
-  });
+  }).filter((blogPost) => blogPost !== undefined) as BlogPost[];
 }

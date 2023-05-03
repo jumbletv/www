@@ -5,6 +5,7 @@ export * from "./cms/BlogPost";
 export * from "./cms/Brand";
 export * from "./cms/FAQ";
 export * from "./cms/Influencer";
+export * from "./cms/Product";
 export * from "./cms/Sale";
 export * from "./cms/Tag";
 export * from "./cms/Type";
