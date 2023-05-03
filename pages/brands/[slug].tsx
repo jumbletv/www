@@ -14,7 +14,7 @@ import { breadcrumbsTypes } from "types/breadcrumbs";
 import { Brand } from "@/types";
 import { MetaSEO } from "@/components/MetaSEO";
 
-function SingleBrandPage({ data }: { data: Brand }) {
+function BrandSinglePage({ data }: { data: Brand }) {
   const router = useRouter();
   const { locale, query } = router;
 
@@ -87,4 +87,4 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export default SingleBrandPage;
+export default BrandSinglePage;

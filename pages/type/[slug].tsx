@@ -24,7 +24,7 @@ interface Props {
   articles: BlogPost[];
 }
 
-function ArticleTypePage({data, articles, }: Props) {
+function ArticlesTypePage({data, articles, }: Props) {
   const router = useRouter();
   const { locale, query } = router;
 
@@ -33,7 +33,7 @@ function ArticleTypePage({data, articles, }: Props) {
     { id: 2, title: "The Jumblog", link: "/the-jumblog" },
     {
       id: 3,
-      title: `Article with tag ${data.name}`,
+      title: `Articles with tag ${data.name}`,
       link: `/type/${data.slug}`,
     },
   ];
@@ -94,4 +94,4 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export default ArticleTypePage;
+export default ArticlesTypePage;

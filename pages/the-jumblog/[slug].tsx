@@ -15,13 +15,13 @@ import { getBlogPostsBySlug } from "data/loaders/getBlogPostsBySlug";
 import { BlogPost, breadcrumbsTypes,} from "types";
 import { MetaSEO } from "@/components/MetaSEO";
 
-function SingleArticlePage({ data }: {data: BlogPost}) {
+function ArticleSinglePage({ data }: {data: BlogPost}) {
   const router = useRouter();
   const { t } = useTranslation("articles");
 
   const {
     locale,
-    query: { singleArticleSlug },
+    query,
   } = router;
 
   const breadcrumbsLinks: breadcrumbsTypes[] = [
@@ -86,4 +86,4 @@ export const getStaticPaths: GetStaticPaths = () => {
   };
 };
 
-export default SingleArticlePage;
+export default ArticleSinglePage;

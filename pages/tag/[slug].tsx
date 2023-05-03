@@ -17,7 +17,7 @@ import { Tag } from "@/types";
 import { getBlogPostsByTagSlug } from "@/data/loaders/getBlogPostsBySlug";
 import { MetaSEO } from "@/components/MetaSEO";
 
-const TagPage = ({ data }: {data: Tag}) => {
+const ArticlesByTagPage = ({ data }: {data: Tag}) => {
   const { t } = useTranslation("common");
   const router = useRouter();
   const breadcrumbsLinks = [
@@ -70,4 +70,4 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export default TagPage;
+export default ArticlesByTagPage;

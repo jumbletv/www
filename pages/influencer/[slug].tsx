@@ -16,7 +16,7 @@ import type { GetStaticPaths, GetStaticProps } from "next";
 import { Influencer } from "@/types";
 import { MetaSEO } from "@/components/MetaSEO";
 
-function SingleInfluencerPage({ data }: { data: Influencer }) {
+function SalesByInfluencerPage({ data }: { data: Influencer }) {
   const router = useRouter();
   const { locale } = router;
 
@@ -85,4 +85,4 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export default SingleInfluencerPage;
+export default SalesByInfluencerPage;

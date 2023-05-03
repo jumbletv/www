@@ -23,7 +23,7 @@ interface SingleAuthorProps {
     articles: BlogPost[];
 }
 
-function SingleAuthorPage({data, articles, }: SingleAuthorProps) {
+function ArticlesByAuthorPage({data, articles, }: SingleAuthorProps) {
     const router = useRouter();
     const {locale, query} = router;
 
@@ -92,4 +92,4 @@ export const getStaticPaths: GetStaticPaths = async () => {
     };
 }
 
-export default SingleAuthorPage;
+export default ArticlesByAuthorPage;
