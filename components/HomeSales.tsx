@@ -1,8 +1,8 @@
 import React from "react";
-import { HomeProductItem } from "components/HomeProductItem";
+import { HomeSalesItem } from "@/components/HomeSalesItem";
 import { CircleBtn } from "common/CircleBtn";
 import styles from "./HomeSales.module.scss";
-import {Sale} from "@/types";
+import { Sale } from "@/types";
 
 type Product = {
   id: number;
@@ -31,7 +31,7 @@ export function HomeSales({ featuredSales, showBtn }: Props) {
     <div className={homeProductsWrapper}>
       <div className={homeProductsContainer}>
         {featuredSales?.map((sale) => (
-          <HomeProductItem key={sale._id} sale={sale} />
+          <HomeSalesItem key={sale._id} sale={sale} />
         ))}
       </div>
       {showBtn && <CircleBtn link="" />}
