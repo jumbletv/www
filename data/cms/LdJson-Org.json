@@ -1,0 +1,31 @@
+{ 
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://jumble.tv/#organization",
+  "name": "Jumble",
+  "alternateName": ["Jumble TV", "Jumble.tv"],
+  "legalName" : "JTV SAS",
+  "url": "https://jumble.tv",
+  "logo": "https://uploads-ssl.webflow.com/5fcf4f957de9c1d61e4a9058/5fcf4f957de9c1869c4a905c_Jumble-logo.svg",
+  "foundingDate": "2020",
+  "sameAs" : [
+    "https://www.instagram.com/jumble_tv/",
+  	"https://www.instagram.com/jumble_worldwide/t",
+    "https://www.linkedin.com/company/jumbletv",
+    "https://www.facebook.com/itsjumbletv/",
+    "https://linktr.ee/jumbletv"
+  ],
+  "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "231 rue Saint Honoré",
+     "addressLocality": "Paris",
+     "postalCode": "75001",
+     "addressCountry": "FR"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer support",
+    "telephone": "[+33187651050]",
+    "email": "bonjour@jumble.tv"
+  }
+}

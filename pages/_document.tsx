@@ -15,6 +15,21 @@ import Document, {
     return (
         <Html lang="en">
           <Head>
+          <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossOrigin=""
+          />
+          <link
+            rel="preconnect"
+            href="https://www.google.com"
+            crossOrigin=""
+          />
+          <link
+            rel="preconnect"
+            href="https://www.gstatic.com"
+            crossOrigin=""
+          />
           </Head>
       <body>
         <Main />

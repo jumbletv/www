@@ -1,0 +1,41 @@
+{
+	"@context": "http://schema.org",
+	"@type": "WebPage",
+	"@id": "https://jumble.tv/#webpage",
+	"url": "https://jumble.tv/",
+	"name": "JUMBLE - Have Fun Buying and Selling with our Livestream Shopping Experience",
+	"datePublished": "2021-03-01T10:52:39+00:00", 
+	"dateModified": "2021-03-01T10:52:39+00:00",
+	"description": "Live Stream Shopping – Get your hands on exclusive products in our live stream shopping experience. Live video streams shoppable for brands and retailers around the World.",
+	"inLanguage": "en-US",
+	"isPartOf": {
+		"@type": "WebSite",
+		"@id": "https://jumble.tv/#website",
+		"url": "https://jumble.tv/",
+		"name": "Jumble",
+    "alternateName": [
+  		"Jumble TV", 
+    	"Jumble.tv"
+  	],
+		"inLanguage": "en-US"
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Izabella Makukha"
+	},
+	"breadcrumb": {
+		"@type": "BreadcrumbList",
+    "@id": "https://jumble.tv/#breadcrumb",
+		"itemListElement": [{
+				"@type": "ListItem",
+				"position": 1,
+				"item": {
+        	"@type": "WebPage",
+					"@id": "https://jumble.tv/#webpage",
+          "url": "https://jumble.tv/",
+					"name": "Jumble"
+				}
+			}
+		]
+	}
+}

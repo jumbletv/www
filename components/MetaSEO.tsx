@@ -1,3 +1,6 @@
+import Link from "next/link";
+import { useRouter } from "next/router";
+
 interface MetaSEOProps {
     title: string;
     description: string;
@@ -5,6 +8,9 @@ interface MetaSEOProps {
 }
 
 export function MetaSEO({title, description, image}: MetaSEOProps) {
+  const router = useRouter();
+  const canonical = `https://jumble.tv${router.asPath}`;
+
   return (
     <>
       <title>{title}</title>
@@ -16,7 +22,7 @@ export function MetaSEO({title, description, image}: MetaSEOProps) {
       <meta property="twitter:title" content={title} key="twitter:title" />
       <meta property="twitter:description" content={description} key="twitter:desc" />
       <meta property="twitter:image" content={image} key="twitter:image" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <Link rel="canonical" href={canonical} />
     </>
   );
 }

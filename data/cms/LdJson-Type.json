@@ -1,0 +1,62 @@
+
+{
+	"@context": "http://schema.org",
+	"@type": "WebPage",
+	"@id": "https://jumble.tv/type/news/#webpage",
+	"url": "https://jumble.tv/type/news/",
+	"name": "News",
+	"datePublished": "May 13, 2021T12:30:00+02:00",
+  "dateCreated": "Apr 12, 2021T12:30:00+02:00", 
+	"dateModified": "May 13, 2021T12:30:00+02:00", 
+	"description": "Find expert advice for healthy living and the latest lifestyle and fashion trends. With insights into the latest emerging research and commerce related news.",
+	"inLanguage": "en-US",
+	"isPartOf": {
+		"@type": "WebSite",
+		"@id": "https://jumble.tv/#website",
+		"url": "https://jumble.tv/",
+		"name": "Jumble",
+    "alternateName": [
+  		"Jumble TV", 
+    	"Jumble.tv"
+  	],
+		"inLanguage": "en-US"
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Izabella Makukha"
+	},
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "@id": "https://jumble.tv/type/news/#breadcrumb",
+    "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "WebPage",
+          "@id": "https://jumble.tv/#webpage",
+          "url": "https://jumble.tv/",
+          "name": "Jumble"
+        }
+    },
+    {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "WebPage",
+          "@id": "https://jumble.tv/the-jumblog/#webpage",
+          "url": "https://jumble.tv/the-jumblog/",
+          "name": "Blog"
+        }
+    },
+    {
+			"@type": "ListItem",
+			"position": 3,
+			"item": {
+      	"@type": "WebPage",
+				"@id": "https://jumble.tv/type/news/#webpage",
+        "url": "https://jumble.tv/type/news/",
+				"name": "News"
+			}
+		}]
+  }
+}

@@ -1,0 +1,11 @@
+{
+    "@context": "https://schema.org/",
+    "@type": "WebSite",
+    "@id": "https://jumble.tv#website",
+    "name": "Jumble",
+    "alternateName": [
+        "Jumble TV", 
+      "Jumble.tv"
+    ],
+    "url": "https://jumble.tv/"
+  }
